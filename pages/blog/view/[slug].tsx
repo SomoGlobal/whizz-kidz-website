@@ -1,9 +1,9 @@
+import Layout from 'components/layout';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React from 'react';
-import Layout from 'components/layout';
 
-export default function Post({ page, preview }) {
+const Post = ({ preview }) => {
   const router = useRouter();
 
   return (
@@ -14,12 +14,13 @@ export default function Post({ page, preview }) {
         <>
           <article>
             <Head>
-              <title>{page.title}</title>
-              <meta property="og:image" content={page.ogImage.url} />
+              <title>title</title>
             </Head>
           </article>
         </>
       )}
     </Layout>
   );
-}
+};
+
+export default Post;
