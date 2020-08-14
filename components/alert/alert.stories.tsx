@@ -1,0 +1,1 @@
+import React from 'react';import Alert from './alert.component';export default {  title: 'Components/Alert',  component: Alert,};export const Story = () => <Alert />;Story.story = {  name: 'alert',};

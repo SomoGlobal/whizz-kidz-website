@@ -8,6 +8,9 @@ module.exports = {
         success: '#0070f3',
         cyan: '#79FFE1',
       },
+      zIndex: {
+        '-1': '-1',
+      },
       spacing: {
         28: '7rem',
       },
@@ -29,4 +32,4 @@ module.exports = {
       },
     },
   },
-}
+};

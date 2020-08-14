@@ -1,0 +1,1 @@
+import React from 'react';import SectionSeparator from './section-separator.component';export default {  title: 'Components/SectionSeparator',  component: SectionSeparator,};export const Story = () => <SectionSeparator />;Story.story = {  name: 'section separator',};

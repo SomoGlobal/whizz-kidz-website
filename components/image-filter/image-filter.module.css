@@ -1,0 +1,1 @@
+.filter {  filter: contrast(65%) brightness(90%) sepia(50%) saturate(100%);  @apply bg-green-700;}.filter img {  mix-blend-mode: luminosity;  object-fit: cover;  width: 100%;}

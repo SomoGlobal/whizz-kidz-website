@@ -1,0 +1,36 @@
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
+import React from 'react';
+import { getHomePage } from 'lib/api';
+import Layout from '../components/layout';
+import pageMap from '../lib/module-component-map';
+
+const Module: React.FC<any> = ({ module }) => {
+  const Component = pageMap[module._modelApiKey];
+
+  return <Component {...module} />;
+};
+
+export default function Index({ home, preview }) {
+  return (
+    <>
+      <Layout preview={preview}>
+        <Head>
+          <title>{home.title}</title>
+        </Head>
+        {home.modules.map((module) => (
+          <Module key={module.id} module={module} />
+        ))}
+      </Layout>
+    </>
+  );
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const preview = !!context.preview;
+  const home = await getHomePage(preview);
+
+  return {
+    props: { preview, home },
+  };
+};
