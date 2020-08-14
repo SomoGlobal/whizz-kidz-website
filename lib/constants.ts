@@ -5,8 +5,8 @@ export const HOME_OG_IMAGE_URL =
 
 export const SECTIONS_COLORS = {
   kidz: {
-    bg: 'bg-green-700',
-    text: 'text-green-700',
+    bg: 'bg-purple-900',
+    text: 'text-purple-900',
   },
   parents: {
     bg: 'bg-blue-700',

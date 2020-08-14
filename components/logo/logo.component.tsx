@@ -7,7 +7,7 @@ const Logo: React.FC = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 241.743 76.898"
-      style={{ width: '140px' }}
+      style={{ width: '140px', fill: 'currentColor' }}
     >
       <title>Whizz-Kidz</title>
       <desc>Move a life forward</desc>

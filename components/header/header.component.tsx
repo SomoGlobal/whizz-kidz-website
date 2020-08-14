@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { SECTIONS_COLORS } from '../../lib/constants';
 import Container from '../container';
 import Logo from '../logo';
+import PrimaryNav from '../primary-nav';
 
 const primaryNavigationLinks = [
   { label: 'Home', href: '/' },
@@ -30,27 +31,11 @@ const Header: React.FC = () => {
         <Container>
           <div className="flex items-center justify-between py-4 border-gray-300 border-b">
             <Link href="/">
-              <a className="fill-current text-yellow-600 hover:text-yellow-500">
+              <a className="fill-current text-gray-700">
                 <Logo />
               </a>
             </Link>
-            <nav title="Primary Navigation" className="hidden md:block">
-              <ul className="flex">
-                {primaryNavigationLinks.map((nav) => (
-                  <li key={nav.href}>
-                    <Link href={nav.href} prefetch>
-                      <a
-                        className={`px-3 py-2 hover:text-white hover:${
-                          nav.bg || 'bg-blue-700'
-                        } text-gray-700 uppercase font-bold text-sm`}
-                      >
-                        {nav.label}
-                      </a>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+            <PrimaryNav links={primaryNavigationLinks} />
           </div>
         </Container>
       </header>

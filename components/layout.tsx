@@ -4,6 +4,7 @@ import Meta from './meta';
 import Header from './header';
 import PageTitle from './page-title';
 import SecondaryNav from './secondary-nav';
+import Footer from './footer';
 
 const Layout: React.FC<any> = ({
   preview,
@@ -15,7 +16,7 @@ const Layout: React.FC<any> = ({
 }) => (
   <>
     <Meta />
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Alert preview={preview} />
       <Header />
       {pageTitle && <PageTitle text={pageTitle} color={color} />}
@@ -26,7 +27,10 @@ const Layout: React.FC<any> = ({
           color={color}
         />
       )}
-      <main>{children}</main>
+      <main id="main" className="flex-1">
+        {children}
+      </main>
+      <Footer />
     </div>
   </>
 );

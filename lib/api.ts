@@ -1,5 +1,4 @@
 import 'isomorphic-unfetch';
-import exp from 'constants';
 
 const API_URL = 'https://graphql.datocms.com';
 const API_TOKEN = process.env.CMS_DATOCMS_API_TOKEN;
@@ -40,6 +39,7 @@ export const fetchAPI = async (
   const json = await res.json();
 
   if (json.errors) {
+    // eslint-disable-next-line no-console
     console.error(json.errors);
     throw new Error('Failed to fetch API');
   }

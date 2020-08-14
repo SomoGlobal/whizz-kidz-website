@@ -18,7 +18,7 @@ const SecondaryNav: React.FC<ISecondaryNavProps> = ({
   activeIndex,
 }) => {
   return (
-    <div className="bg-white shadow-lg">
+    <div className="bg-white shadow-lg rounded-b-lg">
       <Container>
         <nav title="Secondary Navigation">
           <ul className="flex">
