@@ -1,20 +1,20 @@
+import { getHomePage } from 'lib/api';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import { getHomePage } from '../lib/api';
-import DatoModule from '../lib/dato-module';
-import Layout from '../components/layout';
+import Layout from '../../components/layout';
+import { SECTIONS_COLORS } from '../../lib/constants';
 
-export default function Index({ home, preview }) {
+export default function Kids({ home, preview }) {
   return (
     <>
-      <Layout preview={preview}>
+      <Layout
+        preview={preview}
+        pageTitle={{ text: 'Parents', color: SECTIONS_COLORS.parents.bg }}
+      >
         <Head>
           <title>{home.title}</title>
         </Head>
-        {home.modules.map((module) => (
-          <DatoModule key={module.id} module={module} />
-        ))}
       </Layout>
     </>
   );

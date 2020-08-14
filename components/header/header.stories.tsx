@@ -1,0 +1,1 @@
+import React from 'react';import Header from './header.component';export default {  title: 'Components/Header',  component: Header,};export const Story = () => <Header />;Story.story = {  name: 'header',};

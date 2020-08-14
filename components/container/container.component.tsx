@@ -9,7 +9,9 @@ const Container: React.FC<IContainerProps> = ({
   bg = 'bg-transparent',
 }) => {
   return (
-    <div className={`container mx-auto px-5 relative ${bg}`}>{children}</div>
+    <div className={`lg:container lg:mx-auto px-5 relative ${bg}`}>
+      {children}
+    </div>
   );
 };
 

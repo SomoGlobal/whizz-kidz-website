@@ -1,0 +1,1 @@
+import Router from 'next/router';// noinspection JSValidateTypesRouter.router = {  push: () => {},  prefetch: () => new Promise((_resolve, _reject) => {}),};

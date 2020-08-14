@@ -21,7 +21,7 @@ const responsiveImageFragment = `
   }
 `;
 
-const fetchAPI = async (
+export const fetchAPI = async (
   query,
   { variables, preview } = { variables: {}, preview: false }
 ) => {

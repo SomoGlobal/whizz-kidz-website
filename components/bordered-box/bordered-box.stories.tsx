@@ -2,20 +2,20 @@ import React from 'react';
 
 import BorderedBox from './bordered-box.component';
 
+const Template = (args) => <BorderedBox {...args} />;
+
 export default {
   title: 'Components/BorderedBox',
   component: BorderedBox,
+  argTypes: {
+    title: { control: 'text' },
+    children: { control: 'text' },
+  },
 };
 
-export const Story = () => (
-  <BorderedBox title="Example Title">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis expedita
-    fuga quidem quod? Amet animi aspernatur corporis cum dolor dolore
-    exercitationem impedit iste itaque odio omnis, perspiciatis soluta suscipit
-    voluptatem.
-  </BorderedBox>
-);
+export const Story = Template.bind({});
 
-Story.story = {
-  name: 'bordered box',
+Story.args = {
+  title: 'Title',
+  children: 'children',
 };

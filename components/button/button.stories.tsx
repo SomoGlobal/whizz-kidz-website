@@ -2,13 +2,15 @@ import React from 'react';
 
 import Button from './button.component';
 
+const Template = (args) => <Button {...args} />;
+
 export default {
   title: 'Components/Button',
   component: Button,
 };
 
-export const Story = () => <Button>Donate</Button>;
+export const Story = Template.bind({});
 
-Story.story = {
-  name: 'button',
+Story.args = {
+  children: 'Donate',
 };

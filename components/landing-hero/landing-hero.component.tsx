@@ -12,17 +12,17 @@ export interface ILandingHeroProps {
  */
 const LandingHero: React.FC<ILandingHeroProps> = ({ title, subtitle }) => {
   return (
-    <Container bg="bg-indigo-800">
+    <Container bg="bg-gray-200">
       <div className="absolute right-0 top-0 w-1/2 h-full invisible md:visible">
         <Puzzle />
       </div>
       <div className="px-4 sm:px-24 py-24 md:py-48 z-10 relative">
         <div>
           <h1 className="text-white text-7xl font-bold">
-            <span className="bg-indigo-800">{title}</span>
+            <span className="bg-indigo-800 px-4 py-4">{title}</span>
           </h1>
           <div className="text-white text-2xl">
-            <span className="bg-indigo-800">{subtitle}</span>
+            <span className="bg-indigo-800 px-4 py-4">{subtitle}</span>
           </div>
         </div>
       </div>
