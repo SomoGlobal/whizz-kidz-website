@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
+import JourneyLauncher from '../components/journey-launcher';
 import { getPage } from '../lib/api';
 import DatoModule from '../lib/dato-module';
 import Layout from '../components/layout';
@@ -15,6 +16,7 @@ export default function Index({ home, preview }) {
         {home.modules.map((module) => (
           <DatoModule key={module.id} module={module} />
         ))}
+        <JourneyLauncher />
       </Layout>
     </>
   );

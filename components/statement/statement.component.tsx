@@ -17,11 +17,16 @@ const Statement: React.FC<IStatementProps> = ({
   isCentered = false,
   hasBigHeading = false,
 }) => {
-  const { text: textColor } = useContext(BrandContext);
+  const { smallTextColor } = useContext(BrandContext);
 
   return (
     <div className={cx({ 'text-center': isCentered })}>
-      <h2 className={cx('uppercase font-bold tracking-wider mb-3', textColor)}>
+      <h2
+        className={cx(
+          'uppercase font-bold tracking-wider mb-3',
+          smallTextColor
+        )}
+      >
         {eyebrow}
       </h2>
       <p

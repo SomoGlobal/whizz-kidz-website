@@ -22,8 +22,8 @@ const LandingHero: React.FC<ILandingHeroProps> = ({
   subtitle,
   color,
 }) => {
-  const { bg } = useContext(BrandContext);
-  const bgColor = color || bg;
+  const { backgroundColor } = useContext(BrandContext);
+  const bgColor = color || backgroundColor;
 
   return (
     <Container element="section" bg="bg-gray-200">

@@ -1,18 +1,22 @@
-import React from 'react';
+import { brands } from 'lib/brand-context';
 import Link from 'next/link';
-import { SECTIONS_COLORS } from '../../lib/constants';
+import React from 'react';
 import Container from '../container';
 import Logo from '../logo';
 import PrimaryNav from '../primary-nav';
 
 const primaryNavigationLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Kidz', href: '/kidz', bg: SECTIONS_COLORS.kidz.bg },
-  { label: 'Parents', href: '/parents', bg: SECTIONS_COLORS.parents.bg },
+  { label: 'Kidz', href: '/kidz', bg: brands.kidz.smallBackgroundColor },
+  {
+    label: 'Parents',
+    href: '/parents',
+    bg: brands.parents.smallBackgroundColor,
+  },
   {
     label: 'Supporters',
     href: '/supporters',
-    bg: SECTIONS_COLORS.supporters.bg,
+    bg: brands.supporters.smallBackgroundColor,
   },
   { label: 'About Us', href: '/about' },
   { label: 'Discover', href: '/discover' },

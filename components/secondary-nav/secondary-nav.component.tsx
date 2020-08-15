@@ -17,7 +17,7 @@ const SecondaryNav: React.FC<ISecondaryNavProps> = ({
   color,
   activeIndex,
 }) => {
-  const { bg } = useContext(BrandContext);
+  const { backgroundColor } = useContext(BrandContext);
 
   return (
     <section
@@ -38,7 +38,7 @@ const SecondaryNav: React.FC<ISecondaryNavProps> = ({
                     {index === activeIndex && (
                       <span
                         className={`absolute w-full ${
-                          color || bg
+                          color || backgroundColor
                         } rounded-t-full bottom-0 left-0 h-1 px-4`}
                       />
                     )}

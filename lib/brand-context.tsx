@@ -1,28 +1,42 @@
 import React from 'react';
 
 interface IBrand {
-  bg: string;
-  text: string;
+  backgroundColor: string;
+  smallBackgroundColor: string;
+  textColor: string;
+  smallTextColor: string;
+}
+
+interface IBrands {
+  [name: string]: IBrand;
 }
 
 type BrandNames = 'kidz' | 'parents' | 'supporters';
 
-export const brands = {
+export const brands: IBrands = {
   default: {
-    bg: 'bg-teal-700',
-    text: 'text-teal-700',
+    backgroundColor: 'bg-teal-700',
+    smallBackgroundColor: 'bg-teal-700',
+    textColor: 'text-teal-700',
+    smallTextColor: 'text-teal-700',
   },
   kidz: {
-    bg: 'bg-green-700',
-    text: 'text-green-700',
+    backgroundColor: 'bg-indigo-500',
+    smallBackgroundColor: 'bg-indigo-500',
+    textColor: 'text-indigo-500',
+    smallTextColor: 'text-indigo-600',
   },
   parents: {
-    bg: 'bg-blue-700',
-    text: 'text-blue-700',
+    backgroundColor: 'bg-purple-800',
+    smallBackgroundColor: 'bg-purple-800',
+    textColor: 'text-purple-800',
+    smallTextColor: 'text-purple-600',
   },
   supporters: {
-    bg: 'bg-purple-700',
-    text: 'text-purple-700',
+    backgroundColor: 'bg-green-500',
+    smallBackgroundColor: 'bg-green-600',
+    textColor: 'text-green-500',
+    smallTextColor: 'text-green-600',
   },
 };
 

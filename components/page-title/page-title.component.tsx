@@ -9,10 +9,13 @@ export interface IPageTitleProps {
 
 /** Used in linking pages at the very top, below primary navigation */
 const PageTitle: React.FC<IPageTitleProps> = ({ text, color }) => {
-  const { bg } = useContext(BrandContext);
+  const { backgroundColor } = useContext(BrandContext);
 
   return (
-    <section className={`${color || bg} py-5`} aria-label="Page Title">
+    <section
+      className={`${color || backgroundColor} py-5`}
+      aria-label="Page Title"
+    >
       <Container>
         <h1 className="text-white text-5xl font-bold tracking-wide">{text}</h1>
       </Container>
