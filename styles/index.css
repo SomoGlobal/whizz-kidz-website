@@ -9,3 +9,8 @@ body {
   margin: 0;
   font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
+
+.clone {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}

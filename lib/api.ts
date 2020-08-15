@@ -47,11 +47,11 @@ export const fetchAPI = async (
   return json.data;
 };
 
-export async function getHomePage(preview) {
+export async function getPage(preview: boolean, slug: string) {
   const data = await fetchAPI(
     `
-    query HomeQuery {
-      page(filter: {slug: {eq: "home"}}) {
+    query PageQuery($slug: String) {
+      page(filter: {slug: {eq: $slug}}) {
         id
         slug
         title
@@ -73,7 +73,9 @@ export async function getHomePage(preview) {
     }`,
     {
       preview,
-      variables: {},
+      variables: {
+        slug,
+      },
     }
   );
   return data?.page;

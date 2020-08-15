@@ -1,20 +1,30 @@
-import { getHomePage } from 'lib/api';
+import { getPage } from 'lib/api';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import Layout from '../../components/layout';
-import { SECTIONS_COLORS } from '../../lib/constants';
+import DatoModule from '../../lib/dato-module';
 
-export default function Kids({ home, preview }) {
+export default function Kids({ page, preview }) {
   return (
     <>
       <Layout
+        brand="parents"
         preview={preview}
-        pageTitle={{ text: 'Parents', color: SECTIONS_COLORS.parents.bg }}
+        pageTitle={page.title}
+        activeNavIndex={0}
+        secondaryNavItems={[
+          { label: 'Kidz Home', href: '/kidz' },
+          { label: 'Young People’s Services', href: '/kidz/yps' },
+          { label: 'Meet the kidz', href: '/kidz/meet-the-kidz' },
+        ]}
       >
         <Head>
-          <title>{home.title}</title>
+          <title>{page.title}</title>
         </Head>
+        {page.modules.map((module) => (
+          <DatoModule key={module.id} module={module} />
+        ))}
       </Layout>
     </>
   );
@@ -22,9 +32,9 @@ export default function Kids({ home, preview }) {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const preview = !!context.preview;
-  const home = await getHomePage(preview);
+  const page = await getPage(preview, 'parents');
 
   return {
-    props: { preview, home },
+    props: { preview, page },
   };
 };

@@ -10,7 +10,6 @@ import PostBody from '../../components/post-body';
 import PostHeader from '../../components/post-header';
 import PostTitle from '../../components/post-title';
 import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
-import { CMS_NAME } from '../../lib/constants';
 import markdownToHtml from '../../lib/markdown-to-html';
 
 export default function Post({ post, morePosts, preview }) {
@@ -30,9 +29,7 @@ export default function Post({ post, morePosts, preview }) {
           <>
             <article>
               <Head>
-                <title>
-                  {post.title} | Next.js Blog Example with {CMS_NAME}
-                </title>
+                <title>{post.title}</title>
                 <meta property="og:image" content={post.ogImage.url} />
               </Head>
               <PostHeader

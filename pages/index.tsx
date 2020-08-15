@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import { getHomePage } from '../lib/api';
+import { getPage } from '../lib/api';
 import DatoModule from '../lib/dato-module';
 import Layout from '../components/layout';
 
@@ -22,7 +22,7 @@ export default function Index({ home, preview }) {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const preview = !!context.preview;
-  const home = await getHomePage(preview);
+  const home = await getPage(preview, 'home');
 
   return {
     props: { preview, home },

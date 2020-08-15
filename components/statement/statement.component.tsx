@@ -1,5 +1,6 @@
 import cx from 'classnames';
-import React from 'react';
+import React, { useContext } from 'react';
+import BrandContext from '../../lib/brand-context';
 
 export interface IStatementProps {
   eyebrow: string;
@@ -16,9 +17,11 @@ const Statement: React.FC<IStatementProps> = ({
   isCentered = false,
   hasBigHeading = false,
 }) => {
+  const { text: textColor } = useContext(BrandContext);
+
   return (
     <div className={cx({ 'text-center': isCentered })}>
-      <h2 className="uppercase font-bold text-blue-700 tracking-wider mb-3">
+      <h2 className={cx('uppercase font-bold tracking-wider mb-3', textColor)}>
         {eyebrow}
       </h2>
       <p

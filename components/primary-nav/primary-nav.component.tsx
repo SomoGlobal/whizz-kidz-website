@@ -16,7 +16,7 @@ const PrimaryNav: React.FC<IPrimaryNavProps> = ({ links }) => {
       <ul className="flex">
         {links.map((nav) => (
           <li key={nav.href}>
-            <Link href={nav.href} prefetch>
+            <Link href={nav.href}>
               <a
                 className={`px-3 py-2 hover:text-white hover:${
                   nav.bg || 'bg-blue-700'

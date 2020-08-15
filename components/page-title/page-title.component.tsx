@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import BrandContext from '../../lib/brand-context';
 import Container from '../container';
 
 export interface IPageTitleProps {
@@ -7,12 +8,11 @@ export interface IPageTitleProps {
 }
 
 /** Used in linking pages at the very top, below primary navigation */
-const PageTitle: React.FC<IPageTitleProps> = ({
-  text,
-  color = 'bg-gray-600',
-}) => {
+const PageTitle: React.FC<IPageTitleProps> = ({ text, color }) => {
+  const { bg } = useContext(BrandContext);
+
   return (
-    <header className={`${color} py-5`}>
+    <header className={`${color || bg} py-5`}>
       <Container>
         <h1 className="text-white text-5xl font-bold tracking-wide">{text}</h1>
       </Container>
