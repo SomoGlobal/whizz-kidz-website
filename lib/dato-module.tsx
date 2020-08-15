@@ -12,6 +12,12 @@ interface IDatoModuleProps {
 const DatoModule: React.FC<IDatoModuleProps> = ({ module }) => {
   const Component = pageMap[module._modelApiKey];
 
+  if (!Component) {
+    console.log(`No module found!`);
+
+    return null;
+  }
+
   return <Component {...module} />;
 };
 

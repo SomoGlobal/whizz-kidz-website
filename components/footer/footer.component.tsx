@@ -13,7 +13,10 @@ const footerNavigationLinks = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-indigo-900">
+    <footer
+      className="bg-indigo-900"
+      aria-label="Site copyright, privacy and accessibility information"
+    >
       <Container>
         <div className="flex justify-between text-white py-12 items-center">
           <Logo />
@@ -26,7 +29,7 @@ const Footer: React.FC = () => {
           <span className="opacity-75 hidden md:block">
             Copyright 2020 All rights reserved. <a>Website by Somo</a>
           </span>
-          <nav>
+          <nav aria-label="Website Policies">
             <ul className="flex flex-col md:flex-row">
               {footerNavigationLinks.map((nav) => (
                 <li key={nav.href} className="md:ml-4">

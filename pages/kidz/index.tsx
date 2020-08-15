@@ -22,8 +22,8 @@ export default function Kids({ page, preview }) {
         <Head>
           <title>{page.title}</title>
         </Head>
-        {page.modules.map((module) => (
-          <DatoModule key={module.id} module={module} />
+        {page.modules.map((module, index) => (
+          <DatoModule key={module.id || index} module={module} />
         ))}
       </Layout>
     </>

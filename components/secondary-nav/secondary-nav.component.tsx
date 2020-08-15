@@ -20,9 +20,12 @@ const SecondaryNav: React.FC<ISecondaryNavProps> = ({
   const { bg } = useContext(BrandContext);
 
   return (
-    <header className="bg-white shadow-lg rounded-b-lg z-10">
+    <section
+      className="bg-white shadow-lg rounded-b-lg z-10"
+      aria-label="Navigation Section"
+    >
       <Container>
-        <nav title="Secondary Navigation">
+        <nav aria-label="Sibling pages">
           <ul className="flex">
             {items.map((nav, index) => (
               <li key={nav.href}>
@@ -46,7 +49,7 @@ const SecondaryNav: React.FC<ISecondaryNavProps> = ({
           </ul>
         </nav>
       </Container>
-    </header>
+    </section>
   );
 };
 

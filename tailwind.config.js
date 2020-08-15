@@ -1,5 +1,9 @@
 module.exports = {
   purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
+  corePlugins: {
+    clear: false,
+    divideWidth: false,
+  },
   variants: {
     animation: ['responsive', 'motion-safe', 'motion-reduce'],
   },

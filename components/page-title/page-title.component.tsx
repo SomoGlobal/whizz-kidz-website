@@ -12,11 +12,11 @@ const PageTitle: React.FC<IPageTitleProps> = ({ text, color }) => {
   const { bg } = useContext(BrandContext);
 
   return (
-    <header className={`${color || bg} py-5`}>
+    <section className={`${color || bg} py-5`} aria-label="Page Title">
       <Container>
         <h1 className="text-white text-5xl font-bold tracking-wide">{text}</h1>
       </Container>
-    </header>
+    </section>
   );
 };
 

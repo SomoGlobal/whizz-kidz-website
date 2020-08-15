@@ -3,7 +3,7 @@ import React from 'react';
 import ImageBreak from './image-break.component';
 
 export default {
-  title: 'Modules/ImageBreak',
+  title: 'Components/ImageBreak',
   component: ImageBreak,
 };
 

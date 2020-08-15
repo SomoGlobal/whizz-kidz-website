@@ -23,11 +23,14 @@ const Header: React.FC = () => {
     <>
       <a
         href="#main"
-        className="bg-white text-center sr-only focus:not-sr-only text-lg text-blue-700 uppercase tracking-wider border-1 font-bold underline"
+        className="bg-white text-center sr-only focus:not-sr-only focus:sticky focus:top-0 z-50 text-lg text-blue-700 uppercase tracking-wider border-1 font-bold underline"
       >
         <span className="m-4 p-3 block">Skip to main content</span>
       </a>
-      <header className="bg-white sticky top-0 z-40">
+      <header
+        className="bg-white sticky top-0 z-40"
+        aria-label="Primary Header"
+      >
         <Container>
           <div className="flex items-center justify-between py-4 border-gray-300 border-b">
             <Link href="/">

@@ -56,6 +56,12 @@ export async function getPage(preview: boolean, slug: string) {
         slug
         title
         modules {
+          ... on ArticleRecord {
+            id
+            _modelApiKey
+            body(markdown: true)
+            centered
+          }
           ... on MissionRecord {
             id
             _modelApiKey
