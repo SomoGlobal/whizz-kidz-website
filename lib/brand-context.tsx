@@ -13,10 +13,10 @@ interface IBrands {
 
 export const brands: IBrands = {
   default: {
-    backgroundColor: 'bg-teal-700',
-    hoverSmallBackgroundColor: 'hover:bg-teal-700',
-    textColor: 'text-teal-700',
-    smallTextColor: 'text-teal-700',
+    backgroundColor: 'bg-indigo-900',
+    hoverSmallBackgroundColor: 'hover:bg-indigo-700',
+    textColor: 'text-indigo-900',
+    smallTextColor: 'text-indigo-900',
   },
   kidz: {
     backgroundColor: 'bg-indigo-500',
@@ -31,9 +31,9 @@ export const brands: IBrands = {
     smallTextColor: 'text-purple-600',
   },
   supporters: {
-    backgroundColor: 'bg-green-500',
+    backgroundColor: 'bg-green-600',
     hoverSmallBackgroundColor: 'hover:bg-green-600',
-    textColor: 'text-green-500',
+    textColor: 'text-green-600',
     smallTextColor: 'text-green-600',
   },
 };

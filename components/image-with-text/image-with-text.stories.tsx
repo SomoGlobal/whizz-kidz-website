@@ -30,5 +30,6 @@ const responsiveImage = {
 Story.args = {
   eyebrow: 'eyebrow',
   heading: 'Heading',
+  text: 'text',
   image: { responsiveImage },
 };

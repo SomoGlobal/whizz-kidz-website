@@ -1,18 +1,21 @@
 import React from 'react';
 import Statement from '../statement';
 import Container from '../container';
+import { IStatementProps } from '../statement/statement.component';
 
-export interface IMissionProps {
-  eyebrow: string;
-  heading: string;
-}
+export type IMissionProps = IStatementProps;
 
-const Mission: React.FC<IMissionProps> = ({ eyebrow, heading }) => {
+const Mission: React.FC<IMissionProps> = ({ eyebrow, heading, text }) => {
   return (
     <Container element="section">
       <div className="my-40 text-center md:mx-16">
         <div className="max-w-3xl mx-auto">
-          <Statement eyebrow={eyebrow} heading={heading} isCentered />
+          <Statement
+            eyebrow={eyebrow}
+            heading={heading}
+            text={text}
+            isCentered
+          />
         </div>
       </div>
     </Container>

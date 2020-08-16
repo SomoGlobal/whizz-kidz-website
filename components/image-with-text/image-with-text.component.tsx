@@ -14,17 +14,20 @@ const ImageWithText: React.FC<IImageWithTextProps> = ({
   image,
   heading,
   eyebrow,
+  text,
 }) => {
   return (
     <Container element="section">
-      <div className="grid items-center my-40 bg-gray-200 md:grid-cols-2">
-        <div className="grid gap-5 p-16">
-          <Statement heading={heading} eyebrow={eyebrow} />
+      <div className="grid items-center my-20 md:my-40 bg-gray-200 md:grid-cols-5">
+        <div className="grid gap-8 p-8 md:p-16 md:col-span-3">
+          <Statement heading={heading} eyebrow={eyebrow} text={text} />
           <div>
-            <Button>Lorem Ispsum</Button>
+            <Button>Donate Now</Button>
           </div>
         </div>
-        <Image data={image.responsiveImage} />
+        <div className="md:col-span-2">
+          <Image data={image.responsiveImage} />
+        </div>
       </div>
     </Container>
   );

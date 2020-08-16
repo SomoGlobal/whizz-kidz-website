@@ -67,6 +67,7 @@ export async function getPage(preview: boolean, slug: string) {
             _modelApiKey
             heading
             eyebrow
+            text
           }
           ... on HeroRecord {
             id
@@ -78,9 +79,10 @@ export async function getPage(preview: boolean, slug: string) {
             id
             heading
             eyebrow
+            text
             _modelApiKey
             image {
-              responsiveImage(imgixParams: {fm: jpg, w: 300, h: 300 }) {
+              responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 300, h: 300}) {
                 ...responsiveImageFragment
               }
             }

@@ -25,11 +25,14 @@ const LandingHero: React.FC<ILandingHeroProps> = ({
   const { backgroundColor } = useContext(BrandContext);
   const bgColor = color || backgroundColor;
 
+  const PuzzleBackground = (
+    <div className="absolute top-0 right-0 invisible w-1/2 h-full md:visible">
+      <Puzzle />
+    </div>
+  );
+
   return (
     <Container element="section" bg="bg-gray-200">
-      <div className="absolute top-0 right-0 invisible w-1/2 h-full md:visible">
-        <Puzzle />
-      </div>
       <div className="relative z-10 px-4 py-24 sm:px-12 md:py-48">
         <div>
           <h1 className="font-bold leading-normal text-white text-7xl">
