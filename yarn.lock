@@ -10838,7 +10838,7 @@ react-color@^2.17.0:
     reactcss "^1.2.0"
     tinycolor2 "^1.4.1"
 
-react-datocms@1.2.6:
+react-datocms@^1.2.6:
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/react-datocms/-/react-datocms-1.2.6.tgz#95115d2a4324d0537749f4014357ebbd320bac61"
   integrity sha512-Ca5amX8yOoiOs2IVHhgnku/UZ1H7sUQJ/ef98wwzv4J6hUNPEbC5k1uy0x12lTiZPHk7TNZL5YOo1L7UmOlKmg==

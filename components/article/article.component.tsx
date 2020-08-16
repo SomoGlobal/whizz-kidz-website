@@ -13,7 +13,7 @@ const Article: React.FC<IArticleProps> = ({ body }) => {
     <Container element="article">
       {/* eslint-disable-next-line react/no-danger */}
       <div
-        className={cx(styles.markdown, 'my-40 lg:w-2/3 mx-auto')}
+        className={cx(styles.markdown, 'my-40 max-w-2xl mx-auto')}
         dangerouslySetInnerHTML={{ __html: body }}
       />
     </Container>

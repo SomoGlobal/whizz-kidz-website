@@ -1,6 +1,6 @@
-import { brands } from 'lib/brand-context';
 import Link from 'next/link';
 import React from 'react';
+import { brands } from '../../lib/brand-context';
 import Container from '../container';
 import Logo from '../logo';
 import PrimaryNav from '../primary-nav';
