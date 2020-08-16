@@ -10,7 +10,7 @@ export interface IMissionProps {
 const Mission: React.FC<IMissionProps> = ({ eyebrow, heading }) => {
   return (
     <Container element="section">
-      <div className="my-40 md:mx-16 text-center">
+      <div className="my-40 text-center md:mx-16">
         <div className="max-w-3xl mx-auto">
           <Statement eyebrow={eyebrow} heading={heading} isCentered />
         </div>

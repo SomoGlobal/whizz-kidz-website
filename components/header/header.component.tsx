@@ -6,20 +6,36 @@ import Logo from '../logo';
 import PrimaryNav from '../primary-nav';
 
 const primaryNavigationLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Kidz', href: '/kidz', bg: brands.kidz.smallBackgroundColor },
+  {
+    label: 'Home',
+    href: '/',
+    background: brands.default.hoverSmallBackgroundColor,
+  },
+  {
+    label: 'Kidz',
+    href: '/kidz',
+    background: brands.kidz.hoverSmallBackgroundColor,
+  },
   {
     label: 'Parents',
     href: '/parents',
-    bg: brands.parents.smallBackgroundColor,
+    background: brands.parents.hoverSmallBackgroundColor,
   },
   {
     label: 'Supporters',
     href: '/supporters',
-    bg: brands.supporters.smallBackgroundColor,
+    background: brands.supporters.hoverSmallBackgroundColor,
   },
-  { label: 'About Us', href: '/about' },
-  { label: 'Discover', href: '/discover' },
+  {
+    label: 'About Us',
+    href: '/about',
+    background: brands.default.hoverSmallBackgroundColor,
+  },
+  {
+    label: 'Discover',
+    href: '/discover',
+    background: brands.default.hoverSmallBackgroundColor,
+  },
 ];
 
 const Header: React.FC = () => {
@@ -27,18 +43,18 @@ const Header: React.FC = () => {
     <>
       <a
         href="#main"
-        className="bg-white text-center sr-only focus:not-sr-only focus:sticky focus:top-0 z-50 text-lg text-blue-700 uppercase tracking-wider border-1 font-bold underline"
+        className="z-50 text-lg font-bold tracking-wider text-center text-blue-700 underline uppercase bg-white sr-only focus:not-sr-only focus:sticky focus:top-0 border-1"
       >
-        <span className="m-4 p-3 block">Skip to main content</span>
+        <span className="block p-3 m-4">Skip to main content</span>
       </a>
       <header
-        className="bg-white sticky top-0 z-40"
+        className="sticky top-0 z-40 bg-white"
         aria-label="Primary Header"
       >
         <Container>
-          <div className="flex items-center justify-between py-4 border-gray-300 border-b">
+          <div className="flex items-center justify-between py-4 border-b border-gray-300">
             <Link href="/">
-              <a className="fill-current text-gray-700">
+              <a className="text-gray-700 fill-current">
                 <Logo />
               </a>
             </Link>

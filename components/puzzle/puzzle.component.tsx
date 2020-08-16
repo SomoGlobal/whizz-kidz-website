@@ -7,7 +7,7 @@ export interface IPuzzleProps {
 
 const Puzzle: React.FC<IPuzzleProps> = () => {
   return (
-    <div className="grid grid-cols-2 w-full h-full">
+    <div className="grid w-full h-full grid-cols-2">
       <PatternPieceSimpleSlide
         direction="up"
         colors={['bg-blue-500', 'bg-green-500']}
@@ -16,7 +16,7 @@ const Puzzle: React.FC<IPuzzleProps> = () => {
         direction="down"
         colors={['bg-purple-500', 'bg-indigo-700']}
       />
-      <div className="w-full h-full grid grid-cols-2">
+      <div className="grid w-full h-full grid-cols-2">
         <PatternPieceSimpleSlide
           direction="up"
           colors={['bg-red-600', 'bg-indigo-900']}

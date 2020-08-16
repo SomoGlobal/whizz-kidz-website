@@ -18,15 +18,15 @@ const Footer: React.FC = () => {
       aria-label="Site copyright, privacy and accessibility information"
     >
       <Container>
-        <div className="flex justify-between text-white py-12 items-center">
+        <div className="flex items-center justify-between py-12 text-white">
           <Logo />
           <Button>Donate</Button>
         </div>
       </Container>
       <hr className="border-indigo-800" />
       <Container>
-        <div className="flex flex-col md:flex-row md:justify-between text-white py-8 md:items-center text-sm">
-          <span className="opacity-75 hidden md:block">
+        <div className="flex flex-col py-8 text-sm text-white md:flex-row md:justify-between md:items-center">
+          <span className="hidden opacity-75 md:block">
             Copyright 2020 All rights reserved. <a>Website by Somo</a>
           </span>
           <nav aria-label="Website Policies">
@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
               {footerNavigationLinks.map((nav) => (
                 <li key={nav.href} className="md:ml-4">
                   <Link href={nav.href}>
-                    <a className="py-4 block hover:underline">{nav.label}</a>
+                    <a className="block py-4 hover:underline">{nav.label}</a>
                   </Link>
                 </li>
               ))}

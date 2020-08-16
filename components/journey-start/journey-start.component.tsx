@@ -18,7 +18,7 @@ const JourneyStart: React.FC<IJourneyStartProps> = ({ href, label, color }) => {
             I am a{' '}
             <Link href={href}>
               <a>
-                <mark className="bg-indigo-900 text-gray-100 p-4 hover:underline">
+                <mark className="p-4 text-gray-100 bg-indigo-900 hover:underline">
                   {label}
                 </mark>
               </a>

@@ -17,7 +17,7 @@ const PageTitle: React.FC<IPageTitleProps> = ({ text, color }) => {
       aria-label="Page Title"
     >
       <Container>
-        <h1 className="text-white text-5xl font-bold tracking-wide">{text}</h1>
+        <h1 className="text-5xl font-bold tracking-wide text-white">{text}</h1>
       </Container>
     </section>
   );

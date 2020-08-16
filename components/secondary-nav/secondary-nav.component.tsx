@@ -21,7 +21,7 @@ const SecondaryNav: React.FC<ISecondaryNavProps> = ({
 
   return (
     <section
-      className="bg-white shadow-lg rounded-b-lg z-10"
+      className="z-10 bg-white rounded-b-lg shadow-lg"
       aria-label="Navigation Section"
     >
       <Container>
@@ -32,7 +32,7 @@ const SecondaryNav: React.FC<ISecondaryNavProps> = ({
                 <Link href={nav.href}>
                   <a
                     aria-current={index === activeIndex ? 'page' : 'false'}
-                    className="py-4 text-gray-700 text-base font-medium block mr-8 hover:underline bg-white relative"
+                    className="relative block py-4 mr-8 text-base font-medium text-gray-700 bg-white hover:underline"
                   >
                     {nav.label}
                     {index === activeIndex && (

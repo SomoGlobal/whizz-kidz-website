@@ -27,16 +27,16 @@ const LandingHero: React.FC<ILandingHeroProps> = ({
 
   return (
     <Container element="section" bg="bg-gray-200">
-      <div className="absolute right-0 top-0 w-1/2 h-full invisible md:visible">
+      <div className="absolute top-0 right-0 invisible w-1/2 h-full md:visible">
         <Puzzle />
       </div>
-      <div className="px-4 sm:px-12 py-24 md:py-48 z-10 relative">
+      <div className="relative z-10 px-4 py-24 sm:px-12 md:py-48">
         <div>
-          <h1 className="text-white text-7xl font-bold leading-normal">
+          <h1 className="font-bold leading-normal text-white text-7xl">
             <Mark className={bgColor}>{title}</Mark>
           </h1>
           {subtitle && (
-            <p className="text-white text-2xl leading-loose">
+            <p className="text-2xl leading-loose text-white">
               <Mark className={bgColor}>{subtitle}</Mark>
             </p>
           )}

@@ -26,10 +26,10 @@ const BorderedBox: React.FC<IBorderedBoxProps> = ({
         'bg-white'
       )}
     >
-      <h3 className="text-gray-700 text-2xl font-bold text-center mb-4">
+      <h3 className="mb-4 text-2xl font-bold text-center text-gray-700">
         {title}
       </h3>
-      <div className="text-gray-700 text-left font-light leading-relaxed">
+      <div className="font-light leading-relaxed text-left text-gray-700">
         {children}
       </div>
     </div>

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React from 'react';
 import cx from 'classnames';
 import Container from '../container';
@@ -11,10 +12,9 @@ export interface IArticleProps {
 const Article: React.FC<IArticleProps> = ({ body }) => {
   return (
     <Container element="article">
-      {/* eslint-disable-next-line react/no-danger */}
       <div
-        className={cx(styles.markdown, 'my-40 max-w-2xl mx-auto')}
         dangerouslySetInnerHTML={{ __html: body }}
+        className={cx(styles.article, 'my-40 max-w-2xl mx-auto')}
       />
     </Container>
   );

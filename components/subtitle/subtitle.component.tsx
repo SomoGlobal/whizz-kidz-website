@@ -2,7 +2,7 @@ import React from 'react';
 
 const Subtitle: React.FC = ({ children }) => {
   return (
-    <div className="text-4xl text-gray-700 font-bold leading-snug">
+    <div className="text-4xl font-bold leading-snug text-gray-700">
       {children}
     </div>
   );

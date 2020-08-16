@@ -42,7 +42,7 @@ const Statement: React.FC<IStatementProps> = ({
         </p>
       )}
       {text && (
-        <div className="text-2xl text-gray-700 mt-3 font-light">{text}</div>
+        <div className="mt-3 text-2xl font-light text-gray-700">{text}</div>
       )}
     </div>
   );

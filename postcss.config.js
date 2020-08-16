@@ -10,6 +10,9 @@ module.exports = {
               './lib/**/*.{js,jsx,ts,tsx}',
               './components/**/*.{js,jsx,ts,tsx}',
             ],
+            options: {
+              whitelist: [],
+            },
             defaultExtractor: (content) =>
               content.match(/[\w-/:]+(?<!:)/g) || [],
           },
