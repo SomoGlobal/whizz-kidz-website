@@ -1,7 +1,6 @@
 import React from 'react';
 import BrandContext, { brands } from '../../lib/brand-context';
 import Alert from '../alert';
-import Meta from '../meta';
 import Header from '../header';
 import PageTitle from '../page-title';
 import SecondaryNav from '../secondary-nav';
@@ -25,7 +24,6 @@ const Layout: React.FC<any> = ({
   activeNavIndex,
 }) => (
   <BrandContext.Provider value={brands[brand]}>
-    <Meta />
     <div className="min-h-screen flex flex-col">
       <Alert preview={preview} />
       <Header />
