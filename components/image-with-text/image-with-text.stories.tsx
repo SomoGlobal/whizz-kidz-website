@@ -5,7 +5,7 @@ import ImageWithText from './image-with-text.component';
 const Template = (args) => <ImageWithText {...args} />;
 
 export default {
-  title: 'Components/ImageWithText',
+  title: 'Modules/ImageWithText',
   component: ImageWithText,
 };
 
