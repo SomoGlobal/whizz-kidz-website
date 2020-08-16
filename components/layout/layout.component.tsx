@@ -1,12 +1,12 @@
 import React from 'react';
-import BrandContext, { brands } from '../lib/brand-context';
-import Alert from './alert';
-import Meta from './meta';
-import Header from './header';
-import PageTitle from './page-title';
-import SecondaryNav from './secondary-nav';
-import Footer from './footer';
-import { ISecondaryNavProps } from './secondary-nav/secondary-nav.component';
+import BrandContext, { brands } from '../../lib/brand-context';
+import Alert from '../alert';
+import Meta from '../meta';
+import Header from '../header';
+import PageTitle from '../page-title';
+import SecondaryNav from '../secondary-nav';
+import Footer from '../footer';
+import { ISecondaryNavProps } from '../secondary-nav/secondary-nav.component';
 
 interface ILayoutProps {
   brand?: string;
