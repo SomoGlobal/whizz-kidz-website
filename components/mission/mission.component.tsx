@@ -7,7 +7,7 @@ export type IMissionProps = IStatementProps;
 
 const Mission: React.FC<IMissionProps> = ({ eyebrow, heading, text }) => {
   return (
-    <Container element="section">
+    <Container as="section">
       <div className="my-40 text-center md:mx-16">
         <div className="max-w-3xl mx-auto">
           <Statement

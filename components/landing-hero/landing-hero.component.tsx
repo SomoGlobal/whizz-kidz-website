@@ -32,7 +32,7 @@ const LandingHero: React.FC<ILandingHeroProps> = ({
   );
 
   return (
-    <Container element="section" bg="bg-gray-200">
+    <Container as="section" className="bg-gray-200" aria-label="hero">
       <div className="relative z-10 px-4 py-24 sm:px-12 md:py-48">
         <div>
           <h1 className="font-bold leading-normal text-white text-7xl">

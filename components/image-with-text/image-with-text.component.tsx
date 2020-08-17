@@ -17,7 +17,7 @@ const ImageWithText: React.FC<IImageWithTextProps> = ({
   text,
 }) => {
   return (
-    <Container element="section">
+    <Container as="section">
       <div className="grid items-center my-20 md:my-40 bg-gray-200 md:grid-cols-5">
         <div className="grid gap-8 p-8 md:p-16 md:col-span-3">
           <Statement heading={heading} eyebrow={eyebrow} text={text} />

@@ -7,14 +7,17 @@ import styles from './article.module.css';
 
 export interface IArticleProps {
   body: string;
+  centered?: boolean;
 }
 
-const Article: React.FC<IArticleProps> = ({ body }) => {
+const Article: React.FC<IArticleProps> = ({ body, centered }) => {
   return (
-    <Container element="article">
+    <Container as="article">
       <div
         dangerouslySetInnerHTML={{ __html: body }}
-        className={cx(styles.article, 'my-40 max-w-2xl mx-auto')}
+        className={cx(styles.article, 'my-40 max-w-2xl', {
+          'mx-auto': centered,
+        })}
       />
     </Container>
   );

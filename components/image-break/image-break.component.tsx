@@ -7,7 +7,7 @@ import styles from './image-break.module.css';
 
 const ImageBreak: React.FC = ({ children }) => {
   return (
-    <Container element="figure">
+    <Container as="figure">
       <div className={cx(`w-full`, styles.break)}>
         <ImageFilter>{children}</ImageFilter>
       </div>

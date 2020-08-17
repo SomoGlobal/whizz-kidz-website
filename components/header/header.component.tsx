@@ -54,7 +54,7 @@ const Header: React.FC = () => {
         <Container>
           <div className="flex items-center justify-between py-4 border-b border-gray-300">
             <Link href="/">
-              <a className="text-gray-700 fill-current">
+              <a className="text-gray-700 fill-current w-20 md:w-32">
                 <Logo />
               </a>
             </Link>

@@ -17,7 +17,7 @@ export interface IFaqProps {
  */
 const Faq: React.FC<IFaqProps> = ({ items }) => {
   return (
-    <Container element="section">
+    <Container as="section" aria-label="FAQ">
       <JSONLD>
         <Generic type="FAQPage" jsonldtype="FAQPage">
           <GenericCollection type="mainEntity">

@@ -1,19 +1,21 @@
 import React from 'react';
 
 export interface IContainerProps {
-  bg?: string;
-  element?: string;
+  className?: string;
+  as?: string;
 }
 
 const Container: React.FC<IContainerProps> = ({
-  element = 'div',
+  as = 'div',
   children,
-  bg = 'bg-transparent',
+  className = 'bg-transparent',
+  ...props
 }) => {
   return React.createElement(
-    element,
+    as,
     {
-      className: `lg:container lg:mx-auto px-5 relative ${bg}`,
+      className: `lg:container lg:mx-auto px-5 relative ${className}`,
+      ...props,
     },
     children
   );

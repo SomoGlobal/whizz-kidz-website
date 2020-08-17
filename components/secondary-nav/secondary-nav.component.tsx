@@ -22,7 +22,7 @@ const SecondaryNav: React.FC<ISecondaryNavProps> = ({
   return (
     <section
       className="z-10 bg-white rounded-b-lg shadow-lg"
-      aria-label="Navigation Section"
+      aria-label="Secondary Navigation"
     >
       <Container>
         <nav aria-label="Sibling pages">

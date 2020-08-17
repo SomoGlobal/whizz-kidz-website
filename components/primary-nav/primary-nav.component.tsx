@@ -13,7 +13,7 @@ export interface IPrimaryNavProps {
 
 const PrimaryNav: React.FC<IPrimaryNavProps> = ({ links }) => {
   return (
-    <nav aria-label="Primary Navigation" className="hidden md:block">
+    <nav aria-label="Primary" className="hidden md:block">
       <ul className="flex">
         {links.map((nav) => (
           <li key={nav.href}>
