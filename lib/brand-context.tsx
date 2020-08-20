@@ -18,6 +18,12 @@ export const brands: IBrands = {
     textColor: 'text-indigo-900',
     smallTextColor: 'text-indigo-900',
   },
+  home: {
+    backgroundColor: 'bg-pink-600',
+    hoverSmallBackgroundColor: 'hover:bg-pink-600',
+    textColor: 'text-pink-600',
+    smallTextColor: 'text-pink-600',
+  },
   kidz: {
     backgroundColor: 'bg-indigo-500',
     hoverSmallBackgroundColor: 'hover:bg-indigo-500',
@@ -35,6 +41,12 @@ export const brands: IBrands = {
     hoverSmallBackgroundColor: 'hover:bg-green-600',
     textColor: 'text-green-600',
     smallTextColor: 'text-green-600',
+  },
+  discover: {
+    backgroundColor: 'bg-gray-600',
+    hoverSmallBackgroundColor: 'hover:bg-gray-600',
+    textColor: 'text-gray-600',
+    smallTextColor: 'text-gray-600',
   },
 };
 

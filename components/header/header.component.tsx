@@ -1,15 +1,18 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { brands } from '../../lib/brand-context';
 import Container from '../container';
+import IconButton from '../icon-button';
 import Logo from '../logo';
 import PrimaryNav from '../primary-nav';
+import FullPageSitemap from '../full-page-sitemap';
 
 const primaryNavigationLinks = [
   {
     label: 'Home',
     href: '/',
-    background: brands.default.hoverSmallBackgroundColor,
+    background: brands.home.hoverSmallBackgroundColor,
   },
   {
     label: 'Kidz',
@@ -34,7 +37,7 @@ const primaryNavigationLinks = [
   {
     label: 'Discover',
     href: '/discover',
-    background: brands.default.hoverSmallBackgroundColor,
+    background: brands.discover.hoverSmallBackgroundColor,
   },
 ];
 
@@ -52,13 +55,14 @@ const Header: React.FC = () => {
         aria-label="Primary Header"
       >
         <Container>
-          <div className="flex items-center justify-between py-4 border-b border-gray-300">
+          <div className="flex items-center justify-between py-2 border-b border-gray-300">
             <Link href="/">
               <a className="text-gray-700 fill-current w-20 md:w-32">
                 <Logo />
               </a>
             </Link>
             <PrimaryNav links={primaryNavigationLinks} />
+            <FullPageSitemap />
           </div>
         </Container>
       </header>
