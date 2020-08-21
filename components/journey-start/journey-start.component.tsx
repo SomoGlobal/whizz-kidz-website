@@ -14,8 +14,8 @@ const JourneyStart: React.FC<IJourneyStartProps> = ({ href, label, color }) => {
     <div className={cx(color)}>
       <Container>
         <div className="flex items-center justify-between py-20 text-white">
-          <h2 className="text-6xl font-bold leading-snug">
-            I am a{' '}
+          <h2 className="text-4xl md:text-6xl font-bold leading-snug">
+            For{' '}
             <Link href={href}>
               <a>
                 <mark className="p-4 text-gray-100 bg-indigo-900 hover:underline">

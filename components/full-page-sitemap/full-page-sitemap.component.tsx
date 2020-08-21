@@ -6,7 +6,9 @@ import {
   AnimateSharedLayout,
   AnimatePresence,
   useCycle,
+  useReducedMotion,
 } from 'framer-motion';
+
 import { brands } from '../../lib/brand-context';
 import IconButton from '../icon-button';
 
@@ -37,13 +39,13 @@ const menu = [
   },
   {
     id: '2',
-    label: 'Parents',
+    label: 'Families',
     children: [
-      { label: 'Parents Home', href: '/parents' },
-      { label: 'Equipment We Offer', href: '/parents/equipment' },
-      { label: 'Services', href: '/parents/services' },
+      { label: 'Families Home', href: '/families' },
+      { label: 'Equipment We Offer', href: '/families/equipment' },
+      { label: 'Services', href: '/families/services' },
     ],
-    background: brands.parents.backgroundColor,
+    background: brands.families.backgroundColor,
   },
   {
     id: '3',
@@ -76,49 +78,46 @@ const menu = [
   },
 ];
 
-const FullPageSitemap: React.FC<any> = ({ onClose }) => {
+const FullPageSitemap: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
   const [activeCategory, setActiveCategory] = useState(null);
-  const [isOpen, toggleOpen] = useCycle(false, true);
+  const [isOpen, setOpen] = useState(false);
 
   return (
     <>
       <IconButton
         className="text-gray-800"
         type="menu"
-        onClick={() => toggleOpen()}
+        onClick={() => {
+          setActiveCategory(null);
+          setOpen(true);
+        }}
       />
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ y: '-100%' }}
-            animate={{ y: '0%' }}
-            exit={{ y: '-100%' }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { y: '-100%' }}
+            animate={shouldReduceMotion ? { opacity: 1 } : { y: '0%' }}
+            exit={shouldReduceMotion ? { opacity: 0 } : { y: '-100%' }}
             transition={{ duration: 0.5 }}
             aria-labeledby="nav-modal"
             role="dialog"
             aria-modal="true"
-            className="h-screen w-screen top-0 left-0 fixed overflow-contain"
+            className="fixed top-0 left-0 h-screen w-screen overflow-contain"
             style={{ zIndex: 99999 }}
           >
             <section className="relative h-full mx-auto text-white bg-gray-200 shadow-2xl xl:container flex flex-col">
               <AnimateSharedLayout type="switch">
                 <div className="sticky top-0 z-50 flex items-center justify-end py-2 px-4 text-gray-800 bg-white">
                   <div className="flex-1">
-                    <AnimatePresence>
-                      {!activeCategory && (
-                        <motion.h1
-                          id="nav-modal"
-                          className="inline py-3 px-4 text-3xl font-bold bg-white clone"
-                          initial={{ x: 10 }}
-                          animate={{ x: 0 }}
-                          exit={{ x: 10 }}
-                        >
-                          Navigation
-                        </motion.h1>
-                      )}
-                    </AnimatePresence>
+                    <h1
+                      id="nav-modal"
+                      className="inline py-3 px-4 text-3xl font-bold bg-white clone"
+                    >
+                      Navigation
+                    </h1>
                   </div>
-                  <IconButton type="close" onClick={() => toggleOpen()} />
+                  <IconButton type="close" onClick={() => setOpen(false)} />
                 </div>
                 <ul
                   className="grid grid-cols-1 gap-1 sm:grid-cols-2 sm:grid-flow-col sm:grid-rows-4 flex-1"
@@ -148,11 +147,14 @@ const FullPageSitemap: React.FC<any> = ({ onClose }) => {
                   {activeCategory && (
                     <motion.section
                       style={{ zIndex: 1000 }}
+                      initial={{ opacity: shouldReduceMotion ? 0 : 1 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: shouldReduceMotion ? 0 : 1 }}
                       className={cx(
                         activeCategory.background,
                         'fixed top-0 h-screen w-screen overscroll-contain xl:container mx-auto overflow-scroll'
                       )}
-                      layoutId={activeCategory.id}
+                      layoutId={shouldReduceMotion ? false : activeCategory.id}
                     >
                       <motion.div
                         layout
@@ -174,10 +176,11 @@ const FullPageSitemap: React.FC<any> = ({ onClose }) => {
                         <IconButton
                           type="close"
                           className="text-white"
-                          onClick={() => toggleOpen()}
+                          onClick={() => setOpen(false)}
                         />
                       </motion.div>
                       <motion.ul
+                        aria-label="pages"
                         className="z-10"
                         layout
                         initial={{ opacity: 0 }}

@@ -7,17 +7,17 @@ const JourneyLauncher: React.FC = () => {
     <section>
       <JourneyStart
         href="/kidz"
-        label="Kid"
+        label="Kidz"
         color={brands.kidz.backgroundColor}
       />
       <JourneyStart
-        href="/parents"
-        label="Parent"
-        color={brands.parents.backgroundColor}
+        href="/families"
+        label="Families"
+        color={brands.families.backgroundColor}
       />
       <JourneyStart
         href="/supporters"
-        label="Supporter"
+        label="Supporters"
         color={brands.supporters.backgroundColor}
       />
     </section>

@@ -24,7 +24,7 @@ const Statement: React.FC<IStatementProps> = ({
       {eyebrow && (
         <h2
           className={cx(
-            'uppercase font-bold tracking-wider mb-3',
+            'uppercase font-bold tracking-wider mb-3 text-base',
             smallTextColor
           )}
         >

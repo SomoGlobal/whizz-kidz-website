@@ -30,7 +30,7 @@ export const brands: IBrands = {
     textColor: 'text-indigo-500',
     smallTextColor: 'text-indigo-600',
   },
-  parents: {
+  families: {
     backgroundColor: 'bg-purple-800',
     hoverSmallBackgroundColor: 'hover:bg-purple-800',
     textColor: 'text-purple-800',

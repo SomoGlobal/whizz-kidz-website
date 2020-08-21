@@ -20,9 +20,9 @@ const primaryNavigationLinks = [
     background: brands.kidz.hoverSmallBackgroundColor,
   },
   {
-    label: 'Parents',
-    href: '/parents',
-    background: brands.parents.hoverSmallBackgroundColor,
+    label: 'Families',
+    href: '/families',
+    background: brands.families.hoverSmallBackgroundColor,
   },
   {
     label: 'Supporters',

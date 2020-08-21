@@ -5,11 +5,11 @@ import React from 'react';
 import Layout from '../../components/layout';
 import DatoModule from '../../lib/dato-module';
 
-export default function Kids({ page, preview }) {
+export default function Families({ page, preview }) {
   return (
     <>
       <Layout
-        brand="parents"
+        brand="families"
         preview={preview}
         pageTitle={page.title}
         activeNavIndex={0}
@@ -32,7 +32,7 @@ export default function Kids({ page, preview }) {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const preview = !!context.preview;
-  const page = await getPage(preview, 'parents');
+  const page = await getPage(preview, 'families');
 
   return {
     props: { preview, page },
