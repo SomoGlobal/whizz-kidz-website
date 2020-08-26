@@ -23,14 +23,14 @@ const IconButton: React.FC<IIconButtonProps> = ({
   return (
     <motion.button
       layout
-      whileHover={{ scale: 1.1 }}
       onClick={onClick}
       type="button"
       className={cx('p-3 rounded-lg', className)}
       aria-label={type}
     >
       <svg
-        role="presentation"
+        role="img"
+        focusable="false"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         strokeLinecap="round"
@@ -39,6 +39,7 @@ const IconButton: React.FC<IIconButtonProps> = ({
         viewBox="0 0 24 24"
         className="stroke-current w-8 h-8"
       >
+        <title>{type}</title>
         <path d={types[type]} />
       </svg>
     </motion.button>
