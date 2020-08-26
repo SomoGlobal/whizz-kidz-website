@@ -62,7 +62,30 @@ const Header: React.FC = () => {
               </a>
             </Link>
             <PrimaryNav links={primaryNavigationLinks} />
-            <FullPageSitemap />
+            <div className="flex">
+              <Link href="/search">
+                <a
+                  className="text-gray-700 p-3 rounded-lg hover:bg-gray-200"
+                  aria-label="Search"
+                  title="Search"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="stroke-current w-8 h-8"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="M21 21l-4.35-4.35" />
+                  </svg>
+                </a>
+              </Link>
+              <FullPageSitemap />
+            </div>
           </div>
         </Container>
       </header>
