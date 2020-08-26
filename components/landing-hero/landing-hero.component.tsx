@@ -8,6 +8,7 @@ export interface ILandingHeroProps {
   color?: string;
   title: string;
   subtitle: string;
+  backgroundType?: 'grey' | 'color' | 'image';
 }
 
 const Mark: React.FC<{ className: string }> = ({ className, children }) => (
@@ -21,6 +22,7 @@ const LandingHero: React.FC<ILandingHeroProps> = ({
   title,
   subtitle,
   color,
+  backgroundType = 'grey',
 }) => {
   const { backgroundColor } = useContext(BrandContext);
   const bgColor = color || backgroundColor;
@@ -32,7 +34,14 @@ const LandingHero: React.FC<ILandingHeroProps> = ({
   );
 
   return (
-    <Container as="section" className="bg-gray-200" aria-label="hero">
+    <Container
+      as="section"
+      className={cx({
+        'bg-gray-200': backgroundType === 'grey',
+        [bgColor]: backgroundType === 'color',
+      })}
+      aria-label="hero"
+    >
       <div className="relative z-10 px-4 py-24 sm:px-12 md:py-48">
         <div>
           <h1 className="font-bold leading-normal text-white text-7xl">

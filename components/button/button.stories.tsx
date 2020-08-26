@@ -7,10 +7,16 @@ const Template = (args) => <Button {...args} />;
 export default {
   title: 'Components/Button',
   component: Button,
+  args: {
+    children: 'Donate',
+  },
 };
 
-export const Story = Template.bind({});
+export const Small = Template.bind({});
+Small.args = { size: 'sm' };
 
-Story.args = {
-  children: 'Donate',
-};
+export const Medium = Template.bind({});
+Medium.args = { size: 'm' };
+
+export const Large = Template.bind({});
+Large.args = { size: 'lg' };

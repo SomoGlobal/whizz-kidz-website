@@ -31,7 +31,7 @@ const primaryNavigationLinks = [
   },
   {
     label: 'About Us',
-    href: '/about',
+    href: '/about-us',
     background: brands.default.hoverSmallBackgroundColor,
   },
   {
@@ -55,9 +55,9 @@ const Header: React.FC = () => {
         aria-label="Primary Header"
       >
         <Container>
-          <div className="flex items-center justify-between py-2 border-b border-gray-300">
+          <div className="flex items-center justify-between py-2">
             <Link href="/">
-              <a className="text-gray-700 fill-current w-20 md:w-32">
+              <a className="text-gray-700 fill-current w-20 md:w-32 text-center">
                 <Logo />
               </a>
             </Link>

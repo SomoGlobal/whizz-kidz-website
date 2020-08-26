@@ -23,7 +23,7 @@ const GridTile: React.FC<IGridTileProps> = ({
       <Link {...linkProps}>
         <a
           className={cx(
-            'w-full h-full p-8 text-2xl font-bold text-left text-gray-900 rounded-lg flex items-center hover:underline',
+            'has-focus w-full h-full p-8 text-2xl font-bold text-left text-gray-900 rounded-lg flex items-center hover:underline',
             {
               'text-5xl': isBig,
             },

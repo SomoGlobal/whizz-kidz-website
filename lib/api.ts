@@ -74,12 +74,15 @@ export async function getPage(preview: boolean, slug: string) {
             _modelApiKey
             title
             subtitle
+            backgroundType
           }
           ... on ImageWithTextRecord {
             id
             heading
             eyebrow
             text
+            imagePosition
+            transparentBackground
             _modelApiKey
             image {
               responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 300, h: 300}) {

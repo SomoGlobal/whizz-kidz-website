@@ -5,11 +5,22 @@ import cx from 'classnames';
 export interface IButtonProps {
   className?: string;
   href?: string;
+  size?: 'sm' | 'm' | 'lg';
 }
 
-const Button: React.FC<IButtonProps> = ({ children, className = '', href }) => {
+const Button: React.FC<IButtonProps> = ({
+  children,
+  className = '',
+  href,
+  size = 'm',
+}) => {
   const classes = cx(
-    'bg-green-700 text-white border-0 px-6 py-2 rounded-full',
+    'bg-green-700 text-white border-0 rounded-full tracking-wide hover:bg-green-800',
+    {
+      'px-4 py-1 text-sm': size === 'sm',
+      'px-6 py-2': size === 'm',
+      'px-10 py-3 text-lg font-medium': size === 'lg',
+    },
     className
   );
 

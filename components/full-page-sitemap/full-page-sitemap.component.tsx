@@ -10,7 +10,10 @@ import {
 } from 'framer-motion';
 
 import { brands } from '../../lib/brand-context';
+import GridTile from '../grid-tile';
 import IconButton from '../icon-button';
+
+import styles from './full-page-sitemap.module.css';
 
 const sampleLinks = [
   { href: '/link-1', label: 'Link 1' },
@@ -83,15 +86,22 @@ const FullPageSitemap: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState(null);
   const [isOpen, setOpen] = useState(false);
 
+  const open = () => {
+    setOpen(true);
+    setActiveCategory(null);
+  };
+
+  const close = () => {
+    setActiveCategory(null);
+    setOpen(false);
+  };
+
   return (
     <>
       <IconButton
         className="text-gray-800"
         type="menu"
-        onClick={() => {
-          setActiveCategory(null);
-          setOpen(true);
-        }}
+        onClick={() => open()}
       />
       <AnimatePresence>
         {isOpen && (
@@ -103,46 +113,68 @@ const FullPageSitemap: React.FC = () => {
             aria-labeledby="nav-modal"
             role="dialog"
             aria-modal="true"
-            className="fixed top-0 left-0 h-screen w-screen overflow-contain"
+            className="fixed top-0 left-0 w-screen h-screen overflow-contain"
             style={{ zIndex: 99999 }}
           >
-            <section className="relative h-full mx-auto text-white bg-gray-200 shadow-2xl xl:container flex flex-col">
+            <section className="relative flex flex-col h-full mx-auto text-white bg-gray-200 shadow-2xl xl:container">
               <AnimateSharedLayout type="switch">
-                <div className="sticky top-0 z-50 flex items-center justify-end py-2 px-4 text-gray-800 bg-white">
+                <div className="sticky top-0 z-50 flex items-center justify-end px-4 py-2 text-gray-800 bg-white">
                   <div className="flex-1">
                     <h1
                       id="nav-modal"
-                      className="inline py-3 px-4 text-3xl font-bold bg-white clone"
+                      className="inline px-4 py-3 text-3xl font-bold bg-white clone"
                     >
                       Navigation
                     </h1>
                   </div>
-                  <IconButton type="close" onClick={() => setOpen(false)} />
+                  <IconButton type="close" onClick={() => close()} />
                 </div>
-                <ul
-                  className="grid grid-cols-1 gap-1 sm:grid-cols-2 sm:grid-flow-col sm:grid-rows-4 flex-1"
+                <motion.ul
+                  className="grid flex-1 grid-cols-1 gap-1 sm:grid-cols-2 sm:grid-flow-col sm:grid-rows-4"
                   aria-label="Navigation Category"
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  variants={{
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        when: 'beforeChildren',
+                        staggerChildren: 0.025,
+                      },
+                    },
+                    hidden: {
+                      opacity: 0,
+                      transition: {
+                        when: 'afterChildren',
+                      },
+                    },
+                  }}
                 >
                   {menu.map((cat, index) => (
-                    <li
+                    <motion.li
                       key={cat.id}
                       className={index === 0 ? 'sm:col-span-2' : ''}
+                      variants={{
+                        visible: { opacity: 1, y: 0 },
+                        hidden: { opacity: 0, y: -40 },
+                      }}
                     >
                       <motion.button
                         layoutId={cat.id}
-                        whileHover={{ border: '1rem' }}
                         type="button"
                         onClick={() => setActiveCategory(cat)}
                         className={cx(
-                          'p-10 text-left text-2xl sm:text-3xl md:text-5xl font-bold block w-full hover:underline h-full border-white',
-                          cat.background
+                          'p-8 text-left text-2xl sm:text-3xl md:text-5xl font-bold block w-full hover:underline h-full',
+                          cat.background,
+                          styles.categoryButton
                         )}
                       >
-                        {cat.label}
+                        <span className="px-4 py-3">{cat.label}</span>
                       </motion.button>
-                    </li>
+                    </motion.li>
                   ))}
-                </ul>
+                </motion.ul>
                 <AnimatePresence>
                   {activeCategory && (
                     <motion.section
@@ -157,7 +189,6 @@ const FullPageSitemap: React.FC = () => {
                       layoutId={shouldReduceMotion ? false : activeCategory.id}
                     >
                       <motion.div
-                        layout
                         className={cx(
                           'sticky top-0 py-2 px-4 flex items-center text-gray-800 z-50',
                           activeCategory.background
@@ -169,14 +200,17 @@ const FullPageSitemap: React.FC = () => {
                           onClick={() => setActiveCategory(null)}
                         />
                         <div className="flex-1 ml-4">
-                          <h1 className="inline py-3 px-4 text-3xl font-bold bg-white clone">
+                          <motion.h1
+                            className="inline px-4 py-3 text-3xl font-bold bg-white clone"
+                            layoutId="catLabel"
+                          >
                             {activeCategory.label}
-                          </h1>
+                          </motion.h1>
                         </div>
                         <IconButton
                           type="close"
                           className="text-white"
-                          onClick={() => setOpen(false)}
+                          onClick={() => close()}
                         />
                       </motion.div>
                       <motion.ul
