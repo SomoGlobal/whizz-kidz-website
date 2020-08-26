@@ -27,12 +27,14 @@ const menu = [
   {
     id: '0',
     label: 'Home',
-    children: sampleLinks,
+    type: 'link',
+    linkProps: { href: '/' },
     background: brands.home.backgroundColor,
   },
   {
     id: '1',
     label: 'Kidz',
+    type: 'category',
     children: [
       { label: 'Kidz Home', href: '/kidz' },
       { label: 'Young People’s Services', href: '/kidz/yps' },
@@ -43,6 +45,7 @@ const menu = [
   {
     id: '2',
     label: 'Families',
+    type: 'category',
     children: [
       { label: 'Families Home', href: '/families' },
       { label: 'Equipment We Offer', href: '/families/equipment' },
@@ -53,24 +56,31 @@ const menu = [
   {
     id: '3',
     label: 'Supporters',
+    type: 'category',
     children: sampleLinks,
     background: brands.supporters.backgroundColor,
   },
   {
     id: '4',
     label: 'Discover',
+    type: 'category',
     children: sampleLinks,
     background: brands.discover.backgroundColor,
   },
   {
     id: '5',
     label: 'The Charity',
-    children: sampleLinks,
+    type: 'category',
+    children: [
+      { label: 'About Us', href: '/about-us' },
+      { label: 'Contact', href: '/contact' },
+    ],
     background: 'bg-yellow-600',
   },
   {
     id: '6',
     label: 'Website Policies',
+    type: 'category',
     children: [
       { label: 'Accessibility', href: '/accessibility' },
       { label: 'Cookies', href: '/cookies' },
@@ -99,7 +109,7 @@ const FullPageSitemap: React.FC = () => {
   return (
     <>
       <IconButton
-        className="text-gray-800"
+        className="text-gray-800 hover:bg-gray-200"
         type="menu"
         onClick={() => open()}
       />
@@ -127,7 +137,11 @@ const FullPageSitemap: React.FC = () => {
                       Navigation
                     </h1>
                   </div>
-                  <IconButton type="close" onClick={() => close()} />
+                  <IconButton
+                    type="close"
+                    onClick={() => close()}
+                    className="hover:bg-gray-200"
+                  />
                 </div>
                 <motion.ul
                   className="grid flex-1 grid-cols-1 gap-1 sm:grid-cols-2 sm:grid-flow-col sm:grid-rows-4"
@@ -157,21 +171,37 @@ const FullPageSitemap: React.FC = () => {
                       className={index === 0 ? 'sm:col-span-2' : ''}
                       variants={{
                         visible: { opacity: 1, y: 0 },
-                        hidden: { opacity: 0, y: -40 },
+                        hidden: { opacity: 0, y: shouldReduceMotion ? 0 : -40 },
                       }}
                     >
-                      <motion.button
-                        layoutId={cat.id}
-                        type="button"
-                        onClick={() => setActiveCategory(cat)}
-                        className={cx(
-                          'p-8 text-left text-2xl sm:text-3xl md:text-5xl font-bold block w-full hover:underline h-full',
-                          cat.background,
-                          styles.categoryButton
-                        )}
-                      >
-                        <span className="px-4 py-3">{cat.label}</span>
-                      </motion.button>
+                      {cat.type === 'category' && (
+                        <motion.button
+                          layoutId={cat.id}
+                          type="button"
+                          onClick={() => setActiveCategory(cat)}
+                          className={cx(
+                            'p-8 text-left text-2xl sm:text-3xl md:text-5xl font-bold block w-full hover:underline h-full',
+                            cat.background,
+                            styles.categoryButton
+                          )}
+                        >
+                          <span className="px-4 py-3">{cat.label}</span>
+                        </motion.button>
+                      )}
+                      {cat.type === 'link' && (
+                        <Link {...cat.linkProps}>
+                          <a
+                            onClick={() => close()}
+                            className={cx(
+                              'p-8 text-left text-2xl sm:text-3xl md:text-5xl font-bold flex items-center w-full hover:underline h-full',
+                              cat.background,
+                              styles.categoryButton
+                            )}
+                          >
+                            <span className="px-4 py-3">{cat.label}</span>
+                          </a>
+                        </Link>
+                      )}
                     </motion.li>
                   ))}
                 </motion.ul>
@@ -225,6 +255,7 @@ const FullPageSitemap: React.FC = () => {
                           <li key={child.label}>
                             <Link href={child.href}>
                               <a
+                                onClick={() => close()}
                                 className={cx(
                                   'px-8 py-4 text-2xl font-bold block w-full text-left hover:underline'
                                 )}
