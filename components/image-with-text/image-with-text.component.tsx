@@ -23,14 +23,14 @@ const ImageWithText: React.FC<IImageWithTextProps> = ({
   return (
     <Container as="section">
       <div
-        className={cx('grid items-center my-20 md:my-40 md:grid-cols-5', {
+        className={cx('grid items-center my-20 lg:my-40 lg:grid-cols-5', {
           'bg-gray-200': !transparentBackground,
         })}
       >
         <div
-          className={cx('grid gap-8 p-8 md:p-16 md:row-start-1 md:row-end-2', {
-            'md:col-start-3 md:col-end-6': imagePosition === 'left',
-            'md:col-start-1 md:col-end-4': imagePosition === 'right',
+          className={cx('grid gap-8 p-8 lg:p-16 lg:row-start-1 lg:row-end-2', {
+            'lg:col-start-3 lg:col-end-6': imagePosition === 'left',
+            'lg:col-start-1 lg:col-end-4': imagePosition === 'right',
           })}
         >
           <Statement heading={heading} eyebrow={eyebrow} text={text} />
@@ -39,9 +39,9 @@ const ImageWithText: React.FC<IImageWithTextProps> = ({
           </div>
         </div>
         <div
-          className={cx('md:row-start-1 md:row-end-2', {
-            'md:col-start-1 md:col-end-3': imagePosition === 'left',
-            'md:col-start-4 md:col-end-6': imagePosition === 'right',
+          className={cx('lg:row-start-1 lg:row-end-2', {
+            'lg:col-start-1 lg:col-end-3': imagePosition === 'left',
+            'lg:col-start-4 lg:col-end-6': imagePosition === 'right',
           })}
         >
           <Image data={image.responsiveImage} />
