@@ -26,13 +26,13 @@ const SecondaryNav: React.FC<ISecondaryNavProps> = ({
     >
       <Container>
         <nav aria-label="Sibling pages">
-          <ul className="flex">
+          <ul className="flex flex-wrap">
             {items.map((nav, index) => (
               <li key={nav.href}>
                 <Link href={nav.href}>
                   <a
                     aria-current={index === activeIndex ? 'page' : 'false'}
-                    className="relative block py-4 mr-8 text-base font-medium text-gray-700 bg-white hover:underline"
+                    className="relative block py-4 mr-8 text-base font-medium text-gray-700 hover:underline whitespace-no-wrap hover:bg-gray-100"
                   >
                     {nav.label}
                     {index === activeIndex && (

@@ -1,6 +1,8 @@
+import { useReducedMotion } from 'framer-motion';
 import React from 'react';
 import cx from 'classnames';
 import { Image } from 'react-datocms';
+import { Parallax } from 'react-scroll-parallax';
 import Container from '../container';
 import Statement from '../statement';
 import Button from '../button';
@@ -20,6 +22,8 @@ const ImageWithText: React.FC<IImageWithTextProps> = ({
   imagePosition = 'right',
   transparentBackground,
 }) => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <Container as="section">
       <div
@@ -38,14 +42,17 @@ const ImageWithText: React.FC<IImageWithTextProps> = ({
             <Button size="lg">Donate Now</Button>
           </div>
         </div>
-        <div
+        <Parallax
+          disabled={shouldReduceMotion}
+          y={[10, -10]}
+          x={[2, 0]}
           className={cx('lg:row-start-1 lg:row-end-2', {
             'lg:col-start-1 lg:col-end-3': imagePosition === 'left',
             'lg:col-start-4 lg:col-end-6': imagePosition === 'right',
           })}
         >
           <Image data={image.responsiveImage} />
-        </div>
+        </Parallax>
       </div>
     </Container>
   );

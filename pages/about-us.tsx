@@ -8,7 +8,19 @@ import Layout from '../components/layout';
 export default function AboutUs({ page, preview }) {
   return (
     <>
-      <Layout preview={preview}>
+      <Layout
+        preview={preview}
+        activeNavIndex={0}
+        secondaryNavItems={[
+          { label: 'Charity Home', href: '/charity' },
+          { label: 'Our Team', href: '/our-team' },
+          { label: 'Supporters & Advisors', href: '/supporters-and-advisors' },
+          { label: 'Media Centre', href: '/media' },
+          { label: 'Partners', href: '/partners' },
+          { label: 'Careers', href: '/careers' },
+          { label: 'Trusts, Statutory & Lottery', href: '/trusts' },
+        ]}
+      >
         <Head>
           <title>{page.title}</title>
         </Head>

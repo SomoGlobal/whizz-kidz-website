@@ -56,6 +56,12 @@ export async function getPage(preview: boolean, slug: string) {
         slug
         title
         modules {
+          ... on DecorationRecord {
+            id
+            _modelApiKey
+            decorationType
+            decorationPosition
+          }
           ... on ArticleRecord {
             id
             _modelApiKey
@@ -75,6 +81,11 @@ export async function getPage(preview: boolean, slug: string) {
             title
             subtitle
             backgroundType
+            image {
+              responsiveImage(imgixParams: {fm: jpg, w: 1240, h: 540}) {
+                ...responsiveImageFragment
+              }
+            }
           }
           ... on ImageWithTextRecord {
             id

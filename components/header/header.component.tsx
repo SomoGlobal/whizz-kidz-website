@@ -30,7 +30,7 @@ const primaryNavigationLinks = [
     background: brands.supporters.hoverSmallBackgroundColor,
   },
   {
-    label: 'About Us',
+    label: 'The Charity',
     href: '/about-us',
     background: brands.default.hoverSmallBackgroundColor,
   },
