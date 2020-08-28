@@ -82,7 +82,7 @@ export async function getPage(preview: boolean, slug: string) {
             subtitle
             backgroundType
             image {
-              responsiveImage(imgixParams: {fm: jpg, w: 1240, h: 540}) {
+              responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 1240, h: 540}) {
                 ...responsiveImageFragment
               }
             }
