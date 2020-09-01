@@ -32,7 +32,7 @@ const SecondaryNav: React.FC<ISecondaryNavProps> = ({
                 <Link href={nav.href}>
                   <a
                     aria-current={index === activeIndex ? 'page' : 'false'}
-                    className="relative block py-4 mr-8 text-base font-medium text-gray-700 hover:underline whitespace-no-wrap hover:bg-gray-100"
+                    className="relative block p-4 text-base font-medium text-gray-700 hover:underline whitespace-no-wrap hover:bg-gray-200"
                   >
                     {nav.label}
                     {index === activeIndex && (

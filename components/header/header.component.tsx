@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import React from 'react';
 import { brands } from '../../lib/brand-context';
+import Button from '../button';
 import Container from '../container';
-import IconButton from '../icon-button';
+import FullPageSitemap from '../full-page-sitemap';
 import Logo from '../logo';
 import PrimaryNav from '../primary-nav';
-import FullPageSitemap from '../full-page-sitemap';
 
 const primaryNavigationLinks = [
   {
@@ -31,8 +30,8 @@ const primaryNavigationLinks = [
   },
   {
     label: 'The Charity',
-    href: '/about-us',
-    background: brands.default.hoverSmallBackgroundColor,
+    href: '/charity',
+    background: brands.charity.hoverSmallBackgroundColor,
   },
   {
     label: 'Discover',
@@ -57,12 +56,13 @@ const Header: React.FC = () => {
         <Container>
           <div className="flex items-center justify-between py-2">
             <Link href="/">
-              <a className="text-gray-700 fill-current w-20 md:w-32 text-center">
+              <a className="text-gray-700 fill-current w-32">
                 <Logo />
               </a>
             </Link>
             <PrimaryNav links={primaryNavigationLinks} />
-            <div className="flex">
+            <div className="flex items-center">
+              <Button size="m">Donate</Button>
               <Link href="/search">
                 <a
                   className="text-gray-700 p-3 rounded-lg hover:bg-gray-200"
@@ -84,7 +84,9 @@ const Header: React.FC = () => {
                   </svg>
                 </a>
               </Link>
-              <FullPageSitemap />
+              <div className="block lg:hidden">
+                <FullPageSitemap />
+              </div>
             </div>
           </div>
         </Container>

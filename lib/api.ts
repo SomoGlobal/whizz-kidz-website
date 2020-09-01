@@ -1,4 +1,5 @@
 import 'isomorphic-unfetch';
+import memo from 'memoizee';
 
 const API_URL = 'https://graphql.datocms.com';
 const API_TOKEN = process.env.CMS_DATOCMS_API_TOKEN;
@@ -115,6 +116,89 @@ export async function getPage(preview: boolean, slug: string) {
   );
   return data?.page;
 }
+
+export const getChildNavItems = memo(async (slug, pathPrefix = '') => {
+  const data = await fetchAPI(
+    `
+    query ChildNavItems($slug: String) {
+      page(filter: {slug: {eq: $slug}}) {
+        slug
+        title
+        children {
+          slug
+          title
+        }
+      }
+    }`,
+    {
+      preview: false,
+      variables: {
+        slug,
+      },
+    }
+  );
+
+  const paths = [
+    {
+      label: data.page.title,
+      href: `${pathPrefix}/${data.page.slug}`,
+      id: data.page.slug,
+    },
+  ];
+
+  data.page.children.forEach((child) => {
+    paths.push({
+      label: child.title,
+      href: `${paths[0].href}/${child.slug}`,
+      id: child.slug,
+    });
+  });
+
+  return paths;
+});
+
+export const getSectionChildren = memo(async (slug) => {
+  const data = await fetchAPI(
+    `
+    query SectionChildren($slug: String) {
+      page(filter: {slug: {eq: $slug}}) {
+        slug
+        title
+        children {
+          slug
+          title
+          children {
+            slug
+            title
+            children {
+              slug
+              title
+              children {
+                slug
+                title
+                children {
+                  slug
+                  title
+                  children {
+                    slug
+                    title
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }`,
+    {
+      preview: false,
+      variables: {
+        slug,
+      },
+    }
+  );
+  return data?.page;
+});
 
 export async function getPreviewPostBySlug(slug) {
   const data = await fetchAPI(

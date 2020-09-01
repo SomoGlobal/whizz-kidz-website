@@ -17,6 +17,18 @@ const Mark: React.FC<{ className: string }> = ({ className, children }) => (
   <span className={cx('px-4 py-4 clone', className)}>{children}</span>
 );
 
+const BGImage: React.FC<{ src: string }> = ({ src, children }) => (
+  <div
+    style={{
+      backgroundImage: `url(${src})`,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+    }}
+  >
+    {children}
+  </div>
+);
+
 /**
  * This component is normally placed at the top of landing pages
  */
@@ -36,7 +48,7 @@ const LandingHero: React.FC<ILandingHeroProps> = ({
     </div>
   );
 
-  return (
+  const content = (
     <Container
       as="section"
       className={cx('grid grid-cols-1 grid-rows-1 pl-0 pr-0 lg:pl-4 lg:pr-4', {
@@ -45,13 +57,6 @@ const LandingHero: React.FC<ILandingHeroProps> = ({
       })}
       aria-label="hero"
     >
-      {backgroundType === 'image' && (
-        <Image
-          pictureClassName="h-full object-cover"
-          className="col-start-1 col-end-2 row-start-1 row-end-2"
-          data={image.responsiveImage}
-        />
-      )}
       <div
         className={cx(
           'relative z-10 px-4 py-24 sm:px-12 md:py-48 col-start-1 col-end-2 row-start-1 row-end-2',
@@ -71,6 +76,12 @@ const LandingHero: React.FC<ILandingHeroProps> = ({
       </div>
     </Container>
   );
+
+  if (backgroundType === 'image') {
+    return <BGImage src={image.responsiveImage.src}>{content}</BGImage>;
+  }
+
+  return content;
 };
 
 export default LandingHero;

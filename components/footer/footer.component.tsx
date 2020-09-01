@@ -18,23 +18,39 @@ const Footer: React.FC = () => {
       aria-label="Site copyright, privacy and accessibility information"
     >
       <Container>
-        <div className="flex items-center justify-between py-12 text-white">
-          <Logo />
-          <Button>Donate</Button>
+        <div className="flex flex-col md:flex-row items-center justify-between py-6 text-white">
+          <div className="w-48 md:w-24 mb-6 md:mb-0">
+            <Logo />
+          </div>
+          <Button className="w-full md:w-auto">Donate</Button>
         </div>
       </Container>
       <hr className="border-indigo-800" />
       <Container>
-        <div className="flex flex-col py-8 text-sm text-white md:flex-row md:justify-between md:items-center">
-          <span className="hidden opacity-75 md:block">
-            Copyright 2020 All rights reserved. <a>Website by Somo</a>
-          </span>
+        <div className="flex flex-col py-6 text-sm text-white md:flex-row md:justify-between md:items-center">
+          <p className="text-xs text-gray-400 py-6 max-w-3xl">
+            Whizz-Kidz is the working name of The Movement for Non-Mobile
+            Children (Whizz-Kidz). Registered charity No. 802872. Company
+            registered in England and Wales No. 2444520. Charity registered in
+            Scotland No. SC042607
+            <br />
+            Copyright 2020 All rights reserved. Website by{' '}
+            <a
+              className="font-medium text-white"
+              href="https://somoglobal.com/"
+              target="_blank"
+            >
+              Somo
+            </a>
+          </p>
           <nav aria-label="Website Policies">
             <ul className="flex flex-col md:flex-row">
               {footerNavigationLinks.map((nav) => (
                 <li key={nav.href} className="md:ml-4">
                   <Link href={nav.href}>
-                    <a className="block py-4 hover:underline">{nav.label}</a>
+                    <a className="block py-4 md:py-0 hover:underline whitespace-no-wrap">
+                      {nav.label}
+                    </a>
                   </Link>
                 </li>
               ))}

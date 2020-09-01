@@ -12,7 +12,7 @@ interface ILayoutProps {
   preview?: boolean;
   pageTitle?: string;
   secondaryNavItems?: ISecondaryNavProps['items'];
-  activeNavIndex?: number;
+  activeSecondaryNavIndex?: number;
 }
 
 const Layout: React.FC<any> = ({
@@ -21,7 +21,7 @@ const Layout: React.FC<any> = ({
   children,
   pageTitle,
   secondaryNavItems = [],
-  activeNavIndex,
+  activeSecondaryNavIndex,
 }) => (
   <BrandContext.Provider value={brands[brand]}>
     <div className="min-h-screen flex flex-col">
@@ -29,7 +29,10 @@ const Layout: React.FC<any> = ({
       <Header />
       {pageTitle && <PageTitle text={pageTitle} />}
       {secondaryNavItems.length > 0 && (
-        <SecondaryNav activeIndex={activeNavIndex} items={secondaryNavItems} />
+        <SecondaryNav
+          activeIndex={activeSecondaryNavIndex}
+          items={secondaryNavItems}
+        />
       )}
       <main id="main" className="flex-1">
         {children}

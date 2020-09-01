@@ -42,6 +42,12 @@ export const brands: IBrands = {
     textColor: 'text-green-600',
     smallTextColor: 'text-green-600',
   },
+  charity: {
+    backgroundColor: 'bg-yellow-600',
+    hoverSmallBackgroundColor: 'hover:bg-yellow-600',
+    textColor: 'text-yellow-600',
+    smallTextColor: 'text-yellow-600',
+  },
   discover: {
     backgroundColor: 'bg-gray-600',
     hoverSmallBackgroundColor: 'hover:bg-gray-600',

@@ -23,7 +23,7 @@ const sampleLinks = [
   { href: '/link-5', label: 'Link 5' },
 ];
 
-const menu = [
+const menu: any = [
   {
     id: '0',
     label: 'Home',
@@ -75,7 +75,7 @@ const menu = [
       { label: 'About Us', href: '/about-us' },
       { label: 'Contact', href: '/contact' },
     ],
-    background: 'bg-yellow-600',
+    background: brands.charity.backgroundColor,
   },
   {
     id: '6',
@@ -240,7 +240,7 @@ const FullPageSitemap: React.FC = () => {
                         <IconButton
                           type="close"
                           className="text-white"
-                          onClick={() => close()}
+                          onClick={() => setActiveCategory(null)}
                         />
                       </motion.div>
                       <motion.ul

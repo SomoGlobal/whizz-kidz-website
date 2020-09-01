@@ -19,6 +19,7 @@
     "date-fns": "2.15.0",
     "framer-motion": "^2.4.2",
     "isomorphic-unfetch": "3.0.0",
+    "memoizee": "^0.4.14",
     "next": "^9.5.2",
     "react": "^16.13.1",
     "react-datocms": "^1.2.6",
