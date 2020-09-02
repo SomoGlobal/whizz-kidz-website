@@ -1,6 +1,4 @@
-import React, { useContext } from 'react';
-import cx from 'classnames';
-import BrandContext from '../../lib/brand-context';
+import React from 'react';
 import Container from '../container';
 
 export interface IAlertProps {
@@ -8,18 +6,14 @@ export interface IAlertProps {
 }
 
 const Alert: React.FC<IAlertProps> = ({ preview }) => {
-  const { backgroundColor } = useContext(BrandContext);
-
   if (!preview) {
     return null;
   }
 
   return (
-    <div className={cx('border-b border-accent-7 text-white', backgroundColor)}>
-      <Container>
-        <div className="py-2 text-center text-sm">
-          This is page is a preview.
-        </div>
+    <div className="border-b border-accent-7 text-white bg-black">
+      <Container className="py-2 text-center text-sm uppercase font-bold opacity-75">
+        This is page is a preview
       </Container>
     </div>
   );
