@@ -34,14 +34,15 @@ const Footer: React.FC = () => {
             registered in England and Wales No. 2444520. Charity registered in
             Scotland No. SC042607
             <br />
-            Copyright 2020 All rights reserved. Website by{' '}
+            Copyright {new Date().getUTCFullYear()} All rights reserved.{' '}
             <a
               className="font-medium text-white"
               href="https://somoglobal.com/"
               target="_blank"
             >
-              Somo
+              Website by Somo
             </a>
+            .
           </p>
           <nav aria-label="Website Policies">
             <ul className="flex flex-col md:flex-row">
