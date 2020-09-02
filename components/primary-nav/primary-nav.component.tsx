@@ -1,34 +1,46 @@
+import cx from 'classnames';
 import Link from 'next/link';
 import React from 'react';
-import cx from 'classnames';
+import { brands } from '../../lib/brand-context';
 
 export interface IPrimaryNavProps {
   activeIndex?: number;
   links: Array<{
+    id: string;
     label: string;
-    href: string;
-    background: string;
+    brand: string;
+    linkProps: any;
+    hideDesktop?: boolean;
   }>;
 }
 
-const PrimaryNav: React.FC<IPrimaryNavProps> = ({ links }) => {
+const PrimaryNav: React.FC<IPrimaryNavProps> = ({ links, activeIndex }) => {
   return (
     <nav aria-label="Primary" className="hidden lg:block">
-      <ul className="flex">
-        {links.map((nav) => (
-          <li key={nav.href}>
-            <Link href={nav.href}>
-              <a
-                className={cx(
-                  'px-3 py-2 hover:text-white text-gray-700 uppercase font-bold text-sm',
-                  nav.background
-                )}
-              >
-                {nav.label}
-              </a>
-            </Link>
-          </li>
-        ))}
+      <ul className="flex text-gray-700">
+        {links
+          .filter((item) => !item.hideDesktop)
+          .map((nav, index) => (
+            <li key={nav.id}>
+              <Link {...nav.linkProps}>
+                <a
+                  className={cx(
+                    'px-3 py-2 hover:text-white uppercase font-bold text-sm',
+                    `${
+                      brands[nav.brand || 'default'].hoverSmallBackgroundColor
+                    }`,
+                    {
+                      'text-white': index === activeIndex,
+                      [brands[nav.brand || 'default'].backgroundColor]:
+                        index === activeIndex,
+                    }
+                  )}
+                >
+                  {nav.label}
+                </a>
+              </Link>
+            </li>
+          ))}
       </ul>
     </nav>
   );
