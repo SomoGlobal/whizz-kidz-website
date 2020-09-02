@@ -6,9 +6,7 @@ import Layout from '../../components/layout';
 import DatoModule from '../../lib/dato-module';
 import { treeToArray } from '../../lib/helpers';
 
-export default function Supporters({ page, preview, secondaryNavItems }) {
-  const activeNavIndex = 0;
-
+export default function Charity({ page, preview, secondaryNavItems }) {
   if (!page) {
     return null;
   }
@@ -19,7 +17,6 @@ export default function Supporters({ page, preview, secondaryNavItems }) {
         brand="charity"
         preview={preview}
         pageTitle={page.title}
-        activeNavIndex={activeNavIndex}
         secondaryNavItems={secondaryNavItems}
       >
         <Head>

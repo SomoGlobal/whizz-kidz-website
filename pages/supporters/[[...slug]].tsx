@@ -7,8 +7,6 @@ import DatoModule from '../../lib/dato-module';
 import { treeToArray } from '../../lib/helpers';
 
 export default function Supporters({ page, preview, secondaryNavItems }) {
-  const activeNavIndex = 0;
-
   if (!page) {
     return null;
   }
@@ -19,7 +17,6 @@ export default function Supporters({ page, preview, secondaryNavItems }) {
         brand="supporters"
         preview={preview}
         pageTitle={page.title}
-        activeNavIndex={activeNavIndex}
         secondaryNavItems={secondaryNavItems}
       >
         <Head>

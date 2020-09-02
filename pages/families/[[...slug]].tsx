@@ -7,8 +7,6 @@ import DatoModule from '../../lib/dato-module';
 import { treeToArray } from '../../lib/helpers';
 
 export default function Families({ page, preview, secondaryNavItems }) {
-  const activeNavIndex = 0;
-
   if (!page) {
     return null;
   }
@@ -19,7 +17,6 @@ export default function Families({ page, preview, secondaryNavItems }) {
         brand="families"
         preview={preview}
         pageTitle={page.title}
-        activeNavIndex={activeNavIndex}
         secondaryNavItems={secondaryNavItems}
       >
         <Head>
