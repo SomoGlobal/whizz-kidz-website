@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
 import cx from 'classnames';
-import { Image } from 'react-datocms';
+import React, { useContext } from 'react';
 import BrandContext from '../../lib/brand-context';
 import Container from '../container';
 import Puzzle from '../puzzle';
@@ -59,16 +58,15 @@ const LandingHero: React.FC<ILandingHeroProps> = ({
     >
       <div
         className={cx(
-          'relative z-10 px-4 py-24 sm:px-12 md:py-48 col-start-1 col-end-2 row-start-1 row-end-2',
-          {}
+          'relative z-10 px-4 py-24 sm:px-12 md:py-48 col-start-1 col-end-2 row-start-1 row-end-2'
         )}
       >
-        <div>
-          <h1 className="font-bold leading-normal text-white text-5xl sm:text-6xl md:text-7xl">
+        <div className="text-white w-11/12 lg:w-7/12">
+          <h1 className="font-bold leading-normal text-5xl sm:text-6xl md:text-7xl">
             <Mark className={bgColor}>{title}</Mark>
           </h1>
           {subtitle && (
-            <p className="text-lg sm:text-xl md:text-2xl leading-loose text-white">
+            <p className="text-lg sm:text-xl md:text-2xl leading-loose">
               <Mark className={bgColor}>{subtitle}</Mark>
             </p>
           )}
