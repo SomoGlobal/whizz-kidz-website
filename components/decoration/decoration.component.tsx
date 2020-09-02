@@ -11,7 +11,7 @@ const Decoration: React.FC<IDecorationProps> = ({
   decorationPosition,
 }) => {
   return (
-    <div role="presentation">
+    <div role="presentation" className="hidden lg:block">
       {decorationType === 'diamond' && (
         <DecorateDiamond position={decorationPosition as any} />
       )}
