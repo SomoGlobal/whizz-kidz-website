@@ -1,46 +1,15 @@
 import Link from 'next/link';
 import React from 'react';
-import { brands } from '../../lib/brand-context';
 import Button from '../button';
 import Container from '../container';
 import FullPageSitemap from '../full-page-sitemap';
 import Logo from '../logo';
 import PrimaryNav from '../primary-nav';
 
-const primaryNavigationLinks = [
-  {
-    label: 'Home',
-    href: '/',
-    background: brands.home.hoverSmallBackgroundColor,
-  },
-  {
-    label: 'Kidz',
-    href: '/kidz',
-    background: brands.kidz.hoverSmallBackgroundColor,
-  },
-  {
-    label: 'Families',
-    href: '/families',
-    background: brands.families.hoverSmallBackgroundColor,
-  },
-  {
-    label: 'Supporters',
-    href: '/supporters',
-    background: brands.supporters.hoverSmallBackgroundColor,
-  },
-  {
-    label: 'The Charity',
-    href: '/charity',
-    background: brands.charity.hoverSmallBackgroundColor,
-  },
-  {
-    label: 'Discover',
-    href: '/discover',
-    background: brands.discover.hoverSmallBackgroundColor,
-  },
-];
-
-const Header: React.FC = () => {
+const Header: React.FC<{ links: any[]; primaryActiveIndex?: number }> = ({
+  links,
+  primaryActiveIndex,
+}) => {
   return (
     <>
       <a
@@ -60,8 +29,8 @@ const Header: React.FC = () => {
                 <Logo />
               </a>
             </Link>
-            <PrimaryNav links={primaryNavigationLinks} />
-            <div className="flex items-center">
+            <PrimaryNav links={links} activeIndex={primaryActiveIndex} />
+            <div className="flex items-center ml-4">
               <Button size="m">Donate</Button>
               <Link href="/search">
                 <a
@@ -85,7 +54,7 @@ const Header: React.FC = () => {
                 </a>
               </Link>
               <div className="block lg:hidden">
-                <FullPageSitemap />
+                <FullPageSitemap links={links} />
               </div>
             </div>
           </div>
