@@ -15,83 +15,25 @@ import IconButton from '../icon-button';
 
 import styles from './full-page-sitemap.module.css';
 
-const sampleLinks = [
-  { href: '/link-1', label: 'Link 1' },
-  { href: '/link-2', label: 'Link 2' },
-  { href: '/link-3', label: 'Link 3' },
-  { href: '/link-4', label: 'Link 4' },
-  { href: '/link-5', label: 'Link 5' },
-];
+export interface INavItem {
+  id: string;
+  label: string;
+  type: string;
+  children: INavChild[];
+  linkProps: ILinkProps;
+  brand: string;
+}
 
-const menu: any = [
-  {
-    id: '0',
-    label: 'Home',
-    type: 'link',
-    linkProps: { href: '/' },
-    background: brands.home.backgroundColor,
-  },
-  {
-    id: '1',
-    label: 'Kidz',
-    type: 'category',
-    children: [
-      { label: 'Kidz Home', href: '/kidz' },
-      { label: 'Young People’s Services', href: '/kidz/yps' },
-      { label: 'Meet the kidz', href: '/kidz/meet-the-kidz' },
-    ],
-    background: brands.kidz.backgroundColor,
-  },
-  {
-    id: '2',
-    label: 'Families',
-    type: 'category',
-    children: [
-      { label: 'Families Home', href: '/families' },
-      { label: 'Equipment We Offer', href: '/families/equipment' },
-      { label: 'Services', href: '/families/services' },
-    ],
-    background: brands.families.backgroundColor,
-  },
-  {
-    id: '3',
-    label: 'Supporters',
-    type: 'category',
-    children: sampleLinks,
-    background: brands.supporters.backgroundColor,
-  },
-  {
-    id: '4',
-    label: 'Discover',
-    type: 'category',
-    children: sampleLinks,
-    background: brands.discover.backgroundColor,
-  },
-  {
-    id: '5',
-    label: 'The Charity',
-    type: 'category',
-    children: [
-      { label: 'About Us', href: '/about-us' },
-      { label: 'Contact', href: '/contact' },
-    ],
-    background: brands.charity.backgroundColor,
-  },
-  {
-    id: '6',
-    label: 'Website Policies',
-    type: 'category',
-    children: [
-      { label: 'Accessibility', href: '/accessibility' },
-      { label: 'Cookies', href: '/cookies' },
-      { label: 'Privacy', href: '/privacy' },
-      { label: 'Terms and Conditions', href: '/terms' },
-    ],
-    background: brands.default.backgroundColor,
-  },
-];
+export interface INavChild {
+  label: string;
+  href: string;
+}
 
-const FullPageSitemap: React.FC = () => {
+export interface ILinkProps {
+  href: string;
+}
+
+const FullPageSitemap: React.FC<{ links: INavItem[] }> = ({ links }) => {
   const shouldReduceMotion = useReducedMotion();
   const [activeCategory, setActiveCategory] = useState(null);
   const [isOpen, setOpen] = useState(false);
@@ -165,40 +107,44 @@ const FullPageSitemap: React.FC = () => {
                     },
                   }}
                 >
-                  {menu.map((cat, index) => (
+                  {links.map((link, index) => (
                     <motion.li
-                      key={cat.id}
+                      key={link.id}
                       className={index === 0 ? 'sm:col-span-2' : ''}
                       variants={{
                         visible: { opacity: 1, y: 0 },
                         hidden: { opacity: 0, y: shouldReduceMotion ? 0 : -40 },
                       }}
                     >
-                      {cat.type === 'category' && (
+                      {link.type === 'category' && (
                         <motion.button
-                          layoutId={cat.id}
+                          layoutId={link.id}
                           type="button"
-                          onClick={() => setActiveCategory(cat)}
+                          onClick={() => setActiveCategory(link)}
                           className={cx(
                             'p-8 text-left text-2xl sm:text-3xl md:text-5xl font-bold block w-full hover:underline h-full',
-                            cat.background,
+                            `${
+                              brands[link.brand || 'default'].backgroundColor
+                            }`,
                             styles.categoryButton
                           )}
                         >
-                          <span className="px-4 py-3">{cat.label}</span>
+                          <span className="px-4 py-3">{link.label}</span>
                         </motion.button>
                       )}
-                      {cat.type === 'link' && (
-                        <Link {...cat.linkProps}>
+                      {link.type === 'link' && (
+                        <Link {...link.linkProps}>
                           <a
                             onClick={() => close()}
                             className={cx(
                               'p-8 text-left text-2xl sm:text-3xl md:text-5xl font-bold flex items-center w-full hover:underline h-full',
-                              cat.background,
+                              `${
+                                brands[link.brand || 'default'].backgroundColor
+                              }`,
                               styles.categoryButton
                             )}
                           >
-                            <span className="px-4 py-3">{cat.label}</span>
+                            <span className="px-4 py-3">{link.label}</span>
                           </a>
                         </Link>
                       )}
@@ -213,7 +159,10 @@ const FullPageSitemap: React.FC = () => {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: shouldReduceMotion ? 0 : 1 }}
                       className={cx(
-                        activeCategory.background,
+                        `${
+                          brands[activeCategory.brand || 'default']
+                            .backgroundColor
+                        }`,
                         'fixed top-0 h-screen w-screen overscroll-contain xl:container mx-auto overflow-scroll'
                       )}
                       layoutId={shouldReduceMotion ? false : activeCategory.id}
