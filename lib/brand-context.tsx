@@ -19,10 +19,10 @@ export const brands: IBrands = {
     smallTextColor: 'text-indigo-900',
   },
   home: {
-    backgroundColor: 'bg-pink-600',
-    hoverSmallBackgroundColor: 'hover:bg-pink-600',
-    textColor: 'text-pink-600',
-    smallTextColor: 'text-pink-600',
+    backgroundColor: 'bg-pink-700',
+    hoverSmallBackgroundColor: 'hover:bg-pink-700',
+    textColor: 'text-pink-700',
+    smallTextColor: 'text-pink-700',
   },
   kidz: {
     backgroundColor: 'bg-indigo-500',

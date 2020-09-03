@@ -53,7 +53,7 @@ const Header: React.FC<{ links: any[]; primaryActiveIndex?: number }> = ({
                   </svg>
                 </a>
               </Link>
-              <div className="block lg:hidden">
+              <div>
                 <FullPageSitemap links={links} />
               </div>
             </div>

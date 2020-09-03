@@ -70,7 +70,7 @@ const FullPageSitemap: React.FC<{ links: INavItem[] }> = ({ links }) => {
           >
             <section className="relative flex flex-col h-full mx-auto text-white bg-gray-200 shadow-2xl xl:container">
               <AnimateSharedLayout type="switch">
-                <div className="sticky top-0 z-50 flex items-center justify-end px-4 py-2 text-gray-800 bg-white">
+                <div className="z-50 flex items-center justify-end px-4 py-2 text-gray-800 bg-white">
                   <div className="flex-1">
                     <h1
                       id="nav-modal"
@@ -137,7 +137,7 @@ const FullPageSitemap: React.FC<{ links: INavItem[] }> = ({ links }) => {
                           <a
                             onClick={() => close()}
                             className={cx(
-                              'p-8 text-left text-2xl sm:text-3xl md:text-5xl font-bold flex items-center w-full hover:underline h-full',
+                              'p-8 text-left text-2xl sm:text-3xl md:text-5xl font-bold flex items-center w-full hover:underline h-full block',
                               `${
                                 brands[link.brand || 'default'].backgroundColor
                               }`,

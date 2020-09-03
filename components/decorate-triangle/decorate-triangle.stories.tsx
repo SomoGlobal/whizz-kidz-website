@@ -1,12 +1,12 @@
 import React from 'react';
 
-import DecorateDiamond from './decorate-diamond.component';
+import DecorateTriangle from './decorate-triangle.component';
 
-const Template = (args) => <DecorateDiamond {...args} />;
+const Template = (args) => <DecorateTriangle {...args} />;
 
 export default {
-  title: 'Modules/DecorateDiamond',
-  component: DecorateDiamond,
+  title: 'Modules/DecorateTriangle',
+  component: DecorateTriangle,
 };
 
 export const Left = Template.bind({});

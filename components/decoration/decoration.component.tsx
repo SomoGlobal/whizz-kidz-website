@@ -1,5 +1,6 @@
 import React from 'react';
 import DecorateDiamond from '../decorate-diamond';
+import DecorateTriangle from '../decorate-triangle';
 
 export interface IDecorationProps {
   decorationType: string;
@@ -11,9 +12,12 @@ const Decoration: React.FC<IDecorationProps> = ({
   decorationPosition,
 }) => {
   return (
-    <div role="presentation" className="hidden lg:block">
+    <div role="presentation">
       {decorationType === 'diamond' && (
         <DecorateDiamond position={decorationPosition as any} />
+      )}
+      {decorationType === 'triangle' && (
+        <DecorateTriangle position={decorationPosition as any} />
       )}
     </div>
   );

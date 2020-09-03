@@ -2,7 +2,11 @@ import React from 'react';
 
 import GridTile from './grid-tile.component';
 
-const Template = (args) => <GridTile {...args} />;
+const Template = (args) => (
+  <ul>
+    <GridTile {...args} />
+  </ul>
+);
 
 export default {
   title: 'Components/GridTile',

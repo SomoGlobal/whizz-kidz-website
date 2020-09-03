@@ -89,20 +89,21 @@ const Layout: React.FC<any> = ({
 }) => {
   const router = useRouter();
   const primaryActiveIndex = links.findIndex((item) =>
-    item.linkProps.href.startsWith(`/${router.pathname.split('/')[1]}`)
+    item.linkProps.href.startsWith(`/${router.asPath.split('/')[1]}`)
   );
-  let secondaryActiveIndex = secondaryNavItems.findIndex((item) => {
-    const path = `${links[primaryActiveIndex].linkProps.href}/${router.query.slug}`;
-    return item.href.startsWith(path);
-  });
+  const secondaryActiveIndex = secondaryNavItems.findIndex((item) => {
+    const path = router.asPath;
 
-  if (
-    secondaryNavItems.length &&
-    secondaryActiveIndex === -1 &&
-    secondaryNavItems[0].href === links[primaryActiveIndex].linkProps.href
-  ) {
-    secondaryActiveIndex = 0;
-  }
+    if (item.linkProps.as) {
+      return item.linkProps.as.startsWith(path);
+    }
+
+    if (item.linkProps.href) {
+      return item.linkProps.href.startsWith(path);
+    }
+
+    return false;
+  });
 
   return (
     <BrandContext.Provider value={brands[brand]}>
@@ -116,7 +117,7 @@ const Layout: React.FC<any> = ({
             items={secondaryNavItems}
           />
         )}
-        <main id="main" className="flex-1">
+        <main id="main" className="flex-1 overflow-hidden">
           {children}
         </main>
         <Footer />

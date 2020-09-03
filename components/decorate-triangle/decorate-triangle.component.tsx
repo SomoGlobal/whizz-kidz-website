@@ -1,18 +1,18 @@
 import { useReducedMotion } from 'framer-motion';
 import React from 'react';
-import cx from 'classnames';
 import { Parallax } from 'react-scroll-parallax';
-
+import cx from 'classnames';
 import Container from '../container';
 import Diamond from '../diamond';
+import Triangle from '../triangle';
 
 type Position = 'right' | 'left';
 
-export interface IDecorateDiamondProps {
+export interface IDecorateTriangleProps {
   position: Position;
 }
 
-const DecorateDiamond: React.FC<IDecorateDiamondProps> = ({ position }) => {
+const DecorateTriangle: React.FC<IDecorateTriangleProps> = ({ position }) => {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -26,10 +26,10 @@ const DecorateDiamond: React.FC<IDecorateDiamondProps> = ({ position }) => {
           'right-0': position === 'right',
         })}
       >
-        <Diamond width="15rem" height="15rem" position={position} />
+        <Triangle width="15rem" height="30rem" position={position} />
       </Parallax>
     </Container>
   );
 };
 
-export default DecorateDiamond;
+export default DecorateTriangle;

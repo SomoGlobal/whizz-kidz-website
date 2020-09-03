@@ -7,8 +7,9 @@ export interface ISecondaryNavProps {
   color?: string;
   activeIndex?: number;
   items: Array<{
+    id: string;
     label: string;
-    href: string;
+    linkProps: any;
   }>;
 }
 
@@ -28,8 +29,8 @@ const SecondaryNav: React.FC<ISecondaryNavProps> = ({
         <nav aria-label="Sibling pages">
           <ul className="flex flex-wrap">
             {items.map((nav, index) => (
-              <li key={nav.href}>
-                <Link href={nav.href}>
+              <li key={nav.id}>
+                <Link {...nav.linkProps}>
                   <a
                     aria-current={index === activeIndex ? 'page' : 'false'}
                     className="relative block p-4 text-base font-medium text-gray-700 hover:underline whitespace-no-wrap hover:bg-gray-200"

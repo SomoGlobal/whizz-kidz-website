@@ -138,21 +138,42 @@ export const getChildNavItems = memo(async (slug, pathPrefix = '') => {
     }
   );
 
-  const paths = [
+  let paths: any[] = [
     {
-      label: data.page.title,
-      href: `${pathPrefix}/${data.page.slug}`,
       id: data.page.slug,
+      label: data.page.title,
+      linkProps: {
+        href: `${pathPrefix}/${data.page.slug}`,
+      },
     },
   ];
 
   data.page.children.forEach((child) => {
     paths.push({
-      label: child.title,
-      href: `${paths[0].href}/${child.slug}`,
       id: child.slug,
+      label: child.title,
+      linkProps: {
+        as: `${paths[0].linkProps.href}/${child.slug}`,
+        href: `${paths[0].linkProps.href}/[[...slug]]`,
+      },
     });
   });
+
+  const additionalItems = {
+    families: [
+      {
+        id: 'meet-the-kidz',
+        label: 'Meet the kidz',
+        linkProps: {
+          href: `/families/meet-the-kidz`,
+        },
+      },
+    ],
+  };
+
+  if (additionalItems[slug]) {
+    paths = [...paths, ...additionalItems[slug]];
+  }
 
   return paths;
 });
