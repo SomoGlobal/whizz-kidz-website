@@ -31,7 +31,7 @@ const PrimaryNav: React.FC<IPrimaryNavProps> = ({ links, activeIndex }) => {
                     }`,
                     {
                       'text-white': index === activeIndex,
-                      [brands[nav.brand || 'default'].backgroundColor]:
+                      [brands[nav.brand || 'default'].smallBackgroundColor]:
                         index === activeIndex,
                     }
                   )}
