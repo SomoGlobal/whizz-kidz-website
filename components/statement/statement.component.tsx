@@ -3,9 +3,9 @@ import React, { useContext } from 'react';
 import BrandContext from '../../lib/brand-context';
 
 export interface IStatementProps {
-  eyebrow?: string;
-  heading?: string;
-  text?: string;
+  eyebrow?: React.ReactNode;
+  heading?: React.ReactNode;
+  text?: React.ReactNode;
   isCentered?: boolean;
   hasBigHeading?: boolean;
 }
