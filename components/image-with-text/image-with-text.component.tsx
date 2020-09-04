@@ -5,7 +5,6 @@ import { Image } from 'react-datocms';
 import { Parallax } from 'react-scroll-parallax';
 import Container from '../container';
 import Statement from '../statement';
-import Button from '../button';
 import { IStatementProps } from '../statement/statement.component';
 
 export interface IImageWithTextProps extends IStatementProps {
@@ -38,21 +37,20 @@ const ImageWithText: React.FC<IImageWithTextProps> = ({
           })}
         >
           <Statement heading={heading} eyebrow={eyebrow} text={text} />
-          <div>
-            <Button size="lg">Donate Now</Button>
-          </div>
         </div>
-        <Parallax
-          disabled={shouldReduceMotion}
-          y={[10, -10]}
-          x={[2, 0]}
-          className={cx('lg:row-start-1 lg:row-end-2', {
-            'lg:col-start-1 lg:col-end-3': imagePosition === 'left',
-            'lg:col-start-4 lg:col-end-6': imagePosition === 'right',
-          })}
-        >
-          <Image data={image.responsiveImage} />
-        </Parallax>
+        {image && (
+          <Parallax
+            disabled={shouldReduceMotion}
+            y={[10, -10]}
+            x={[2, 0]}
+            className={cx('lg:row-start-1 lg:row-end-2', {
+              'lg:col-start-1 lg:col-end-3': imagePosition === 'left',
+              'lg:col-start-4 lg:col-end-6': imagePosition === 'right',
+            })}
+          >
+            <Image data={image.responsiveImage} />
+          </Parallax>
+        )}
       </div>
     </Container>
   );
