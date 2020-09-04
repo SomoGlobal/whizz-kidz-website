@@ -31,16 +31,16 @@ export const brands: IBrands = {
     smallTextColor: 'text-indigo-600',
   },
   families: {
-    backgroundColor: 'bg-purple-800',
-    hoverSmallBackgroundColor: 'hover:bg-purple-800',
-    smallBackgroundColor: 'bg-purple-800',
-    smallTextColor: 'text-purple-600',
-  },
-  supporters: {
     backgroundColor: 'bg-green-600',
     hoverSmallBackgroundColor: 'hover:bg-green-700',
     smallBackgroundColor: 'bg-green-700',
     smallTextColor: 'text-green-800',
+  },
+  supporters: {
+    backgroundColor: 'bg-purple-800',
+    hoverSmallBackgroundColor: 'hover:bg-purple-800',
+    smallBackgroundColor: 'bg-purple-800',
+    smallTextColor: 'text-purple-600',
   },
   charity: {
     backgroundColor: 'bg-orange-600',
