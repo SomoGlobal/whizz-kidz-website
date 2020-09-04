@@ -5,7 +5,7 @@ const API_URL = 'https://graphql.datocms.com';
 const API_TOKEN = process.env.CMS_DATOCMS_API_TOKEN;
 
 // See: https://www.datocms.com/blog/offer-responsive-progressive-lqip-images-in-2020
-const responsiveImageFragment = `
+export const responsiveImageFragment = `
   fragment responsiveImageFragment on ResponsiveImage {
     srcSet
     webpSrcSet
@@ -166,6 +166,15 @@ export const getChildNavItems = memo(async (slug, pathPrefix = '') => {
         label: 'Meet the kidz',
         linkProps: {
           href: `/families/meet-the-kidz`,
+        },
+      },
+    ],
+    supporters: [
+      {
+        id: 'events',
+        label: 'Events & Challenges',
+        linkProps: {
+          href: `/supporters/events`,
         },
       },
     ],
