@@ -20,8 +20,8 @@ Story.args = {
   pageTitle: 'Page Title',
   activeNavIndex: 0,
   secondaryNavItems: [
-    { label: 'Item 1', href: '/item1' },
-    { label: 'Item 2', href: '/item2' },
-    { label: 'Item 3', href: '/item3' },
+    { id: 'link-1', label: 'Item 1', linkProps: { href: '/item1' } },
+    { id: 'link-2', label: 'Item 2', linkProps: { href: '/item2' } },
+    { id: 'link-3', label: 'Item 3', linkProps: { href: '/item3' } },
   ],
 };
