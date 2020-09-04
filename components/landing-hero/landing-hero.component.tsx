@@ -7,7 +7,7 @@ import Puzzle from '../puzzle';
 export interface ILandingHeroProps {
   color?: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   backgroundType?: 'grey' | 'color' | 'image';
   image?: any;
 }
