@@ -4,16 +4,17 @@ import BorderedBox from '../bordered-box';
 import Container from '../container';
 
 export interface IBorderedGridProps {
-  heading: React.ReactChild;
+  heading?: React.ReactChild;
   items: Array<{ title: string; children: React.ReactChild; border: string }>;
 }
 
-/** Documentation */
 const BorderedGrid: React.FC<IBorderedGridProps> = ({ heading, items }) => {
   return (
-    <Container>
+    <Container as="section" aria-label={heading}>
       <div className="my-40 text-center md:mx-16">
-        <h2 className="mb-10 text-3xl font-bold text-gray-700">{heading}</h2>
+        {heading && (
+          <h2 className="mb-10 text-3xl font-bold text-gray-700">{heading}</h2>
+        )}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => (
             <BorderedBox
