@@ -4,18 +4,18 @@ import cx from 'classnames';
 
 export interface IButtonProps {
   className?: string;
-  href?: string;
+  linkProps?: any;
   size?: 'sm' | 'm' | 'lg';
 }
 
 const Button: React.FC<IButtonProps> = ({
   children,
   className = '',
-  href,
+  linkProps,
   size = 'm',
 }) => {
   const classes = cx(
-    'bg-green-700 text-white border-0 rounded-full tracking-wide hover:bg-green-800',
+    'bg-green-700 text-white border-0 rounded-full tracking-wide hover:bg-green-800 text-center font-medium',
     {
       'px-4 py-1 text-sm': size === 'sm',
       'px-6 py-2': size === 'm',
@@ -24,9 +24,9 @@ const Button: React.FC<IButtonProps> = ({
     className
   );
 
-  if (href) {
+  if (linkProps) {
     return (
-      <Link href={href}>
+      <Link {...linkProps}>
         <a className={classes}>{children}</a>
       </Link>
     );
