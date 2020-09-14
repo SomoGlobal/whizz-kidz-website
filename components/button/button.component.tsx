@@ -5,6 +5,7 @@ import cx from 'classnames';
 export interface IButtonProps {
   className?: string;
   linkProps?: any;
+  isOutlined?: boolean;
   size?: 'sm' | 'm' | 'lg';
 }
 
@@ -13,13 +14,18 @@ const Button: React.FC<IButtonProps> = ({
   className = '',
   linkProps,
   size = 'm',
+  isOutlined,
 }) => {
   const classes = cx(
-    'bg-green-700 text-white border-0 rounded-full tracking-wide hover:bg-green-800 text-center font-medium',
+    'border-2 border-solid rounded-full tracking-wide text-center font-medium',
     {
       'px-4 py-1 text-sm': size === 'sm',
       'px-6 py-2': size === 'm',
       'px-10 py-3 text-lg font-medium': size === 'lg',
+    },
+    {
+      'bg-green-700 text-white hover:bg-green-800 border-transparent': !isOutlined,
+      'bg-white text-green-700 hover:bg-gray-200 border-green-700 hover:border-green-800': isOutlined,
     },
     className
   );

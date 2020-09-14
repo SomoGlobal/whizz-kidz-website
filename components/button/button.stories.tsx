@@ -9,6 +9,7 @@ export default {
   component: Button,
   args: {
     children: 'Donate',
+    isOutlined: false,
   },
 };
 
