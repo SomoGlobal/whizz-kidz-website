@@ -4,6 +4,27 @@ import memo from 'memoizee';
 const API_URL = 'https://graphql.datocms.com';
 const API_TOKEN = process.env.CMS_DATOCMS_API_TOKEN;
 
+const CUSTOM_NAV_ITEMS = {
+  families: [
+    {
+      id: 'meet-the-kidz',
+      label: 'Meet the kidz',
+      linkProps: {
+        href: `/families/meet-the-kidz`,
+      },
+    },
+  ],
+  supporters: [
+    {
+      id: 'events',
+      label: 'Events & Challenges',
+      linkProps: {
+        href: `/supporters/events`,
+      },
+    },
+  ],
+};
+
 // See: https://www.datocms.com/blog/offer-responsive-progressive-lqip-images-in-2020
 export const responsiveImageFragment = `
   fragment responsiveImageFragment on ResponsiveImage {
@@ -159,29 +180,8 @@ export const getChildNavItems = memo(async (slug, pathPrefix = '') => {
     });
   });
 
-  const additionalItems = {
-    families: [
-      {
-        id: 'meet-the-kidz',
-        label: 'Meet the kidz',
-        linkProps: {
-          href: `/families/meet-the-kidz`,
-        },
-      },
-    ],
-    supporters: [
-      {
-        id: 'events',
-        label: 'Events & Challenges',
-        linkProps: {
-          href: `/supporters/events`,
-        },
-      },
-    ],
-  };
-
-  if (additionalItems[slug]) {
-    paths = [...paths, ...additionalItems[slug]];
+  if (CUSTOM_NAV_ITEMS[slug]) {
+    paths = [...paths, ...CUSTOM_NAV_ITEMS[slug]];
   }
 
   return paths;

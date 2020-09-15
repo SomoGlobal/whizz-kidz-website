@@ -19,10 +19,11 @@ const colors = [
 
 const LinkGrid: React.FC<ILinkGridProps> = ({ tiles, title }) => {
   const { smallTextColor } = useContext(BrandContext);
+  const is4 = tiles.length === 4;
 
   return (
-    <Container>
-      <div className="my-40 md:mx-16">
+    <Container as="section">
+      <div className="my-20 lg:my-40">
         <h2
           className={cx(
             'uppercase font-bold tracking-wider mb-3 text-base',
@@ -37,8 +38,10 @@ const LinkGrid: React.FC<ILinkGridProps> = ({ tiles, title }) => {
               key={tile.label}
               backgroundColor={colors[index]}
               label={tile.label}
-              isBig={index === 0}
-              className={index === 0 ? 'md:col-span-2 md:row-span-2' : ''}
+              isBig={index === 0 && !is4}
+              className={
+                index === 0 && !is4 ? 'md:col-span-2 md:row-span-2' : ''
+              }
               linkProps={tile.linkProps}
             />
           ))}

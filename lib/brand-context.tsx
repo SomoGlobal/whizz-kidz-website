@@ -51,7 +51,7 @@ export const brands: IBrands = {
   charity: {
     backgroundColor: 'bg-orange-600',
     hoverSmallBackgroundColor: 'hover:bg-orange-700',
-    smallBackgroundColor: 'bg-orange-700',
+    smallBackgroundColor: 'bg-orange-600',
     textColor: 'text-orange-500',
     smallTextColor: 'text-orange-800',
   },
