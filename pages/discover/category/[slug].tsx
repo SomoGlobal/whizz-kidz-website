@@ -70,6 +70,6 @@ query TopicsByCategory($slug: String) {
   }));
 
   return {
-    props: { preview, topicGridTiles, title: data.category.name },
+    props: { preview, topicGridTiles, title: data?.category.name },
   };
 };

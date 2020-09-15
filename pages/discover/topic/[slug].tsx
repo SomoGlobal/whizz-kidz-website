@@ -26,8 +26,8 @@ export default function DiscoverCategory({ preview, title }) {
 export async function getStaticPaths() {
   const data = await fetchAPI(
     `
-query AllCategoriesForSlugs {
-  allCategories {
+query AllTopicsForSlugs {
+  allTopics {
     slug
   }
 }
@@ -36,7 +36,7 @@ query AllCategoriesForSlugs {
     { preview: false, variables: {} }
   );
 
-  const staticPaths = data.allCategories.map((cat) => ({ params: cat }));
+  const staticPaths = data.allTopics.map((cat) => ({ params: cat }));
 
   return {
     paths: staticPaths,
@@ -59,6 +59,6 @@ query TopicName($slug: String) {
   );
 
   return {
-    props: { preview, title: data.topic.name },
+    props: { preview, title: data?.topic.name },
   };
 };
