@@ -1,18 +1,30 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
+import Breadcrumbs from '../../../components/breadcrumbs';
 import Layout from '../../../components/layout';
 import { fetchAPI } from '../../../lib/api';
 
-export default function DiscoverCategory({ preview, title }) {
+export default function DiscoverCategory({ preview, topic }) {
   return (
     <>
-      <Layout preview={preview} brand="discover" pageTitle={title}>
+      <Layout preview={preview} brand="discover" pageTitle={topic.name}>
         <Head>
-          <title>{title}</title>
+          <title>{topic.name}</title>
         </Head>
+        <Breadcrumbs
+          items={[
+            { label: 'Discover', linkProps: { href: '/discover' } },
+            {
+              label: topic.name,
+              linkProps: {
+                as: `/discover/topic/${topic.slug}`,
+                href: `/discover/topic/[slug]`,
+              },
+            },
+          ]}
+        />
         <ol>
-          <li>todo: breadcrumbs!</li>
           <li>
             todo: fetch 10 posts, sort by date first published ascending, put
             them in cards
@@ -52,6 +64,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 query TopicName($slug: String) {
   topic(filter: {slug: {eq: $slug}}) {
     name
+    slug
   }
 }
 `,
@@ -59,6 +72,6 @@ query TopicName($slug: String) {
   );
 
   return {
-    props: { preview, title: data?.topic.name },
+    props: { preview, topic: data.topic },
   };
 };
