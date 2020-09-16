@@ -10,6 +10,10 @@ import PostHeader from '../../../components/post-header';
 import { fetchAPI, responsiveImageFragment } from '../../../lib/api';
 
 export default function DiscoverCategory({ preview, post }) {
+  if (!post) {
+    return null;
+  }
+
   return (
     <>
       <Layout preview={preview} brand="discover" pageTitle="Discover">
