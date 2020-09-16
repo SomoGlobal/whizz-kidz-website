@@ -37,8 +37,9 @@ const Footer: React.FC = () => {
             Copyright {new Date().getUTCFullYear()} All rights reserved.{' '}
             <a
               className="font-medium text-white"
-              href="https://somoglobal.com/"
+              href="https://somoglobal.com/?utm_source=whizz_kidz&utm_medium=link&utm_campaign=whizz_kidz"
               target="_blank"
+              rel="noreferrer"
             >
               Website by Somo
             </a>

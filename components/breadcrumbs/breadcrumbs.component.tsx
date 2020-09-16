@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React, { useContext } from 'react';
 import cx from 'classnames';
 import { Generic, GenericCollection, JSONLD } from 'react-structured-data';
+import Head from 'next/head';
 import BrandContext from '../../lib/brand-context';
 import Container from '../container';
 
@@ -43,19 +44,21 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ isThemed, items = [] }) => {
 
   return (
     <div className={isThemed && backgroundColor}>
-      <JSONLD>
-        <Generic type="BreadcrumbList" jsonldtype="BreadcrumbList">
-          <GenericCollection type="itemListElement">
-            {items.map((item, index, arr) => (
-              <Generic
-                key={item.linkProps.href}
-                jsonldtype="ListItem"
-                schema={genSchemaItem(item, index, arr.length)}
-              />
-            ))}
-          </GenericCollection>
-        </Generic>
-      </JSONLD>
+      <Head>
+        <JSONLD>
+          <Generic type="BreadcrumbList" jsonldtype="BreadcrumbList">
+            <GenericCollection type="itemListElement">
+              {items.map((item, index, arr) => (
+                <Generic
+                  key={item.linkProps.href}
+                  jsonldtype="ListItem"
+                  schema={genSchemaItem(item, index, arr.length)}
+                />
+              ))}
+            </GenericCollection>
+          </Generic>
+        </JSONLD>
+      </Head>
       <Container as="nav" aria-label="breadcrumbs">
         <ol className="list-none p-0 inline-flex">
           {items.map((item, index) => (
