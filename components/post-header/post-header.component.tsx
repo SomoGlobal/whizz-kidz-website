@@ -1,4 +1,5 @@
 import React from 'react';
+import AuthorBox from '../author-box';
 import Container from '../container';
 import DateTime from '../date-time';
 import Statement from '../statement';
@@ -23,7 +24,7 @@ const PostHeader: React.FC<IPostHeaderProps> = ({
 }) => {
   return (
     <Container>
-      <article className="my-20 max-w-3xl mx-auto">
+      <article className="my-10 md:my-20 max-w-3xl mx-auto grid gap-12">
         <Statement
           headerLevel={1}
           headerElement="heading"
@@ -32,19 +33,7 @@ const PostHeader: React.FC<IPostHeaderProps> = ({
           heading={title}
           eyebrow={<DateTime label="Published" time={publishedAt} />}
         />
-        <div className="flex items-center mt-10 bg-gray-200 p-4 rounded-lg">
-          <img
-            alt={author.name}
-            src={author.picture.url}
-            className="rounded-full border-2 border-solid border-indigo-200"
-            width="64"
-            height="64"
-          />
-          <div className="text-gray-700 leading-tight ml-4">
-            <div className="text-sm font-medium uppercase">Author</div>
-            <div className="text-2xl font-medium">{author.name}</div>
-          </div>
-        </div>
+        <AuthorBox name={author.name} imageUrl={author.picture.url} />
       </article>
     </Container>
   );

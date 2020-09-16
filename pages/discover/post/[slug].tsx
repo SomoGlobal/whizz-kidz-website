@@ -2,9 +2,9 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import { Image } from 'react-datocms';
-import Container from '../../../components/container';
 import Article from '../../../components/article';
 import Breadcrumbs from '../../../components/breadcrumbs';
+import Container from '../../../components/container';
 import Layout from '../../../components/layout';
 import PostHeader from '../../../components/post-header';
 import { fetchAPI, responsiveImageFragment } from '../../../lib/api';
@@ -14,34 +14,34 @@ export default function DiscoverCategory({ preview, post }) {
     return null;
   }
 
+  const breadcrumbs = [
+    { label: 'Discover', linkProps: { href: '/discover' } },
+    {
+      label: post.topic.name,
+      linkProps: {
+        as: `/discover/topic/${post.topic.slug}`,
+        href: `/discover/topic/[slug]`,
+      },
+    },
+    {
+      label: post.title,
+      linkProps: {
+        as: `/discover/post/${post.slug}`,
+        href: `/discover/post/[slug]`,
+      },
+    },
+  ];
+
   return (
     <>
       <Layout preview={preview} brand="discover" pageTitle="Discover">
         <Head>
           <title>{post.title}</title>
         </Head>
-        <Breadcrumbs
-          items={[
-            { label: 'Discover', linkProps: { href: '/discover' } },
-            {
-              label: post.topic.name,
-              linkProps: {
-                as: `/discover/topic/${post.topic.slug}`,
-                href: `/discover/topic/[slug]`,
-              },
-            },
-            {
-              label: post.title,
-              linkProps: {
-                as: `/discover/post/${post.slug}`,
-                href: `/discover/post/[slug]`,
-              },
-            },
-          ]}
-        />
+        <Breadcrumbs items={breadcrumbs} />
         {post.coverImage && (
-          <Container as="figure">
-            <Image data={post.coverImage.responsiveImage} />
+          <Container as="figure" className="pl-0 pr-0 lg:pl-4 lg:pr-4">
+            <Image data={post.coverImage.responsiveImage} explicitWidth />
           </Container>
         )}
         <PostHeader
@@ -95,11 +95,11 @@ query PostPageQuery($slug: String) {
       name
       slug
       picture {
-        url(imgixParams: {fm: jpg, fit: crop, w: 150, h: 150})
+        url(imgixParams: {auto: format, fit: crop, w: 150, h: 150})
       }
     }
     coverImage {
-      responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 1024, ar: "16:9"}) {
+      responsiveImage(imgixParams: {auto: format, fit: crop, w: 2480, ar: "16:9"}) {
         ...responsiveImageFragment
       }
     }

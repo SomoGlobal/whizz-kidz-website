@@ -1,10 +1,9 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import Container from '../../../components/container';
+import PostCardList from '../../../components/post-card-list';
 import Breadcrumbs from '../../../components/breadcrumbs';
 import Layout from '../../../components/layout';
-import PostCard from '../../../components/post-card';
 import { fetchAPI, responsiveImageFragment } from '../../../lib/api';
 
 export default function DiscoverCategory({ preview, topic, topicPosts }) {
@@ -26,26 +25,7 @@ export default function DiscoverCategory({ preview, topic, topicPosts }) {
             },
           ]}
         />
-        <Container as="section" className="mb-20 mt-10">
-          <h2 className="text-gray-700 font-bold leading-snug text-3xl mb-6">
-            Most Recent Posts
-          </h2>
-          <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {topicPosts.posts.map((post) => (
-              <li key={post.slug}>
-                <PostCard
-                  title={post.title}
-                  image={post.coverImage}
-                  publishedAt={post._publishedAt}
-                  linkProps={{
-                    as: `/discover/post/${post.slug}`,
-                    href: `/discover/post/[slug]`,
-                  }}
-                />
-              </li>
-            ))}
-          </ul>
-        </Container>
+        <PostCardList posts={topicPosts.posts} label="Most Recent Posts" />
       </Layout>
     </>
   );
@@ -91,7 +71,7 @@ query TopicName($slug: String) {
   const topicPosts = await fetchAPI(
     `
 query PostsInTopic($topicId: ItemId) {
-  posts: allPosts(filter: {topic: {eq: $topicId}}) {
+  posts: allPosts(filter: {topic: {eq: $topicId}}, orderBy: _firstPublishedAt_DESC, first: "6") {
     id
     title
     slug

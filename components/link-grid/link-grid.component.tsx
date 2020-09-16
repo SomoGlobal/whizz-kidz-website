@@ -22,31 +22,27 @@ const LinkGrid: React.FC<ILinkGridProps> = ({ tiles, title }) => {
   const is4 = tiles.length === 4;
 
   return (
-    <Container as="section">
-      <div className="my-20 lg:my-40">
-        <h2
-          className={cx(
-            'uppercase font-bold tracking-wider mb-3 text-base',
-            smallTextColor
-          )}
-        >
-          {title}
-        </h2>
-        <ul className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-rows-2 lg:grid-cols-4">
-          {tiles.map((tile, index) => (
-            <GridTile
-              key={tile.label}
-              backgroundColor={colors[index]}
-              label={tile.label}
-              isBig={index === 0 && !is4}
-              className={
-                index === 0 && !is4 ? 'md:col-span-2 md:row-span-2' : ''
-              }
-              linkProps={tile.linkProps}
-            />
-          ))}
-        </ul>
-      </div>
+    <Container as="section" className="my-20">
+      <h2
+        className={cx(
+          'uppercase font-bold tracking-wider mb-3 text-base',
+          smallTextColor
+        )}
+      >
+        {title}
+      </h2>
+      <ul className="grid gap-4 grid-cols-1 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-4">
+        {tiles.map((tile, index) => (
+          <GridTile
+            key={tile.label}
+            backgroundColor={colors[index]}
+            label={tile.label}
+            isBig={index === 0 && !is4}
+            className={index === 0 && !is4 ? 'md:col-span-2 md:row-span-2' : ''}
+            linkProps={tile.linkProps}
+          />
+        ))}
+      </ul>
     </Container>
   );
 };

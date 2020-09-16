@@ -1,11 +1,12 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
+import PostCardList from '../../components/post-card-list';
 import Layout from '../../components/layout';
 import LinkGrid from '../../components/link-grid';
-import { fetchAPI } from '../../lib/api';
+import { fetchAPI, responsiveImageFragment } from '../../lib/api';
 
-export default function Discover({ preview, categoryGridTiles }) {
+export default function Discover({ preview, categoryGridTiles, recentPosts }) {
   return (
     <>
       <Layout preview={preview} brand="discover" pageTitle="Discover">
@@ -13,6 +14,7 @@ export default function Discover({ preview, categoryGridTiles }) {
           <title>Discover</title>
         </Head>
         <LinkGrid title="Explore by category" tiles={categoryGridTiles} />
+        <PostCardList posts={recentPosts} label="Recent Posts" />
       </Layout>
     </>
   );
@@ -28,7 +30,19 @@ query AllCategories {
     slug
     id
   }
+  recentPosts: allPosts(orderBy: _firstPublishedAt_DESC, first: "6") {
+    id
+    title
+    slug
+    _publishedAt
+    coverImage {
+      responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 400, ar: "16:9"}) {
+        ...responsiveImageFragment
+      }
+    }
+  }
 }
+${responsiveImageFragment}
 `,
     { preview, variables: {} }
   );
@@ -42,6 +56,6 @@ query AllCategories {
   }));
 
   return {
-    props: { preview, categoryGridTiles },
+    props: { preview, categoryGridTiles, recentPosts: data.recentPosts },
   };
 };

@@ -41,6 +41,7 @@ const genSchemaItem = (item, index, length) => {
 const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ isThemed, items = [] }) => {
   const { backgroundColor } = useContext(BrandContext);
   const isLastItem = (index: number) => index === items.length - 1;
+  const secondToLastItem = items[items.length - 2];
 
   return (
     <div className={isThemed && backgroundColor}>
@@ -59,7 +60,32 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ isThemed, items = [] }) => {
           </Generic>
         </JSONLD>
       </Head>
-      <Container as="nav" aria-label="breadcrumbs">
+
+      <Link {...secondToLastItem.linkProps}>
+        <a
+          className={cx('px-3 py-4 font-bold flex md:hidden', {
+            'text-gray-100': isThemed,
+            'text-gray-700': !isThemed,
+          })}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            width="1.5rem"
+            className="text-gray-500"
+          >
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+          {secondToLastItem.label}
+        </a>
+      </Link>
+
+      <Container as="nav" aria-label="breadcrumbs" className="hidden md:block">
         <ol className="list-none p-0 inline-flex">
           {items.map((item, index) => (
             <li
