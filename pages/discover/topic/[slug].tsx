@@ -26,7 +26,10 @@ export default function DiscoverCategory({ preview, topic, topicPosts }) {
             },
           ]}
         />
-        <Container>
+        <Container as="section" className="mb-20 mt-10">
+          <h2 className="text-gray-700 font-bold leading-snug text-3xl mb-6">
+            Most Recent Posts
+          </h2>
           <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {topicPosts.posts.map((post) => (
               <li key={post.slug}>
