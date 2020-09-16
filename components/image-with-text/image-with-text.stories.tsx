@@ -4,7 +4,7 @@ import ImageWithText from './image-with-text.component';
 
 const Template = (args) => <ImageWithText {...args} />;
 
-const responsiveImage = {
+export const responsiveImage = {
   srcSet:
     'https://www.datocms-assets.com/32241/1583844698-gift-habeshaw-pgxxjrtfnjq-unsplash-edited.png?auto=format&dpr=0.25&fit=crop&h=300&w=300 75w,https://www.datocms-assets.com/32241/1583844698-gift-habeshaw-pgxxjrtfnjq-unsplash-edited.png?auto=format&dpr=0.5&fit=crop&h=300&w=300 150w,https://www.datocms-assets.com/32241/1583844698-gift-habeshaw-pgxxjrtfnjq-unsplash-edited.png?auto=format&dpr=0.75&fit=crop&h=300&w=300 225w,https://www.datocms-assets.com/32241/1583844698-gift-habeshaw-pgxxjrtfnjq-unsplash-edited.png?auto=format&fit=crop&h=300&w=300 300w,https://www.datocms-assets.com/32241/1583844698-gift-habeshaw-pgxxjrtfnjq-unsplash-edited.png?auto=format&dpr=1.5&fit=crop&h=300&w=300 450w,https://www.datocms-assets.com/32241/1583844698-gift-habeshaw-pgxxjrtfnjq-unsplash-edited.png?auto=format&dpr=2&fit=crop&h=300&w=300 600w,https://www.datocms-assets.com/32241/1583844698-gift-habeshaw-pgxxjrtfnjq-unsplash-edited.png?auto=format&dpr=3&fit=crop&h=300&w=300 900w,https://www.datocms-assets.com/32241/1583844698-gift-habeshaw-pgxxjrtfnjq-unsplash-edited.png?auto=format&dpr=4&fit=crop&h=300&w=300 1200w',
   sizes: '(max-width: 300px) 100vw, 300px',

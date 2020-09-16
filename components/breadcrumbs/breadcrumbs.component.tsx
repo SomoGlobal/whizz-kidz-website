@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React, { useContext } from 'react';
 import cx from 'classnames';
+import { Generic, GenericCollection, JSONLD } from 'react-structured-data';
 import BrandContext from '../../lib/brand-context';
 import Container from '../container';
 
@@ -17,12 +18,44 @@ export interface IBreadcrumbsProps {
   items: IBreadcrumbItem[];
 }
 
+/**
+ * Used to create the ldjson schema item
+ * @link https://developers.google.com/search/docs/data-types/breadcrumb#json-ld
+ */
+const genSchemaItem = (item, index, length) => {
+  const output: any = {
+    position: index + 1,
+    name: item.label,
+  };
+
+  if (index !== length - 1) {
+    output.item = `https://www.whizz-kidz.org.uk${
+      item.linkProps.as || item.linkProps.href
+    }`;
+  }
+
+  return output;
+};
+
 const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ isThemed, items = [] }) => {
   const { backgroundColor } = useContext(BrandContext);
   const isLastItem = (index: number) => index === items.length - 1;
 
   return (
     <div className={isThemed && backgroundColor}>
+      <JSONLD>
+        <Generic type="BreadcrumbList" jsonldtype="BreadcrumbList">
+          <GenericCollection type="itemListElement">
+            {items.map((item, index, arr) => (
+              <Generic
+                key={item.linkProps.href}
+                jsonldtype="ListItem"
+                schema={genSchemaItem(item, index, arr.length)}
+              />
+            ))}
+          </GenericCollection>
+        </Generic>
+      </JSONLD>
       <Container as="nav" aria-label="breadcrumbs">
         <ol className="list-none p-0 inline-flex">
           {items.map((item, index) => (

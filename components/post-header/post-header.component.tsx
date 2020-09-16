@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from '../container';
+import DateTime from '../date-time';
 import Statement from '../statement';
 
 export interface IPostHeaderProps {
@@ -20,15 +21,6 @@ const PostHeader: React.FC<IPostHeaderProps> = ({
   publishedAt,
   author,
 }) => {
-  const publishedAtDate = new Date(publishedAt);
-  const timeTitle = new Intl.DateTimeFormat('en-GB', {
-    dateStyle: 'long',
-    timeStyle: 'long',
-  } as any).format(publishedAtDate);
-  const timeText = new Intl.DateTimeFormat('en-GB', {
-    dateStyle: 'full',
-  } as any).format(publishedAtDate);
-
   return (
     <Container>
       <article className="my-20 max-w-3xl mx-auto">
@@ -38,15 +30,7 @@ const PostHeader: React.FC<IPostHeaderProps> = ({
           hasBigHeading
           text={summary}
           heading={title}
-          eyebrow={
-            <time
-              aria-label="Published"
-              dateTime={publishedAt}
-              title={timeTitle}
-            >
-              {timeText}
-            </time>
-          }
+          eyebrow={<DateTime label="Published" time={publishedAt} />}
         />
         <div className="flex items-center mt-10 bg-gray-200 p-4 rounded-lg">
           <img

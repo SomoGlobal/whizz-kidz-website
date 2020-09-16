@@ -68,7 +68,7 @@ query Top10Posts {
     params: post,
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
