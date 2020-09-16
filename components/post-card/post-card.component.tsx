@@ -10,7 +10,6 @@ export interface IPostCardProps {
   linkProps: any;
 }
 
-/** Documentation */
 const PostCard: React.FC<IPostCardProps> = ({
   title,
   image,
@@ -18,7 +17,10 @@ const PostCard: React.FC<IPostCardProps> = ({
   linkProps,
 }) => {
   return (
-    <article className="border-4 rounded-lg shadow-xl justify-between flex flex-col bg-white text-2xl font-bold text-gray-700 h-full">
+    <article
+      className="border-4 rounded-lg shadow-xl justify-between flex flex-col bg-white text-2xl font-bold text-gray-700 h-full"
+      style={{ borderColor: image.responsiveImage?.bgColor }}
+    >
       <Link {...linkProps}>
         <a className="hover:underline flex flex-col flex-1">
           <Image
