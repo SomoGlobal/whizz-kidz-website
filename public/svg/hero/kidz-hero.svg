@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 633 633">
+  <g fill="none" fill-rule="evenodd">
+    <g transform="translate(317 317)">
+      <polygon fill="#523178" points="0 316 316 316 316 0 0 0"/>
+      <line x1="158" x2="158" y1="32" y2="285" stroke="#00A9E0" stroke-width="12"/>
+      <line x1="109" x2="206" y1="41" y2="275" stroke="#00A9E0" stroke-width="12"/>
+      <line x1="69" x2="248" y1="69" y2="248" stroke="#00A9E0" stroke-width="12"/>
+      <line x1="41" x2="275" y1="109" y2="206" stroke="#00A9E0" stroke-width="12"/>
+      <line x1="32" x2="285" y1="158" y2="158" stroke="#00A9E0" stroke-width="12"/>
+      <line x1="41" x2="275" y1="207" y2="110" stroke="#00A9E0" stroke-width="12"/>
+      <line x1="69" x2="248" y1="247" y2="68" stroke="#00A9E0" stroke-width="12"/>
+      <line x1="109" x2="206" y1="275" y2="41" stroke="#00A9E0" stroke-width="12"/>
+    </g>
+    <rect width="316" height="316" x="1" y="317" fill="#004C97"/>
+    <polygon fill="#FD0" points="1 475 158 475 158 317 1 317"/>
+    <polygon fill="#00A7E1" points="158 475 317 475 317 317 158 317"/>
+    <polygon fill="#533278" points="1 633 158 633 158 475 1 475"/>
+    <polygon fill="#FFF" points="158 633 317 633 317 475 158 475"/>
+    <rect width="316" height="316" x="1" y="1" fill="#84BD00"/>
+    <polygon fill="#509E2F" points="147 435 170 435 170 119 147 119" transform="rotate(90 158.5 277)"/>
+    <polygon fill="#509E2F" points="147 283 170 283 170 -33 147 -33" transform="rotate(90 158.5 125)"/>
+    <polygon fill="#509E2F" points="147 384 170 384 170 68 147 68" transform="rotate(90 158.5 226)"/>
+    <polygon fill="#509E2F" points="147 334 170 334 170 18 147 18" transform="rotate(90 158.5 176)"/>
+    <polygon fill="#509E2F" points="147 232 170 232 170 -84 147 -84" transform="rotate(90 158.5 74)"/>
+    <rect width="316" height="316" x="317" y="1" fill="#FEDD00"/>
+    <path fill="#533278" d="M317 320h23.765C417.872 308.422 477 241.829 477 161.396 477 72.871 405.38 1.103 317 1v319z"/>
+    <path fill="#FFF" d="M317 262h15.301C381.936 254.594 420 212.008 420 160.574 420 103.96 373.898 58.062 317 58v204z"/>
+  </g>
+</svg>

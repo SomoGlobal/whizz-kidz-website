@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 593">
+  <g fill="none" fill-rule="evenodd" transform="rotate(-180 297.5 298.5)">
+    <rect width="594" height="594" y="3" fill="#F5F5F5"/>
+    <polygon fill="#F6A800" points="33 301 52 301 52 151 33 151"/>
+    <polygon fill="#F6A800" points="65 301 84 301 84 151 65 151"/>
+    <polygon fill="#F6A800" points="98 301 117 301 117 151 98 151"/>
+    <polygon fill="#F6A800" points="130 301 149 301 149 151 130 151"/>
+    <polygon fill="#F6A800" points="0 76 74 76 74 2 0 2"/>
+    <polygon fill="#4C9D2E" points="75 76 149 76 149 2 75 2"/>
+    <polygon fill="#80BC00" points="0 150 74 150 74 76 0 76"/>
+    <polygon fill="#FFF" points="75 150 149 150 149 76 75 76"/>
+    <polygon fill="#00A7E1" points="446 597 595 597 595 448 446 448"/>
+    <polygon fill="#84BD00" points="446 300 595 300 595 151 446 151"/>
+    <polygon fill="#533278" points="446 152 595 152 595 3 446 3"/>
+    <polygon fill="#80BC00" points="297 152 446 152 446 3 297 3"/>
+    <polygon fill="#FD0" points="297 448 446 448 446 299 297 299"/>
+    <polygon fill="#4C9D2E" points="446 448 595 448 595 299 446 299"/>
+    <polygon fill="#F6A800" points="297 300 446 300 446 151 297 151"/>
+    <polygon fill="#533278" points="297 597 446 597 446 448 297 448"/>
+    <polygon fill="#4C9D2E" points="150 300 299 300 299 151 150 151"/>
+    <polygon fill="#F6A800" points="150 152 299 152 299 3 150 3"/>
+    <path fill="#533278" d="M595 448v-10.991C589.592 401.347 558.488 374 520.919 374c-41.35 0-74.87 33.124-74.919 74h149z"/>
+    <path fill="#FFF" d="M569 448v-7.13c-3.449-23.132-23.28-40.87-47.233-40.87-26.364 0-47.738 21.484-47.767 48h95z"/>
+    <path fill="#4C9D2E" d="M297 452.75c3.195 38.218 35.317 68.25 74.5 68.25 39.181 0 71.303-30.032 74.5-68.25V447H297v5.75z"/>
+    <path fill="#DC2597" d="M296 19v45.152c47.7 1.313 86.154 40.103 86.744 87.848H428c-.594-72.629-59.352-131.677-132-133"/>
+    <path fill="#FFF" d="M296.379 96.74c.375-.007.745-.028 1.12-.028 30.762 0 55.787 25.027 55.787 55.787 0 30.76-25.025 55.787-55.787 55.787-30.76 0-55.787-25.027-55.787-55.787 0-.37.021-.733.029-1.1h-44.727c-.004.367-.014.732-.014 1.1C197 207.916 242.084 253 297.499 253 352.916 253 398 207.916 398 152.499 398 97.084 352.916 52 297.499 52c-.373 0-.745.01-1.12.014v44.727z"/>
+    <path fill="#00A7E1" d="M355 151c0 31.479-25.52 57-57.001 57-31.48 0-56.999-25.521-56.999-57s25.52-57 56.999-57C329.48 94 355 119.521 355 151"/>
+    <polygon fill="#00A7E1" points="474 151 595 151 595 30 474 30"/>
+    <polygon fill="#FD0" points="446 170 390 226 446 282 502 226"/>
+    <polygon fill="#509E2F" points="279 449 298 449 298 299 279 299"/>
+    <polygon fill="#509E2F" points="247 449 266 449 266 299 247 299"/>
+    <polygon fill="#509E2F" points="215 449 234 449 234 299 215 299"/>
+    <polygon fill="#509E2F" points="183 449 202 449 202 299 183 299"/>
+    <polygon fill="#509E2F" points="151 449 170 449 170 299 151 299"/>
+    <path fill="#FFF" d="M544 523c0 12.704-10.296 23-23 23s-23-10.296-23-23 10.296-23 23-23 23 10.296 23 23"/>
+    <g transform="translate(296)">
+      <line x1="1.575" x2="1.575" y1="151.607" y2=".727" fill="#FFF"/>
+      <line x1="1.575" x2="1.575" y1="151.607" y2=".727" stroke="#FFF" stroke-width="2.359"/>
+    </g>
+    <g transform="translate(298 50)">
+      <line x1=".02" x2="49.871" y1="100.738" y2=".093" fill="#FFF"/>
+      <line x1=".02" x2="49.871" y1="100.738" y2=".093" stroke="#FFF" stroke-width="2.359"/>
+    </g>
+    <g transform="translate(296 100)">
+      <line x1=".812" x2="100.634" y1="50.497" y2=".552" fill="#FFF"/>
+      <line x1=".812" x2="100.634" y1="50.497" y2=".552" stroke="#FFF" stroke-width="2.359"/>
+    </g>
+    <g transform="translate(297 149)">
+      <line x1=".759" x2="106.4" y1="1.402" y2="1.402" fill="#FFF"/>
+      <line x1=".759" x2="106.4" y1="1.402" y2="1.402" stroke="#FFF" stroke-width="2.359"/>
+    </g>
+    <g transform="translate(195 149)">
+      <line x1="104.294" x2=".354" y1="1.527" y2="1.527" fill="#FFF"/>
+      <line x1="104.294" x2=".354" y1="1.527" y2="1.527" stroke="#FFF" stroke-width="2.359"/>
+    </g>
+    <g transform="translate(196 100)">
+      <line x1="100.778" x2=".079" y1="50.764" y2=".819" fill="#FFF"/>
+      <line x1="100.778" x2=".079" y1="50.764" y2=".819" stroke="#FFF" stroke-width="2.359"/>
+    </g>
+    <g transform="translate(246 51)">
+      <line x1="50.73" x2=".759" y1="100.286" y2=".516" fill="#FFF"/>
+      <line x1="50.73" x2=".759" y1="100.286" y2=".516" stroke="#FFF" stroke-width="2.359"/>
+    </g>
+    <g transform="translate(296 150)">
+      <line x1="1.575" x2="1.575" y1=".17" y2="150.928" fill="#FFF"/>
+      <line x1="1.575" x2="1.575" y1=".17" y2="150.928" stroke="#FFF" stroke-width="2.359"/>
+    </g>
+    <g transform="translate(298 151)">
+      <line x1=".02" x2="49.871" y1=".742" y2="100.512" fill="#FFF"/>
+      <line x1=".02" x2="49.871" y1=".742" y2="100.512" stroke="#FFF" stroke-width="2.359"/>
+    </g>
+    <g transform="translate(296 151)">
+      <line x1=".812" x2="100.634" y1=".632" y2="50.576" fill="#FFF"/>
+      <line x1=".812" x2="100.634" y1=".632" y2="50.576" stroke="#FFF" stroke-width="2.359"/>
+    </g>
+    <g transform="translate(196 151)">
+      <line x1="100.778" x2=".079" y1=".365" y2="50.309" fill="#FFF"/>
+      <line x1="100.778" x2=".079" y1=".365" y2="50.309" stroke="#FFF" stroke-width="2.359"/>
+    </g>
+    <g transform="translate(245 151)">
+      <line x1="50.73" x2=".759" y1=".321" y2="100.966" fill="#FFF"/>
+      <line x1="50.73" x2=".759" y1=".321" y2="100.966" stroke="#FFF" stroke-width="2.359"/>
+    </g>
+  </g>
+</svg>
