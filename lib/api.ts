@@ -103,6 +103,7 @@ export async function getPage(preview: boolean, slug: string) {
             title
             subtitle
             backgroundType
+            pattern
             image {
               responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 1240, h: 540}) {
                 ...responsiveImageFragment
