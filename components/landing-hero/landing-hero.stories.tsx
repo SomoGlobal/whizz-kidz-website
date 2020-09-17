@@ -5,7 +5,7 @@ import LandingHero from './landing-hero.component';
 const Template = (args) => <LandingHero {...args} />;
 
 export default {
-  title: 'Modules/LandingHero',
+  title: 'Components/LandingHero',
   component: LandingHero,
   args: {
     title: 'Lorem Ipsum',
