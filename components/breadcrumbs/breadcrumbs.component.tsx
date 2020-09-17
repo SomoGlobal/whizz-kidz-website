@@ -77,6 +77,7 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ isThemed, items = [] }) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             width="1.5rem"
+            height="1.5rem"
             className="text-gray-500"
           >
             <polyline points="15 18 9 12 15 6" />
@@ -121,6 +122,7 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ isThemed, items = [] }) => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   width="1.5rem"
+                  height="1.5rem"
                   className="text-gray-500"
                 >
                   <polyline points="9 18 15 12 9 6" />
