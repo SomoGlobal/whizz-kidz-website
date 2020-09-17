@@ -60,7 +60,7 @@ export const brands: IBrands = {
     hoverSmallBackgroundColor: 'hover:bg-gray-600',
     smallBackgroundColor: 'bg-gray-700',
     textColor: 'text-gray-600',
-    smallTextColor: 'text-gray-600',
+    smallTextColor: 'text-gray-700',
   },
 };
 
