@@ -1,11 +1,11 @@
 import ImageWithText from '../components/image-with-text';
-import LandingHero from '../components/landing-hero';
+import Hero from '../components/hero';
 import Mission from '../components/mission';
 import Article from '../components/article';
 import Decoration from '../components/decoration';
 
 const pageMap = {
-  hero: LandingHero,
+  hero: Hero,
   mission: Mission,
   article: Article,
   decoration: Decoration,
