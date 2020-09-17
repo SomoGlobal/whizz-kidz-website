@@ -66,6 +66,7 @@ query GetCategoryId($slug: String) {
   category(filter: {slug: {eq: $slug}}) {
     id
     name
+    slug
   }
 }
 `,
