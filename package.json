@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next build && next export",
-    "storybook": "start-storybook -c ./.scripts/storybook -p 6006",
+    "storybook": "start-storybook -c ./.scripts/storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook -c ./.scripts/storybook"
   },
   "browserslist": [

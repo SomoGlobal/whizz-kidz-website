@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import { Image } from 'react-datocms';
+import Podcast from '../../../components/podcast';
 import Article from '../../../components/article';
 import Breadcrumbs from '../../../components/breadcrumbs';
 import Container from '../../../components/container';
@@ -58,6 +59,12 @@ export default function DiscoverCategory({ preview, post }) {
             publishedAt={post._publishedAt}
             author={post.author}
           />
+          {post.podcastFile && (
+            <Podcast
+              file={post.podcastFile}
+              transcript={post.podcastTranscript}
+            />
+          )}
           <Article body={post.content} centered />
         </article>
       </Layout>
@@ -103,6 +110,14 @@ query PostPageQuery($slug: String) {
         name
         slug
       }
+    }
+    podcastFile {
+      url
+      title
+      mimeType
+    }
+    podcastTranscript {
+      url
     }
     author {
       name
