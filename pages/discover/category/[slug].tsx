@@ -60,23 +60,31 @@ query AllCategoriesForSlugs {
 export const getStaticProps: GetStaticProps = async (context) => {
   const preview = !!context.preview;
   const { slug } = context.params;
-  const data = await fetchAPI(
+  const categoryData = await fetchAPI(
     `
-query TopicsByCategory($slug: String) {
+query GetCategoryId($slug: String) {
   category(filter: {slug: {eq: $slug}}) {
+    id
     name
-    topics {
-      slug
-      name
-    }
   }
 }
-
 `,
     { preview, variables: { slug } }
   );
 
-  const topicGridTiles = data.category.topics.map((item) => ({
+  const topicsData = await fetchAPI(
+    `
+query GetTopicsByCategoryId($categoryId: ItemId) {
+  allTopics(filter: {category: {eq: $categoryId}}) {
+    name
+    slug
+  }
+}
+`,
+    { preview, variables: { categoryId: categoryData.category.id } }
+  );
+
+  const topicGridTiles = topicsData.allTopics.map((item) => ({
     label: item.name,
     linkProps: {
       as: `/discover/topic/${item.slug}`,
@@ -88,8 +96,8 @@ query TopicsByCategory($slug: String) {
     props: {
       preview,
       topicGridTiles,
-      title: data?.category.name,
-      category: data.category,
+      title: categoryData.category.name,
+      category: categoryData.category,
     },
   };
 };

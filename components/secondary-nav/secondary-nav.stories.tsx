@@ -19,11 +19,11 @@ Story.args = {
   color: 'bg-blue-500',
   activeIndex: 1,
   items: [
-    { label: 'Link 1', href: '/link-1' },
-    { label: 'Link 2', href: '/link-2' },
-    { label: 'Link 3', href: '/link-3' },
-    { label: 'Link 4', href: '/link-4' },
-    { label: 'Link 5', href: '/link-5' },
-    { label: 'Link 6', href: '/link-6' },
+    { label: 'Link 1', linkProps: { href: '/link-1' } },
+    { label: 'Link 2', linkProps: { href: '/link-2' } },
+    { label: 'Link 3', linkProps: { href: '/link-3' } },
+    { label: 'Link 4', linkProps: { href: '/link-4' } },
+    { label: 'Link 5', linkProps: { href: '/link-5' } },
+    { label: 'Link 6', linkProps: { href: '/link-6' } },
   ],
 };

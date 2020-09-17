@@ -17,6 +17,13 @@ export default function DiscoverCategory({ preview, post }) {
   const breadcrumbs = [
     { label: 'Discover', linkProps: { href: '/discover' } },
     {
+      label: post.topic.category.name,
+      linkProps: {
+        as: `/discover/category/${post.topic.category.slug}`,
+        href: `/discover/category/[slug]`,
+      },
+    },
+    {
       label: post.topic.name,
       linkProps: {
         as: `/discover/topic/${post.topic.slug}`,
@@ -39,18 +46,20 @@ export default function DiscoverCategory({ preview, post }) {
           <title>{post.title}</title>
         </Head>
         <Breadcrumbs items={breadcrumbs} />
-        {post.coverImage && (
-          <Container as="figure" className="pl-0 pr-0 lg:pl-4 lg:pr-4">
-            <Image data={post.coverImage.responsiveImage} explicitWidth />
-          </Container>
-        )}
-        <PostHeader
-          title={post.title}
-          summary={post.summary}
-          publishedAt={post._publishedAt}
-          author={post.author}
-        />
-        <Article body={post.content} centered />
+        <article>
+          {post.coverImage && (
+            <Container as="figure" className="pl-0 pr-0 lg:pl-4 lg:pr-4">
+              <Image data={post.coverImage.responsiveImage} explicitWidth />
+            </Container>
+          )}
+          <PostHeader
+            title={post.title}
+            summary={post.summary}
+            publishedAt={post._publishedAt}
+            author={post.author}
+          />
+          <Article body={post.content} centered />
+        </article>
       </Layout>
     </>
   );
@@ -90,6 +99,10 @@ query PostPageQuery($slug: String) {
     topic {
       name
       slug
+      category {
+        name
+        slug
+      }
     }
     author {
       name

@@ -6,7 +6,12 @@ import Layout from '../../components/layout';
 import LinkGrid from '../../components/link-grid';
 import { fetchAPI, responsiveImageFragment } from '../../lib/api';
 
-export default function Discover({ preview, categoryGridTiles, recentPosts }) {
+export default function Discover({
+  preview,
+  categoryGridTiles,
+  topicGridTiles,
+  recentPosts,
+}) {
   return (
     <>
       <Layout preview={preview} brand="discover" pageTitle="Discover">
@@ -15,6 +20,7 @@ export default function Discover({ preview, categoryGridTiles, recentPosts }) {
         </Head>
         <LinkGrid title="Explore by category" tiles={categoryGridTiles} />
         <PostCardList posts={recentPosts} label="Recent Posts" />
+        <LinkGrid title="Explore by topic" tiles={topicGridTiles} />
       </Layout>
     </>
   );
@@ -26,6 +32,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
     `
 query AllCategories {
   categories: allCategories(orderBy: position_ASC) {
+    name
+    slug
+    id
+  }
+  topics: allTopics(orderBy: position_ASC) {
     name
     slug
     id
@@ -55,7 +66,20 @@ ${responsiveImageFragment}
     },
   }));
 
+  const topicGridTiles = data.topics.map((item) => ({
+    label: item.name,
+    linkProps: {
+      as: `/discover/topic/${item.slug}`,
+      href: `/discover/topic/[slug]`,
+    },
+  }));
+
   return {
-    props: { preview, categoryGridTiles, recentPosts: data.recentPosts },
+    props: {
+      preview,
+      categoryGridTiles,
+      topicGridTiles,
+      recentPosts: data.recentPosts,
+    },
   };
 };

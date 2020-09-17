@@ -17,6 +17,13 @@ export default function DiscoverCategory({ preview, topic, topicPosts }) {
           items={[
             { label: 'Discover', linkProps: { href: '/discover' } },
             {
+              label: topic.category.name,
+              linkProps: {
+                as: `/discover/category/${topic.category.slug}`,
+                href: `/discover/category/[slug]`,
+              },
+            },
+            {
               label: topic.name,
               linkProps: {
                 as: `/discover/topic/${topic.slug}`,
@@ -62,6 +69,10 @@ query TopicName($slug: String) {
     id
     name
     slug
+    category {
+      slug
+      name
+    }
   }
 }
 `,

@@ -63,7 +63,7 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ isThemed, items = [] }) => {
 
       <Link {...secondToLastItem.linkProps}>
         <a
-          className={cx('px-3 py-4 font-bold flex md:hidden', {
+          className={cx('px-3 py-4 font-bold flex lg:hidden', {
             'text-gray-100': isThemed,
             'text-gray-700': !isThemed,
           })}
@@ -85,7 +85,7 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ isThemed, items = [] }) => {
         </a>
       </Link>
 
-      <Container as="nav" aria-label="breadcrumbs" className="hidden md:block">
+      <Container as="nav" aria-label="breadcrumbs" className="hidden lg:block">
         <ol className="list-none p-0 inline-flex">
           {items.map((item, index) => (
             <li

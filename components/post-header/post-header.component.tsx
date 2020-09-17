@@ -23,8 +23,8 @@ const PostHeader: React.FC<IPostHeaderProps> = ({
   author,
 }) => {
   return (
-    <Container>
-      <article className="my-10 md:my-20 max-w-3xl mx-auto grid gap-12">
+    <Container as="header">
+      <div className="my-10 md:my-20 max-w-3xl mx-auto grid gap-12">
         <Statement
           headerLevel={1}
           headerElement="heading"
@@ -34,7 +34,7 @@ const PostHeader: React.FC<IPostHeaderProps> = ({
           eyebrow={<DateTime label="Published" time={publishedAt} />}
         />
         <AuthorBox name={author.name} imageUrl={author.picture.url} />
-      </article>
+      </div>
     </Container>
   );
 };

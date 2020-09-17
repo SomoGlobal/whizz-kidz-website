@@ -35,7 +35,7 @@ const LinkGrid: React.FC<ILinkGridProps> = ({ tiles, title }) => {
         {tiles.map((tile, index) => (
           <GridTile
             key={tile.label}
-            backgroundColor={colors[index]}
+            backgroundColor={colors[index % colors.length]}
             label={tile.label}
             isBig={index === 0 && !is4}
             className={index === 0 && !is4 ? 'md:col-span-2 md:row-span-2' : ''}
