@@ -22,7 +22,12 @@ const Footer: React.FC = () => {
           <div className="w-48 md:w-24 mb-6 md:mb-0">
             <Logo />
           </div>
-          <Button className="w-full md:w-auto">Donate</Button>
+          <Button
+            className="w-full md:w-auto"
+            linkProps={{ href: process.env.DONATE_URL }}
+          >
+            Donate
+          </Button>
         </div>
       </Container>
       <hr className="border-indigo-800" />

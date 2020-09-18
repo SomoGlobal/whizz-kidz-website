@@ -87,11 +87,11 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ isThemed, items = [] }) => {
       </Link>
 
       <Container as="nav" aria-label="breadcrumbs" className="hidden lg:block">
-        <ol className="list-none p-0 inline-flex">
+        <ol className="list-none p-0 inline-flex truncate w-full">
           {items.map((item, index) => (
             <li
               key={item.linkProps.href}
-              className="flex items-center font-bold"
+              className="flex items-center font-bold truncate"
             >
               <Link {...item.linkProps}>
                 <a

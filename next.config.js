@@ -2,6 +2,7 @@ require('dotenv').config();
 
 module.exports = {
   env: {
+    DONATE_URL: 'https://www.committedgiving.uk.net/whizzkidz/public/index.aspx',
     CMS_DATOCMS_API_TOKEN: process.env.CMS_DATOCMS_API_TOKEN,
   },
   async redirects() {
