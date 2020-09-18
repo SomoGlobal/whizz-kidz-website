@@ -78,6 +78,14 @@ export async function getPage(preview: boolean, slug: string) {
         slug
         title
         modules {
+          ... on TextWithPatternRecord {
+            id
+            heading
+            eyebrow
+            pattern
+            text
+            _modelApiKey
+          }
           ... on DecorationRecord {
             id
             _modelApiKey
