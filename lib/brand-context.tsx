@@ -57,7 +57,7 @@ export const brands: IBrands = {
   },
   discover: {
     backgroundColor: 'bg-gray-600',
-    hoverSmallBackgroundColor: 'hover:bg-gray-600',
+    hoverSmallBackgroundColor: 'hover:bg-gray-700',
     smallBackgroundColor: 'bg-gray-700',
     textColor: 'text-gray-600',
     smallTextColor: 'text-gray-700',

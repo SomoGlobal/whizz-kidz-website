@@ -8,7 +8,11 @@ export default {
   title: 'Components/FeaturedPost',
   component: FeaturedPost,
   args: {
-    topic: 'General Topic',
+    topic: {
+      name: 'General Topic',
+      slug: 'general-topic',
+    },
+    publishedAt: new Date().toISOString(),
     title:
       'Example title here looks like this sometimes can be anything just try it',
     image: {

@@ -7,7 +7,7 @@ export interface ISecondaryNavProps {
   color?: string;
   activeIndex?: number;
   items: Array<{
-    id: string;
+    id?: string;
     label: string;
     linkProps: any;
   }>;
@@ -29,7 +29,7 @@ const SecondaryNav: React.FC<ISecondaryNavProps> = ({
         <nav aria-label="Sibling pages">
           <ul className="flex flex-wrap">
             {items.map((nav, index) => (
-              <li key={nav.id}>
+              <li key={nav.label}>
                 <Link {...nav.linkProps}>
                   <a
                     aria-current={index === activeIndex ? 'page' : 'false'}

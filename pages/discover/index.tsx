@@ -5,19 +5,40 @@ import PostCardList from '../../components/post-card-list';
 import Layout from '../../components/layout';
 import LinkGrid from '../../components/link-grid';
 import { fetchAPI, responsiveImageFragment } from '../../lib/api';
+import FeaturedPost from '../../components/featured-post';
 
 export default function Discover({
   preview,
+  featuredPost,
   categoryGridTiles,
   topicGridTiles,
   recentPosts,
 }) {
+  const secondaryNavItems = [
+    { label: 'Home', linkProps: { href: '/discover' } },
+    ...categoryGridTiles,
+  ];
+
   return (
     <>
-      <Layout preview={preview} brand="discover" pageTitle="Discover">
+      <Layout
+        preview={preview}
+        brand="discover"
+        pageTitle="Discover"
+        secondaryNavItems={secondaryNavItems}
+      >
         <Head>
           <title>Discover</title>
         </Head>
+        {featuredPost && (
+          <FeaturedPost
+            slug={featuredPost.slug}
+            title={featuredPost.title}
+            image={featuredPost.coverImage}
+            topic={featuredPost.topic}
+            publishedAt={featuredPost._firstPublishedAt}
+          />
+        )}
         <LinkGrid title="Explore by category" tiles={categoryGridTiles} />
         <PostCardList posts={recentPosts} label="Recent Posts" />
         <LinkGrid title="Explore by topic" tiles={topicGridTiles} />
@@ -30,7 +51,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const preview = !!context.preview;
   const data = await fetchAPI(
     `
-query AllCategories {
+query DiscoverHomePage {
   categories: allCategories(orderBy: position_ASC) {
     name
     slug
@@ -40,6 +61,20 @@ query AllCategories {
     name
     slug
     id
+  }
+  featuredPost: post(filter: {featured: {eq: true}}, orderBy: _firstPublishedAt_DESC) {
+    slug
+    title
+    _firstPublishedAt
+    topic {
+      slug
+      name
+    }
+    coverImage {
+      responsiveImage(imgixParams: {auto: format, fit: crop, w: 2480, ar: "16:9"}) {
+        ...responsiveImageFragment
+      }
+    }
   }
   recentPosts: allPosts(orderBy: _firstPublishedAt_DESC, first: "6") {
     id
@@ -77,6 +112,7 @@ ${responsiveImageFragment}
   return {
     props: {
       preview,
+      featuredPost: data.featuredPost,
       categoryGridTiles,
       topicGridTiles,
       recentPosts: data.recentPosts,

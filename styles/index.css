@@ -19,6 +19,6 @@ body {
   box-decoration-break: clone;
 }
 
-:focus, button:focus {
+a:focus, button:focus {
   outline: var(--focus-color) solid 3px;
 }
