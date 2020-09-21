@@ -2,6 +2,9 @@ import cx from 'classnames';
 import { useReducedMotion } from 'framer-motion';
 import React from 'react';
 import { Parallax } from 'react-scroll-parallax';
+import CallToAction, {
+  ICallToActionProps,
+} from '../call-to-action/call-to-action.component';
 import Container from '../container';
 import Statement from '../statement';
 import { IStatementProps } from '../statement/statement.component';
@@ -9,6 +12,7 @@ import { IStatementProps } from '../statement/statement.component';
 export interface ITextWithProps extends IStatementProps {
   transparentBackground?: boolean;
   imagePosition: 'left' | 'right';
+  callToAction?: ICallToActionProps;
 }
 
 const TextWith: React.FC<ITextWithProps> = ({
@@ -18,6 +22,7 @@ const TextWith: React.FC<ITextWithProps> = ({
   text,
   imagePosition = 'right',
   transparentBackground,
+  callToAction,
 }) => {
   const shouldReduceMotion = useReducedMotion();
 
@@ -35,6 +40,11 @@ const TextWith: React.FC<ITextWithProps> = ({
           })}
         >
           <Statement heading={heading} eyebrow={eyebrow} text={text} />
+          {callToAction && (
+            <div>
+              <CallToAction {...callToAction} />
+            </div>
+          )}
         </div>
         {children && (
           <Parallax

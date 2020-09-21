@@ -1,5 +1,6 @@
 import Article from '../components/article';
 import Decoration from '../components/decoration';
+import FullWidthImage from '../components/full-width-image';
 import Hero from '../components/hero';
 import Mission from '../components/mission';
 import TextWithImage from '../components/text-with-image';
@@ -12,6 +13,7 @@ const pageMap = {
   decoration: Decoration,
   image_with_text: TextWithImage,
   text_with_pattern: TextWithPattern,
+  full_width_image: FullWidthImage,
 };
 
 export default pageMap;

@@ -6,11 +6,13 @@ import { Parallax } from 'react-scroll-parallax';
 import Container from '../container';
 import Statement from '../statement';
 import { IStatementProps } from '../statement/statement.component';
+import Button from '../button';
 
 export interface IImageWithTextProps extends IStatementProps {
   image?: any;
   transparentBackground?: boolean;
   imagePosition: 'left' | 'right';
+  cta?: any;
 }
 
 const ImageWithText: React.FC<IImageWithTextProps> = ({
@@ -20,6 +22,7 @@ const ImageWithText: React.FC<IImageWithTextProps> = ({
   text,
   imagePosition = 'right',
   transparentBackground,
+  cta,
 }) => {
   const shouldReduceMotion = useReducedMotion();
 
@@ -37,6 +40,13 @@ const ImageWithText: React.FC<IImageWithTextProps> = ({
           })}
         >
           <Statement heading={heading} eyebrow={eyebrow} text={text} />
+          {cta && cta.linkProps && cta.label && (
+            <div>
+              <Button linkProps={cta.linkProps} size="lg">
+                {cta.label}
+              </Button>
+            </div>
+          )}
         </div>
         {image && (
           <Parallax

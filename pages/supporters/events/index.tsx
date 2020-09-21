@@ -33,6 +33,13 @@ export default function EventsHome({
           imagePosition="right"
           eyebrow="Featured Event"
           heading={eventsPage.featuredEvent.name}
+          cta={{
+            label: 'See Event Details',
+            linkProps: {
+              as: `/supporters/events/${eventsPage.featuredEvent.slug}`,
+              href: `/supporters/events/[slug]`,
+            },
+          }}
         />
         <Article body={eventsPage.openingParagraph} />
         <BorderedGrid

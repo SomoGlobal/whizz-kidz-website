@@ -5,10 +5,10 @@ import Container from '../container';
 import Button from '../button';
 
 const footerNavigationLinks = [
-  { label: 'Accessibility', href: '/accessibility' },
-  { label: 'Cookies', href: '/cookies' },
-  { label: 'Privacy', href: '/privacy' },
-  { label: 'Terms and Conditions', href: '/terms' },
+  { label: 'Accessibility', linkProps: { href: '/accessibility' } },
+  { label: 'Cookies', linkProps: { href: '/cookies' } },
+  { label: 'Privacy', linkProps: { href: '/privacy' } },
+  { label: 'Terms and Conditions', linkProps: { href: '/terms' } },
 ];
 
 const Footer: React.FC = () => {
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
           </div>
           <Button
             className="w-full md:w-auto"
-            linkProps={{ href: process.env.DONATE_URL }}
+            linkProps={{ href: process.env.DONATE_URL || '/donate' }}
           >
             Donate
           </Button>
@@ -53,8 +53,8 @@ const Footer: React.FC = () => {
           <nav aria-label="Website Policies">
             <ul className="flex flex-col md:flex-row">
               {footerNavigationLinks.map((nav) => (
-                <li key={nav.href} className="md:ml-4">
-                  <Link href={nav.href}>
+                <li key={nav.linkProps.href} className="md:ml-4">
+                  <Link {...nav.linkProps}>
                     <a className="block py-4 md:py-0 hover:underline whitespace-no-wrap">
                       {nav.label}
                     </a>

@@ -1,10 +1,10 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import { fetchAPI } from '../../../lib/api';
-import Layout from '../../../components/layout';
-import LandingHero from '../../../components/landing-hero';
 import BorderedGrid from '../../../components/bordered-grid';
+import Breadcrumbs from '../../../components/breadcrumbs';
+import Layout from '../../../components/layout';
+import { fetchAPI } from '../../../lib/api';
 import DatoModule from '../../../lib/dato-module';
 
 export default function EventPage({ event, preview }) {
@@ -17,8 +17,26 @@ export default function EventPage({ event, preview }) {
       <Head>
         <title>{event.name}</title>
       </Head>
-      <Layout brand="supporters" preview={preview}>
-        <LandingHero title={event.name} />
+      <Layout brand="supporters" preview={preview} pageTitle={event.name}>
+        <Breadcrumbs
+          items={[
+            { label: 'Supporters', linkProps: { href: '/supporters' } },
+            {
+              label: 'Events',
+              linkProps: {
+                href: `/supporters/events`,
+              },
+            },
+            {
+              label: event.name,
+              linkProps: {
+                href: `/supporters/events/[slug]`,
+                as: `/supporters/events/${event.slug}`,
+              },
+            },
+          ]}
+        />
+
         <BorderedGrid
           heading="Event Details"
           items={[

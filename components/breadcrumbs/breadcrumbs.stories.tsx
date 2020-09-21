@@ -19,5 +19,6 @@ export default {
 
 export const Themed = Template.bind({});
 Themed.args = { isThemed: true };
+
 export const NotThemed = Template.bind({});
 NotThemed.args = { isThemed: false };

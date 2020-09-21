@@ -4,6 +4,10 @@
 /* purgecss end ignore */
 @tailwind utilities;
 
+:root {
+  --focus-color: #78aeda;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -13,4 +17,8 @@ body {
 .clone {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
+}
+
+:focus, button:focus {
+  outline: var(--focus-color) solid 3px;
 }

@@ -113,7 +113,16 @@ export async function getPage(preview: boolean, slug: string) {
             backgroundType
             pattern
             image {
-              responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 1240, h: 540}) {
+              responsiveImage(imgixParams: {auto: format, fit: crop, w: 1240, h: 540}) {
+                ...responsiveImageFragment
+              }
+            }
+          }
+          ... on FullWidthImageRecord {
+            id
+            _modelApiKey
+            image {
+              responsiveImage(imgixParams: {auto: format, fit: crop, w: 1440, h: 500}) {
                 ...responsiveImageFragment
               }
             }
@@ -127,8 +136,39 @@ export async function getPage(preview: boolean, slug: string) {
             transparentBackground
             _modelApiKey
             image {
-              responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 300, h: 300}) {
+              responsiveImage(imgixParams: {auto: format, fit: crop, w: 300, h: 300}) {
                 ...responsiveImageFragment
+              }
+            }
+            callToAction {
+              label
+              internal {
+                ... on CategoryRecord {
+                  slug
+                  _modelApiKey
+                }
+                ... on PageRecord {
+                  slug
+                  _modelApiKey
+                  parent {
+                    slug
+                    parent {
+                      slug
+                    }
+                  }
+                }
+                ... on EventRecord {
+                  slug
+                  _modelApiKey
+                }
+                ... on TopicRecord {
+                  slug
+                  _modelApiKey
+                }
+                ... on PostRecord {
+                  slug
+                  _modelApiKey
+                }
               }
             }
           }
@@ -278,14 +318,14 @@ export async function getAllPostsForHome(preview) {
         excerpt
         date
         coverImage {
-          responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
+          responsiveImage(imgixParams: {auto: format, fit: crop, w: 2000, h: 1000 }) {
             ...responsiveImageFragment
           }
         }
         author {
           name
           picture {
-            url(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100, sat: -100})
+            url(imgixParams: {auto: format, fit: crop, w: 100, h: 100, sat: -100})
           }
         }
       }
@@ -309,17 +349,17 @@ export async function getPostAndMorePosts(slug, preview) {
       content
       date
       ogImage: coverImage{
-        url(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 })
+        url(imgixParams: {auto: format, fit: crop, w: 2000, h: 1000 })
       }
       coverImage {
-        responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
+        responsiveImage(imgixParams: {auto: format, fit: crop, w: 2000, h: 1000 }) {
           ...responsiveImageFragment
         }
       }
       author {
         name
         picture {
-          url(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100, sat: -100})
+          url(imgixParams: {auto: format, fit: crop, w: 100, h: 100, sat: -100})
         }
       }
     }
@@ -330,14 +370,14 @@ export async function getPostAndMorePosts(slug, preview) {
       excerpt
       date
       coverImage {
-        responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 2000, h: 1000 }) {
+        responsiveImage(imgixParams: {auto: format, fit: crop, w: 2000, h: 1000 }) {
           ...responsiveImageFragment
         }
       }
       author {
         name
         picture {
-          url(imgixParams: {fm: jpg, fit: crop, w: 100, h: 100, sat: -100})
+          url(imgixParams: {auto: format, fit: crop, w: 100, h: 100, sat: -100})
         }
       }
     }
