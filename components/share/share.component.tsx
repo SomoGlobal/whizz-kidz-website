@@ -14,7 +14,7 @@ const Item: React.FC<any> = ({ className, href, type, label }) => (
       target="_blank"
       rel="noreferrer"
       href={href}
-      className={`flex items-center my-2 mx-4 sm:mx-0 bg-gray-200 text-gray-600 hover:text-white rounded-full p-3 ${className}`}
+      className={`transition-colors duration-100 ease-in-out flex items-center my-2 mx-4 sm:mx-0 bg-gray-200 text-gray-600 hover:text-white rounded-full p-3 ${className}`}
     >
       <SocialIcon type={type} size={ICON_SIZE} />
       <span className="ml-2 sr-only">{label}</span>
