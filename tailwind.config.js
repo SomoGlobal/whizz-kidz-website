@@ -14,6 +14,7 @@ module.exports = {
         twitter: '#1DA1F2',
         instagram: '#E4405F',
         youtube: '#FF0000',
+        linkedin: '#0077B5',
       },
       zIndex: {
         '-1': '-1',

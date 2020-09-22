@@ -8,6 +8,10 @@ export default {
   title: 'Components/PostHeader',
   component: PostHeader,
   args: {
+    share: {
+      url: `http://www.whizz-kidz.org.uk/discover/post/text`,
+      title: "Why I'm watching Netflix's Raising Dion",
+    },
     author: {
       name: 'Joe Blogs',
       picture: {

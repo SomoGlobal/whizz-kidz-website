@@ -10,6 +10,7 @@ export interface IStatementProps {
   hasBigHeading?: boolean;
   headerElement?: 'eyebrow' | 'heading';
   headerLevel?: number;
+  className?: string;
 }
 
 const Statement: React.FC<IStatementProps> = ({
@@ -20,6 +21,7 @@ const Statement: React.FC<IStatementProps> = ({
   hasBigHeading = false,
   headerElement = 'eyebrow',
   headerLevel = 2,
+  className,
 }) => {
   const { smallTextColor } = useContext(BrandContext);
   const eyebrowElement = React.createElement(
@@ -45,7 +47,7 @@ const Statement: React.FC<IStatementProps> = ({
   );
 
   return (
-    <div className={cx({ 'text-center': isCentered })}>
+    <div className={cx({ 'text-center': isCentered }, className)}>
       {eyebrow && eyebrowElement}
       {heading && headingElement}
       {text && (

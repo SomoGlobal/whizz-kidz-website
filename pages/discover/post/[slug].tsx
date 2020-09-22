@@ -1,8 +1,9 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
+import cx from 'classnames';
 import { Image } from 'react-datocms';
-import Article from '../../../components/article';
+import styles from '../../../components/article/article.module.css';
 import Container from '../../../components/container';
 import Layout from '../../../components/layout';
 import Podcast from '../../../components/podcast';
@@ -50,7 +51,7 @@ export default function DiscoverCategory({ preview, post }) {
         <Head>
           <title>{post.title}</title>
         </Head>
-        <article>
+        <article style={{ display: 'unset' }}>
           {post.coverImage && (
             <Container as="figure" className="pl-0 pr-0 lg:pl-4 lg:pr-4">
               <Image data={post.coverImage.responsiveImage} explicitWidth />
@@ -61,6 +62,10 @@ export default function DiscoverCategory({ preview, post }) {
             summary={post.summary}
             publishedAt={post._publishedAt}
             author={post.author}
+            share={{
+              title: post.title,
+              url: `http://www.whizz-kidz.org.uk/discover/post/${post.slug}`,
+            }}
           />
           {post.podcastFile && (
             <Podcast
@@ -68,7 +73,15 @@ export default function DiscoverCategory({ preview, post }) {
               transcript={post.podcastTranscript}
             />
           )}
-          <Article body={post.content} centered />
+          <Container className="grid grid-cols-6 gap-4">
+            <div
+              dangerouslySetInnerHTML={{ __html: post.content }}
+              className={cx(
+                styles.article,
+                'md:col-start-2 md:col-end-6 col-span-6'
+              )}
+            />
+          </Container>
         </article>
       </Layout>
     </>
