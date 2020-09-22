@@ -201,7 +201,7 @@ export const getChildNavItems = memo(async (slug, pathPrefix = '') => {
       }
     }`,
     {
-      preview: false,
+      preview: true,
       variables: {
         slug,
       },
@@ -340,7 +340,7 @@ export async function getAllPostsForHome(preview) {
 }
 
 export async function getPostAndMorePosts(slug, preview) {
-  const data = await fetchAPI(
+  return await fetchAPI(
     `
   query PostBySlug($slug: String) {
     post(filter: {slug: {eq: $slug}}) {
@@ -392,5 +392,4 @@ export async function getPostAndMorePosts(slug, preview) {
       },
     }
   );
-  return data;
 }

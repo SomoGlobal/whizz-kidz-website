@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import BrandContext, { brands } from '../../lib/brand-context';
 import Alert from '../alert';
+import Breadcrumbs from '../breadcrumbs';
 import Footer from '../footer';
 import Header from '../header';
 import PageTitle from '../page-title';
@@ -84,6 +85,7 @@ const Layout: React.FC<any> = ({
   brand = 'default',
   preview,
   children,
+  breadcrumbs = [],
   pageTitle,
   secondaryNavItems = [],
 }) => {
@@ -111,6 +113,7 @@ const Layout: React.FC<any> = ({
         <Alert preview={preview} />
         <Header links={links} primaryActiveIndex={primaryActiveIndex} />
         {pageTitle && <PageTitle text={pageTitle} />}
+        {breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} />}
         {secondaryNavItems.length > 0 && (
           <SecondaryNav
             activeIndex={secondaryActiveIndex}

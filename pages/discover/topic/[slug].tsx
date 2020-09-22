@@ -1,37 +1,40 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import PostCardList from '../../../components/post-card-list';
-import Breadcrumbs from '../../../components/breadcrumbs';
 import Layout from '../../../components/layout';
+import PostCardList from '../../../components/post-card-list';
 import { fetchAPI, responsiveImageFragment } from '../../../lib/api';
 
 export default function DiscoverCategory({ preview, topic, topicPosts }) {
+  const breadcrumbs = [
+    { label: 'Discover', linkProps: { href: '/discover' } },
+    {
+      label: topic.category.name,
+      linkProps: {
+        as: `/discover/category/${topic.category.slug}`,
+        href: `/discover/category/[slug]`,
+      },
+    },
+    {
+      label: topic.name,
+      linkProps: {
+        as: `/discover/topic/${topic.slug}`,
+        href: `/discover/topic/[slug]`,
+      },
+    },
+  ];
+
   return (
     <>
-      <Layout preview={preview} brand="discover" pageTitle={topic.name}>
+      <Layout
+        preview={preview}
+        brand="discover"
+        pageTitle={topic.name}
+        breadcrumbs={breadcrumbs}
+      >
         <Head>
           <title>{topic.name}</title>
         </Head>
-        <Breadcrumbs
-          items={[
-            { label: 'Discover', linkProps: { href: '/discover' } },
-            {
-              label: topic.category.name,
-              linkProps: {
-                as: `/discover/category/${topic.category.slug}`,
-                href: `/discover/category/[slug]`,
-              },
-            },
-            {
-              label: topic.name,
-              linkProps: {
-                as: `/discover/topic/${topic.slug}`,
-                href: `/discover/topic/[slug]`,
-              },
-            },
-          ]}
-        />
         <PostCardList posts={topicPosts.posts} label="Most Recent Posts" />
       </Layout>
     </>

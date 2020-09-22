@@ -12,6 +12,11 @@ module.exports = {
         destination: '/charity',
         permanent: true,
       },
+      {
+        source: '/donate',
+        destination: 'https://www.committedgiving.uk.net/whizzkidz/public/index.aspx',
+        permanent: false,
+      },
     ]
   },
 };

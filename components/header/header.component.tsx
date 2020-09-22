@@ -31,10 +31,7 @@ const Header: React.FC<{ links: any[]; primaryActiveIndex?: number }> = ({
             </Link>
             <PrimaryNav links={links} activeIndex={primaryActiveIndex} />
             <div className="flex items-center ml-4">
-              <Button
-                size="m"
-                linkProps={{ href: process.env.DONATE_URL || '/donate' }}
-              >
+              <Button size="m" linkProps={{ href: '/donate' }}>
                 Donate
               </Button>
               <Link href="/search">

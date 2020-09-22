@@ -44,7 +44,7 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ isThemed, items = [] }) => {
   const secondToLastItem = items[items.length - 2];
 
   return (
-    <div className={isThemed && backgroundColor}>
+    <div className={`${isThemed ? backgroundColor : 'bg-white'}`}>
       <Head>
         <JSONLD>
           <Generic type="BreadcrumbList" jsonldtype="BreadcrumbList">
@@ -61,33 +61,32 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ isThemed, items = [] }) => {
         </JSONLD>
       </Head>
 
-      <Link {...secondToLastItem.linkProps}>
-        <a
-          className={cx('px-3 py-4 font-bold flex lg:hidden', {
-            'text-gray-100': isThemed,
-            'text-gray-700': !isThemed,
-          })}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            width="1.5rem"
-            height="1.5rem"
-            className="text-gray-500"
+      <Container as="nav" aria-label="breadcrumbs">
+        <Link {...secondToLastItem.linkProps}>
+          <a
+            className={cx('pr-3 py-4 font-bold flex lg:hidden', {
+              'text-gray-100': isThemed,
+              'text-gray-700': !isThemed,
+            })}
           >
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-          {secondToLastItem.label}
-        </a>
-      </Link>
-
-      <Container as="nav" aria-label="breadcrumbs" className="hidden lg:block">
-        <ol className="list-none p-0 my-1 inline-flex w-full">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              width="1.5rem"
+              height="1.5rem"
+              className="text-gray-500"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            {secondToLastItem.label}
+          </a>
+        </Link>
+        <ol className="list-none p-0 my-1 hidden lg:inline-flex w-full">
           {items.map((item, index) => (
             <li
               key={item.linkProps.href}
@@ -95,7 +94,7 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ isThemed, items = [] }) => {
             >
               <Link {...item.linkProps}>
                 <a
-                  aria-current={!isLastItem(index) ? 'page' : false}
+                  aria-current={isLastItem(index) ? 'page' : false}
                   className={cx(
                     'px-3 py-2',
                     {

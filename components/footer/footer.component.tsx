@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Logo from '../logo';
 import Container from '../container';
 import Button from '../button';
+import SocialLinks from '../social-links';
 
 const footerNavigationLinks = [
   { label: 'Accessibility', linkProps: { href: '/accessibility' } },
@@ -10,6 +11,13 @@ const footerNavigationLinks = [
   { label: 'Privacy', linkProps: { href: '/privacy' } },
   { label: 'Terms and Conditions', linkProps: { href: '/terms' } },
 ];
+
+const social = {
+  facebook: 'whizzkidz',
+  twitter: 'WhizzKidz',
+  instagram: 'whizzkidzuk',
+  youtube: 'WhizzKidzUK',
+};
 
 const Footer: React.FC = () => {
   return (
@@ -22,9 +30,10 @@ const Footer: React.FC = () => {
           <div className="w-48 md:w-24 mb-6 md:mb-0">
             <Logo />
           </div>
+          <SocialLinks {...social} />
           <Button
-            className="w-full md:w-auto"
-            linkProps={{ href: process.env.DONATE_URL || '/donate' }}
+            className="w-full md:w-auto mt-6 md:mt-0"
+            linkProps={{ href: '/donate' }}
           >
             Donate
           </Button>

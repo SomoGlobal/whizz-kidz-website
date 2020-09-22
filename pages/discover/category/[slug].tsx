@@ -1,7 +1,6 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import Breadcrumbs from '../../../components/breadcrumbs';
 import Layout from '../../../components/layout';
 import LinkGrid from '../../../components/link-grid';
 import { fetchAPI } from '../../../lib/api';
@@ -14,22 +13,24 @@ export default function DiscoverCategory({
 }) {
   return (
     <>
-      <Layout preview={preview} brand="discover" pageTitle={title}>
+      <Layout
+        preview={preview}
+        brand="discover"
+        pageTitle={title}
+        breadcrumbs={[
+          { label: 'Discover', linkProps: { href: '/discover' } },
+          {
+            label: category.name,
+            linkProps: {
+              as: `/discover/category/${category.slug}`,
+              href: `/discover/category/[slug]`,
+            },
+          },
+        ]}
+      >
         <Head>
           <title>{title}</title>
         </Head>
-        <Breadcrumbs
-          items={[
-            { label: 'Discover', linkProps: { href: '/discover' } },
-            {
-              label: category.name,
-              linkProps: {
-                as: `/discover/category/${category.slug}`,
-                href: `/discover/category/[slug]`,
-              },
-            },
-          ]}
-        />
         <LinkGrid title="Explore by topic" tiles={topicGridTiles} />
       </Layout>
     </>

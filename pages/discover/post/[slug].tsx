@@ -2,11 +2,10 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import { Image } from 'react-datocms';
-import Podcast from '../../../components/podcast';
 import Article from '../../../components/article';
-import Breadcrumbs from '../../../components/breadcrumbs';
 import Container from '../../../components/container';
 import Layout from '../../../components/layout';
+import Podcast from '../../../components/podcast';
 import PostHeader from '../../../components/post-header';
 import { fetchAPI, responsiveImageFragment } from '../../../lib/api';
 
@@ -42,11 +41,15 @@ export default function DiscoverCategory({ preview, post }) {
 
   return (
     <>
-      <Layout preview={preview} brand="discover" pageTitle="Discover">
+      <Layout
+        preview={preview}
+        brand="discover"
+        pageTitle="Discover"
+        breadcrumbs={breadcrumbs}
+      >
         <Head>
           <title>{post.title}</title>
         </Head>
-        <Breadcrumbs items={breadcrumbs} />
         <article>
           {post.coverImage && (
             <Container as="figure" className="pl-0 pr-0 lg:pl-4 lg:pr-4">

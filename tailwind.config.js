@@ -9,6 +9,12 @@ module.exports = {
   },
   theme: {
     extend: {
+      colors: {
+        facebook: '#1877F2',
+        twitter: '#1DA1F2',
+        instagram: '#E4405F',
+        youtube: '#FF0000',
+      },
       zIndex: {
         '-1': '-1',
       },
