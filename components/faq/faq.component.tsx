@@ -9,13 +9,14 @@ import Container from '../container';
 import Expander from '../expander';
 
 export interface IFaqProps {
+  heading?: string;
   items: Array<{ id: string | number; question: string; answer: string }>;
 }
 
 /**
  * @link https://developers.google.com/search/docs/data-types/faqpage
  */
-const Faq: React.FC<IFaqProps> = ({ items }) => {
+const Faq: React.FC<IFaqProps> = ({ items, heading }) => {
   return (
     <Container as="section" aria-label="FAQ">
       <JSONLD>
@@ -34,9 +35,11 @@ const Faq: React.FC<IFaqProps> = ({ items }) => {
         </Generic>
       </JSONLD>
       <div className="my-40 md:mx-16 text-gray-700">
-        <h2 className="max-w-3xl mx-auto mb-6 text-4xl font-bold leading-snug">
-          Frequently asked questions
-        </h2>
+        {heading && (
+          <h2 className="max-w-3xl mx-auto mb-6 text-4xl font-bold leading-snug">
+            {heading}
+          </h2>
+        )}
         <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-lg border border-gray-300">
           {items.map((item) => (
             <Expander id={item.id} key={item.id} title={item.question}>

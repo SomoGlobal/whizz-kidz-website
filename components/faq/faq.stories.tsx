@@ -15,6 +15,7 @@ export default {
 export const Story = Template.bind({});
 
 Story.args = {
+  heading: 'Frequently asked questions',
   items: [
     { id: 1, question: 'Title 1', answer: 'answer 1' },
     { id: 2, question: 'Title 2', answer: 'answer 2' },

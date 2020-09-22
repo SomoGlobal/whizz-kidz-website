@@ -78,6 +78,16 @@ export async function getPage(preview: boolean, slug: string) {
         slug
         title
         modules {
+          ... on QuestionRecord {
+            id
+            _modelApiKey
+            heading
+            items {
+              question
+              answer(markdown: false)
+              id
+            }
+          }
           ... on TextWithPatternRecord {
             id
             heading
