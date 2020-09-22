@@ -2,7 +2,6 @@ import cx from 'classnames';
 import React, { useContext } from 'react';
 import BrandContext from '../../lib/brand-context';
 import Container from '../container';
-import Puzzle from '../puzzle';
 
 export interface ILandingHeroProps {
   color?: string;
@@ -40,12 +39,6 @@ const LandingHero: React.FC<ILandingHeroProps> = ({
 }) => {
   const { backgroundColor } = useContext(BrandContext);
   const bgColor = color || backgroundColor;
-
-  const PuzzleBackground = (
-    <div className="absolute top-0 right-0 invisible w-1/2 h-full md:visible">
-      <Puzzle />
-    </div>
-  );
 
   const content = (
     <Container

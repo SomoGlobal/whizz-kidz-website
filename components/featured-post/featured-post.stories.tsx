@@ -12,7 +12,7 @@ export default {
       name: 'General Topic',
       slug: 'general-topic',
     },
-    publishedAt: new Date().toISOString(),
+    publishedAt: new Date('1995-12-17T03:24:00').toISOString(),
     title:
       'Example title here looks like this sometimes can be anything just try it',
     image: {

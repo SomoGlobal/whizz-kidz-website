@@ -1,1 +1,0 @@
-import React from 'react';import PatternPieceSimpleSlide from './pattern-piece-simple-slide.component';export default {  title: 'Components/PatternPieceSimpleSlide',  component: PatternPieceSimpleSlide,};export const Story = () => <PatternPieceSimpleSlide />;Story.story = {  name: 'pattern piece simple slide',};
