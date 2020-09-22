@@ -15,6 +15,12 @@ export default function DiscoverCategory({ preview, post }) {
     return null;
   }
 
+  let url = `http://www.whizz-kidz.org.uk/discover/post/${post.slug}`;
+
+  if (typeof window !== 'undefined') {
+    url = (window as any).location.href;
+  }
+
   const breadcrumbs = [
     { label: 'Discover', linkProps: { href: '/discover' } },
     {
@@ -64,7 +70,7 @@ export default function DiscoverCategory({ preview, post }) {
             author={post.author}
             share={{
               title: post.title,
-              url: `http://www.whizz-kidz.org.uk/discover/post/${post.slug}`,
+              url,
             }}
           />
           {post.podcastFile && (
