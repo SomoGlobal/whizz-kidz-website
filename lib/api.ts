@@ -78,6 +78,13 @@ export async function getPage(preview: boolean, slug: string) {
         slug
         title
         modules {
+          ... on StepRecord {
+            id
+            header
+            number
+            body(markdown: true)
+            _modelApiKey
+          }
           ... on QuestionRecord {
             id
             _modelApiKey
