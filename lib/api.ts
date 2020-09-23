@@ -1,8 +1,6 @@
 import 'isomorphic-unfetch';
 import memo from 'memoizee';
-
-const API_URL = 'https://graphql.datocms.com';
-const API_TOKEN = process.env.CMS_DATOCMS_API_TOKEN;
+import { GraphQLClient } from 'graphql-request';
 
 const CUSTOM_NAV_ITEMS = {
   families: [
@@ -24,6 +22,18 @@ const CUSTOM_NAV_ITEMS = {
     },
   ],
 };
+
+const API_URL = 'https://graphql.datocms.com';
+const API_TOKEN = process.env.CMS_DATOCMS_API_TOKEN;
+
+const headers = {
+  'Content-Type': 'application/json',
+  Authorization: `Bearer ${API_TOKEN}`,
+};
+
+const client = new GraphQLClient(API_URL, { headers });
+
+export default client;
 
 // See: https://www.datocms.com/blog/offer-responsive-progressive-lqip-images-in-2020
 export const responsiveImageFragment = `
@@ -48,10 +58,7 @@ export const fetchAPI = async (
 ) => {
   const res = await fetch(API_URL + (preview ? '/preview' : ''), {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${API_TOKEN}`,
-    },
+    headers,
     body: JSON.stringify({
       query,
       variables,
@@ -78,6 +85,13 @@ export async function getPage(preview: boolean, slug: string) {
         slug
         title
         modules {
+          ... on TopicGridRecord {
+            id
+            _modelApiKey
+            category {
+              id
+            }
+          }
           ... on StepRecord {
             id
             header
@@ -357,7 +371,7 @@ export async function getAllPostsForHome(preview) {
 }
 
 export async function getPostAndMorePosts(slug, preview) {
-  return await fetchAPI(
+  const data = await fetchAPI(
     `
   query PostBySlug($slug: String) {
     post(filter: {slug: {eq: $slug}}) {
@@ -409,4 +423,6 @@ export async function getPostAndMorePosts(slug, preview) {
       },
     }
   );
+
+  return data;
 }

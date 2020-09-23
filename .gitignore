@@ -35,3 +35,6 @@ yarn-error.log*
 .idea
 
 build-storybook.log
+
+# Code generation
+__generated__
