@@ -10,6 +10,8 @@ export default {
   args: {
     category: {
       id: 1,
+      slug: 'example',
+      name: 'example',
     },
   },
 };

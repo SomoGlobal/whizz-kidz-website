@@ -89,6 +89,8 @@ export async function getPage(preview: boolean, slug: string) {
             id
             _modelApiKey
             category {
+              slug
+              name
               id
             }
           }

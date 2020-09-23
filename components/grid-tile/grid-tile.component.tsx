@@ -1,6 +1,9 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import cx from 'classnames';
+
+import { motion, useAnimation, useReducedMotion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 export interface IGridTileProps {
   label: string;
@@ -18,8 +21,27 @@ const GridTile: React.FC<IGridTileProps> = ({
   backgroundColor = 'bg-yellow-400',
   linkProps = { href: '/' },
 }) => {
+  const shouldReduceMotion = useReducedMotion();
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
+
   return (
-    <li className={className}>
+    <motion.li
+      className={className}
+      ref={ref}
+      animate={controls}
+      initial="hidden"
+      variants={{
+        visible: { opacity: 1, y: 0, transition: { delay: 0.075 } },
+        hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
+      }}
+    >
       <Link {...linkProps}>
         <a
           className={cx(
@@ -52,7 +74,7 @@ const GridTile: React.FC<IGridTileProps> = ({
           </div>
         </a>
       </Link>
-    </li>
+    </motion.li>
   );
 };
 

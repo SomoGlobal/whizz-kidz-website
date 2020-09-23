@@ -1,6 +1,8 @@
 import React from 'react';
 import useSWR from 'swr';
 import LinkGrid from 'components/link-grid';
+import Button from '../../components/button';
+import Container from '../../components/container';
 import api from '../../lib/api';
 
 const GET_TOPICS_BY_CATEGORY_ID = `
@@ -14,6 +16,8 @@ const GET_TOPICS_BY_CATEGORY_ID = `
 
 export interface ITopicGridProps {
   category: {
+    slug: string;
+    name: string;
     id: string;
   };
 }
@@ -42,7 +46,24 @@ const TopicGrid: React.FC<ITopicGridProps> = ({ category }) => {
     },
   }));
 
-  return <LinkGrid title="Explore by topic" tiles={topicGridTiles} />;
+  const linkProps = {
+    as: `/discover/category/${category.slug}`,
+    href: `/discover/category/[slug]`,
+  };
+
+  return (
+    <>
+      <Container className="flex justify-between">
+        <h2 className="text-4xl font-bold tracking-wide text-gray-700">
+          Discover the {category.name} space
+        </h2>
+        <Button size="lg" linkProps={linkProps}>
+          Jump to the {category.name} space
+        </Button>
+      </Container>
+      <LinkGrid title="Explore by topic" tiles={topicGridTiles} />
+    </>
+  );
 };
 
 export default TopicGrid;
