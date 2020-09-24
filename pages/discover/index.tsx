@@ -62,7 +62,7 @@ query DiscoverHomePage {
     slug
     id
   }
-  featuredPost: post(filter: {featured: {eq: true}}, orderBy: _firstPublishedAt_DESC) {
+  featuredPost: post(filter: {featured: {eq: true}}, orderBy: publishedDate_DESC) {
     slug
     title
     _firstPublishedAt
@@ -76,11 +76,11 @@ query DiscoverHomePage {
       }
     }
   }
-  recentPosts: allPosts(orderBy: _firstPublishedAt_DESC, first: "6") {
+  recentPosts: allPosts(orderBy: publishedDate_DESC, first: "6") {
     id
     title
     slug
-    _publishedAt
+    publishedDate
     videoFile {
       provider
     }

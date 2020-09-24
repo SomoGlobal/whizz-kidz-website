@@ -79,7 +79,7 @@ export default function DiscoverPost({ preview, post }) {
           <PostHeader
             title={post.title}
             summary={post.summary}
-            publishedAt={post._publishedAt}
+            publishedAt={post.publishedDate}
             author={post.author}
             share={{
               title: post.title,
@@ -136,7 +136,7 @@ query PostPageQuery($slug: String) {
     slug
     title
     summary
-    _publishedAt
+    publishedDate
     content(markdown: true)
     topic {
       name
