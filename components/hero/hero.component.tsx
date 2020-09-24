@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import React, { useContext } from 'react';
-import BrandContext from '../../lib/brand-context';
+import BrandContext, { brands } from '../../lib/brand-context';
 import Container from '../container';
 
 export interface IHeroProps {
@@ -12,8 +12,25 @@ export interface IHeroProps {
   pattern?: string;
 }
 
+const colors = [
+  brands.families.backgroundColor,
+  brands.charity.backgroundColor,
+  brands.home.backgroundColor,
+  brands.kidz.backgroundColor,
+  brands.discover.backgroundColor,
+  brands.supporters.backgroundColor,
+];
+
+// const colors = [
+//   'bg-primary-green',
+//   'bg-primary-yellow',
+//   'bg-primary-pink',
+//   'bg-primary-blue',
+//   'bg-primary-gray',
+// ];
+
 const Mark: React.FC<{ className: string }> = ({ className, children }) => (
-  <span className={cx('px-4 py-4 clone', className)}>{children}</span>
+  <span className={cx('px-3 py-1 clone', className)}>{children}</span>
 );
 
 /**
@@ -28,6 +45,7 @@ const Hero: React.FC<IHeroProps> = ({
 }) => {
   const { backgroundColor } = useContext(BrandContext);
   const bgColor = color || backgroundColor;
+  const split = false;
 
   return (
     <Container
@@ -52,7 +70,17 @@ const Hero: React.FC<IHeroProps> = ({
       >
         <div className="text-white w-11/12 lg:w-7/12 z-10">
           <h1 className="font-bold leading-normal text-5xl sm:text-6xl md:text-7xl">
-            <Mark className={bgColor}>{title}</Mark>
+            {split ? (
+              title.split(' ').map((part, index) => (
+                <>
+                  <Mark key={index} className={colors[index % colors.length]}>
+                    {part}
+                  </Mark>{' '}
+                </>
+              ))
+            ) : (
+              <Mark className={bgColor}>{title}</Mark>
+            )}
           </h1>
           {subtitle && (
             <p className="text-lg sm:text-xl md:text-2xl leading-loose">
