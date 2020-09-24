@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import { Image, ResponsiveImageType } from 'react-datocms';
 import DateTime from '../date-time';
@@ -26,16 +27,21 @@ const FeaturedPost: React.FC<IFeaturedPostProps> = ({
   publishedAt,
 }) => {
   const { backgroundColor } = useContext(BrandContext);
+  const router = useRouter();
 
   return (
     <Container as="section" className="my-20" aria-label="Featured Post">
       <h2 className="text-gray-700 font-bold leading-snug text-3xl mb-6">
         Featured Post
       </h2>
-      <div className="grid grid-cols-1 sm:grid-rows-1 grid-rows-2">
-        <div className="col-start-1 col-end-2 row-start-1 row-end-2 z-0">
+      <div className="grid grid-cols-1 sm:grid-rows-1">
+        <button
+          type="button"
+          className="col-start-1 col-end-2 row-start-1 row-end-2 z-0"
+          onClick={() => router.push(`/discover/post/${slug}`)}
+        >
           <Image data={image.responsiveImage} />
-        </div>
+        </button>
         <div className="col-start-1 col-end-2 md:row-start-1 sm:row-end-2 z-10 flex flex-col justify-between sm:p-10 md:p-16">
           <div className="flex justify-between">
             {topic && (
