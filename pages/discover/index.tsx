@@ -37,6 +37,7 @@ export default function Discover({
             image={featuredPost.coverImage}
             topic={featuredPost.topic}
             publishedAt={featuredPost._firstPublishedAt}
+            hasVideo={!!featuredPost.videoFile}
           />
         )}
         <LinkGrid title="Explore by category" tiles={categoryGridTiles} />
@@ -66,6 +67,9 @@ query DiscoverHomePage {
     slug
     title
     _firstPublishedAt
+    videoFile {
+      provider
+    }
     topic {
       slug
       name

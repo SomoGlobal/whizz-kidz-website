@@ -29,9 +29,12 @@ const ImageWithText: React.FC<IImageWithTextProps> = ({
   return (
     <Container as="section">
       <div
-        className={cx('grid items-center my-20 lg:my-40 lg:grid-cols-5', {
-          'bg-gray-200': !transparentBackground,
-        })}
+        className={cx(
+          'grid items-center my-10 md:my-20 lg:my-40 lg:grid-cols-5',
+          {
+            'bg-gray-200': !transparentBackground,
+          }
+        )}
       >
         <div
           className={cx('grid gap-8 p-8 lg:p-16 lg:row-start-1 lg:row-end-2', {

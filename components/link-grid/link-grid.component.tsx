@@ -22,7 +22,7 @@ const LinkGrid: React.FC<ILinkGridProps> = ({ tiles, title }) => {
   const is4 = tiles.length === 4;
 
   return (
-    <Container as="section" className="my-20">
+    <Container as="section" className="my-10 md:my-20">
       <h2
         className={cx(
           'uppercase font-bold tracking-wider mb-3 text-base',

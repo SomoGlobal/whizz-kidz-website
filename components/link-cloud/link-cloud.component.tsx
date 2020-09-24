@@ -28,7 +28,7 @@ const colors = [
 
 const LinkCloud: React.FC<ILinkCloudProps> = ({ items, label }) => {
   return (
-    <Container className="my-20 lg:my-40">
+    <Container className="my-10 md:my-20 lg:my-40">
       <ul className="flex flex-wrap" aria-label={label}>
         {items.map((item, index) => (
           <li key={item.linkProps.href} className="mr-8 mb-10">

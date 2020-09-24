@@ -8,11 +8,13 @@ export default {
   title: 'Components/FeaturedPost',
   component: FeaturedPost,
   args: {
+    hasVideo: true,
     topic: {
       name: 'General Topic',
       slug: 'general-topic',
     },
     publishedAt: new Date('1995-12-17T03:24:00').toISOString(),
+    slug: 'example',
     title:
       'Example title here looks like this sometimes can be anything just try it',
     image: {

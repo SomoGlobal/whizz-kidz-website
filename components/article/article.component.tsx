@@ -15,7 +15,7 @@ const Article: React.FC<IArticleProps> = ({ body, centered }) => {
     <Container as="article">
       <div
         dangerouslySetInnerHTML={{ __html: body }}
-        className={cx(styles.article, 'my-20 max-w-3xl', {
+        className={cx(styles.article, 'my-10 md:my-20 max-w-3xl', {
           'mx-auto': centered,
         })}
       />
