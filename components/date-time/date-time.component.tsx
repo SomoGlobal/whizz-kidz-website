@@ -11,23 +11,18 @@ const DateTime: React.FC<IDateTimeProps> = ({
   label,
   className = '',
 }) => {
+  const locale = 'en-GB';
   const publishedAtDate = new Date(time);
-  const timeTitle = new Intl.DateTimeFormat('en-GB', {
-    dateStyle: 'long',
-    timeStyle: 'long',
-  } as any).format(publishedAtDate);
-  const timeText = new Intl.DateTimeFormat('en-GB', {
-    dateStyle: 'full',
-  } as any).format(publishedAtDate);
+  const timeTitle = publishedAtDate.toLocaleDateString(locale, {
+    weekday: 'short',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
 
   return (
-    <time
-      aria-label={label}
-      dateTime={time}
-      title={timeTitle}
-      className={className}
-    >
-      {timeText}
+    <time aria-label={label} dateTime={time} className={className}>
+      {timeTitle}
     </time>
   );
 };
