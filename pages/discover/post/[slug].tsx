@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import { Image } from 'react-datocms';
+import { DiscussionEmbed } from 'disqus-react';
 import styles from '../../../components/article/article.module.css';
 import Container from '../../../components/container';
 import Layout from '../../../components/layout';
@@ -100,6 +101,20 @@ export default function DiscoverPost({ preview, post }) {
                 'md:col-start-2 md:col-end-6 col-span-6'
               )}
             />
+            <section
+              aria-label="Comments"
+              className="md:col-start-2 md:col-end-6 col-span-6 my-20"
+            >
+              <DiscussionEmbed
+                shortname={process.env.DISQUS_SHORTNAME}
+                config={{
+                  url,
+                  identifier: post.slug,
+                  title: post.title,
+                  language: 'en-GB',
+                }}
+              />
+            </section>
           </Container>
         </article>
       </Layout>
