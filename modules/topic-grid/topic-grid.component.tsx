@@ -53,13 +53,15 @@ const TopicGrid: React.FC<ITopicGridProps> = ({ category }) => {
 
   return (
     <>
-      <Container className="flex justify-between">
-        <h2 className="text-4xl font-bold tracking-wide text-gray-700">
+      <Container className="flex flex-col md:flex-row justify-between text-center md:text-left items-center">
+        <h2 className="text-4xl font-bold tracking-wide text-gray-700 mb-4 md:mb-0">
           Discover the {category.name} space
         </h2>
-        <Button size="lg" linkProps={linkProps}>
-          Jump to the {category.name} space
-        </Button>
+        <div>
+          <Button size="lg" linkProps={linkProps}>
+            Jump to the {category.name} space
+          </Button>
+        </div>
       </Container>
       <LinkGrid title="Explore by topic" tiles={topicGridTiles} />
     </>
