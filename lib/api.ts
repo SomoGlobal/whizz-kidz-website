@@ -85,6 +85,14 @@ export async function getPage(preview: boolean, slug: string) {
         slug
         title
         modules {
+          ... on GalleryRecord {
+            id
+            _modelApiKey
+            images {
+              url(imgixParams: {auto: format, fit: crop, h: 300, ar: "16:9"})
+              alt
+            }
+          }
           ... on TopicGridRecord {
             id
             _modelApiKey
@@ -146,9 +154,7 @@ export async function getPage(preview: boolean, slug: string) {
             backgroundType
             pattern
             image {
-              responsiveImage(imgixParams: {auto: format, fit: crop, w: 1240, h: 540}) {
-                ...responsiveImageFragment
-              }
+              url(imgixParams: {auto: format, fit: crop, w: 1240, ar: "1:1"})
             }
           }
           ... on FullWidthImageRecord {

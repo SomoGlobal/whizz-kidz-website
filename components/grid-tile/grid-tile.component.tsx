@@ -45,15 +45,15 @@ const GridTile: React.FC<IGridTileProps> = ({
       <Link {...linkProps}>
         <a
           className={cx(
-            'has-focus w-full h-full p-8 text-2xl font-bold text-left text-gray-900 rounded-lg flex items-center hover:underline',
+            'has-focus w-full h-full px-8 py-5 sm:p-8 text-2xl font-bold text-left text-gray-900 rounded-lg flex items-center hover:underline',
             {
-              'text-5xl': isBig,
+              'text-3xl md:text-5xl': isBig,
             },
             backgroundColor
           )}
         >
-          <div className="grid gap-4 items-start">
-            <span>{label}</span>
+          <div className="flex justify-between items-center sm:grid sm:gap-4 w-full">
+            <span className="mr-4 sm:mr-0">{label}</span>
             <span
               className="bg-white rounded-full shadow p-2"
               style={{ width: 'min-content' }}

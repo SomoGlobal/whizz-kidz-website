@@ -54,7 +54,7 @@ const TextWith: React.FC<ITextWithProps> = ({
             disabled={shouldReduceMotion}
             y={[10, -10]}
             x={[2, 0]}
-            className={cx('lg:row-start-1 lg:row-end-2', {
+            className={cx('lg:row-start-1 lg:row-end-2 max-w-lg', {
               'lg:col-start-1 lg:col-end-3': imagePosition === 'left',
               'lg:col-start-4 lg:col-end-6': imagePosition === 'right',
             })}

@@ -32,7 +32,11 @@ const FeaturedPost: React.FC<IFeaturedPostProps> = ({
   const router = useRouter();
 
   return (
-    <Container as="section" className="my-20" aria-label="Featured Post">
+    <Container
+      as="section"
+      className="my-10 md:my-20"
+      aria-label="Featured Post"
+    >
       <h2 className="mb-6 text-3xl font-bold leading-snug text-gray-700">
         Featured Post
       </h2>

@@ -8,7 +8,9 @@ export interface IHeroProps {
   title: string;
   subtitle?: string;
   backgroundType?: 'grey' | 'color' | 'image';
-  image?: any;
+  image?: {
+    url: string;
+  };
   pattern?: string;
 }
 
@@ -44,27 +46,34 @@ const Hero: React.FC<IHeroProps> = ({
   color,
   backgroundType = 'grey',
   pattern,
+  image,
 }) => {
   const { backgroundColor } = useContext(BrandContext);
   const bgColor = color || backgroundColor;
   const split = false;
+  const containerStyleProps: any = {};
+  containerStyleProps.backgroundPosition = 'center right';
+  containerStyleProps.backgroundRepeat = 'no-repeat';
+  containerStyleProps.backgroundSize = 'contain';
+
+  if (pattern) {
+    containerStyleProps.backgroundImage = `url("/svg/hero/${pattern}-hero.svg")`;
+  }
+
+  if (image) {
+    containerStyleProps.backgroundImage = `url("${image.url}")`;
+  }
 
   return (
     <Container
       as="section"
-      className={cx('grid grid-cols-1 grid-rows-1 pl-0 pr-0', {
+      className={cx('grid grid-cols-1 grid-rows-1 pl-0 pr-0 items-center', {
         'bg-gray-200': backgroundType === 'grey',
         [bgColor]: backgroundType === 'color',
       })}
+      style={containerStyleProps}
       aria-label="hero"
     >
-      {pattern && (
-        <img
-          src={`/svg/hero/${pattern}-hero.svg`}
-          alt="pattern"
-          className="col-start-1 col-end-2 row-start-1 row-end-2 w-auto ml-auto h-full"
-        />
-      )}
       <div
         className={cx(
           'z-10 px-4 py-24 sm:px-12 md:py-48 col-start-1 col-end-2 row-start-1 row-end-2'

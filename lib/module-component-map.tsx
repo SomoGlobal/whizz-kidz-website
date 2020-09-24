@@ -1,6 +1,7 @@
 import Article from '../components/article';
 import Decoration from '../components/decoration';
 import FullWidthImage from '../components/full-width-image';
+import GridGallery from '../components/grid-gallery';
 import Hero from '../components/hero';
 import Mission from '../components/mission';
 import Step from '../components/step';
@@ -20,6 +21,7 @@ const pageMap = {
   question: FAQ,
   step: Step,
   topic_grid: TopicGrid,
+  gallery: GridGallery,
 };
 
 export default pageMap;

@@ -3,6 +3,7 @@ import React from 'react';
 export interface IContainerProps {
   className?: string;
   as?: string;
+  [props: string]: any;
 }
 
 const Container: React.FC<IContainerProps> = ({
