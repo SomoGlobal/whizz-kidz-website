@@ -10,6 +10,7 @@ export default {
   args: {
     title: "Why I'm watching Netflix's Raising Dion",
     linkProps: { href: '/' },
+    hasVideo: true,
     image: {
       responsiveImage: {
         srcSet:

@@ -11,6 +11,7 @@ export interface IPostCardProps {
   title: string;
   image: { responsiveImage: ResponsiveImageType };
   publishedAt: string;
+  hasVideo?: boolean;
   linkProps: any;
 }
 
@@ -19,11 +20,13 @@ const PostCard: React.FC<IPostCardProps> = ({
   image,
   publishedAt,
   linkProps,
+  hasVideo,
 }) => {
   const shouldReduceMotion = useReducedMotion();
 
   return (
     <article
+      aria-label={hasVideo ? 'Video' : 'Article'}
       className={cx(
         'border-4 rounded-lg shadow-xl justify-between flex flex-col bg-white text-gray-700 h-full',
         styles.article
@@ -38,7 +41,27 @@ const PostCard: React.FC<IPostCardProps> = ({
           <div
             className={cx('px-8 py-4 text-2xl font-bold flex-1 bg-white z-10')}
           >
-            <div className={styles.clamp}>{title}</div>
+            <div className={styles.clamp}>
+              {hasVideo && (
+                <svg
+                  aria-label="Video"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  width="1.5em"
+                  height="1.5em"
+                  className="inline-flex mr-2 pb-1"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polygon points="10 8 16 12 10 16 10 8" />
+                </svg>
+              )}
+              {title}
+            </div>
           </div>
           <motion.figure
             whileHover={{ scale: shouldReduceMotion ? 1 : 1.05 }}
