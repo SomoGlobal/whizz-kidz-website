@@ -20,6 +20,7 @@ const PostCardList: React.FC<IPostCardListProps> = ({ posts, label }) => {
               title={post.title}
               image={post.coverImage}
               publishedAt={post._publishedAt}
+              hasVideo={!!post.videoFile}
               linkProps={{
                 as: `/discover/post/${post.slug}`,
                 href: `/discover/post/[slug]`,
