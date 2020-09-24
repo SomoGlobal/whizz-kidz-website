@@ -4,16 +4,22 @@ import LinkCloud from './link-cloud.component';
 
 const Template = (args) => <LinkCloud {...args} />;
 
+const regions = [
+  'London',
+  'South England',
+  'North England',
+  'Scotland',
+  'Wales',
+];
+
 export default {
   title: 'Components/LinkCloud',
   component: LinkCloud,
   args: {
-    items: [
-      { label: 'Accessibility', linkProps: { href: '/accessibility' } },
-      { label: 'Cookies', linkProps: { href: '/cookies' } },
-      { label: 'Privacy', linkProps: { href: '/privacy' } },
-      { label: 'Terms and Conditions', linkProps: { href: '/terms' } },
-    ],
+    items: regions.map((region, index) => ({
+      label: region,
+      linkProps: { href: `/${index}` },
+    })),
   },
 };
 
