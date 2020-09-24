@@ -1,0 +1,1 @@
+import React from 'react';import PlayButton from './play-button.component';const Template = (args) => <PlayButton {...args} />;export default {  title: 'Components/PlayButton',  component: PlayButton,};export const Story = Template.bind({});Story.args = {};
