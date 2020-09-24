@@ -27,13 +27,13 @@ export default {
       },
     },
     video: {
-      url: 'https://www.youtube.com/watch?v=Xdng6YV-0vU',
+      url: 'https://www.youtube.com/watch?v=vdP56Lcyg_0',
       width: 480,
       title: 'Whizz-Kidz Challenge 75',
-      thumbnailUrl: 'https://i.ytimg.com/vi/Xdng6YV-0vU/hqdefault.jpg',
+      thumbnailUrl: 'https://i.ytimg.com/vi/vdP56Lcyg_0/hqdefault.jpg',
       height: 270,
       provider: 'youtube',
-      providerUid: 'Xdng6YV-0vU',
+      providerUid: 'vdP56Lcyg_0',
     },
   },
 };

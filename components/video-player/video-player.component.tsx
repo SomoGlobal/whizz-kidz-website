@@ -1,4 +1,5 @@
 import cx from 'classnames';
+import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import { Image } from 'react-datocms';
 import YouTube from 'react-youtube';
@@ -48,9 +49,15 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ video, coverImage }) => {
       className="pl-0 pr-0 lg:pl-4 lg:pr-4 grid grid-cols-1 grid-rows-1"
     >
       {!hasStarted && (
-        <div className="col-start-1 col-end-2 row-start-1 row-end-2 z-20 flex items-center justify-center">
+        <motion.div
+          className="col-start-1 col-end-2 row-start-1 row-end-2 z-20 flex items-center justify-center"
+          exit={{
+            opacity: 0,
+            scale: 0,
+          }}
+        >
           {isReady && <PlayButton onClick={onPlay} />}
-        </div>
+        </motion.div>
       )}
       <Image
         data={coverImage.responsiveImage}
@@ -60,29 +67,38 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ video, coverImage }) => {
         })}
       />
       {video && video.provider === 'youtube' && (
-        <YouTube
-          id={video.providerUid}
-          containerClassName={cx(
-            'col-start-1 col-end-2 row-start-1 row-end-2',
-            { 'z-10': isPlaying, 'z-0': !isPlaying }
-          )}
-          onReady={onReady}
-          onPlay={() => setPlaying(true)}
-          onPause={() => setPlaying(false)}
-          videoId={video.providerUid}
-          opts={{
-            height: '100%',
-            width: '100%',
-            playerVars: {
-              color: 'white',
-              modestbranding: 1,
-              autoplay: 0,
-              showinfo: 0,
-              rel: 0,
-              controls: 1,
-            },
+        <motion.div
+          aria-hidden={!hasStarted}
+          animate={{
+            opacity: hasStarted ? 1 : 0,
+            transition: { duration: 0.8 },
           }}
-        />
+          className={cx('col-start-1 col-end-2 row-start-1 row-end-2', {
+            'z-10': isPlaying,
+            'z-0': !isPlaying,
+          })}
+        >
+          <YouTube
+            containerClassName="w-full h-full"
+            id={video.providerUid}
+            onReady={onReady}
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
+            videoId={video.providerUid}
+            opts={{
+              height: '100%',
+              width: '100%',
+              playerVars: {
+                color: 'white',
+                modestbranding: 1,
+                autoplay: 0,
+                showinfo: 0,
+                rel: 0,
+                controls: 1,
+              },
+            }}
+          />
+        </motion.div>
       )}
     </Container>
   );
