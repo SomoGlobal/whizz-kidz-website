@@ -30,7 +30,9 @@ const colors = [
 // ];
 
 const Mark: React.FC<{ className: string }> = ({ className, children }) => (
-  <span className={cx('px-3 py-1 clone', className)}>{children}</span>
+  <span className={cx('px-4 py-4 md:px-3 md:py-1 clone', className)}>
+    {children}
+  </span>
 );
 
 /**
@@ -50,7 +52,7 @@ const Hero: React.FC<IHeroProps> = ({
   return (
     <Container
       as="section"
-      className={cx('grid grid-cols-2 grid-rows-1 pl-0 pr-0 lg:pl-4 lg:pr-4', {
+      className={cx('grid grid-cols-1 grid-rows-1 pl-0 pr-0', {
         'bg-gray-200': backgroundType === 'grey',
         [bgColor]: backgroundType === 'color',
       })}
@@ -60,12 +62,12 @@ const Hero: React.FC<IHeroProps> = ({
         <img
           src={`/svg/hero/${pattern}-hero.svg`}
           alt="pattern"
-          className="col-start-2 col-end-3 row-start-1 row-end-2 w-full h-full"
+          className="col-start-1 col-end-2 row-start-1 row-end-2 w-auto ml-auto h-full"
         />
       )}
       <div
         className={cx(
-          'z-10 px-4 py-24 sm:px-12 md:py-48 col-start-1 col-end-3 row-start-1 row-end-2'
+          'z-10 px-4 py-24 sm:px-12 md:py-48 col-start-1 col-end-2 row-start-1 row-end-2'
         )}
       >
         <div className="text-white w-11/12 lg:w-7/12 z-10">
