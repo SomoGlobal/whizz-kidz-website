@@ -9,7 +9,7 @@ import Layout from '../components/layout';
 export default function Index({ home, preview }) {
   return (
     <>
-      <Layout preview={preview}>
+      <Layout preview={preview} brand="home">
         <Head>
           <title>{home.title}</title>
         </Head>

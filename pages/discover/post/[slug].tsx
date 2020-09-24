@@ -1,16 +1,17 @@
+import cx from 'classnames';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import cx from 'classnames';
 import { Image } from 'react-datocms';
 import styles from '../../../components/article/article.module.css';
 import Container from '../../../components/container';
 import Layout from '../../../components/layout';
 import Podcast from '../../../components/podcast';
 import PostHeader from '../../../components/post-header';
+import VideoPlayer from '../../../components/video-player';
 import { fetchAPI, responsiveImageFragment } from '../../../lib/api';
 
-export default function DiscoverCategory({ preview, post }) {
+export default function DiscoverPost({ preview, post }) {
   if (!post) {
     return null;
   }
@@ -46,6 +47,9 @@ export default function DiscoverCategory({ preview, post }) {
     },
   ];
 
+  const hasVideo = post.coverImage && post.videoFile;
+  const hasImageWithNoVideo = post.coverImage && !post.videoFile;
+
   return (
     <>
       <Layout
@@ -58,9 +62,18 @@ export default function DiscoverCategory({ preview, post }) {
           <title>{post.title}</title>
         </Head>
         <article style={{ display: 'unset' }}>
-          {post.coverImage && (
-            <Container as="figure" className="pl-0 pr-0 lg:pl-4 lg:pr-4">
-              <Image data={post.coverImage.responsiveImage} explicitWidth />
+          {hasVideo && (
+            <VideoPlayer coverImage={post.coverImage} video={post.videoFile} />
+          )}
+          {hasImageWithNoVideo && (
+            <Container
+              as="figure"
+              className="pl-0 pr-0 lg:pl-4 lg:pr-4 grid grid-cols-1 grid-rows-1"
+            >
+              <Image
+                className="col-start-1 col-end-2 row-start-1 row-end-2 z-10"
+                data={post.coverImage.responsiveImage}
+              />
             </Container>
           )}
           <PostHeader
@@ -140,6 +153,15 @@ query PostPageQuery($slug: String) {
     }
     podcastTranscript {
       url
+    }
+    videoFile {
+      url
+      width
+      title
+      thumbnailUrl
+      height
+      provider
+      providerUid
     }
     author {
       name

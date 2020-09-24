@@ -90,6 +90,9 @@ query PostsInTopic($topicId: ItemId) {
     title
     slug
     _publishedAt
+    videoFile {
+      provider
+    }
     coverImage {
       responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 400, ar: "16:9"}) {
         ...responsiveImageFragment
