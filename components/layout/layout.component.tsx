@@ -28,7 +28,7 @@ const links = [
   {
     id: 'link1',
     label: 'Kidz',
-    type: 'category',
+    type: 'link',
     children: [],
     linkProps: { href: '/kidz' },
     brand: 'kidz',
@@ -36,7 +36,7 @@ const links = [
   {
     id: 'link2',
     label: 'Families',
-    type: 'category',
+    type: 'link',
     children: [],
     linkProps: { href: '/families' },
     brand: 'families',
@@ -44,7 +44,7 @@ const links = [
   {
     id: 'link3',
     label: 'Supporters',
-    type: 'category',
+    type: 'link',
     children: [],
     linkProps: { href: '/supporters' },
     brand: 'supporters',
@@ -52,7 +52,7 @@ const links = [
   {
     id: 'link4',
     label: 'Discover',
-    type: 'category',
+    type: 'link',
     children: [],
     linkProps: { href: '/discover' },
     brand: 'discover',
@@ -60,25 +60,25 @@ const links = [
   {
     id: 'link5',
     label: 'The Charity',
-    type: 'category',
+    type: 'link',
     children: [],
     linkProps: { href: '/charity' },
     brand: 'charity',
   },
-  {
-    id: 'link6',
-    label: 'Website Policies',
-    type: 'category',
-    hideDesktop: true,
-    children: [
-      { label: 'Accessibility', href: '/accessibility' },
-      { label: 'Cookies', href: '/cookies' },
-      { label: 'Privacy', href: '/privacy' },
-      { label: 'Terms and Conditions', href: '/terms' },
-    ],
-    linkProps: { href: '/policies' },
-    brand: 'home',
-  },
+  // {
+  //   id: 'link6',
+  //   label: 'Website Policies',
+  //   type: 'category',
+  //   hideDesktop: true,
+  //   children: [
+  //     { label: 'Accessibility', href: '/accessibility' },
+  //     { label: 'Cookies', href: '/cookies' },
+  //     { label: 'Privacy', href: '/privacy' },
+  //     { label: 'Terms and Conditions', href: '/terms' },
+  //   ],
+  //   linkProps: { href: '/policies' },
+  //   brand: 'home',
+  // },
 ];
 
 const Layout: React.FC<any> = ({

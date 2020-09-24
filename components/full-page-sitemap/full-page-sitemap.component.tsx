@@ -110,7 +110,7 @@ const FullPageSitemap: React.FC<{ links: INavItem[] }> = ({ links }) => {
                   {links.map((link, index) => (
                     <motion.li
                       key={link.id}
-                      className={index === 0 ? 'sm:col-span-2' : ''}
+                      // className={index === 0 ? 'sm:col-span-2' : ''}
                       variants={{
                         visible: { opacity: 1, y: 0 },
                         hidden: { opacity: 0, y: shouldReduceMotion ? 0 : -40 },
