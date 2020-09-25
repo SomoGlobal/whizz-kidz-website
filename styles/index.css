@@ -6,6 +6,8 @@
 
 :root {
   --focus-color: #78aeda;
+  --selection-background: #ffdc05;
+  --selection-color: #3d3a36;
 }
 
 body {
@@ -21,4 +23,14 @@ body {
 
 a:focus, button:focus {
   outline: var(--focus-color) solid 3px;
+}
+
+::-moz-selection {
+  color: var(--selection-color);
+  background: var(--selection-background);
+}
+
+::selection {
+  color: var(--selection-color);
+  background: var(--selection-background);
 }
