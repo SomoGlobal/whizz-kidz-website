@@ -11,22 +11,36 @@ export interface IJourneyStartProps {
 
 const JourneyStart: React.FC<IJourneyStartProps> = ({ href, label, color }) => {
   return (
-    <div className={cx(color)}>
-      <Container>
-        <div className="flex items-center justify-between py-20 text-white">
-          <h2 className="text-4xl md:text-6xl font-bold leading-snug">
-            For{' '}
-            <Link href={href}>
-              <a>
-                <mark className="p-4 text-gray-100 bg-indigo-900 hover:underline">
-                  {label}
-                </mark>
-              </a>
-            </Link>
-          </h2>
-        </div>
-      </Container>
-    </div>
+    <Link href={href}>
+      <a className="bg-gray-100 hover:bg-primary-yellow flex-1 hover:underline text-white">
+        <Container>
+          <div className={cx('flex items-center justify-center py-20')}>
+            <h2
+              className={cx(
+                color,
+                'text-4xl md:text-6xl font-bold leading-snug p-4 text-gray-100 flex items-center'
+              )}
+            >
+              For {label}
+              <svg
+                role="presentation"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                width=".8em"
+                height=".8em"
+                className="stroke-current ml-3"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </h2>
+          </div>
+        </Container>
+      </a>
+    </Link>
   );
 };
 

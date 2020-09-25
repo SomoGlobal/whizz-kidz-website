@@ -4,7 +4,7 @@ import JourneyStart from '../journey-start';
 
 const JourneyLauncher: React.FC = () => {
   return (
-    <section>
+    <section className="flex w-full flex-col md:flex-row">
       <JourneyStart
         href="/kidz"
         label="Kidz"
