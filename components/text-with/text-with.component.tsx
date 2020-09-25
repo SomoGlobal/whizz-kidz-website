@@ -32,7 +32,7 @@ const TextWith: React.FC<ITextWithProps> = ({
         className={cx(
           'grid items-center my-10 md:my-20 lg:my-40 lg:grid-cols-5',
           {
-            'bg-gray-200': !transparentBackground,
+            'bg-gray-100': !transparentBackground,
           }
         )}
       >
