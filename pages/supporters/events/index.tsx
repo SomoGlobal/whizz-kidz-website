@@ -5,9 +5,9 @@ import Head from 'next/head';
 import React from 'react';
 import Article from '../../../components/article';
 import BorderedGrid from '../../../components/bordered-grid';
-import ImageWithText from '../../../components/image-with-text';
 import LandingHero from '../../../components/landing-hero';
 import Layout from '../../../components/layout';
+import TextWithImage from '../../../components/text-with-image';
 
 /* eslint-disable react/no-danger */
 export default function EventsHome({
@@ -28,16 +28,16 @@ export default function EventsHome({
         secondaryNavItems={secondaryNavItems}
       >
         <LandingHero title="Join Team Whizz-Kidz" />
-        <ImageWithText
+        <TextWithImage
           image={eventsPage.featuredEvent.image}
           imagePosition="right"
           eyebrow="Featured Event"
           heading={eventsPage.featuredEvent.name}
-          cta={{
+          callToAction={{
             label: 'See Event Details',
-            linkProps: {
-              as: `/supporters/events/${eventsPage.featuredEvent.slug}`,
-              href: `/supporters/events/[slug]`,
+            internal: {
+              _modelApiKey: 'event',
+              slug: eventsPage.featuredEvent.slug,
             },
           }}
         />
