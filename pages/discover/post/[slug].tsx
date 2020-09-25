@@ -170,11 +170,6 @@ query PostPageQuery($slug: String) {
       url
     }
     videoFile {
-      url
-      width
-      title
-      thumbnailUrl
-      height
       provider
       providerUid
     }

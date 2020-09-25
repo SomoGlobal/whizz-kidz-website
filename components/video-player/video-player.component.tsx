@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import { Image } from 'react-datocms';
 import YouTube from 'react-youtube';
+import Vimeo from '@u-wave/react-vimeo';
 import Container from '../container';
 import PlayButton from '../play-button';
 
@@ -27,19 +28,29 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ video, coverImage }) => {
   const [hasStarted, setStarted] = useState(false);
   const [videoElement, setVideo] = useState<any>();
 
-  const onReady = (event: any) => {
+  const onReady = (obj: any) => {
     setReady(true);
-    setVideo(event.target);
+
+    if (video.provider === 'youtube') {
+      setVideo(obj.target);
+    } else if (video.provider === 'vimeo') {
+      setVideo(obj);
+    }
   };
 
   const onPlay = () => {
-    setStarted(true);
-    videoElement.playVideo();
-    videoElement.hideVideoInfo();
+    if (video.provider === 'youtube') {
+      videoElement.playVideo();
+      videoElement.hideVideoInfo();
+    } else if (video.provider === 'vimeo') {
+      videoElement.play();
+    }
 
     if (typeof window !== 'undefined') {
       document.getElementById(video.providerUid).focus();
     }
+
+    setStarted(true);
   };
 
   return (
@@ -66,7 +77,7 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ video, coverImage }) => {
           'z-0': hasStarted,
         })}
       />
-      {video && video.provider === 'youtube' && (
+      {video && (
         <motion.div
           aria-hidden={!hasStarted}
           animate={{
@@ -78,26 +89,47 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ video, coverImage }) => {
             'z-0': !isPlaying,
           })}
         >
-          <YouTube
-            containerClassName="w-full h-full"
-            id={video.providerUid}
-            onReady={onReady}
-            onPlay={() => setPlaying(true)}
-            onPause={() => setPlaying(false)}
-            videoId={video.providerUid}
-            opts={{
-              height: '100%',
-              width: '100%',
-              playerVars: {
-                color: 'white',
-                modestbranding: 1,
-                autoplay: 0,
-                showinfo: 0,
-                rel: 0,
-                controls: 1,
-              },
-            }}
-          />
+          {video.provider === 'youtube' && (
+            <YouTube
+              containerClassName="w-full h-full"
+              id={video.providerUid}
+              onReady={onReady}
+              onPlay={() => setPlaying(true)}
+              onPause={() => setPlaying(false)}
+              videoId={video.providerUid}
+              opts={{
+                height: '100%',
+                width: '100%',
+                playerVars: {
+                  color: 'white',
+                  modestbranding: 1,
+                  autoplay: 0,
+                  showinfo: 0,
+                  rel: 0,
+                  controls: 1,
+                },
+              }}
+            />
+          )}
+          {video.provider === 'vimeo' && (
+            <Vimeo
+              className="w-full h-full"
+              color="white"
+              showPortrait={false}
+              showTitle={false}
+              video={video.providerUid}
+              id={video.providerUid}
+              responsive
+              style={{
+                width: '100%',
+                height: '100%',
+              }}
+              showByline={false}
+              onReady={onReady}
+              onPlay={() => setPlaying(true)}
+              onPause={() => setPlaying(false)}
+            />
+          )}
         </motion.div>
       )}
     </Container>

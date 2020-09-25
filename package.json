@@ -17,6 +17,7 @@
     "not ie 11"
   ],
   "dependencies": {
+    "@u-wave/react-vimeo": "^0.9.0",
     "classnames": "2.2.6",
     "date-fns": "2.16.1",
     "disqus-react": "^1.0.10",
