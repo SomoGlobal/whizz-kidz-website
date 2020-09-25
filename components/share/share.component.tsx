@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import cx from 'classnames';
+import BrandContext from '../../lib/brand-context';
 import SocialIcon from '../social-icon';
 
 export interface IShareProps {
@@ -17,12 +19,14 @@ const Item: React.FC<any> = ({ className, href, type, label }) => (
       className={`transition-colors duration-100 ease-in-out flex items-center my-2 mx-4 sm:mx-0 bg-gray-200 text-gray-600 hover:text-white rounded-full p-3 ${className}`}
     >
       <SocialIcon type={type} size={ICON_SIZE} />
-      <span className="ml-2 sr-only">{label}</span>
+      <span className="ml-2 sr-only">{label} (opens in new window)</span>
     </a>
   </li>
 );
 
 const Share: React.FC<IShareProps> = ({ url }) => {
+  const { smallTextColor } = useContext(BrandContext);
+
   const items = [
     {
       type: 'facebook',
@@ -46,9 +50,14 @@ const Share: React.FC<IShareProps> = ({ url }) => {
 
   return (
     <aside className="inline-flex sm:flex-col items-center">
-      <div className="uppercase font-bold tracking-wider sm:mb-3 text-base text-gray-700">
+      <h5
+        className={cx(
+          smallTextColor,
+          'uppercase font-bold tracking-wider sm:mb-3 text-base'
+        )}
+      >
         Share
-      </div>
+      </h5>
       <ul aria-label="Share" className="font-medium flex sm:inline-block">
         {items.map((item) => (
           <Item key={item.href} {...item} />

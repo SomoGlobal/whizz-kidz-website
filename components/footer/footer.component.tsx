@@ -55,9 +55,9 @@ const Footer: React.FC = () => {
               target="_blank"
               rel="noreferrer"
             >
-              Website by Somo
+              Website by Somo.
+              <span className="sr-only"> (opens in new window)</span>
             </a>
-            .
           </p>
           <nav aria-label="Website Policies">
             <ul className="flex flex-col md:flex-row">

@@ -20,6 +20,7 @@ const SocialLinks: React.FC<ISocialLinksProps> = ({
     <a
       className={`p-3 mx-1 bg-blue-800 text-white rounded-full ${className}`}
       title={title}
+      aria-label={`${title} (opens in new window)`}
       href={href}
       target="_blank"
       rel="noreferrer"

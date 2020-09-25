@@ -50,20 +50,20 @@ const links = [
     brand: 'supporters',
   },
   {
-    id: 'link4',
-    label: 'Discover',
-    type: 'link',
-    children: [],
-    linkProps: { href: '/discover' },
-    brand: 'discover',
-  },
-  {
     id: 'link5',
     label: 'The Charity',
     type: 'link',
     children: [],
     linkProps: { href: '/charity' },
     brand: 'charity',
+  },
+  {
+    id: 'link4',
+    label: 'Discover',
+    type: 'link',
+    children: [],
+    linkProps: { href: '/discover' },
+    brand: 'discover',
   },
   // {
   //   id: 'link6',
