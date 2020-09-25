@@ -39,7 +39,9 @@ const PostCard: React.FC<IPostCardProps> = ({
           aria-label={title}
         >
           <div
-            className={cx('px-8 py-4 text-2xl font-bold flex-1 bg-white z-10')}
+            className={cx(
+              'px-4 md:px-8 py-4 text-2xl font-bold flex-1 bg-white z-10'
+            )}
           >
             <div className={styles.clamp}>
               {hasVideo && (
