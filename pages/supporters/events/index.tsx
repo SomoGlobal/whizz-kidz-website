@@ -5,7 +5,7 @@ import Head from 'next/head';
 import React from 'react';
 import Article from '../../../components/article';
 import BorderedGrid from '../../../components/bordered-grid';
-import LandingHero from '../../../components/landing-hero';
+import Hero from '../../../components/hero';
 import Layout from '../../../components/layout';
 import TextWithImage from '../../../components/text-with-image';
 
@@ -27,7 +27,7 @@ export default function EventsHome({
         pageTitle="Events & Challenges"
         secondaryNavItems={secondaryNavItems}
       >
-        <LandingHero title="Join Team Whizz-Kidz" />
+        <Hero title="Join Team Whizz-Kidz" pattern="supporters" />
         <TextWithImage
           image={eventsPage.featuredEvent.image}
           imagePosition="right"
@@ -54,7 +54,7 @@ export default function EventsHome({
                   as: `/supporters/events/${event.slug}`,
                 }}
               >
-                View
+                View Event
               </Button>
             ),
           }))}

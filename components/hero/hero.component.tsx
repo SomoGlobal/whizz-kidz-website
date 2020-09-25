@@ -11,7 +11,7 @@ export interface IHeroProps {
   image?: {
     url: string;
   };
-  pattern?: string;
+  pattern?: 'home' | 'kidz' | 'families' | 'supporters';
   split?: boolean;
 }
 
