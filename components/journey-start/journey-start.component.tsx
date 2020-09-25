@@ -3,6 +3,8 @@ import Link from 'next/link';
 import React from 'react';
 import Container from '../container';
 
+import styles from './journey-start.module.css';
+
 export interface IJourneyStartProps {
   color: string;
   label: string;
@@ -12,9 +14,20 @@ export interface IJourneyStartProps {
 const JourneyStart: React.FC<IJourneyStartProps> = ({ href, label, color }) => {
   return (
     <Link href={href}>
-      <a className="bg-gray-100 hover:bg-primary-yellow flex-1 hover:underline text-white">
+      <a
+        className={cx(
+          styles.link,
+          color,
+          'bg-gray-100 items-center flex flex-1 hover:underline text-white bg-cover bg-center'
+        )}
+        style={{
+          backgroundImage: `url("/svg/hero/${label.toLowerCase()}-hero.svg")`,
+        }}
+      >
         <Container>
-          <div className={cx('flex items-center justify-center py-20')}>
+          <div
+            className={cx('flex items-center justify-center py-10 md:py-20')}
+          >
             <h2
               className={cx(
                 color,
