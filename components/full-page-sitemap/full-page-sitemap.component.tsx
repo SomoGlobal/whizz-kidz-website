@@ -86,7 +86,7 @@ const FullPageSitemap: React.FC<{ links: INavItem[] }> = ({ links }) => {
                   />
                 </div>
                 <motion.ul
-                  className="grid flex-1 grid-cols-1 gap-1 sm:grid-cols-2 sm:grid-flow-col sm:grid-rows-4"
+                  className="grid flex-1 grid-cols-1 gap-1 sm:grid-cols-2 sm:grid-rows-3"
                   aria-label="Navigation Category"
                   initial="hidden"
                   animate="visible"
