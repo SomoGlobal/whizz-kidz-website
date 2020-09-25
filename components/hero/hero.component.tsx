@@ -12,6 +12,7 @@ export interface IHeroProps {
     url: string;
   };
   pattern?: string;
+  split?: boolean;
 }
 
 const colors = [
@@ -31,8 +32,12 @@ const colors = [
 //   'bg-primary-gray',
 // ];
 
-const Mark: React.FC<{ className: string }> = ({ className, children }) => (
-  <span className={cx('px-4 py-4 md:px-3 md:py-1 clone', className)}>
+const Mark: React.FC<{ className: string; hidden?: boolean }> = ({
+  className,
+  children,
+  hidden,
+}) => (
+  <span aria-hidden={hidden} className={cx('px-3 py-1 clone', className)}>
     {children}
   </span>
 );
@@ -47,10 +52,10 @@ const Hero: React.FC<IHeroProps> = ({
   backgroundType = 'grey',
   pattern,
   image,
+  split,
 }) => {
   const { backgroundColor } = useContext(BrandContext);
   const bgColor = color || backgroundColor;
-  const split = false;
   const containerStyleProps: any = {};
   containerStyleProps.backgroundPosition = 'center right';
   containerStyleProps.backgroundRepeat = 'no-repeat';
@@ -67,10 +72,14 @@ const Hero: React.FC<IHeroProps> = ({
   return (
     <Container
       as="section"
-      className={cx('grid grid-cols-1 grid-rows-1 pl-0 pr-0 items-center', {
-        'bg-gray-200': backgroundType === 'grey',
-        [bgColor]: backgroundType === 'color',
-      })}
+      className={cx(
+        'grid grid-cols-1 grid-rows-1 pl-0 pr-0 items-center bg-cover md:bg-contain',
+        {
+          'bg-gray-200':
+            !split && (backgroundType === 'grey' || backgroundType === 'image'),
+          [bgColor]: !split && backgroundType === 'color',
+        }
+      )}
       style={containerStyleProps}
       aria-label="hero"
     >
@@ -80,17 +89,26 @@ const Hero: React.FC<IHeroProps> = ({
         )}
       >
         <div className="text-white w-11/12 lg:w-7/12 z-10">
-          <h1 className="font-bold leading-normal text-5xl sm:text-6xl md:text-7xl">
+          <h1
+            className="font-bold leading-normal text-5xl sm:text-6xl md:text-7xl"
+            aria-label={title}
+          >
             {split ? (
               title.split(' ').map((part, index) => (
                 <>
-                  <Mark key={index} className={colors[index % colors.length]}>
+                  <Mark
+                    hidden
+                    key={index}
+                    className={colors[index % colors.length]}
+                  >
                     {part}
                   </Mark>{' '}
                 </>
               ))
             ) : (
-              <Mark className={bgColor}>{title}</Mark>
+              <Mark hidden className={bgColor}>
+                {title}
+              </Mark>
             )}
           </h1>
           {subtitle && (

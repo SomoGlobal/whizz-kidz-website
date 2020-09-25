@@ -153,6 +153,7 @@ export async function getPage(preview: boolean, slug: string) {
             subtitle
             backgroundType
             pattern
+            split
             image {
               url(imgixParams: {auto: format, fit: crop, w: 1240, ar: "1:1"})
             }
