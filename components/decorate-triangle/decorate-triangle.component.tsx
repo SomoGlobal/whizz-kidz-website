@@ -1,9 +1,8 @@
+import cx from 'classnames';
 import { useReducedMotion } from 'framer-motion';
 import React from 'react';
 import { Parallax } from 'react-scroll-parallax';
-import cx from 'classnames';
 import Container from '../container';
-import Diamond from '../diamond';
 import Triangle from '../triangle';
 
 type Position = 'right' | 'left';
