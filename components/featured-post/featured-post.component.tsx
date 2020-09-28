@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
 import { Image, ResponsiveImageType } from 'react-datocms';
+import TopicTag from '../topic-tag';
 import BrandContext from '../../lib/brand-context';
 import Container from '../container';
 import DateTime from '../date-time';
@@ -50,16 +51,7 @@ const FeaturedPost: React.FC<IFeaturedPostProps> = ({
         </button>
         <div className="z-10 flex flex-col justify-between col-start-1 col-end-2 md:row-start-1 sm:row-end-2 sm:p-10 md:p-16">
           <div className="flex justify-between">
-            {topic && (
-              <Link
-                href="/discover/topic/[slug]"
-                as={`/discover/topic/${topic.slug}`}
-              >
-                <a className="px-3 py-1 text-sm font-medium text-white bg-indigo-900 sm:rounded-full hover:underline">
-                  {topic.name}
-                </a>
-              </Link>
-            )}
+            {topic && <TopicTag name={topic.name} slug={topic.slug} />}
             {publishedAt && (
               <DateTime
                 label="Published"

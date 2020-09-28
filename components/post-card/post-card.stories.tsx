@@ -11,6 +11,10 @@ export default {
     title: "Why I'm watching Netflix's Raising Dion",
     linkProps: { href: '/' },
     hasVideo: true,
+    topic: {
+      slug: 'slug',
+      name: 'Topic Name',
+    },
     image: {
       responsiveImage: {
         srcSet:

@@ -90,6 +90,10 @@ query PostsInTopic($topicId: ItemId) {
     title
     slug
     publishedDate
+    topic {
+      name
+      slug
+    }
     videoFile {
       provider
     }

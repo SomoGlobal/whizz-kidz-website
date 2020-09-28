@@ -85,6 +85,10 @@ query DiscoverHomePage {
     title
     slug
     publishedDate
+    topic {
+      slug
+      name
+    }
     videoFile {
       provider
     }

@@ -5,12 +5,17 @@ import Container from '../container';
 import DateTime from '../date-time';
 import Share from '../share';
 import Statement from '../statement';
+import TopicTag from '../topic-tag';
 
 export interface IPostHeaderProps {
   title: string;
   summary?: string;
   publishedAt: string;
   share?: IShareProps;
+  topic?: {
+    name: string;
+    slug: string;
+  };
   author: {
     name: string;
     picture: {
@@ -25,6 +30,7 @@ const PostHeader: React.FC<IPostHeaderProps> = ({
   publishedAt,
   author,
   share,
+  topic,
 }) => {
   return (
     <Container as="header" className="my-10 md:my-20">
@@ -41,7 +47,12 @@ const PostHeader: React.FC<IPostHeaderProps> = ({
             hasBigHeading
             text={summary}
             heading={title}
-            eyebrow={<DateTime label="Published" time={publishedAt} />}
+            eyebrow={
+              <div className="w-full flex justify-between">
+                <DateTime label="Published" time={publishedAt} />
+                {topic && <TopicTag name={topic.name} slug={topic.slug} />}
+              </div>
+            }
           />
           <AuthorBox name={author.name} imageUrl={author.picture.url} />
         </div>

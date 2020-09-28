@@ -4,11 +4,13 @@ import { motion, useReducedMotion } from 'framer-motion';
 import cx from 'classnames';
 import { Image, ResponsiveImageType } from 'react-datocms';
 import DateTime from '../date-time';
+import TopicTag from '../topic-tag';
 
 import styles from './post-card.module.css';
 
 export interface IPostCardProps {
   title: string;
+  topic: { name: string; slug: string };
   image: { responsiveImage: ResponsiveImageType };
   publishedAt: string;
   hasVideo?: boolean;
@@ -20,6 +22,7 @@ const PostCard: React.FC<IPostCardProps> = ({
   image,
   publishedAt,
   linkProps,
+  topic,
   hasVideo,
 }) => {
   const shouldReduceMotion = useReducedMotion();
@@ -40,7 +43,7 @@ const PostCard: React.FC<IPostCardProps> = ({
         >
           <div
             className={cx(
-              'px-4 md:px-8 py-4 text-2xl font-bold flex-1 bg-white z-10'
+              'px-4 md:px-6 py-4 text-2xl font-bold flex-1 bg-white z-10'
             )}
           >
             <div className={styles.clamp}>
@@ -76,7 +79,8 @@ const PostCard: React.FC<IPostCardProps> = ({
           </motion.figure>
         </a>
       </Link>
-      <p className="px-8 py-2 text-sm font-normal text-right bg-gray-100 rounded-b rounded-t-none border-t border-solid border-gray-300">
+      <p className="px-6 py-2 text-sm font-normal flex justify-between items-center bg-gray-100 rounded-b rounded-t-none border-t border-solid border-gray-300">
+        {topic && <TopicTag name={topic.name} slug={topic.slug} />}
         <DateTime time={publishedAt} label="Published" />
       </p>
     </article>

@@ -47,6 +47,7 @@ const PostCardList: React.FC<IPostCardListProps> = ({ posts, label }) => {
             <PostCard
               title={post.title}
               image={post.coverImage}
+              topic={post.topic}
               publishedAt={post.publishedDate}
               hasVideo={!!post.videoFile}
               linkProps={{

@@ -18,8 +18,8 @@ const highlightReplace = (text) => {
 };
 
 const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
+  const limit = 10;
   const [offset, setOffset] = useState(0);
-  const [limit, setLimit] = useState(10);
   const [currentQuery, setCurrentQuery] = useState('');
   const [data, setData] = useState([]);
   const [meta, setMeta] = useState({ total_count: 0 });

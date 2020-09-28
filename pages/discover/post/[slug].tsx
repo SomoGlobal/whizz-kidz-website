@@ -80,6 +80,7 @@ export default function DiscoverPost({ preview, post }) {
           <PostHeader
             title={post.title}
             summary={post.summary}
+            topic={post.topic}
             publishedAt={post.publishedDate}
             author={post.author}
             share={{
