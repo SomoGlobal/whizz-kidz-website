@@ -15,7 +15,7 @@ const pageMap = {
   mission: Mission,
   article: Article,
   decoration: Decoration,
-  image_with_text: TextWithImage,
+  text_with_image: TextWithImage,
   text_with_pattern: TextWithPattern,
   full_width_image: FullWidthImage,
   question: FAQ,

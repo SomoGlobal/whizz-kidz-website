@@ -52,6 +52,40 @@ export const responsiveImageFragment = `
   }
 `;
 
+export const linkFragment = `
+  fragment linkFragment on LinkRecord {
+    label
+    internal {
+      ... on CategoryRecord {
+        slug
+        _modelApiKey
+      }
+      ... on PageRecord {
+        slug
+        _modelApiKey
+        parent {
+          slug
+          parent {
+            slug
+          }
+        }
+      }
+      ... on EventRecord {
+        slug
+        _modelApiKey
+      }
+      ... on TopicRecord {
+        slug
+        _modelApiKey
+      }
+      ... on PostRecord {
+        slug
+        _modelApiKey
+      }
+    }
+  }
+`;
+
 export const fetchAPI = async (
   query,
   { variables, preview } = { variables: {}, preview: false }
@@ -126,6 +160,10 @@ export async function getPage(preview: boolean, slug: string) {
             pattern
             text
             _modelApiKey
+            imagePosition
+            callToAction {
+              ...linkFragment
+            }
           }
           ... on DecorationRecord {
             id
@@ -167,7 +205,7 @@ export async function getPage(preview: boolean, slug: string) {
               }
             }
           }
-          ... on ImageWithTextRecord {
+          ... on TextWithImageRecord {
             id
             heading
             eyebrow
@@ -175,40 +213,12 @@ export async function getPage(preview: boolean, slug: string) {
             imagePosition
             transparentBackground
             _modelApiKey
+            callToAction {
+              ...linkFragment
+            }
             image {
               responsiveImage(imgixParams: {auto: format, fit: crop, w: 300, h: 300}) {
                 ...responsiveImageFragment
-              }
-            }
-            callToAction {
-              label
-              internal {
-                ... on CategoryRecord {
-                  slug
-                  _modelApiKey
-                }
-                ... on PageRecord {
-                  slug
-                  _modelApiKey
-                  parent {
-                    slug
-                    parent {
-                      slug
-                    }
-                  }
-                }
-                ... on EventRecord {
-                  slug
-                  _modelApiKey
-                }
-                ... on TopicRecord {
-                  slug
-                  _modelApiKey
-                }
-                ... on PostRecord {
-                  slug
-                  _modelApiKey
-                }
               }
             }
           }
@@ -216,6 +226,7 @@ export async function getPage(preview: boolean, slug: string) {
       }
     }
     ${responsiveImageFragment}
+    ${linkFragment}
     `,
     {
       preview,
