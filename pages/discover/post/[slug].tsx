@@ -103,6 +103,7 @@ export default function DiscoverPost({ preview, post }) {
             />
             <section
               aria-label="Comments"
+              data-datocms-noindex
               className="md:col-start-2 md:col-end-6 col-span-6 my-20"
             >
               <DiscussionEmbed

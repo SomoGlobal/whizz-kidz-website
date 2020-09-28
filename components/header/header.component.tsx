@@ -13,12 +13,14 @@ const Header: React.FC<{ links: any[]; primaryActiveIndex?: number }> = ({
   return (
     <>
       <a
+        data-datocms-noindex
         href="#main"
         className="z-50 text-lg font-bold tracking-wider text-center text-blue-700 underline uppercase bg-white sr-only focus:not-sr-only focus:sticky focus:top-0 border-1"
       >
         <span className="block p-3 m-4">Skip to main content</span>
       </a>
       <header
+        data-datocms-noindex
         className="sticky top-0 z-40 bg-white"
         aria-label="Primary Header"
       >

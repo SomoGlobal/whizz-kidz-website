@@ -22,6 +22,7 @@ const social = {
 const Footer: React.FC = () => {
   return (
     <footer
+      data-datocms-noindex
       className="bg-indigo-900"
       aria-label="Site copyright, privacy and accessibility information"
     >

@@ -49,7 +49,10 @@ const Share: React.FC<IShareProps> = ({ url }) => {
   ];
 
   return (
-    <aside className="inline-flex sm:flex-col items-center">
+    <aside
+      className="inline-flex sm:flex-col items-center"
+      data-datocms-noindex
+    >
       <h5
         className={cx(
           smallTextColor,

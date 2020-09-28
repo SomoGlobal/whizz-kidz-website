@@ -44,7 +44,10 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ isThemed, items = [] }) => {
   const secondToLastItem = items[items.length - 2];
 
   return (
-    <div className={`${isThemed ? backgroundColor : 'bg-white'}`}>
+    <div
+      className={`${isThemed ? backgroundColor : 'bg-white'}`}
+      data-datocms-noindex
+    >
       <Head>
         <JSONLD>
           <Generic type="BreadcrumbList" jsonldtype="BreadcrumbList">

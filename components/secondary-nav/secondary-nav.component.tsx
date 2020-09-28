@@ -24,6 +24,7 @@ const SecondaryNav: React.FC<ISecondaryNavProps> = ({
     <section
       className="z-10 bg-white rounded-b-lg shadow-lg"
       aria-label="Secondary Navigation"
+      data-datocms-noindex
     >
       <Container as="nav" aria-label="Sibling pages">
         <ul className="flex flex-wrap">

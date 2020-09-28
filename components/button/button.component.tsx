@@ -8,7 +8,7 @@ export interface IButtonProps {
   isOutlined?: boolean;
   size?: 'sm' | 'm' | 'lg';
   type?: React.ButtonHTMLAttributes<any>['type'];
-  [prop: string]: any;
+  disabled?: boolean;
 }
 
 const Button: React.FC<IButtonProps> = ({
@@ -18,7 +18,7 @@ const Button: React.FC<IButtonProps> = ({
   size = 'm',
   isOutlined,
   type = 'button',
-  ...props
+  disabled,
 }) => {
   const classes = cx(
     'border-2 border-solid rounded-full tracking-wide text-center font-medium inline-block whitespace-no-wrap',
@@ -28,8 +28,11 @@ const Button: React.FC<IButtonProps> = ({
       'px-10 py-3 text-lg font-medium': size === 'lg',
     },
     {
-      'bg-green-700 text-white hover:bg-green-800 border-transparent': !isOutlined,
-      'bg-white text-green-700 hover:bg-gray-200 border-green-700 hover:border-green-800': isOutlined,
+      'bg-gray-300 border-gray-300 text-gray-800': disabled,
+      'bg-green-700 text-white hover:bg-green-800 border-transparent':
+        !isOutlined && !disabled,
+      'bg-white text-green-700 hover:bg-gray-200 border-green-700 hover:border-green-800':
+        isOutlined && !disabled,
     },
     className
   );
@@ -44,7 +47,7 @@ const Button: React.FC<IButtonProps> = ({
 
   return (
     // eslint-disable-next-line react/button-has-type
-    <button type={type} className={classes} {...props}>
+    <button type={type} className={classes} disabled={disabled}>
       {children}
     </button>
   );
