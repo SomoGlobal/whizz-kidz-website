@@ -27,7 +27,7 @@ export default function EventsHome({
         pageTitle="Events & Challenges"
         secondaryNavItems={secondaryNavItems}
       >
-        <Hero title="Join Team Whizz-Kidz" pattern="supporters" />
+        <Hero title="Join Team Whizz‑Kidz" pattern="supporters" />
         <TextWithImage
           image={eventsPage.featuredEvent.image}
           imagePosition="right"
