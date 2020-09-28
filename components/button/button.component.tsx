@@ -7,6 +7,8 @@ export interface IButtonProps {
   linkProps?: any;
   isOutlined?: boolean;
   size?: 'sm' | 'm' | 'lg';
+  type?: React.ButtonHTMLAttributes<any>['type'];
+  [prop: string]: any;
 }
 
 const Button: React.FC<IButtonProps> = ({
@@ -15,6 +17,8 @@ const Button: React.FC<IButtonProps> = ({
   linkProps,
   size = 'm',
   isOutlined,
+  type = 'button',
+  ...props
 }) => {
   const classes = cx(
     'border-2 border-solid rounded-full tracking-wide text-center font-medium inline-block whitespace-no-wrap',
@@ -39,7 +43,8 @@ const Button: React.FC<IButtonProps> = ({
   }
 
   return (
-    <button type="button" className={classes}>
+    // eslint-disable-next-line react/button-has-type
+    <button type={type} className={classes} {...props}>
       {children}
     </button>
   );

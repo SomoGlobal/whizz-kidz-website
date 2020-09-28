@@ -21,7 +21,7 @@ body {
   box-decoration-break: clone;
 }
 
-a:focus, button:focus {
+input:focus, a:focus, button:focus {
   outline: var(--focus-color) solid 3px;
 }
 
