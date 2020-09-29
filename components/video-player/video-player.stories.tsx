@@ -4,9 +4,10 @@ import VideoPlayer from './video-player.component';
 const Template = (args) => <VideoPlayer {...args} />;
 
 export default {
-  title: 'Components/VideoPlayer',
+  title: 'Modules/VideoPlayer',
   component: VideoPlayer,
   args: {
+    hasPattern: true,
     coverImage: {
       responsiveImage: {
         srcSet:

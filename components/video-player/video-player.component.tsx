@@ -14,15 +14,15 @@ export interface IVideoPlayerProps {
   video: {
     provider?: string;
     providerUid?: string;
-    thumbnailUrl?: string;
-    title?: string;
-    url?: string;
-    width?: number;
-    height?: number;
   };
+  hasPattern?: boolean;
 }
 
-const VideoPlayer: React.FC<IVideoPlayerProps> = ({ video, coverImage }) => {
+const VideoPlayer: React.FC<IVideoPlayerProps> = ({
+  video,
+  coverImage,
+  hasPattern,
+}) => {
   const [isReady, setReady] = useState(false);
   const [isPlaying, setPlaying] = useState(false);
   const [hasStarted, setStarted] = useState(false);
@@ -57,11 +57,22 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({ video, coverImage }) => {
     <Container
       as="section"
       aria-label="Video Player"
-      className="pl-0 pr-0 lg:pl-4 lg:pr-4 grid grid-cols-1 grid-rows-1"
+      className={cx(
+        'grid max-w-3xl grid-cols-1 grid-rows-1 pl-0 pr-0 lg:pl-4 lg:pr-4',
+        {
+          'py-4 bg-cover': hasPattern,
+        }
+      )}
+      style={{
+        backgroundImage:
+          hasPattern && !isPlaying
+            ? `url("/svg/hero/supporters-hero.svg")`
+            : '',
+      }}
     >
       {!hasStarted && (
         <motion.div
-          className="col-start-1 col-end-2 row-start-1 row-end-2 z-20 flex items-center justify-center"
+          className="z-20 flex items-center justify-center col-start-1 col-end-2 row-start-1 row-end-2"
           exit={{
             opacity: 0,
             scale: 0,

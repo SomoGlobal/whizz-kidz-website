@@ -8,6 +8,7 @@ import Step from '../components/step';
 import TextWithImage from '../components/text-with-image';
 import TextWithPattern from '../components/text-with-pattern';
 import FAQ from '../components/faq';
+import VideoPlayer from '../components/video-player';
 import TopicGrid from '../modules/topic-grid';
 
 const pageMap = {
@@ -22,6 +23,7 @@ const pageMap = {
   step: Step,
   topic_grid: TopicGrid,
   gallery: GridGallery,
+  video: VideoPlayer,
 };
 
 export default pageMap;

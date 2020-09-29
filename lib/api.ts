@@ -119,6 +119,20 @@ export async function getPage(preview: boolean, slug: string) {
         slug
         title
         modules {
+          ... on VideoRecord {
+            id
+            _modelApiKey
+            video {
+              providerUid
+              provider
+            }
+            hasPattern
+            coverImage {
+              responsiveImage(imgixParams: {auto: format, fit: crop, w: 2480, ar: "16:9"}) {
+                ...responsiveImageFragment
+              }
+            }
+          }
           ... on GalleryRecord {
             id
             _modelApiKey
