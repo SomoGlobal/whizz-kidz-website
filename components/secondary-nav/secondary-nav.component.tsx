@@ -27,7 +27,7 @@ const SecondaryNav: React.FC<ISecondaryNavProps> = ({
       data-datocms-noindex
     >
       <Container as="nav" aria-label="Sibling pages">
-        <ul className="flex flex-wrap">
+        <ul className="flex overflow-scroll lg:overflow-visible">
           {items.map((nav, index) => (
             <li key={nav.label}>
               <Link {...nav.linkProps}>
