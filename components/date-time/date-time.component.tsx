@@ -16,7 +16,11 @@ const DateTime: React.FC<IDateTimeProps> = ({ time, className = '' }) => {
   });
 
   return (
-    <time dateTime={time} className={className} pubdate>
+    <time
+      dateTime={time}
+      className={className}
+      {...({ pubdate: 'pubdate' } as any)}
+    >
       {timeTitle}
     </time>
   );

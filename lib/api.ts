@@ -119,6 +119,17 @@ export async function getPage(preview: boolean, slug: string) {
         slug
         title
         modules {
+          ... on LinkCloudRecord {
+            id
+            _modelApiKey
+            items {
+              ... on RegionRecord {
+                name
+                slug
+                _modelApiKey
+              }
+            }
+          }
           ... on VideoRecord {
             id
             _modelApiKey

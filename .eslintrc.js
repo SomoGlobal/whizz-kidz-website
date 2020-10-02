@@ -30,7 +30,10 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
     'import/extensions': 0,
     'react/prop-types': 0,
-    'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
+    'react/jsx-props-no-spreading': [
+      'error',
+      { custom: 'ignore', exceptions: ['time'] },
+    ],
     'prettier/prettier': 'error',
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,

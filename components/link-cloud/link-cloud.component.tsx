@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import cx from 'classnames';
+import { brands } from '../../lib/brand-context';
 import Container from '../container';
 
 type LinkItem = {
@@ -17,13 +18,12 @@ export interface ILinkCloudProps {
 }
 
 const colors = [
-  'bg-pink-600',
-  'bg-blue-600',
-  'bg-green-600',
-  'bg-yellow-700',
-  'bg-indigo-700',
-  'bg-purple-600',
-  'bg-red-500',
+  brands.families.backgroundColor,
+  brands.charity.backgroundColor,
+  brands.home.backgroundColor,
+  brands.kidz.backgroundColor,
+  brands.discover.backgroundColor,
+  brands.supporters.backgroundColor,
 ];
 
 const LinkCloud: React.FC<ILinkCloudProps> = ({ items, label }) => {
@@ -35,7 +35,7 @@ const LinkCloud: React.FC<ILinkCloudProps> = ({ items, label }) => {
             <Link {...item.linkProps}>
               <a
                 className={cx(
-                  'text-white hover:underline font-bold leading-normal text-5xl sm:text-6xl md:text-7xl px-4 py-4 clone',
+                  'text-white hover:underline font-bold leading-normal text-6xl md:text-7xl px-4 py-4 clone',
                   colors[index % colors.length]
                 )}
               >
