@@ -1,16 +1,11 @@
 import React from 'react';
 
 export interface IDateTimeProps {
-  label: string;
   time: string;
   className?: string;
 }
 
-const DateTime: React.FC<IDateTimeProps> = ({
-  time,
-  label,
-  className = '',
-}) => {
+const DateTime: React.FC<IDateTimeProps> = ({ time, className = '' }) => {
   const locale = 'en-GB';
   const publishedAtDate = new Date(time);
   const timeTitle = publishedAtDate.toLocaleDateString(locale, {
@@ -21,7 +16,7 @@ const DateTime: React.FC<IDateTimeProps> = ({
   });
 
   return (
-    <time aria-label={label} dateTime={time} className={className}>
+    <time dateTime={time} className={className} pubdate>
       {timeTitle}
     </time>
   );

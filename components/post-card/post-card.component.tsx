@@ -81,7 +81,7 @@ const PostCard: React.FC<IPostCardProps> = ({
       </Link>
       <p className="px-6 py-2 text-sm font-normal flex justify-between items-center bg-gray-100 rounded-b rounded-t-none border-t border-solid border-gray-300">
         {topic && <TopicTag name={topic.name} slug={topic.slug} />}
-        <DateTime time={publishedAt} label="Published" />
+        <DateTime time={publishedAt} />
       </p>
     </article>
   );

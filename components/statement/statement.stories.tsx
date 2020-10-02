@@ -10,6 +10,7 @@ const missionText = `Our mission is to transform the lives of disabled children 
 
 export const Centered = () => (
   <Statement
+    hasEyebrowStyle
     isCentered
     eyebrow="Our Mission"
     heading={missionText}
@@ -19,6 +20,7 @@ export const Centered = () => (
 
 export const Left = () => (
   <Statement
+    hasEyebrowStyle
     eyebrow="Our Mission"
     heading={missionText}
     text="Our dynamic approach makes us stand out from the rest"
@@ -26,8 +28,13 @@ export const Left = () => (
 );
 
 export const WithoutParagraph = () => (
-  <Statement eyebrow="Our Mission" heading={missionText} />
+  <Statement hasEyebrowStyle eyebrow="Our Mission" heading={missionText} />
 );
 export const BigHeading = () => (
-  <Statement hasBigHeading eyebrow="Our Mission" heading={missionText} />
+  <Statement
+    hasEyebrowStyle
+    hasBigHeading
+    eyebrow="Our Mission"
+    heading={missionText}
+  />
 );

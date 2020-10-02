@@ -53,14 +53,14 @@ const Share: React.FC<IShareProps> = ({ url }) => {
       className="inline-flex sm:flex-col items-center"
       data-datocms-noindex
     >
-      <h5
+      <div
         className={cx(
           smallTextColor,
           'uppercase font-bold tracking-wider sm:mb-3 text-base'
         )}
       >
         Share
-      </h5>
+      </div>
       <ul aria-label="Share" className="font-medium flex sm:inline-block">
         {items.map((item) => (
           <Item key={item.href} {...item} />

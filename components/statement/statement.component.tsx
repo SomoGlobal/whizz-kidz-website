@@ -10,6 +10,7 @@ export interface IStatementProps {
   hasBigHeading?: boolean;
   headerElement?: 'eyebrow' | 'heading';
   headerLevel?: number;
+  hasEyebrowStyle?: boolean;
   className?: string;
 }
 
@@ -22,13 +23,17 @@ const Statement: React.FC<IStatementProps> = ({
   headerElement = 'eyebrow',
   headerLevel = 2,
   className,
+  hasEyebrowStyle,
 }) => {
   const { smallTextColor } = useContext(BrandContext);
   const eyebrowElement = React.createElement(
     headerElement === 'eyebrow' ? `h${headerLevel}` : 'p',
     {
       className: cx(
-        'uppercase font-bold tracking-wider mb-3 text-base',
+        'mb-3',
+        {
+          'uppercase font-bold tracking-wider': hasEyebrowStyle,
+        },
         smallTextColor
       ),
     },

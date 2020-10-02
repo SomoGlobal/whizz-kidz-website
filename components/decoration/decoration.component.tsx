@@ -19,6 +19,9 @@ const Decoration: React.FC<IDecorationProps> = ({
       {decorationType === 'triangle' && (
         <DecorateTriangle position={decorationPosition as any} />
       )}
+      {decorationType === 'doughnut' && (
+        <img src="/svg/decoration/doughnut01.svg" alt={decorationType} />
+      )}
     </div>
   );
 };

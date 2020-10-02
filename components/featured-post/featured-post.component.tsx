@@ -49,17 +49,16 @@ const FeaturedPost: React.FC<IFeaturedPostProps> = ({
         >
           <Image data={image.responsiveImage} />
         </button>
-        <div className="z-10 flex flex-col justify-between col-start-1 col-end-2 md:row-start-1 sm:row-end-2 sm:p-10 md:p-16">
-          <div className="flex justify-between">
+        <article className="z-10 flex flex-col justify-between col-start-1 col-end-2 md:row-start-1 sm:row-end-2 sm:p-10 md:p-16">
+          <header className="flex justify-between">
             {topic && <TopicTag name={topic.name} slug={topic.slug} />}
             {publishedAt && (
               <DateTime
-                label="Published"
                 time={publishedAt}
                 className="px-3 py-1 text-sm font-medium text-indigo-900 bg-white sm:rounded-full lead"
               />
             )}
-          </div>
+          </header>
 
           <div>
             <Link as={`/discover/post/${slug}`} href="/discover/post/[slug]">
@@ -88,7 +87,7 @@ const FeaturedPost: React.FC<IFeaturedPostProps> = ({
               </a>
             </Link>
           </div>
-        </div>
+        </article>
       </div>
     </Container>
   );

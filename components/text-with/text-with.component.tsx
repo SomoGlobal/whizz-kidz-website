@@ -42,7 +42,12 @@ const TextWith: React.FC<ITextWithProps> = ({
             'lg:col-start-1 lg:col-end-4': imagePosition === 'right',
           })}
         >
-          <Statement heading={heading} eyebrow={eyebrow} text={text} />
+          <Statement
+            heading={heading}
+            eyebrow={eyebrow}
+            text={text}
+            hasEyebrowStyle
+          />
           {callToAction && (
             <div>
               <CallToAction {...callToAction} />

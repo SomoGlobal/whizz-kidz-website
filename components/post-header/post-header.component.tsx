@@ -47,9 +47,12 @@ const PostHeader: React.FC<IPostHeaderProps> = ({
             hasBigHeading
             text={summary}
             heading={title}
+            hasEyebrowStyle={false}
             eyebrow={
               <div className="w-full flex justify-between">
-                <DateTime label="Published" time={publishedAt} />
+                <span className="uppercase font-bold tracking-wider">
+                  <DateTime time={publishedAt} />
+                </span>
                 {topic && <TopicTag name={topic.name} slug={topic.slug} />}
               </div>
             }
