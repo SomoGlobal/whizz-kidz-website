@@ -36,7 +36,7 @@ export default function Discover({
             title={featuredPost.title}
             image={featuredPost.coverImage}
             topic={featuredPost.topic}
-            publishedAt={featuredPost._firstPublishedAt}
+            publishedAt={featuredPost.publishedDate}
             hasVideo={!!featuredPost.videoFile}
           />
         )}
@@ -66,7 +66,7 @@ query DiscoverHomePage {
   featuredPost: post(filter: {featured: {eq: true}}, orderBy: publishedDate_DESC) {
     slug
     title
-    _firstPublishedAt
+    publishedDate
     videoFile {
       provider
     }
