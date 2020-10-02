@@ -1,0 +1,1 @@
+import React from 'react';import LinkCloudModule from './link-cloud-module.component';const Template = (args) => <LinkCloudModule {...args} />;export default {  title: 'Components/LinkCloudModule',  component: LinkCloudModule,};export const Story = Template.bind({});Story.args = {};
