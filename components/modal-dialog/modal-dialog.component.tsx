@@ -1,4 +1,4 @@
-import { AriaDialogProps, useDialog } from '@react-aria/dialog';
+import { useDialog } from '@react-aria/dialog';
 import { FocusScope } from '@react-aria/focus';
 import {
   OverlayProps,
@@ -10,7 +10,8 @@ import cx from 'classnames';
 import { motion, useReducedMotion } from 'framer-motion';
 import React from 'react';
 
-export interface IModalDialogProps extends OverlayProps, AriaDialogProps {
+export interface IModalDialogProps extends OverlayProps {
+  title: string;
   position: 'right-full' | 'center';
   closeButton: React.ReactNode;
 }
@@ -30,7 +31,7 @@ const ModalDialog: React.FC<IModalDialogProps> = (props) => {
   const { modalProps } = useModal();
 
   // Get props for the dialog and its title
-  const { dialogProps, titleProps } = useDialog(props, ref);
+  const { dialogProps, titleProps } = useDialog(props as any, ref);
 
   return (
     <motion.div
@@ -52,9 +53,9 @@ const ModalDialog: React.FC<IModalDialogProps> = (props) => {
           initial={{ opacity: 0, x: shouldReduceMotion ? 0 : '100%' }}
           animate={{ opacity: 1, x: '0%' }}
           exit={{ opacity: 0, x: shouldReduceMotion ? 0 : '100%' }}
-          {...overlayProps}
-          {...dialogProps}
-          {...modalProps}
+          {...(overlayProps as any)}
+          {...(dialogProps as any)}
+          {...(modalProps as any)}
           ref={ref}
           className="bg-white max-w-3xl w-full flex flex-col"
         >

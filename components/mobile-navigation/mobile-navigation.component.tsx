@@ -2,7 +2,7 @@ import { useButton } from '@react-aria/button';
 import { OverlayContainer } from '@react-aria/overlays';
 import { useOverlayTriggerState } from '@react-stately/overlays';
 import cx from 'classnames';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
 import { brands } from '../../lib/brand-context';
@@ -114,10 +114,11 @@ const MobileNavigation: React.FC<IMobileNavigationProps> = ({ links }) => {
                 className="flex flex-col flex-1 h-full text-white overflow-y-scroll"
                 aria-label="Navigation Category"
               >
-                {links.map((link, index) => (
+                {links.map((link) => (
                   <li key={link.id} className="flex-1 h-full">
-                    <Link {...link.linkProps} onClick={state.close}>
+                    <Link {...link.linkProps}>
                       <a
+                        onClick={state.close}
                         className={cx(
                           'px-8 py-4 text-left text-2xl sm:text-3xl md:text-5xl font-bold flex items-center w-full hover:underline h-full block',
                           `${brands[link.brand || 'default'].backgroundColor}`,
