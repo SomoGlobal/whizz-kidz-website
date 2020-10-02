@@ -13,6 +13,4 @@ export const Story = () => (
   <Mission eyebrow="Our Mission" heading={missionText} />
 );
 
-Story.story = {
-  name: 'mission',
-};
+Story.storyName = 'mission';

@@ -1,3 +1,4 @@
+import { OverlayProvider } from '@react-aria/overlays';
 import { useRouter } from 'next/router';
 import React from 'react';
 import BrandContext, { brands } from '../../lib/brand-context';
@@ -108,24 +109,26 @@ const Layout: React.FC<any> = ({
   });
 
   return (
-    <BrandContext.Provider value={brands[brand]}>
-      <div className="min-h-screen flex flex-col">
-        <Alert preview={preview} />
-        <Header links={links} primaryActiveIndex={primaryActiveIndex} />
-        {pageTitle && <PageTitle text={pageTitle} />}
-        {breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} />}
-        {secondaryNavItems.length > 0 && (
-          <SecondaryNav
-            activeIndex={secondaryActiveIndex}
-            items={secondaryNavItems}
-          />
-        )}
-        <main id="main" className="flex-1 overflow-hidden">
-          {children}
-        </main>
-        <Footer />
-      </div>
-    </BrandContext.Provider>
+    <OverlayProvider>
+      <BrandContext.Provider value={brands[brand]}>
+        <div className="min-h-screen flex flex-col">
+          <Alert preview={preview} />
+          <Header links={links} primaryActiveIndex={primaryActiveIndex} />
+          {pageTitle && <PageTitle text={pageTitle} />}
+          {breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} />}
+          {secondaryNavItems.length > 0 && (
+            <SecondaryNav
+              activeIndex={secondaryActiveIndex}
+              items={secondaryNavItems}
+            />
+          )}
+          <main id="main" className="flex-1 overflow-hidden">
+            {children}
+          </main>
+          <Footer />
+        </div>
+      </BrandContext.Provider>
+    </OverlayProvider>
   );
 };
 

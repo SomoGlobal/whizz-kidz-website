@@ -15,6 +15,4 @@ export const Story = () => (
   </Subtitle>
 );
 
-Story.story = {
-  name: 'subtitle',
-};
+Story.storyName = 'subtitle';

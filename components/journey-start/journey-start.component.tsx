@@ -15,6 +15,7 @@ const JourneyStart: React.FC<IJourneyStartProps> = ({ href, label, color }) => {
   return (
     <Link href={href}>
       <a
+        aria-label={`For ${label}`}
         className={cx(
           styles.link,
           color,
@@ -28,7 +29,7 @@ const JourneyStart: React.FC<IJourneyStartProps> = ({ href, label, color }) => {
           <div
             className={cx('flex items-center justify-center py-10 md:py-20')}
           >
-            <h2
+            <p
               className={cx(
                 color,
                 'text-4xl md:text-6xl font-bold leading-snug p-4 text-gray-100 flex items-center'
@@ -49,7 +50,7 @@ const JourneyStart: React.FC<IJourneyStartProps> = ({ href, label, color }) => {
               >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
-            </h2>
+            </p>
           </div>
         </Container>
       </a>

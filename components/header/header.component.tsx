@@ -2,8 +2,8 @@ import Link from 'next/link';
 import React from 'react';
 import Button from '../button';
 import Container from '../container';
-import FullPageSitemap from '../full-page-sitemap';
 import Logo from '../logo';
+import MobileNavigation from '../mobile-navigation';
 import PrimaryNav from '../primary-nav';
 
 const Header: React.FC<{ links: any[]; primaryActiveIndex?: number }> = ({
@@ -58,7 +58,7 @@ const Header: React.FC<{ links: any[]; primaryActiveIndex?: number }> = ({
                 </a>
               </Link>
               <div>
-                <FullPageSitemap links={links} />
+                <MobileNavigation links={links} />
               </div>
             </div>
           </div>

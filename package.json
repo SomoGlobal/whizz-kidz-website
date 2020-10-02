@@ -17,6 +17,11 @@
     "not ie 11"
   ],
   "dependencies": {
+    "@react-aria/button": "^3.2.2",
+    "@react-aria/dialog": "^3.1.2",
+    "@react-aria/focus": "^3.2.2",
+    "@react-aria/overlays": "^3.4.0",
+    "@react-stately/overlays": "^3.1.1",
     "@u-wave/react-vimeo": "^0.9.0",
     "classnames": "2.2.6",
     "date-fns": "2.16.1",

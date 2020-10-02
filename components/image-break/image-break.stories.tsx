@@ -16,6 +16,4 @@ export const Story = () => (
   </ImageBreak>
 );
 
-Story.story = {
-  name: 'image break',
-};
+Story.storyName = 'image break';

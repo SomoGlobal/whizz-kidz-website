@@ -16,6 +16,4 @@ export const Story = () => (
   </ImageFilter>
 );
 
-Story.story = {
-  name: 'image filter',
-};
+Story.storyName = 'image filter';

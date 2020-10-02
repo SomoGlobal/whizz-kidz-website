@@ -44,9 +44,7 @@ export const Story = () => (
   />
 );
 
-Story.story = {
-  name: 'bordered grid',
-};
+Story.storyName = 'bordered grid';
 
 export const CallToAction = () => (
   <BorderedGrid
