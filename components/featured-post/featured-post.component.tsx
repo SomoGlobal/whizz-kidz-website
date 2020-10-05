@@ -49,13 +49,13 @@ const FeaturedPost: React.FC<IFeaturedPostProps> = ({
         >
           <Image data={image.responsiveImage} />
         </button>
-        <article className="z-10 flex flex-col justify-between col-start-1 col-end-2 md:row-start-1 sm:row-end-2 sm:p-10 md:p-16">
-          <header className="flex justify-between">
+        <article className="z-10 flex flex-col justify-between col-start-1 col-end-2 md:row-start-1 sm:row-end-2 p-4 bg-gray-200 sm:bg-transparent sm:p-10 md:p-16 rounded-b-lg">
+          <header className="flex justify-between mb-2 sm:mb-0">
             {topic && <TopicTag name={topic.name} slug={topic.slug} />}
             {publishedAt && (
               <DateTime
                 time={publishedAt}
-                className="px-3 py-1 text-sm font-medium text-indigo-900 bg-white sm:rounded-full lead"
+                className="px-3 py-1 text-sm font-medium text-indigo-900 bg-white rounded-full lead"
               />
             )}
           </header>
@@ -63,7 +63,7 @@ const FeaturedPost: React.FC<IFeaturedPostProps> = ({
           <div>
             <Link as={`/discover/post/${slug}`} href="/discover/post/[slug]">
               <a
-                className={`clone text-2xl md:text-3xl text-white p-2 md:p-4 md:leading-loose font-bold hover:underline cursor-pointer ${backgroundColor}`}
+                className={`clone text-2xl md:text-3xl text-gray-700 sm:text-white p-2 md:p-4 md:leading-loose font-bold hover:underline cursor-pointer md:${backgroundColor}`}
               >
                 {hasVideo && (
                   <svg
