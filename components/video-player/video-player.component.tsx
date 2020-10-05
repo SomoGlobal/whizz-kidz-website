@@ -57,12 +57,9 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({
     <Container
       as="section"
       aria-label="Video Player"
-      className={cx(
-        'grid max-w-3xl grid-cols-1 grid-rows-1 pl-0 pr-0 lg:pl-4 lg:pr-4',
-        {
-          'py-4 bg-cover': hasPattern,
-        }
-      )}
+      className={cx('grid grid-cols-1 grid-rows-1 pl-0 pr-0 lg:pl-4 lg:pr-4', {
+        'py-4 bg-cover': hasPattern,
+      })}
       style={{
         backgroundImage:
           hasPattern && !isPlaying
