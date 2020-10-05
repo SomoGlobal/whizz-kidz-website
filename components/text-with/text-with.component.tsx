@@ -26,6 +26,8 @@ const TextWith: React.FC<ITextWithProps> = ({
 }) => {
   const shouldReduceMotion = useReducedMotion();
 
+  const headerElement = eyebrow ? 'eyebrow' : 'heading';
+
   return (
     <Container as="section">
       <div
@@ -46,6 +48,7 @@ const TextWith: React.FC<ITextWithProps> = ({
             heading={heading}
             eyebrow={eyebrow}
             text={text}
+            headerElement={headerElement}
             hasEyebrowStyle
           />
           {callToAction && (
