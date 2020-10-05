@@ -2,21 +2,12 @@ import { useButton } from '@react-aria/button';
 import { OverlayContainer } from '@react-aria/overlays';
 import { useOverlayTriggerState } from '@react-stately/overlays';
 import cx from 'classnames';
-import { AnimatePresence, useReducedMotion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
 import { brands } from '../../lib/brand-context';
 import styles from '../full-page-sitemap/full-page-sitemap.module.css';
 import ModalDialog from '../modal-dialog';
-
-export interface INavItem {
-  id: string;
-  label: string;
-  type: string;
-  children: INavChild[];
-  linkProps: ILinkProps;
-  brand: string;
-}
 
 export interface INavChild {
   label: string;
@@ -27,12 +18,20 @@ export interface ILinkProps {
   href: string;
 }
 
+export interface INavItem {
+  id: string;
+  label: string;
+  type: string;
+  children: INavChild[];
+  linkProps: ILinkProps;
+  brand: string;
+}
+
 export interface IMobileNavigationProps {
   links: INavItem[];
 }
 
 const MobileNavigation: React.FC<IMobileNavigationProps> = ({ links }) => {
-  const shouldReduceMotion = useReducedMotion();
   const openButtonRef = React.useRef<HTMLButtonElement>();
   const closeButtonRef = React.useRef<HTMLButtonElement>();
   const state = useOverlayTriggerState({});
@@ -56,9 +55,34 @@ const MobileNavigation: React.FC<IMobileNavigationProps> = ({ links }) => {
 
   const closeButton = (
     <button
-      className="p-3 rounded-lg text-gray-800 hover:bg-gray-200"
+      type="button"
+      className="p-3 text-gray-800 rounded-lg hover:bg-gray-200"
       ref={closeButtonRef}
-      {...closeButtonProps}
+      {...(closeButtonProps as any)}
+    >
+      <svg
+        role="img"
+        aria-label="Close Menu"
+        focusable="false"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        className="w-8 h-8 stroke-current"
+      >
+        <path d="M18 6L6 18M6 6l12 12" />
+      </svg>
+    </button>
+  );
+
+  const openButton = (
+    <button
+      type="button"
+      className="p-3 text-gray-800 rounded-lg hover:bg-gray-200 lg:hidden"
+      ref={openButtonRef}
+      {...(openButtonProps as any)}
     >
       <svg
         role="img"
@@ -70,35 +94,16 @@ const MobileNavigation: React.FC<IMobileNavigationProps> = ({ links }) => {
         strokeLinejoin="round"
         strokeWidth="2"
         viewBox="0 0 24 24"
-        className="stroke-current w-8 h-8"
+        className="w-8 h-8 stroke-current"
       >
-        <path d="M18 6L6 18M6 6l12 12" />
+        <path d="M3 12h18M3 6h18M3 18h18" />
       </svg>
     </button>
   );
 
   return (
     <>
-      <button
-        className="p-3 rounded-lg text-gray-800 hover:bg-gray-200"
-        ref={openButtonRef}
-        {...openButtonProps}
-      >
-        <svg
-          role="img"
-          aria-label="Open Menu"
-          focusable="false"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-          className="stroke-current w-8 h-8"
-        >
-          <path d="M3 12h18M3 6h18M3 18h18" />
-        </svg>
-      </button>
+      {openButton}
       <AnimatePresence>
         {state.isOpen && (
           <OverlayContainer>
@@ -111,11 +116,11 @@ const MobileNavigation: React.FC<IMobileNavigationProps> = ({ links }) => {
               closeButton={closeButton}
             >
               <ul
-                className="flex flex-col flex-1 h-full text-white overflow-y-scroll"
+                className="flex flex-col flex-1 h-full overflow-y-scroll text-white"
                 aria-label="Navigation Category"
               >
                 {links.map((link) => (
-                  <li key={link.id} className="flex-1 h-full">
+                  <li key={link.id} className="h-full">
                     <Link {...link.linkProps}>
                       <a
                         onClick={state.close}

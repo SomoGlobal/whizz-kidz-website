@@ -32,7 +32,7 @@ module.exports = {
     'react/prop-types': 0,
     'react/jsx-props-no-spreading': [
       'error',
-      { custom: 'ignore', exceptions: ['time'] },
+      { custom: 'ignore', exceptions: ['time', 'button'] },
     ],
     'prettier/prettier': 'error',
     '@typescript-eslint/no-explicit-any': 0,
