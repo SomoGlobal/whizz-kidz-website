@@ -38,6 +38,10 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({
     }
   };
 
+  const onError = (error) => {
+    console.error(error);
+  };
+
   const onPlay = () => {
     if (video.provider === 'youtube') {
       videoElement.playVideo();
@@ -125,6 +129,7 @@ const VideoPlayer: React.FC<IVideoPlayerProps> = ({
               color="white"
               showPortrait={false}
               showTitle={false}
+              onError={onError}
               video={video.providerUid}
               id={video.providerUid}
               responsive

@@ -27,7 +27,7 @@ const Statement: React.FC<IStatementProps> = ({
 }) => {
   const { smallTextColor } = useContext(BrandContext);
   const eyebrowElement = React.createElement(
-    headerElement === 'eyebrow' ? `h${headerLevel}` : 'p',
+    headerElement === 'eyebrow' ? `h${headerLevel}` : 'div',
     {
       className: cx(
         'mb-3',
@@ -55,9 +55,7 @@ const Statement: React.FC<IStatementProps> = ({
     <div className={cx({ 'text-center': isCentered }, className)}>
       <div>{eyebrow && eyebrowElement}</div>
       <div>{heading && headingElement}</div>
-      {text && (
-        <div className="mt-3 text-2xl font-light text-gray-700">{text}</div>
-      )}
+      {text && <p className="mt-3 text-2xl font-light text-gray-700">{text}</p>}
     </div>
   );
 };
