@@ -21,7 +21,7 @@ const Button: React.FC<IButtonProps> = ({
   disabled,
 }) => {
   const classes = cx(
-    'border-2 border-solid rounded-full tracking-wide text-center font-medium inline-block whitespace-no-wrap',
+    'border-2 border-solid rounded-full tracking-wide text-center font-medium inline-block',
     {
       'px-4 py-1 text-sm': size === 'sm',
       'px-6 py-2': size === 'm',
