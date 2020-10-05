@@ -40,6 +40,7 @@
     "react-dom": "^16.13.1",
     "react-final-form": "^6.5.1",
     "react-intersection-observer": "^8.27.1",
+    "react-paginate": "^6.5.0",
     "react-scroll-parallax": "^2.3.4",
     "react-structured-data": "^0.0.14",
     "react-use-dimensions": "^1.2.1",

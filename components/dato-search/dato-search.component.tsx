@@ -1,6 +1,7 @@
 import { stringify } from 'qs';
 import React, { useState } from 'react';
 import { Field, Form } from 'react-final-form';
+import ReactPaginate from 'react-paginate';
 import Button from '../button';
 import Container from '../container';
 
@@ -19,19 +20,22 @@ const highlightReplace = (text) => {
 
 const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
   const limit = 10;
-  const [offset, setOffset] = useState(0);
+  const [page, setPage] = useState(0);
+  const [isChangingPage, setPageChange] = useState(false);
   const [currentQuery, setCurrentQuery] = useState('');
-  const [data, setData] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [meta, setMeta] = useState({ total_count: 0 });
+  const pageCount = Math.ceil(meta.total_count / limit);
 
-  const search = async (q: string) => {
+  const search = async (q: string, pageNumber?: number) => {
+    const offset = (pageNumber !== undefined ? pageNumber : page) * limit;
     const qs = stringify({
       limit,
       offset,
       q,
     });
     const response = await fetch(
-      `https://site-api.datocms.com/search-results?=${qs}`,
+      `https://site-api.datocms.com/search-results?${qs}`,
       {
         headers: new Headers({
           Authorization: `API-Token ${apiToken}`,
@@ -44,14 +48,28 @@ const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
       return;
     }
 
-    const { data, meta } = await response.json();
+    const resJson = await response.json();
 
-    setData(data);
-    setMeta(meta);
+    setSearchResults(resJson.data);
+    setMeta(resJson.meta);
     setCurrentQuery(q);
   };
 
+  const onPageChange = async (formValues) => {
+    const { selected } = formValues;
+    setPage(selected);
+
+    try {
+      setPageChange(true);
+      await search(currentQuery, selected);
+    } finally {
+      setPageChange(false);
+      window.scroll(0, 0);
+    }
+  };
+
   const onSubmit = async (values: any) => {
+    setPage(0);
     await search(values.search);
   };
 
@@ -59,7 +77,7 @@ const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
     <Container className="my-10 md:my-20">
       <Form
         onSubmit={onSubmit}
-        render={({ handleSubmit, submitting, pristine, values }) => (
+        render={({ handleSubmit, submitting, pristine }) => (
           <form
             onSubmit={handleSubmit}
             className="flex flex-col items-center max-w-3xl mx-auto mb-5 sm:flex-row"
@@ -78,7 +96,7 @@ const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
             <Button
               type="submit"
               size="lg"
-              disabled={submitting || pristine}
+              disabled={submitting || pristine || isChangingPage}
               className="w-full sm:w-auto"
             >
               {submitting ? 'Searching...' : 'Search'}
@@ -99,8 +117,11 @@ const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
           <p role="alert" className="mb-4">
             Found {meta.total_count} result for &ldquo;{currentQuery}&rdquo;.
           </p>
-          <ol>
-            {data.map((item) => (
+          <ol
+            className={isChangingPage ? 'opacity-25' : ''}
+            role={isChangingPage ? 'status' : 'list'}
+          >
+            {searchResults.map((item) => (
               <li key={item.id} className="mb-6">
                 <a
                   href={item.attributes.url}
@@ -125,7 +146,27 @@ const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
               </li>
             ))}
           </ol>
-          <div className="py-5 mt-10 text-2xl border-t-2 border-gray-200 border-solid" />
+
+          <ReactPaginate
+            containerClassName="flex flex-row flex-wrap justify-center w-full tracking-wide text-center font-medium my-10"
+            activeClassName=""
+            disabledClassName=""
+            activeLinkClassName="border-green-600"
+            pageClassName="sm:mx-1 flex"
+            pageLinkClassName="px-4 py-2 border-2 border-solid rounded-full bg-white text-green-800 hover:bg-gray-100"
+            breakClassName="flex"
+            breakLinkClassName="px-4 py-2 rounded-full text-green-800 hover:bg-gray-100"
+            previousClassName="sm:mr-6 flex flex-1 w-full"
+            previousLinkClassName="px-4 py-2 w-full border-2 border-solid rounded-full bg-white text-green-800 hover:bg-gray-100"
+            nextClassName="sm:ml-6 flex flex-1 w-full"
+            nextLinkClassName="px-4 py-2 w-full border-2 border-solid rounded-full bg-white text-green-800 hover:bg-gray-100"
+            initialPage={0}
+            disableInitialCallback
+            onPageChange={onPageChange}
+            pageCount={pageCount}
+            pageRangeDisplayed={5}
+            marginPagesDisplayed={1}
+          />
         </div>
       )}
     </Container>
