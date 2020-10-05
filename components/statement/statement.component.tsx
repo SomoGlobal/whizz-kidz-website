@@ -53,8 +53,8 @@ const Statement: React.FC<IStatementProps> = ({
 
   return (
     <div className={cx({ 'text-center': isCentered }, className)}>
-      {eyebrow && eyebrowElement}
-      {heading && headingElement}
+      <div>{eyebrow && eyebrowElement}</div>
+      <div>{heading && headingElement}</div>
       {text && (
         <div className="mt-3 text-2xl font-light text-gray-700">{text}</div>
       )}
