@@ -1,0 +1,1 @@
+import React from 'react';import LegacyJourneyStart from './legacy-journey-start.component';const Template = (args) => <LegacyJourneyStart {...args} />;export default {  title: 'Components/LegacyJourneyStart',  component: LegacyJourneyStart,};export const Story = Template.bind({});Story.args = {};

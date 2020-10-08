@@ -119,6 +119,10 @@ export async function getPage(preview: boolean, slug: string) {
         slug
         title
         modules {
+          ... on JourneyLauncherRecord {
+            id
+            _modelApiKey
+          }
           ... on LinkCloudRecord {
             id
             _modelApiKey

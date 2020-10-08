@@ -37,7 +37,7 @@ const Mark: React.FC<{ className: string; hidden?: boolean }> = ({
   children,
   hidden,
 }) => (
-  <span aria-hidden={hidden} className={cx('px-3 py-1 clone', className)}>
+  <span aria-hidden={hidden} className={cx('px-3 py-3 clone', className)}>
     {children}
   </span>
 );

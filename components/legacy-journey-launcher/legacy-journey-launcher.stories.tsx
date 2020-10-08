@@ -1,0 +1,1 @@
+import React from 'react';import LegacyJourneyLauncher from './legacy-journey-launcher.component';const Template = (args) => <LegacyJourneyLauncher {...args} />;export default {  title: 'Components/LegacyJourneyLauncher',  component: LegacyJourneyLauncher,};export const Story = Template.bind({});Story.args = {};

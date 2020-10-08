@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface IBrand {
+export interface IBrand {
   backgroundColor: string;
   hoverSmallBackgroundColor: string;
   textColor: string;
@@ -21,11 +21,11 @@ export const brands: IBrands = {
     smallTextColor: 'text-indigo-900',
   },
   home: {
-    backgroundColor: 'bg-pink-700',
-    hoverSmallBackgroundColor: 'hover:bg-pink-700',
-    smallBackgroundColor: 'bg-pink-700',
-    textColor: 'text-pink-500',
-    smallTextColor: 'text-pink-700',
+    backgroundColor: 'bg-green-600',
+    hoverSmallBackgroundColor: 'hover:bg-green-700',
+    smallBackgroundColor: 'bg-green-700',
+    textColor: 'text-green-500',
+    smallTextColor: 'text-green-800',
   },
   kidz: {
     backgroundColor: 'bg-indigo-500',
@@ -35,18 +35,18 @@ export const brands: IBrands = {
     smallTextColor: 'text-indigo-600',
   },
   families: {
-    backgroundColor: 'bg-green-600',
-    hoverSmallBackgroundColor: 'hover:bg-green-700',
-    smallBackgroundColor: 'bg-green-700',
-    textColor: 'text-green-500',
-    smallTextColor: 'text-green-800',
+    backgroundColor: 'bg-pink-600',
+    hoverSmallBackgroundColor: 'hover:bg-primary-pink',
+    smallBackgroundColor: 'bg-primary-pink',
+    textColor: 'text-primary-pink',
+    smallTextColor: 'text-primary-pink',
   },
   supporters: {
     backgroundColor: 'bg-purple-800',
-    hoverSmallBackgroundColor: 'hover:bg-purple-800',
-    smallBackgroundColor: 'bg-purple-800',
-    textColor: 'text-purple-500',
-    smallTextColor: 'text-purple-600',
+    hoverSmallBackgroundColor: 'hover:bg-secondary-blue',
+    smallBackgroundColor: 'bg-secondary-blue',
+    textColor: 'text-secondary-blue',
+    smallTextColor: 'text-secondary-blue',
   },
   charity: {
     backgroundColor: 'bg-orange-600',
