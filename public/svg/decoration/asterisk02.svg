@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="401px" height="401px" viewBox="0 0 401 401" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <title>Group 3</title>
+  <g id="UI" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.2">
+    <g id="Supporters" transform="translate(-1011.000000, -2063.000000)">
+      <g id="background-elements" transform="translate(-98.000000, 1150.000000)">
+        <g id="Group-3" transform="translate(1109.000000, 913.000000)">
+          <circle id="Oval-Copy" fill="#00A9E0" cx="201" cy="201" r="102"></circle>
+          <g id="Group-8" stroke="#523178" stroke-width="12.0000005">
+            <line x1="199.5" y1="0" x2="199.5" y2="401" id="Stroke-337"></line>
+            <line x1="122" y1="14" x2="276" y2="385" id="Stroke-338"></line>
+            <line x1="60" y1="60" x2="344" y2="344" id="Stroke-339"></line>
+            <line x1="14" y1="122" x2="385" y2="276" id="Stroke-340"></line>
+            <line x1="0" y1="199.5" x2="401" y2="199.5" id="Stroke-341"></line>
+            <line x1="14" y1="279" x2="385" y2="125" id="Stroke-342"></line>
+            <line x1="60" y1="341" x2="344" y2="57" id="Stroke-343"></line>
+            <line x1="122" y1="385" x2="276" y2="14" id="Stroke-344"></line>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
