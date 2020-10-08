@@ -32,7 +32,7 @@
     "graphql-request": "^1.8.2",
     "isomorphic-unfetch": "3.0.0",
     "memoizee": "^0.4.14",
-    "next": "^9.5.3",
+    "next": "^9.5.4",
     "prop-types-exact": "^1.2.0",
     "qs": "^6.9.4",
     "react": "^16.13.1",
