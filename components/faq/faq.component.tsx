@@ -16,24 +16,26 @@ export interface IFaqProps {
 /**
  * @link https://developers.google.com/search/docs/data-types/faqpage
  */
-const Faq: React.FC<IFaqProps> = ({ items, heading }) => {
+const Faq: React.FC<IFaqProps> = ({ items = [], heading }) => {
   return (
     <Container as="section" aria-label="FAQ">
-      <JSONLD>
-        <Generic type="FAQPage" jsonldtype="FAQPage">
-          <GenericCollection type="mainEntity">
-            {items.map((item) => (
-              <Question name={item.question} key={item.id}>
-                <Generic
-                  type="acceptedAnswer"
-                  jsonldtype="Answer"
-                  schema={{ text: item.answer }}
-                />
-              </Question>
-            ))}
-          </GenericCollection>
-        </Generic>
-      </JSONLD>
+      {items.length > 0 && (
+        <JSONLD>
+          <Generic type="FAQPage" jsonldtype="FAQPage">
+            <GenericCollection type="mainEntity">
+              {items.map((item) => (
+                <Question name={item.question} key={item.id}>
+                  <Generic
+                    type="acceptedAnswer"
+                    jsonldtype="Answer"
+                    schema={{ text: item.answer }}
+                  />
+                </Question>
+              ))}
+            </GenericCollection>
+          </Generic>
+        </JSONLD>
+      )}
       <div className="my-40 md:mx-16 text-gray-700">
         {heading && (
           <h2 className="max-w-3xl mx-auto mb-6 text-4xl font-bold leading-snug">

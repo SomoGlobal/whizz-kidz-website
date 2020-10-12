@@ -62,9 +62,7 @@ const FeaturedPost: React.FC<IFeaturedPostProps> = ({
 
           <div>
             <Link as={`/discover/post/${slug}`} href="/discover/post/[slug]">
-              <a
-                className={`clone text-2xl md:text-3xl text-gray-700 sm:text-white p-2 md:p-4 md:leading-loose font-bold hover:underline cursor-pointer md:${backgroundColor}`}
-              >
+              <a className="clone text-2xl md:text-3xl text-gray-700 sm:text-white p-2 md:p-4 md:leading-loose font-bold hover:underline cursor-pointer md:bg-gray-600">
                 {hasVideo && (
                   <svg
                     role="presentation"
