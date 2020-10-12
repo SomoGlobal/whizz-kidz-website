@@ -6,6 +6,7 @@ export interface IButtonProps {
   className?: string;
   linkProps?: any;
   isOutlined?: boolean;
+  externalUrl?: string;
   size?: 'sm' | 'm' | 'lg';
   type?: React.ButtonHTMLAttributes<any>['type'];
   disabled?: boolean;
@@ -15,6 +16,7 @@ const Button: React.FC<IButtonProps> = ({
   children,
   className = '',
   linkProps,
+  externalUrl,
   size = 'm',
   isOutlined,
   type = 'button',
@@ -36,6 +38,19 @@ const Button: React.FC<IButtonProps> = ({
     },
     className
   );
+
+  if (externalUrl) {
+    return (
+      <a
+        href={externalUrl}
+        rel="noreferrer"
+        target="_blank"
+        className={classes}
+      >
+        {children}
+      </a>
+    );
+  }
 
   if (linkProps) {
     return (

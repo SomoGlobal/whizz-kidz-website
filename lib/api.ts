@@ -55,6 +55,7 @@ export const responsiveImageFragment = `
 export const linkFragment = `
   fragment linkFragment on LinkRecord {
     label
+    externalUrl
     internal {
       ... on CategoryRecord {
         slug
@@ -118,6 +119,11 @@ export async function getPage(preview: boolean, slug: string) {
         id
         slug
         title
+        seo: _seoMetaTags {
+          tag
+          attributes
+          content
+        }
         modules {
           ... on ThreeCardRecord {
             id
@@ -129,6 +135,9 @@ export async function getPage(preview: boolean, slug: string) {
                 ...responsiveImageFragment
               }
             }
+            card3Cta {
+              ...linkFragment
+            }
             card2Text
             card2Heading
             card2Image {
@@ -136,12 +145,18 @@ export async function getPage(preview: boolean, slug: string) {
                 ...responsiveImageFragment
               }
             }
+            card2Cta {
+              ...linkFragment
+            }
             card1Text
             card1Heading
             card1Image {
               responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 400, ar: "16:9"}) {
                 ...responsiveImageFragment
               }
+            }
+            card1Cta {
+              ...linkFragment
             }
           }
           ... on JourneyLauncherRecord {

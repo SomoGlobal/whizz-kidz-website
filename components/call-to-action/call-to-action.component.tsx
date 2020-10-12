@@ -1,10 +1,14 @@
 import React from 'react';
+import { IButtonProps } from '../button/button.component';
 import Button from '../button';
 
 type Parent = { slug: string; parent: Parent };
 
 export interface ICallToActionProps {
   label: string;
+  isOutlined?: boolean;
+  size?: IButtonProps['size'];
+  externalUrl?: string;
   internal: {
     _modelApiKey: string;
     slug: string;
@@ -23,45 +27,59 @@ const queryToHref = (
   return queryToHref(query.parent, [query.slug, ...path]);
 };
 
-const CallToAction: React.FC<ICallToActionProps> = ({ label, internal }) => {
-  let linkProps: any = { href: '/' };
+const CallToAction: React.FC<ICallToActionProps> = ({
+  label,
+  externalUrl,
+  internal,
+  isOutlined,
+  size = 'lg',
+}) => {
+  const buttonProps: Partial<IButtonProps> = {};
 
-  switch (internal._modelApiKey) {
-    case 'page':
-      linkProps = {
-        href: `/${queryToHref(internal).join('/')}`.replace('/home', ''),
-      };
-      break;
-    case 'category':
-      linkProps = {
-        as: `/discover/category/${internal.slug}`,
-        href: `/discover/category/[slug]`,
-      };
-      break;
-    case 'topic':
-      linkProps = {
-        as: `/discover/topic/${internal.slug}`,
-        href: `/discover/topic/[slug]`,
-      };
-      break;
-    case 'event':
-      linkProps = {
-        as: `/supporters/events/${internal.slug}`,
-        href: `/supporters/events/[slug]`,
-      };
-      break;
-    case 'post':
-      linkProps = {
-        as: `/discover/post/${internal.slug}`,
-        href: `/discover/post/[slug]`,
-      };
-      break;
-    default:
-      linkProps = { href: '/' };
+  if (externalUrl) {
+    buttonProps.externalUrl = externalUrl;
+  } else {
+    let linkProps: any = { href: '/' };
+
+    switch (internal._modelApiKey) {
+      case 'page':
+        linkProps = {
+          href: `/${queryToHref(internal).join('/')}`.replace('/home', ''),
+        };
+        break;
+      case 'category':
+        linkProps = {
+          as: `/discover/category/${internal.slug}`,
+          href: `/discover/category/[slug]`,
+        };
+        break;
+      case 'topic':
+        linkProps = {
+          as: `/discover/topic/${internal.slug}`,
+          href: `/discover/topic/[slug]`,
+        };
+        break;
+      case 'event':
+        linkProps = {
+          as: `/supporters/events/${internal.slug}`,
+          href: `/supporters/events/[slug]`,
+        };
+        break;
+      case 'post':
+        linkProps = {
+          as: `/discover/post/${internal.slug}`,
+          href: `/discover/post/[slug]`,
+        };
+        break;
+      default:
+        linkProps = { href: '/' };
+    }
+
+    buttonProps.linkProps = linkProps;
   }
 
   return (
-    <Button size="lg" linkProps={linkProps}>
+    <Button size={size} {...buttonProps} isOutlined={isOutlined}>
       {label}
     </Button>
   );

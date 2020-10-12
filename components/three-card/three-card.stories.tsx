@@ -15,7 +15,7 @@ export default {
     card2Text:
       'Card 2 Text Card 2 Text Card 2 Text Card 2 Text Card 2 Text Card 2 Text Card 2 Text Card 2 Text Card 2 Text Card 2 Text Card 2 Text Card 2 Text ',
     card2Heading: 'Card 2 Heading',
-    card1Text: 'Card 1 Text',
+    card1Text: null,
     card1Heading: 'Card 1 Heading',
     card1Image: {
       responsiveImage: {
