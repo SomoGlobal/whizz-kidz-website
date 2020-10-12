@@ -10,6 +10,7 @@ import Mission from '../components/mission';
 import Step from '../components/step';
 import TextWithImage from '../components/text-with-image';
 import TextWithPattern from '../components/text-with-pattern';
+import ThreeCard from '../components/three-card';
 import VideoPlayer from '../components/video-player';
 import TopicGrid from '../modules/topic-grid';
 
@@ -28,6 +29,7 @@ const pageMap = {
   video: VideoPlayer,
   link_cloud: LinkCloudModule,
   journey_launcher: JourneyLauncher,
+  three_card: ThreeCard,
 };
 
 export default pageMap;

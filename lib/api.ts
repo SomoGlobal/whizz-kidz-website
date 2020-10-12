@@ -119,6 +119,31 @@ export async function getPage(preview: boolean, slug: string) {
         slug
         title
         modules {
+          ... on ThreeCardRecord {
+            id
+            _modelApiKey
+            card3Text
+            card3Heading
+            card3Image {
+              responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 400, ar: "16:9"}) {
+                ...responsiveImageFragment
+              }
+            }
+            card2Text
+            card2Heading
+            card2Image {
+              responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 400, ar: "16:9"}) {
+                ...responsiveImageFragment
+              }
+            }
+            card1Text
+            card1Heading
+            card1Image {
+              responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 400, ar: "16:9"}) {
+                ...responsiveImageFragment
+              }
+            }
+          }
           ... on JourneyLauncherRecord {
             id
             _modelApiKey
