@@ -54,7 +54,7 @@ query AllCategoriesForSlugs {
 
   return {
     paths: staticPaths,
-    fallback: false,
+    fallback: true,
   };
 }
 

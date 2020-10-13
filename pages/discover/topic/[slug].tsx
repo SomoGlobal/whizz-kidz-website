@@ -58,7 +58,7 @@ query AllTopicsForSlugs {
 
   return {
     paths: staticPaths,
-    fallback: false,
+    fallback: true,
   };
 }
 
