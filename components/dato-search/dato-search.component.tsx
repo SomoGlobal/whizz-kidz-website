@@ -130,10 +130,7 @@ const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
           >
             Found {meta.total_count} result for &ldquo;{currentQuery}&rdquo;.
           </p>
-          <ol
-            className={isChangingPage ? 'opacity-25' : ''}
-            role={isChangingPage ? 'status' : 'list'}
-          >
+          <ol className={isChangingPage ? 'opacity-25' : ''}>
             {searchResults.map((item) => (
               <li key={item.id} className="mb-6">
                 <a
