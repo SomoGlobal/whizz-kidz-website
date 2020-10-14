@@ -1,5 +1,5 @@
 import { stringify } from 'qs';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Field, Form } from 'react-final-form';
 import ReactPaginate from 'react-paginate';
 import Button from '../button';
@@ -20,6 +20,7 @@ const highlightReplace = (text) => {
 
 const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
   const limit = 10;
+  const resultsRef = useRef();
   const [page, setPage] = useState(0);
   const [isChangingPage, setPageChange] = useState(false);
   const [currentQuery, setCurrentQuery] = useState('');
@@ -65,6 +66,13 @@ const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
     } finally {
       setPageChange(false);
       window.scroll(0, 0);
+      document.body.focus();
+
+      const resultsText = document.getElementById('search-results-text');
+
+      if (resultsText) {
+        resultsText.focus();
+      }
     }
   };
 
@@ -114,7 +122,12 @@ const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
             Search Results
             <span className="sr-hidden"> ({meta.total_count})</span>
           </h2>
-          <p role="alert" className="mb-4">
+          <p
+            role="alert"
+            className="mb-4"
+            id="search-results-text"
+            tabIndex={-1}
+          >
             Found {meta.total_count} result for &ldquo;{currentQuery}&rdquo;.
           </p>
           <ol
@@ -150,7 +163,7 @@ const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
           <ReactPaginate
             containerClassName="flex flex-row flex-wrap justify-center w-full tracking-wide text-center font-medium my-10"
             activeClassName=""
-            disabledClassName=""
+            disabledClassName="opacity-50 cursor-not-allowed"
             activeLinkClassName="border-green-600"
             pageClassName="sm:mx-1 flex"
             pageLinkClassName="px-4 py-2 border-2 border-solid rounded-full bg-white text-green-800 hover:bg-gray-100"
