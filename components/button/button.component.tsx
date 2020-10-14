@@ -1,11 +1,13 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useContext } from 'react';
 import cx from 'classnames';
+import BrandContext from '../../lib/brand-context';
 
 export interface IButtonProps {
   className?: string;
   linkProps?: any;
   isOutlined?: boolean;
+  isGhost?: boolean;
   externalUrl?: string;
   size?: 'sm' | 'm' | 'lg';
   type?: React.ButtonHTMLAttributes<any>['type'];
@@ -21,7 +23,12 @@ const Button: React.FC<IButtonProps> = ({
   isOutlined,
   type = 'button',
   disabled,
+  isGhost,
 }) => {
+  const { smallBackgroundColor, hoverSmallBackgroundColor } = useContext(
+    BrandContext
+  );
+
   const classes = cx(
     'border-2 border-solid rounded-full tracking-wide text-center font-medium inline-block',
     {
@@ -30,11 +37,14 @@ const Button: React.FC<IButtonProps> = ({
       'px-10 py-3 text-lg font-medium': size === 'lg',
     },
     {
+      'border-white text-white': isGhost,
+      [smallBackgroundColor]: isGhost,
+      [hoverSmallBackgroundColor]: isGhost,
       'bg-gray-300 border-gray-300 text-gray-800': disabled,
       'bg-green-700 text-white hover:bg-green-800 border-transparent':
-        !isOutlined && !disabled,
+        !isOutlined && !disabled && !isGhost,
       'bg-white text-green-700 hover:bg-gray-200 border-green-700 hover:border-green-800':
-        isOutlined && !disabled,
+        isOutlined && !disabled && !isGhost,
     },
     className
   );

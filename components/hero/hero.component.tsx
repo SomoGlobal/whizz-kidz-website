@@ -1,11 +1,13 @@
 import cx from 'classnames';
 import React, { useContext } from 'react';
 import BrandContext, { brands } from '../../lib/brand-context';
+import CallToAction from '../call-to-action';
 import Container from '../container';
 
 export interface IHeroProps {
   color?: string;
   title: string;
+  callToAction: any;
   subtitle?: string;
   backgroundType?: 'grey' | 'color' | 'image';
   image?: {
@@ -44,6 +46,7 @@ const Mark: React.FC<{ className: string; hidden?: boolean }> = ({
 
 /**
  * This component is normally placed at the top of landing pages
+ * on a dark background the cta should be outlines
  */
 const Hero: React.FC<IHeroProps> = ({
   title,
@@ -53,6 +56,7 @@ const Hero: React.FC<IHeroProps> = ({
   pattern,
   image,
   split,
+  callToAction,
 }) => {
   const { backgroundColor } = useContext(BrandContext);
   const bgColor = color || backgroundColor;
@@ -115,6 +119,11 @@ const Hero: React.FC<IHeroProps> = ({
             <p className="text-lg sm:text-xl md:text-2xl leading-loose">
               <Mark className={bgColor}>{subtitle}</Mark>
             </p>
+          )}
+          {callToAction && (
+            <div className="w-full mt-10">
+              <CallToAction {...callToAction} size="lg" isGhost />
+            </div>
           )}
         </div>
       </div>

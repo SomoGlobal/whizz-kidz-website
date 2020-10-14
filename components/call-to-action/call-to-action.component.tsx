@@ -7,6 +7,7 @@ type Parent = { slug: string; parent: Parent };
 export interface ICallToActionProps {
   label: string;
   isOutlined?: boolean;
+  isGhost?: boolean;
   size?: IButtonProps['size'];
   externalUrl?: string;
   internal: {
@@ -32,6 +33,7 @@ const CallToAction: React.FC<ICallToActionProps> = ({
   externalUrl,
   internal,
   isOutlined,
+  isGhost,
   size = 'lg',
 }) => {
   const buttonProps: Partial<IButtonProps> = {};
@@ -79,7 +81,12 @@ const CallToAction: React.FC<ICallToActionProps> = ({
   }
 
   return (
-    <Button size={size} {...buttonProps} isOutlined={isOutlined}>
+    <Button
+      size={size}
+      {...buttonProps}
+      isOutlined={isOutlined}
+      isGhost={isGhost}
+    >
       {label}
     </Button>
   );

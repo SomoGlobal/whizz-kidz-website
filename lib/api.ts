@@ -264,6 +264,9 @@ export async function getPage(preview: boolean, slug: string) {
             image {
               url(imgixParams: {auto: format, fit: crop, w: 1240, ar: "1:1"})
             }
+            callToAction {
+              ...linkFragment
+            }
           }
           ... on FullWidthImageRecord {
             id
