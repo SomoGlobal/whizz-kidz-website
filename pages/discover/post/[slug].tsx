@@ -69,6 +69,7 @@ export default function DiscoverPost({ preview, post, site }) {
               mainEntityOfPage: url,
               datePublished: post.publishedDate,
               dateModified: post.publishedDate,
+              image: [post.image1x1.url, post.image4x3.url, post.image16x9.url],
             }}
           >
             <Generic
@@ -184,6 +185,15 @@ query PostPageQuery($slug: String) {
     summary
     publishedDate
     content(markdown: true)
+    image1x1: coverImage {
+      url(imgixParams: {ar: "1:1", maxW: "1200", fit: crop})
+    }
+    image4x3: coverImage {
+      url(imgixParams: {ar: "4:3", maxW: "1200", fit: crop})
+    }
+    image16x9: coverImage {
+      url(imgixParams: {ar: "16:9", maxW: "1200", fit: crop})
+    }
     seo: _seoMetaTags {
       tag
       content
