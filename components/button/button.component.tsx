@@ -63,6 +63,7 @@ const Button: React.FC<IButtonProps> = ({
         rel="noreferrer"
         target="_blank"
         className={classes}
+        aria-label={`${children} (opens in new window)`}
         onClick={() =>
           event({
             action: 'Click',
