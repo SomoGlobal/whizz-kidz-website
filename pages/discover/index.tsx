@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
+import { renderMetaTags } from 'react-datocms';
 import PostCardList from '../../components/post-card-list';
 import Layout from '../../components/layout';
 import LinkGrid from '../../components/link-grid';
@@ -13,6 +14,7 @@ export default function Discover({
   categoryGridTiles,
   topicGridTiles,
   recentPosts,
+  site,
 }) {
   const secondaryNavItems = [
     { label: 'Home', linkProps: { href: '/discover' } },
@@ -28,7 +30,12 @@ export default function Discover({
         secondaryNavItems={secondaryNavItems}
       >
         <Head>
-          <title>Discover</title>
+          <title>Discover | Whizz-Kidz</title>
+          {renderMetaTags(site.favicon)}
+          <meta
+            name="description"
+            content={site.globalSeo.fallbackSeo.description}
+          />
         </Head>
         {featuredPost && (
           <FeaturedPost
@@ -53,6 +60,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const data = await fetchAPI(
     `
 query DiscoverHomePage {
+  site: _site {
+    favicon: faviconMetaTags {
+      attributes
+      content
+      tag
+    }
+    globalSeo {
+      fallbackSeo {
+        description
+      }
+    }
+  }
   categories: allCategories(orderBy: position_ASC) {
     name
     slug
@@ -127,6 +146,7 @@ ${responsiveImageFragment}
       categoryGridTiles,
       topicGridTiles,
       recentPosts: data.recentPosts,
+      site: data.site,
     },
   };
 };

@@ -2,7 +2,7 @@ import cx from 'classnames';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import { Image } from 'react-datocms';
+import { Image, renderMetaTags } from 'react-datocms';
 import { DiscussionEmbed } from 'disqus-react';
 import styles from '../../../components/article/article.module.css';
 import Container from '../../../components/container';
@@ -12,7 +12,7 @@ import PostHeader from '../../../components/post-header';
 import VideoPlayer from '../../../components/video-player';
 import { fetchAPI, responsiveImageFragment } from '../../../lib/api';
 
-export default function DiscoverPost({ preview, post }) {
+export default function DiscoverPost({ preview, post, site }) {
   if (!post) {
     return null;
   }
@@ -52,75 +52,71 @@ export default function DiscoverPost({ preview, post }) {
   const hasImageWithNoVideo = post.coverImage && !post.videoFile;
 
   return (
-    <>
-      <Layout
-        preview={preview}
-        brand="discover"
-        pageTitle="Discover"
-        breadcrumbs={breadcrumbs}
-      >
-        <Head>
-          <title>{post.title}</title>
-        </Head>
-        <article style={{ display: 'unset' }}>
-          {hasVideo && (
-            <VideoPlayer coverImage={post.coverImage} video={post.videoFile} />
-          )}
-          {hasImageWithNoVideo && (
-            <Container
-              as="figure"
-              className="pl-0 pr-0 lg:pl-4 lg:pr-4 grid grid-cols-1 grid-rows-1"
-            >
-              <Image
-                className="col-start-1 col-end-2 row-start-1 row-end-2 z-10"
-                data={post.coverImage.responsiveImage}
-              />
-            </Container>
-          )}
-          <PostHeader
-            title={post.title}
-            summary={post.summary}
-            topic={post.topic}
-            publishedAt={post.publishedDate}
-            author={post.author}
-            share={{
-              title: post.title,
-              url,
-            }}
-          />
-          {post.podcastFile && (
-            <Podcast
-              file={post.podcastFile}
-              transcript={post.podcastTranscript}
+    <Layout
+      preview={preview}
+      brand="discover"
+      pageTitle="Discover"
+      breadcrumbs={breadcrumbs}
+    >
+      <Head>{renderMetaTags(post.seo.concat(site.favicon))}</Head>
+      <article style={{ display: 'unset' }}>
+        {hasVideo && (
+          <VideoPlayer coverImage={post.coverImage} video={post.videoFile} />
+        )}
+        {hasImageWithNoVideo && (
+          <Container
+            as="figure"
+            className="pl-0 pr-0 lg:pl-4 lg:pr-4 grid grid-cols-1 grid-rows-1"
+          >
+            <Image
+              className="col-start-1 col-end-2 row-start-1 row-end-2 z-10"
+              data={post.coverImage.responsiveImage}
             />
-          )}
-          <Container className="grid grid-cols-6 gap-4">
-            <div
-              dangerouslySetInnerHTML={{ __html: post.content }}
-              className={cx(
-                styles.article,
-                'md:col-start-2 md:col-end-6 col-span-6'
-              )}
-            />
-            <section
-              aria-label="Comments"
-              data-datocms-noindex
-              className="md:col-start-2 md:col-end-6 col-span-6 my-20"
-            >
-              <DiscussionEmbed
-                shortname={process.env.DISQUS_SHORTNAME}
-                config={{
-                  url,
-                  identifier: post.slug,
-                  title: post.title,
-                  language: 'en-GB',
-                }}
-              />
-            </section>
           </Container>
-        </article>
-      </Layout>
-    </>
+        )}
+        <PostHeader
+          title={post.title}
+          summary={post.summary}
+          topic={post.topic}
+          publishedAt={post.publishedDate}
+          author={post.author}
+          share={{
+            title: post.title,
+            url,
+          }}
+        />
+        {post.podcastFile && (
+          <Podcast
+            file={post.podcastFile}
+            transcript={post.podcastTranscript}
+          />
+        )}
+        <Container className="grid grid-cols-6 gap-4">
+          <div
+            dangerouslySetInnerHTML={{ __html: post.content }}
+            className={cx(
+              styles.article,
+              'md:col-start-2 md:col-end-6 col-span-6'
+            )}
+          />
+          <section
+            aria-label="Comments"
+            data-datocms-noindex
+            className="md:col-start-2 md:col-end-6 col-span-6 my-20"
+          >
+            <DiscussionEmbed
+              shortname={process.env.DISQUS_SHORTNAME}
+              config={{
+                url,
+                identifier: post.slug,
+                title: post.title,
+                language: 'en-GB',
+              }}
+            />
+          </section>
+        </Container>
+      </article>
+    </Layout>
   );
 }
 
@@ -149,12 +145,24 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const data = await fetchAPI(
     `
 query PostPageQuery($slug: String) {
+  site: _site {
+    favicon: faviconMetaTags {
+      attributes
+      content
+      tag
+    }
+  }
   post(filter: {slug: {eq: $slug}}) {
     slug
     title
     summary
     publishedDate
     content(markdown: true)
+    seo: _seoMetaTags {
+      tag
+      content
+      attributes
+    }
     topic {
       name
       slug
@@ -195,6 +203,6 @@ ${responsiveImageFragment}
   );
 
   return {
-    props: { preview, post: data?.post },
+    props: { preview, post: data?.post, site: data?.site },
   };
 };

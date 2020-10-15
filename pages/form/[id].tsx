@@ -10,6 +10,7 @@ export default function Form() {
     <Layout brand="home">
       <Head>
         <title>Form</title>
+        <meta name="robots" content="noindex" />
       </Head>
       {router.query.id && (
         <iframe

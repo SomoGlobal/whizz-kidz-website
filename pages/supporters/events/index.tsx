@@ -3,6 +3,7 @@ import { fetchAPI, getChildNavItems, responsiveImageFragment } from 'lib/api';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
+import { renderMetaTags } from 'react-datocms';
 import Article from '../../../components/article';
 import BorderedGrid from '../../../components/bordered-grid';
 import Hero from '../../../components/hero';
@@ -15,11 +16,13 @@ export default function EventsHome({
   secondaryNavItems,
   eventsPage,
   upcomingEvents,
+  favicon,
 }) {
   return (
     <>
       <Head>
         <title>Events & Challenges</title>
+        {renderMetaTags(favicon)}
       </Head>
       <Layout
         brand="supporters"
@@ -68,9 +71,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const preview = !!context.preview;
   const secondaryNavItems = await getChildNavItems('supporters');
 
-  const { eventsPage, upcomingEvents } = await fetchAPI(
+  const { eventsPage, upcomingEvents, site } = await fetchAPI(
     `
 query EventHomePage($now: DateTime) {
+  site: _site {
+    favicon: faviconMetaTags {
+      attributes
+      content
+      tag
+    }
+  }
   eventsPage {
     openingParagraph(markdown: true)
     featuredEvent {
@@ -100,6 +110,12 @@ ${responsiveImageFragment}
   );
 
   return {
-    props: { preview, secondaryNavItems, eventsPage, upcomingEvents },
+    props: {
+      preview,
+      secondaryNavItems,
+      eventsPage,
+      upcomingEvents,
+      favicon: site.favicon,
+    },
   };
 };

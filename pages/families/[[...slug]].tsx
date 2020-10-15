@@ -2,31 +2,28 @@ import { getPage, getSectionChildren, getChildNavItems } from 'lib/api';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
+import { renderMetaTags } from 'react-datocms';
 import Layout from '../../components/layout';
 import DatoModule from '../../lib/dato-module';
 import { treeToArray } from '../../lib/helpers';
 
-export default function Families({ page, preview, secondaryNavItems }) {
-  if (!page) {
+export default function Families({ data, preview, secondaryNavItems }) {
+  if (!data.page) {
     return null;
   }
 
   return (
-    <>
-      <Layout
-        brand="families"
-        preview={preview}
-        pageTitle={page.title}
-        secondaryNavItems={secondaryNavItems}
-      >
-        <Head>
-          <title>{page.title}</title>
-        </Head>
-        {page.modules.map((module, index) => (
-          <DatoModule key={module.id || index} module={module} />
-        ))}
-      </Layout>
-    </>
+    <Layout
+      brand="families"
+      preview={preview}
+      pageTitle={data.page.title}
+      secondaryNavItems={secondaryNavItems}
+    >
+      <Head>{renderMetaTags(data.page.seo.concat(data.site.favicon))}</Head>
+      {data.page.modules.map((module, index) => (
+        <DatoModule key={module.id || index} module={module} />
+      ))}
+    </Layout>
   );
 }
 
@@ -48,10 +45,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const preview = !!context.preview;
   const { slug } = context.params;
   const docSlug = slug ? slug[slug.length - 1] : 'families';
-  const page = await getPage(preview, docSlug);
+  const data = await getPage(preview, docSlug);
   const secondaryNavItems = await getChildNavItems('families');
 
   return {
-    props: { preview, page, secondaryNavItems },
+    props: { preview, data, secondaryNavItems },
   };
 };

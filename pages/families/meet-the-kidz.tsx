@@ -11,22 +11,20 @@ export default function MeetTheKids({ page, preview, secondaryNavItems }) {
   }
 
   return (
-    <>
-      <Layout
-        brand="families"
-        preview={preview}
-        pageTitle={page.title}
-        secondaryNavItems={secondaryNavItems}
-      >
-        <Head>
-          <title>{page.title}</title>
-        </Head>
-        <Mission
-          eyebrow="Meet the Kidz"
-          heading="Some of the young people and families that we’ve helped share their stories and explain how Whizz-Kidz transformed their lives."
-        />
-      </Layout>
-    </>
+    <Layout
+      brand="families"
+      preview={preview}
+      pageTitle={page.title}
+      secondaryNavItems={secondaryNavItems}
+    >
+      <Head>
+        <title>{page.title}</title>
+      </Head>
+      <Mission
+        eyebrow="Meet the Kidz"
+        heading="Some of the young people and families that we’ve helped share their stories and explain how Whizz-Kidz transformed their lives."
+      />
+    </Layout>
   );
 }
 

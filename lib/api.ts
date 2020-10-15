@@ -115,6 +115,13 @@ export async function getPage(preview: boolean, slug: string) {
   const data = await fetchAPI(
     `
     query PageQuery($slug: String) {
+      site: _site {
+        favicon: faviconMetaTags {
+          attributes
+          content
+          tag
+        }
+      }
       page(filter: {slug: {eq: $slug}}) {
         id
         slug
@@ -307,7 +314,7 @@ export async function getPage(preview: boolean, slug: string) {
       },
     }
   );
-  return data?.page;
+  return data;
 }
 
 export const getChildNavItems = memo(async (slug, pathPrefix = '') => {
