@@ -7,7 +7,7 @@ import Container from '../container';
 export interface IHeroProps {
   color?: string;
   title: string;
-  callToAction: any;
+  callToAction?: any;
   subtitle?: string;
   backgroundType?: 'grey' | 'color' | 'image';
   image?: {
