@@ -59,7 +59,12 @@ export default function DiscoverPost({ preview, post, site }) {
       pageTitle="Discover"
       breadcrumbs={breadcrumbs}
     >
-      <Head>{renderMetaTags(post.seo.concat(site.favicon))}</Head>
+      <Head>
+        {renderMetaTags(post.seo.concat(site.favicon))}
+        <meta name="description" content={post.summary} />
+        <meta property="og:description" content={post.summary} />
+        <meta name="twitter:description" content={post.summary} />
+      </Head>
       <article style={{ display: 'unset' }}>
         <JSONLD>
           <Generic
@@ -69,6 +74,7 @@ export default function DiscoverPost({ preview, post, site }) {
               mainEntityOfPage: url,
               datePublished: post.publishedDate,
               dateModified: post.publishedDate,
+              articleSection: post.topic.name,
               image: [post.image1x1.url, post.image4x3.url, post.image16x9.url],
             }}
           >
