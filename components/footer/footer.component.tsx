@@ -35,6 +35,7 @@ const Footer: React.FC = () => {
           <Button
             className="w-full md:w-auto mt-6 md:mt-0"
             linkProps={{ href: '/donate' }}
+            eventLabelSuffix="Footer Donate Button"
           >
             Donate
           </Button>

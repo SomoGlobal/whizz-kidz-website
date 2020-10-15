@@ -13,6 +13,7 @@ export interface IButtonProps {
   size?: 'sm' | 'm' | 'lg';
   type?: React.ButtonHTMLAttributes<any>['type'];
   disabled?: boolean;
+  eventLabelSuffix?: string;
 }
 
 const Button: React.FC<IButtonProps> = ({
@@ -25,6 +26,7 @@ const Button: React.FC<IButtonProps> = ({
   type = 'button',
   disabled,
   isGhost,
+  eventLabelSuffix,
 }) => {
   const { smallBackgroundColor, hoverSmallBackgroundColor } = useContext(
     BrandContext
@@ -50,6 +52,10 @@ const Button: React.FC<IButtonProps> = ({
     className
   );
 
+  const gaLabel = eventLabelSuffix
+    ? `${children} - ${eventLabelSuffix}`
+    : `${children}`;
+
   if (externalUrl) {
     return (
       <a
@@ -61,7 +67,7 @@ const Button: React.FC<IButtonProps> = ({
           event({
             action: 'Click',
             category: 'External Link',
-            label: children as string,
+            label: gaLabel,
           })
         }
       >
@@ -79,7 +85,7 @@ const Button: React.FC<IButtonProps> = ({
             event({
               action: 'Click',
               category: 'Internal Link',
-              label: children as string,
+              label: gaLabel,
             })
           }
         >
