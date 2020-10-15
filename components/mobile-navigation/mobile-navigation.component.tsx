@@ -108,7 +108,7 @@ const MobileNavigation: React.FC<IMobileNavigationProps> = ({ links }) => {
         {state.isOpen && (
           <OverlayContainer>
             <ModalDialog
-              title="Navigation"
+              title="Whizz-Kidz"
               isOpen
               onClose={state.close}
               isDismissable
