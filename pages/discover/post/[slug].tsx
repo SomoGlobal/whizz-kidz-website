@@ -1,9 +1,10 @@
 import cx from 'classnames';
+import { DiscussionEmbed } from 'disqus-react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import { Image, renderMetaTags } from 'react-datocms';
-import { DiscussionEmbed } from 'disqus-react';
+import { Generic, JSONLD } from 'react-structured-data';
 import styles from '../../../components/article/article.module.css';
 import Container from '../../../components/container';
 import Layout from '../../../components/layout';
@@ -17,7 +18,7 @@ export default function DiscoverPost({ preview, post, site }) {
     return null;
   }
 
-  let url = `http://www.whizz-kidz.org.uk/discover/post/${post.slug}`;
+  let url = `https://www.whizz-kidz.org.uk/discover/post/${post.slug}`;
 
   if (typeof window !== 'undefined') {
     url = (window as any).location.href;
@@ -60,6 +61,28 @@ export default function DiscoverPost({ preview, post, site }) {
     >
       <Head>{renderMetaTags(post.seo.concat(site.favicon))}</Head>
       <article style={{ display: 'unset' }}>
+        <JSONLD>
+          <Generic
+            jsonldtype="NewsArticle"
+            schema={{
+              headline: post.title,
+              mainEntityOfPage: url,
+              datePublished: post.publishedDate,
+              dateModified: post.publishedDate,
+            }}
+          >
+            <Generic
+              type="author"
+              jsonldtype="Person"
+              schema={{ name: post.author.name }}
+            />
+            <Generic
+              type="publisher"
+              jsonldtype="Organization"
+              schema={{ name: site.globalSeo.siteName }}
+            />
+          </Generic>
+        </JSONLD>
         {hasVideo && (
           <VideoPlayer coverImage={post.coverImage} video={post.videoFile} />
         )}
@@ -150,6 +173,9 @@ query PostPageQuery($slug: String) {
       attributes
       content
       tag
+    }
+    globalSeo {
+      siteName
     }
   }
   post(filter: {slug: {eq: $slug}}) {

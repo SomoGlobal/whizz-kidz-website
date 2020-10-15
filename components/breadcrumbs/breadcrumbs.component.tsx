@@ -48,21 +48,19 @@ const Breadcrumbs: React.FC<IBreadcrumbsProps> = ({ isThemed, items = [] }) => {
       className={`${isThemed ? backgroundColor : 'bg-white'}`}
       data-datocms-noindex
     >
-      <Head>
-        <JSONLD>
-          <Generic type="BreadcrumbList" jsonldtype="BreadcrumbList">
-            <GenericCollection type="itemListElement">
-              {items.map((item, index, arr) => (
-                <Generic
-                  key={item.linkProps.href}
-                  jsonldtype="ListItem"
-                  schema={genSchemaItem(item, index, arr.length)}
-                />
-              ))}
-            </GenericCollection>
-          </Generic>
-        </JSONLD>
-      </Head>
+      <JSONLD>
+        <Generic type="BreadcrumbList" jsonldtype="BreadcrumbList">
+          <GenericCollection type="itemListElement">
+            {items.map((item, index, arr) => (
+              <Generic
+                key={item.linkProps.href}
+                jsonldtype="ListItem"
+                schema={genSchemaItem(item, index, arr.length)}
+              />
+            ))}
+          </GenericCollection>
+        </Generic>
+      </JSONLD>
 
       <Container as="nav" aria-label="breadcrumbs">
         <Link {...secondToLastItem.linkProps}>
