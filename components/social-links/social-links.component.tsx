@@ -1,4 +1,5 @@
 import React from 'react';
+import { event } from '../../lib/google-analytics';
 import SocialIcon from '../social-icon';
 
 export interface ISocialLinksProps {
@@ -16,18 +17,27 @@ const SocialLinks: React.FC<ISocialLinksProps> = ({
   instagram,
   youtube,
 }) => {
-  const A = ({ className, href, children, title }) => (
-    <a
-      className={`p-3 mx-1 bg-blue-800 text-white rounded-full ${className}`}
-      title={title}
-      aria-label={`${title} (opens in new window)`}
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-    >
-      {children}
-    </a>
-  );
+  const A = ({ className, href, children, title }) => {
+    return (
+      <a
+        className={`p-3 mx-1 bg-blue-800 text-white rounded-full ${className}`}
+        title={title}
+        aria-label={`${title} (opens in new window)`}
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        onClick={() =>
+          event({
+            action: 'Click',
+            category: 'Social Links',
+            label: title,
+          })
+        }
+      >
+        {children}
+      </a>
+    );
+  };
 
   return (
     <div className="flex" aria-label="Social Media Links">

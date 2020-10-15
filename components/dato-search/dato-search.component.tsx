@@ -2,6 +2,7 @@ import { stringify } from 'qs';
 import React, { useRef, useState } from 'react';
 import { Field, Form } from 'react-final-form';
 import ReactPaginate from 'react-paginate';
+import { event } from '../../lib/google-analytics';
 import Button from '../button';
 import Container from '../container';
 
@@ -60,6 +61,12 @@ const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
     const { selected } = formValues;
     setPage(selected);
 
+    event({
+      action: 'Page Change',
+      category: 'Search',
+      label: selected,
+    });
+
     try {
       setPageChange(true);
       await search(currentQuery, selected);
@@ -79,6 +86,12 @@ const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
   const onSubmit = async (values: any) => {
     setPage(0);
     await search(values.search);
+
+    event({
+      action: 'Search Submitted',
+      category: 'Search',
+      label: values.search,
+    });
   };
 
   return (

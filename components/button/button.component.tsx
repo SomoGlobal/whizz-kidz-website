@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React, { useContext } from 'react';
 import cx from 'classnames';
 import BrandContext from '../../lib/brand-context';
+import { event } from '../../lib/google-analytics';
 
 export interface IButtonProps {
   className?: string;
@@ -56,6 +57,13 @@ const Button: React.FC<IButtonProps> = ({
         rel="noreferrer"
         target="_blank"
         className={classes}
+        onClick={() =>
+          event({
+            action: 'Click',
+            category: 'External Link',
+            label: children as string,
+          })
+        }
       >
         {children}
       </a>
@@ -65,7 +73,18 @@ const Button: React.FC<IButtonProps> = ({
   if (linkProps) {
     return (
       <Link {...linkProps}>
-        <a className={classes}>{children}</a>
+        <a
+          className={classes}
+          onClick={() =>
+            event({
+              action: 'Click',
+              category: 'Internal Link',
+              label: children as string,
+            })
+          }
+        >
+          {children}
+        </a>
       </Link>
     );
   }

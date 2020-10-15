@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import cx from 'classnames';
 import BrandContext from '../../lib/brand-context';
+import { event } from '../../lib/google-analytics';
 import SocialIcon from '../social-icon';
 
 export interface IShareProps {
@@ -10,13 +11,20 @@ export interface IShareProps {
 
 const ICON_SIZE = '32px';
 
-const Item: React.FC<any> = ({ className, href, type, label }) => (
+const Item: React.FC<any> = ({ className, href, type, label, url }) => (
   <li>
     <a
       target="_blank"
       rel="noreferrer"
       href={href}
       className={`transition-colors duration-100 ease-in-out flex items-center my-2 mx-2 sm:mx-0 bg-gray-200 text-gray-600 hover:text-white rounded-full p-3 ${className}`}
+      onClick={() =>
+        event({
+          action: `Click - ${type}`,
+          category: 'Share',
+          label: url,
+        })
+      }
     >
       <SocialIcon type={type} size={ICON_SIZE} />
       <span className="ml-2 sr-only">{label} (opens in new window)</span>
@@ -63,7 +71,7 @@ const Share: React.FC<IShareProps> = ({ url }) => {
       </div>
       <ul aria-label="Share" className="font-medium flex sm:inline-block">
         {items.map((item) => (
-          <Item key={item.href} {...item} />
+          <Item key={item.href} {...item} url={url} />
         ))}
       </ul>
     </aside>

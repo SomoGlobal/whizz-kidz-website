@@ -1,4 +1,5 @@
 import React from 'react';
+import { event } from '../../lib/google-analytics';
 import { IButtonProps } from '../button/button.component';
 import Button from '../button';
 
