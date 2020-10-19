@@ -15,7 +15,7 @@ export default function EventsHome({
   preview,
   secondaryNavItems,
   eventsPage,
-  upcomingEvents,
+  upcomingEvents = [],
   favicon,
 }) {
   return (
@@ -45,23 +45,25 @@ export default function EventsHome({
           }}
         />
         <Article body={eventsPage.openingParagraph} />
-        <BorderedGrid
-          heading="Upcoming Events"
-          items={upcomingEvents.map((event) => ({
-            title: event.name,
-            children: (
-              <Button
-                className="block w-full"
-                linkProps={{
-                  href: `/supporters/events/[slug]`,
-                  as: `/supporters/events/${event.slug}`,
-                }}
-              >
-                View Event
-              </Button>
-            ),
-          }))}
-        />
+        {upcomingEvents.length > 0 && (
+          <BorderedGrid
+            heading="Upcoming Events"
+            items={upcomingEvents.map((event) => ({
+              title: event.name,
+              children: (
+                <Button
+                  className="block w-full"
+                  linkProps={{
+                    href: `/supporters/events/[slug]`,
+                    as: `/supporters/events/${event.slug}`,
+                  }}
+                >
+                  View Event
+                </Button>
+              ),
+            }))}
+          />
+        )}
       </Layout>
     </>
   );
