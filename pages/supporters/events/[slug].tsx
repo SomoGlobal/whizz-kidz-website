@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import BorderedGrid from '../../../components/bordered-grid';
+import EventBoxes from '../../../components/event-boxes';
 import Layout from '../../../components/layout';
 import { fetchAPI } from '../../../lib/api';
 import DatoModule from '../../../lib/dato-module';
@@ -39,30 +39,12 @@ export default function EventPage({ event, preview }) {
         pageTitle={event.name}
         breadcrumbs={breadcrumbs}
       >
-        <BorderedGrid
-          heading="Event Details"
-          items={[
-            {
-              title: 'Event Date',
-              border: 'border-green-500',
-              children: event.startDate,
-            },
-            {
-              title: 'Location',
-              border: 'border-indigo-600',
-              children: event.startDate,
-            },
-            {
-              title: 'Registration Fee',
-              border: 'border-blue-400',
-              children: event.startDate,
-            },
-            {
-              title: 'Minimum Target',
-              border: 'border-purple-700',
-              children: event.startDate,
-            },
-          ]}
+        <EventBoxes
+          startDate={event.startDate}
+          endDate={event.endDate}
+          location={event.location}
+          minimumTarget={event.minimumTarget}
+          registrationFee={event.registrationFee}
         />
         {event.modules.map((module, index) => (
           <DatoModule key={module.id || index} module={module} />
