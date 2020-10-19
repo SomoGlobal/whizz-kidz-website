@@ -3,15 +3,7 @@ import memo from 'memoizee';
 import { GraphQLClient } from 'graphql-request';
 
 const CUSTOM_NAV_ITEMS = {
-  families: [
-    {
-      id: 'meet-the-kidz',
-      label: 'Meet the kidz',
-      linkProps: {
-        href: `/families/meet-the-kidz`,
-      },
-    },
-  ],
+  families: [],
   supporters: [
     {
       id: 'events',
@@ -331,7 +323,7 @@ export const getChildNavItems = memo(async (slug, pathPrefix = '') => {
       }
     }`,
     {
-      preview: true,
+      preview: false,
       variables: {
         slug,
       },
@@ -408,120 +400,3 @@ export const getSectionChildren = memo(async (slug) => {
   );
   return data?.page;
 });
-
-export async function getPreviewPostBySlug(slug) {
-  const data = await fetchAPI(
-    `
-    query PostBySlug($slug: String) {
-      post(filter: {slug: {eq: $slug}}) {
-        slug
-      }
-    }`,
-    {
-      preview: true,
-      variables: {
-        slug,
-      },
-    }
-  );
-  return data?.post;
-}
-
-export async function getAllPostsWithSlug() {
-  const data = await fetchAPI(`
-    {
-      allPosts {
-        slug
-      }
-    }
-  `);
-  return data?.allPosts;
-}
-
-export async function getAllPostsForHome(preview) {
-  const data = await fetchAPI(
-    `
-    {
-      allPosts(orderBy: date_DESC, first: 20) {
-        title
-        slug
-        excerpt
-        date
-        coverImage {
-          responsiveImage(imgixParams: {auto: format, fit: crop, w: 2000, h: 1000 }) {
-            ...responsiveImageFragment
-          }
-        }
-        author {
-          name
-          picture {
-            url(imgixParams: {auto: format, fit: crop, w: 100, h: 100, sat: -100})
-          }
-        }
-      }
-    }
-
-    ${responsiveImageFragment}
-  `,
-    { preview, variables: {} }
-  );
-
-  return data?.allPosts;
-}
-
-export async function getPostAndMorePosts(slug, preview) {
-  const data = await fetchAPI(
-    `
-  query PostBySlug($slug: String) {
-    post(filter: {slug: {eq: $slug}}) {
-      title
-      slug
-      content
-      date
-      ogImage: coverImage{
-        url(imgixParams: {auto: format, fit: crop, w: 2000, h: 1000 })
-      }
-      coverImage {
-        responsiveImage(imgixParams: {auto: format, fit: crop, w: 2000, h: 1000 }) {
-          ...responsiveImageFragment
-        }
-      }
-      author {
-        name
-        picture {
-          url(imgixParams: {auto: format, fit: crop, w: 100, h: 100, sat: -100})
-        }
-      }
-    }
-
-    morePosts: allPosts(orderBy: date_DESC, first: 2, filter: {slug: {neq: $slug}}) {
-      title
-      slug
-      excerpt
-      date
-      coverImage {
-        responsiveImage(imgixParams: {auto: format, fit: crop, w: 2000, h: 1000 }) {
-          ...responsiveImageFragment
-        }
-      }
-      author {
-        name
-        picture {
-          url(imgixParams: {auto: format, fit: crop, w: 100, h: 100, sat: -100})
-        }
-      }
-    }
-  }
-
-  ${responsiveImageFragment}
-  `,
-    {
-      preview,
-      variables: {
-        slug,
-      },
-    }
-  );
-
-  return data;
-}
