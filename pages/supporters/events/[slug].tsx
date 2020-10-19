@@ -125,5 +125,6 @@ query EventPageQuery($slug: String) {
 
   return {
     props: { preview, event },
+    revalidate: 60 * 30, // once every 30 mins
   };
 };

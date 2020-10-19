@@ -29,7 +29,7 @@ export default function DiscoverCategory({
         ]}
       >
         <Head>
-          <title>{title}</title>
+          <title>{title} | Whizz-Kidz</title>
         </Head>
         <LinkGrid title="Explore by topic" tiles={topicGridTiles} />
       </Layout>

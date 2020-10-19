@@ -50,5 +50,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: { preview, data, secondaryNavItems },
+    revalidate: 60 * 30, // once every 30 mins
   };
 };

@@ -117,5 +117,6 @@ ${responsiveImageFragment}
       upcomingEvents,
       favicon: site.favicon,
     },
+    revalidate: 60 * 30, // once every 30 mins
   };
 };
