@@ -99,15 +99,11 @@ const Hero: React.FC<IHeroProps> = ({
           >
             {split ? (
               title.split(' ').map((part, index) => (
-                <>
-                  <Mark
-                    hidden
-                    key={index}
-                    className={colors[index % colors.length]}
-                  >
+                <React.Fragment key={index}>
+                  <Mark hidden className={colors[index % colors.length]}>
                     {part}
                   </Mark>{' '}
-                </>
+                </React.Fragment>
               ))
             ) : (
               <Mark hidden className={bgColor}>

@@ -14,7 +14,7 @@ export interface IDecorationProps {
 const SVGDecoration = ({ fileName, disableParallax, position }) => (
   <Container>
     <Parallax
-      disabled={disableParallax}
+      disabled={!!disableParallax}
       y={[-10, 10]}
       x={[-10, 10]}
       className={cx('absolute -z-1', {

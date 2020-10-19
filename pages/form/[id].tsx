@@ -17,8 +17,6 @@ export default function Form() {
           id={`form-${router.query.id}`}
           title="Form"
           onLoad={() => window.parent.scrollTo(0, 0)}
-          allowTransparency
-          allowFullScreen
           allow="geolocation; microphone; camera"
           src={`https://form.jotform.com/${router.query.id}`}
           frameBorder="0"

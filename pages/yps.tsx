@@ -12,8 +12,6 @@ const YPS: React.FC = () => (
       id="yps"
       title="Young People's Services"
       onLoad={() => window.parent.scrollTo(0, 0)}
-      allowTransparency
-      allowFullScreen
       allow="geolocation; microphone; camera"
       src="https://www.whizz-kidz-formz.co.uk/"
       frameBorder="0"

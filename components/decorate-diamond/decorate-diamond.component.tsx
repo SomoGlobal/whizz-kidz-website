@@ -18,7 +18,7 @@ const DecorateDiamond: React.FC<IDecorateDiamondProps> = ({ position }) => {
   return (
     <Container>
       <Parallax
-        disabled={shouldReduceMotion}
+        disabled={!!shouldReduceMotion}
         y={[-10, 10]}
         x={[-10, 10]}
         className={cx('absolute -z-1', {

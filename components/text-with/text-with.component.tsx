@@ -59,7 +59,7 @@ const TextWith: React.FC<ITextWithProps> = ({
         </div>
         {children && (
           <Parallax
-            disabled={shouldReduceMotion}
+            disabled={!!shouldReduceMotion}
             y={[10, -10]}
             x={[2, 0]}
             className={cx('lg:row-start-1 lg:row-end-2 max-w-lg', {

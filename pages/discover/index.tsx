@@ -99,7 +99,7 @@ query DiscoverHomePage {
       }
     }
   }
-  recentPosts: allPosts(orderBy: publishedDate_DESC, first: "6") {
+  recentPosts: allPosts(orderBy: publishedDate_DESC, first: "18") {
     id
     title
     slug

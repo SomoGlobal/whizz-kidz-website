@@ -17,7 +17,7 @@ const DecorateTriangle: React.FC<IDecorateTriangleProps> = ({ position }) => {
   return (
     <Container>
       <Parallax
-        disabled={shouldReduceMotion}
+        disabled={!!shouldReduceMotion}
         y={[-10, 10]}
         x={[-10, 10]}
         className={cx('absolute -z-1', {
