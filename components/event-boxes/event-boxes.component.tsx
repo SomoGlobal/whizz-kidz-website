@@ -118,7 +118,7 @@ const EventBoxes: React.FC<IEventBoxesProps> = ({
         borderColor="border-primary-blue"
       />
       <Box
-        title="Minimum target"
+        title="Minimum Target"
         image={<img src="/svg/goal-icon.svg" alt="" role="presentation" />}
         text={minimumTarget}
         backgroundColor="bg-secondary-blue"
