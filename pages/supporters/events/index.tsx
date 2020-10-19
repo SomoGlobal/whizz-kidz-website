@@ -50,6 +50,7 @@ export default function EventsHome({
             heading="Upcoming Events"
             items={upcomingEvents.map((event) => ({
               title: event.name,
+              border: 'border-purple-500',
               children: (
                 <Button
                   className="block w-full"
