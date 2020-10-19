@@ -1,4 +1,5 @@
 import Button from 'components/button';
+import Container from 'components/container';
 import { fetchAPI, getChildNavItems, responsiveImageFragment } from 'lib/api';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -30,7 +31,11 @@ export default function EventsHome({
         pageTitle="Events & Challenges"
         secondaryNavItems={secondaryNavItems}
       >
-        <Hero title="Join Team Whizz‑Kidz" pattern="supporters" />
+        <Hero
+          title="Join Team Whizz‑Kidz"
+          pattern="supporters"
+          backgroundType="color"
+        />
         <TextWithImage
           image={eventsPage.featuredEvent.image}
           imagePosition="right"
@@ -45,26 +50,36 @@ export default function EventsHome({
           }}
         />
         <Article body={eventsPage.openingParagraph} />
-        {upcomingEvents.length > 0 && (
-          <BorderedGrid
-            heading="Upcoming Events"
-            items={upcomingEvents.map((event) => ({
-              title: event.name,
-              border: 'border-purple-500',
-              children: (
-                <Button
-                  className="block w-full"
-                  linkProps={{
-                    href: `/supporters/events/[slug]`,
-                    as: `/supporters/events/${event.slug}`,
-                  }}
-                >
-                  View Event
-                </Button>
-              ),
-            }))}
-          />
-        )}
+        <BorderedGrid
+          heading="Upcoming Events"
+          items={upcomingEvents.map((event) => ({
+            title: event.name,
+            border: 'border-purple-500',
+            children: (
+              <Button
+                className="block w-full"
+                isOutlined
+                size="sm"
+                linkProps={{
+                  href: `/supporters/events/[slug]`,
+                  as: `/supporters/events/${event.slug}`,
+                }}
+              >
+                View Event
+              </Button>
+            ),
+          }))}
+        />
+        <Container className="text-center mb-10">
+          <Button
+            size="lg"
+            linkProps={{
+              href: `/supporters/events/all`,
+            }}
+          >
+            View All Events
+          </Button>
+        </Container>
       </Layout>
     </>
   );
