@@ -5,7 +5,7 @@ export default PolicyPageComponent;
 
 export const getStaticProps = async (context) => {
   const preview = !!context.preview;
-  const data = await getPage(preview, 'contact');
+  const data = await getPage(preview, 'cookies');
 
   return {
     props: { preview, data },

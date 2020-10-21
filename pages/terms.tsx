@@ -1,34 +1,13 @@
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import React from 'react';
-import Container from '../components/container';
-import Layout from '../components/layout';
+import { getPage } from '../lib/api';
+import PolicyPageComponent from '../lib/policy-pages';
 
-export default function Terms({ preview }) {
-  return (
-    <Layout preview={preview} pageTitle="Terms and Conditions">
-      <Head>
-        <title>Terms and Conditions</title>
-        <meta name="robots" content="noindex" />
-      </Head>
-      <section>
-        <Container>
-          <p className="text-gray-700 lg:w-3/4 my-8">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Dignissimos eligendi excepturi, in ipsa iste itaque pariatur
-            praesentium quas quia quis repudiandae suscipit temporibus tenetur.
-            Cumque harum ipsum nostrum omnis reprehenderit!
-          </p>
-        </Container>
-      </section>
-    </Layout>
-  );
-}
+export default PolicyPageComponent;
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps = async (context) => {
   const preview = !!context.preview;
+  const data = await getPage(preview, 'terms');
 
   return {
-    props: { preview },
+    props: { preview, data },
   };
 };
