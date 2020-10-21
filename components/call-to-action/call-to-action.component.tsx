@@ -74,6 +74,12 @@ const CallToAction: React.FC<ICallToActionProps> = ({
           href: `/discover/post/[slug]`,
         };
         break;
+      case 'equipment':
+        linkProps = {
+          as: `/equipment/${internal.slug}`,
+          href: `/equipment/[slug]`,
+        };
+        break;
       default:
         linkProps = { href: '/' };
     }
