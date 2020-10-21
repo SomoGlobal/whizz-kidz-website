@@ -1,0 +1,1 @@
+import React from 'react';import PageNotFound from './page-not-found.component';const Template = (args) => <PageNotFound {...args} />;export default {  title: 'Components/PageNotFound',  component: PageNotFound,};export const Story = Template.bind({});Story.args = {};

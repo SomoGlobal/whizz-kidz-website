@@ -1,11 +1,12 @@
-import { getPage, getSectionChildren, getChildNavItems } from 'lib/api';
+import { getChildNavItems, getPage, getSectionChildren } from 'lib/api';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { renderMetaTags } from 'react-datocms';
 import Layout from '../../components/layout';
-import Mission from '../../components/mission';
+import PageLoading from '../../components/page-loading';
+import PageNotFound from '../../components/page-not-found';
 import DatoModule from '../../lib/dato-module';
 import { treeToArray } from '../../lib/helpers';
 
@@ -13,16 +14,11 @@ export default function Families({ data, preview, secondaryNavItems }) {
   const router = useRouter();
 
   if (router.isFallback) {
-    return (
-      <Layout brand="families">
-        <Mission eyebrow="Please Wait" heading="Page is loading..." />
-      </Layout>
-    );
+    return <PageLoading />;
   }
 
   if (!data || !data.page) {
-    router.push('/404').catch();
-    return null;
+    return <PageNotFound />;
   }
 
   return (
@@ -58,7 +54,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const preview = !!context.preview;
   const { slug } = context.params;
   const docSlug = slug ? slug[slug.length - 1] : 'families';
-  const data = await getPage(preview, docSlug);
+  let data;
+  try {
+    data = await getPage(preview, docSlug);
+  } catch (e) {
+    //
+  }
   const secondaryNavItems = await getChildNavItems('families');
 
   return {

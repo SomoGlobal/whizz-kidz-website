@@ -1,0 +1,1 @@
+import React from 'react';import PageLoading from './page-loading.component';const Template = (args) => <PageLoading {...args} />;export default {  title: 'Components/PageLoading',  component: PageLoading,};export const Story = Template.bind({});Story.args = {};
