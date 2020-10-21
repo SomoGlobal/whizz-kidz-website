@@ -2,14 +2,17 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
-import { Image, renderMetaTags } from 'react-datocms';
+import { renderMetaTags } from 'react-datocms';
 import Container from '../../components/container';
 import Layout from '../../components/layout';
 import { fetchAPI } from '../../lib/api';
 
 const Card = ({ image, name, id }) => (
   <Link href="/equipment/[id]" as={`/equipment/${id}`}>
-    <a className="rounded-lg shadow-xl justify-between flex flex-col bg-white text-gray-700 h-full hover:underline">
+    <a
+      className="rounded-lg shadow-xl justify-between flex flex-col bg-white text-gray-700 h-full hover:underline"
+      aria-label={name}
+    >
       {image && <img src={image} className="rounded-t-lg" alt={name} />}
       <div className="px-4 md:px-6 py-6 flex-1 grid gap-6">
         <div className="text-2xl font-bold w-full text-center">{name}</div>
