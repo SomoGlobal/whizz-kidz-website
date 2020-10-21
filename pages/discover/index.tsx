@@ -148,6 +148,6 @@ ${responsiveImageFragment}
       recentPosts: data.recentPosts,
       site: data.site,
     },
-    revalidate: 60 * 30, // once every 30 mins
+    revalidate: 60 * 60, // once every 60 mins
   };
 };

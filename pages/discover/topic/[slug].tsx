@@ -111,5 +111,6 @@ ${responsiveImageFragment}
 
   return {
     props: { preview, topic: data.topic, topicPosts },
+    revalidate: 60 * 60 * 6, // once every 6 hours
   };
 };

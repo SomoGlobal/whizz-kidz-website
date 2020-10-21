@@ -101,5 +101,6 @@ query GetTopicsByCategoryId($categoryId: ItemId) {
       title: categoryData.category.name,
       category: categoryData.category,
     },
+    revalidate: 60 * 60 * 24, // once every 60 mins
   };
 };
