@@ -1,14 +1,27 @@
 import { getPage, getSectionChildren, getChildNavItems } from 'lib/api';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { renderMetaTags } from 'react-datocms';
 import Layout from '../../components/layout';
+import Mission from '../../components/mission';
 import DatoModule from '../../lib/dato-module';
 import { treeToArray } from '../../lib/helpers';
 
 export default function Kids({ data, preview, secondaryNavItems }) {
-  if (!data.page) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return (
+      <Layout brand="kidz">
+        <Mission eyebrow="Please Wait" heading="Page is loading..." />
+      </Layout>
+    );
+  }
+
+  if (!data || !data.page) {
+    router.push('/404').catch();
     return null;
   }
 
@@ -37,7 +50,7 @@ export async function getStaticPaths() {
 
   return {
     paths: staticPaths,
-    fallback: false,
+    fallback: true,
   };
 }
 
@@ -50,6 +63,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: { preview, data, secondaryNavItems },
-    revalidate: 60 * 30, // once every 30 mins
+    revalidate: 60 * 60, // once every 60 mins
   };
 };
