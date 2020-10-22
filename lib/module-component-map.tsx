@@ -4,6 +4,7 @@ import FAQ from '../components/faq';
 import FullWidthImage from '../components/full-width-image';
 import GridGallery from '../components/grid-gallery';
 import Hero from '../components/hero';
+import Iframe from '../components/iframe';
 import JourneyLauncher from '../components/journey-launcher';
 import LargeImageHero from '../components/large-image-hero';
 import LinkCloudModule from '../components/link-cloud-module';
@@ -34,6 +35,7 @@ const pageMap = {
   journey_launcher: JourneyLauncher,
   three_card: ThreeCard,
   large_image_hero: LargeImageHero,
+  iframe: Iframe,
 };
 
 export default pageMap;
