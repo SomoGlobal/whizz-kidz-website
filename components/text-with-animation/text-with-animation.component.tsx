@@ -1,5 +1,6 @@
-import React from 'react';
 import { Player } from '@lottiefiles/react-lottie-player';
+import { useReducedMotion } from 'framer-motion';
+import React, { useLayoutEffect, useRef } from 'react';
 import TextWith from '../text-with';
 import { ITextWithProps } from '../text-with/text-with.component';
 
@@ -11,10 +12,20 @@ const TextWithAnimation: React.FC<ITextWithAnimationProps> = ({
   animation,
   ...props
 }) => {
+  const playerRef = useRef<Player>();
+  const shouldReduceMotion = useReducedMotion();
+
+  useLayoutEffect(() => {
+    if (playerRef.current && shouldReduceMotion) {
+      playerRef.current.setSeeker(100, false);
+    }
+  }, ['animation']);
+
   return (
     <TextWith {...props}>
       <Player
-        autoplay
+        ref={playerRef}
+        autoplay={!shouldReduceMotion}
         loop
         src={`/lottie/json/${animation || '01'}.json`}
         style={{ height: '100%', width: '100%' }}
