@@ -9,6 +9,7 @@ import LargeImageHero from '../components/large-image-hero';
 import LinkCloudModule from '../components/link-cloud-module';
 import Mission from '../components/mission';
 import Step from '../components/step';
+import TextWithAnimation from '../components/text-with-animation';
 import TextWithImage from '../components/text-with-image';
 import TextWithPattern from '../components/text-with-pattern';
 import ThreeCard from '../components/three-card';
@@ -22,6 +23,7 @@ const pageMap = {
   decoration: Decoration,
   text_with_image: TextWithImage,
   text_with_pattern: TextWithPattern,
+  text_with_animation: TextWithAnimation,
   full_width_image: FullWidthImage,
   question: FAQ,
   step: Step,
