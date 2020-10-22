@@ -1,8 +1,8 @@
 import cx from 'classnames';
 import React, { useContext } from 'react';
-import Container from '../container';
 import BrandContext from '../../lib/brand-context';
 import CallToAction from '../call-to-action';
+import Container from '../container';
 
 export interface ILargeImageHeroProps {
   image: { url: string; alt: string };
@@ -31,13 +31,12 @@ const LargeImageHero: React.FC<ILargeImageHeroProps> = ({
 
   return (
     <section
-      className={cx(
-        'grid grid-cols-1 grid-rows-1 items-center bg-cover md:bg-contain',
-        backgroundColor
-      )}
+      aria-label="Hero"
+      style={{ backgroundImage: `url("${image.url}")` }}
+      className={cx('items-center bg-cover', backgroundColor)}
     >
-      <Container className="col-start-1 col-end-2 row-start-1 row-end-2 z-10">
-        <div className="text-white w-11/12 lg:w-7/12 py-24 md:py-48">
+      <Container>
+        <div className="text-white w-11/12 lg:w-1/2 py-24 md:py-48 z-10">
           <h1
             className="font-bold leading-normal text-5xl sm:text-6xl md:text-7xl"
             aria-label={title}
@@ -58,11 +57,6 @@ const LargeImageHero: React.FC<ILargeImageHeroProps> = ({
           )}
         </div>
       </Container>
-      <img
-        alt={image.alt}
-        className="col-start-1 col-end-2 row-start-1 row-end-2 h-full w-full object-cover"
-        src={image.url}
-      />
     </section>
   );
 };
