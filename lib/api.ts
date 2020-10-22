@@ -133,7 +133,7 @@ export async function getPage(preview: boolean, slug: string) {
               ...linkFragment
             }
             image {
-              url(imgixParams: {fm: jpg, fit: crop, w: 1280, ar: "2:1"})
+              url(imgixParams: {fm: jpg, fit: crop, w: 1920, ar: "3:1"})
             }
           }
           ... on ThreeCardRecord {

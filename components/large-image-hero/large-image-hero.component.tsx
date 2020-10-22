@@ -33,7 +33,7 @@ const LargeImageHero: React.FC<ILargeImageHeroProps> = ({
     <section
       aria-label="Hero"
       style={{ backgroundImage: `url("${image.url}")` }}
-      className={cx('items-center bg-cover', backgroundColor)}
+      className={cx('items-center bg-cover bg-center', backgroundColor)}
     >
       <Container>
         <div className="text-white w-11/12 lg:w-1/2 py-24 md:py-48 z-10">
