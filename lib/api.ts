@@ -124,6 +124,18 @@ export async function getPage(preview: boolean, slug: string) {
           content
         }
         modules {
+          ... on LargeImageHeroRecord {
+            id
+            _modelApiKey
+            title
+            subtitle
+            callToAction {
+              ...linkFragment
+            }
+            image {
+              url(imgixParams: {fm: jpg, fit: crop, w: 1280, ar: "2:1"})
+            }
+          }
           ... on ThreeCardRecord {
             id
             _modelApiKey
