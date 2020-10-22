@@ -1,6 +1,6 @@
 import cx from 'classnames';
-import Container from 'components/container';
 import React, { useContext } from 'react';
+import Container from '../container';
 import BrandContext from '../../lib/brand-context';
 import CallToAction from '../call-to-action';
 

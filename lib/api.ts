@@ -233,6 +233,18 @@ export async function getPage(preview: boolean, slug: string) {
               id
             }
           }
+          ... on TextWithAnimationRecord {
+            id
+            heading
+            eyebrow
+            animation
+            text
+            _modelApiKey
+            imagePosition
+            callToAction {
+              ...linkFragment
+            }
+          }
           ... on TextWithPatternRecord {
             id
             heading

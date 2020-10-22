@@ -1,10 +1,10 @@
-import Button from 'components/button';
-import Container from 'components/container';
 import { fetchAPI, getChildNavItems, responsiveImageFragment } from 'lib/api';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import { renderMetaTags } from 'react-datocms';
+import Container from '../../../components/container';
+import Button from '../../../components/button';
 import Article from '../../../components/article';
 import BorderedGrid from '../../../components/bordered-grid';
 import Hero from '../../../components/hero';

@@ -1,10 +1,10 @@
-import Container from 'components/container';
 import { fetchAPI } from 'lib/api';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 import { renderMetaTags } from 'react-datocms';
+import Container from '../../../components/container';
 import Layout from '../../../components/layout';
 
 /* eslint-disable react/no-danger */

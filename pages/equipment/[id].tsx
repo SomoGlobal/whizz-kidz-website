@@ -1,7 +1,7 @@
-import Article from 'components/article';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
+import Article from '../../components/article';
 import Layout from '../../components/layout';
 import TextWithImage from '../../components/text-with-image';
 import { fetchAPI, responsiveImageFragment } from '../../lib/api';

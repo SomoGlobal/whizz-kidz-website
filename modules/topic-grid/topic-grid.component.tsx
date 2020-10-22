@@ -1,6 +1,6 @@
 import React from 'react';
 import useSWR from 'swr';
-import LinkGrid from 'components/link-grid';
+import LinkGrid from '../../components/link-grid';
 import Button from '../../components/button';
 import Container from '../../components/container';
 import api from '../../lib/api';
