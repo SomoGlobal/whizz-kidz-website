@@ -51,6 +51,9 @@ const ThreeCard: React.FC<IThreeCardProps> = ({
   card1Image,
   card1Cta,
 }) => {
+  const hasSecondCard = card2Heading || card2Text || card2Image;
+  const hasThirdCard = card3Heading || card3Text || card3Image;
+
   return (
     <Container as="section" className="my-10 md:my-20">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -60,18 +63,22 @@ const ThreeCard: React.FC<IThreeCardProps> = ({
           text={card1Text}
           callToAction={card1Cta}
         />
-        <Card
-          image={card2Image}
-          heading={card2Heading}
-          text={card2Text}
-          callToAction={card2Cta}
-        />
-        <Card
-          image={card3Image}
-          heading={card3Heading}
-          text={card3Text}
-          callToAction={card3Cta}
-        />
+        {hasSecondCard && (
+          <Card
+            image={card2Image}
+            heading={card2Heading}
+            text={card2Text}
+            callToAction={card2Cta}
+          />
+        )}
+        {hasThirdCard && (
+          <Card
+            image={card3Image}
+            heading={card3Heading}
+            text={card3Text}
+            callToAction={card3Cta}
+          />
+        )}
       </div>
     </Container>
   );
