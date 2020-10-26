@@ -14,6 +14,11 @@ module.exports = {
         permanent: true,
       },
       {
+        source: '/get-our-help/equipment',
+        destination: '/families/equipment',
+        permanent: true,
+      },
+      {
         source: '/donate',
         destination: 'https://www.committedgiving.uk.net/whizzkidz/public/index.aspx',
         permanent: false,

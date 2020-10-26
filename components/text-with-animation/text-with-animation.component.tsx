@@ -17,9 +17,9 @@ const TextWithAnimation: React.FC<ITextWithAnimationProps> = ({
 
   useLayoutEffect(() => {
     if (playerRef.current && shouldReduceMotion) {
-      playerRef.current.setSeeker(100, false);
+      playerRef.current.setSeeker(50, false);
     }
-  }, ['animation']);
+  }, []);
 
   return (
     <TextWith {...props}>
