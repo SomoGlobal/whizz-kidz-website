@@ -44,37 +44,45 @@ export const responsiveImageFragment = `
   }
 `;
 
+export const internalLinkRecords = `
+  ... on RegionRecord {
+    slug
+    _modelApiKey
+  }
+  ... on CategoryRecord {
+    slug
+    _modelApiKey
+  }
+  ... on PageRecord {
+    slug
+    _modelApiKey
+    parent {
+      slug
+      parent {
+        slug
+      }
+    }
+  }
+  ... on EventRecord {
+    slug
+    _modelApiKey
+  }
+  ... on TopicRecord {
+    slug
+    _modelApiKey
+  }
+  ... on PostRecord {
+    slug
+    _modelApiKey
+  }
+`;
+
 export const linkFragment = `
   fragment linkFragment on LinkRecord {
     label
     externalUrl
     internal {
-      ... on CategoryRecord {
-        slug
-        _modelApiKey
-      }
-      ... on PageRecord {
-        slug
-        _modelApiKey
-        parent {
-          slug
-          parent {
-            slug
-          }
-        }
-      }
-      ... on EventRecord {
-        slug
-        _modelApiKey
-      }
-      ... on TopicRecord {
-        slug
-        _modelApiKey
-      }
-      ... on PostRecord {
-        slug
-        _modelApiKey
-      }
+      ${internalLinkRecords}
     }
   }
 `;
@@ -184,11 +192,7 @@ export async function getPage(preview: boolean, slug: string) {
             id
             _modelApiKey
             items {
-              ... on RegionRecord {
-                name
-                slug
-                _modelApiKey
-              }
+              ${internalLinkRecords}
             }
           }
           ... on VideoRecord {

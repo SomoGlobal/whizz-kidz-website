@@ -37,6 +37,7 @@
     "prop-types-exact": "^1.2.0",
     "qs": "^6.9.4",
     "react": "16.13.1",
+    "react-cookie-consent": "^5.2.0",
     "react-datocms": "^1.2.6",
     "react-dom": "16.13.1",
     "react-final-form": "^6.5.1",

@@ -1,33 +1,14 @@
 import React from 'react';
-import { event } from '../../lib/google-analytics';
-import { IButtonProps } from '../button/button.component';
+import linkRender, { ILink } from '../../lib/link-render';
 import Button from '../button';
+import { IButtonProps } from '../button/button.component';
 
-type Parent = { slug: string; parent: Parent };
-
-export interface ICallToActionProps {
+export interface ICallToActionProps extends ILink {
   label: string;
   isOutlined?: boolean;
   isGhost?: boolean;
   size?: IButtonProps['size'];
-  externalUrl?: string;
-  internal: {
-    _modelApiKey: string;
-    slug: string;
-    parent?: Parent;
-  };
 }
-
-const queryToHref = (
-  query: Partial<ICallToActionProps['internal']>,
-  path = []
-) => {
-  if (!query.parent) {
-    return [query.slug, ...path];
-  }
-
-  return queryToHref(query.parent, [query.slug, ...path]);
-};
 
 const CallToAction: React.FC<ICallToActionProps> = ({
   label,
@@ -37,55 +18,7 @@ const CallToAction: React.FC<ICallToActionProps> = ({
   isGhost,
   size = 'lg',
 }) => {
-  const buttonProps: Partial<IButtonProps> = {};
-
-  if (externalUrl) {
-    buttonProps.externalUrl = externalUrl;
-  } else {
-    let linkProps: any = { href: '/' };
-
-    switch (internal._modelApiKey) {
-      case 'page':
-        linkProps = {
-          href: `/${queryToHref(internal).join('/')}`.replace('/home', ''),
-        };
-        break;
-      case 'category':
-        linkProps = {
-          as: `/discover/category/${internal.slug}`,
-          href: `/discover/category/[slug]`,
-        };
-        break;
-      case 'topic':
-        linkProps = {
-          as: `/discover/topic/${internal.slug}`,
-          href: `/discover/topic/[slug]`,
-        };
-        break;
-      case 'event':
-        linkProps = {
-          as: `/supporters/events/${internal.slug}`,
-          href: `/supporters/events/[slug]`,
-        };
-        break;
-      case 'post':
-        linkProps = {
-          as: `/discover/post/${internal.slug}`,
-          href: `/discover/post/[slug]`,
-        };
-        break;
-      case 'equipment':
-        linkProps = {
-          as: `/equipment/${internal.slug}`,
-          href: `/equipment/[slug]`,
-        };
-        break;
-      default:
-        linkProps = { href: '/' };
-    }
-
-    buttonProps.linkProps = linkProps;
-  }
+  const buttonProps = linkRender({ internal, externalUrl });
 
   return (
     <Button
