@@ -1,6 +1,6 @@
 import { Player } from '@lottiefiles/react-lottie-player';
 import { useReducedMotion } from 'framer-motion';
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import TextWith from '../text-with';
 import { ITextWithProps } from '../text-with/text-with.component';
 
@@ -15,7 +15,7 @@ const TextWithAnimation: React.FC<ITextWithAnimationProps> = ({
   const playerRef = useRef<Player>();
   const shouldReduceMotion = useReducedMotion();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (playerRef.current && shouldReduceMotion) {
       playerRef.current.setSeeker(50, false);
     }

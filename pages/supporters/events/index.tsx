@@ -6,10 +6,11 @@ import { renderMetaTags } from 'react-datocms';
 import Container from '../../../components/container';
 import Button from '../../../components/button';
 import Article from '../../../components/article';
-import BorderedGrid from '../../../components/bordered-grid';
+import EventCardList from '../../../components/event-card-list';
 import Hero from '../../../components/hero';
 import Layout from '../../../components/layout';
 import TextWithImage from '../../../components/text-with-image';
+import Decoration from '../../../components/decoration';
 
 /* eslint-disable react/no-danger */
 export default function EventsHome({
@@ -36,6 +37,7 @@ export default function EventsHome({
           pattern="supporters"
           backgroundType="color"
         />
+        <Decoration decorationPosition="right" decorationType="asterisk02" />
         <TextWithImage
           image={eventsPage.featuredEvent.image}
           imagePosition="right"
@@ -49,27 +51,7 @@ export default function EventsHome({
             },
           }}
         />
-        <Article body={eventsPage.openingParagraph} />
-        <BorderedGrid
-          heading="Upcoming Events"
-          items={upcomingEvents.map((event) => ({
-            title: event.name,
-            border: 'border-purple-500',
-            children: (
-              <Button
-                className="block w-full"
-                isOutlined
-                size="sm"
-                linkProps={{
-                  href: `/supporters/events/[slug]`,
-                  as: `/supporters/events/${event.slug}`,
-                }}
-              >
-                View Event
-              </Button>
-            ),
-          }))}
-        />
+        <EventCardList events={upcomingEvents} label="Upcoming Events" />
         <Container className="text-center mb-10">
           <Button
             size="lg"
@@ -80,6 +62,8 @@ export default function EventsHome({
             View All Events
           </Button>
         </Container>
+        <Decoration decorationPosition="left" decorationType="asterisk03" />
+        <Article body={eventsPage.openingParagraph} centered />
       </Layout>
     </>
   );
@@ -114,7 +98,12 @@ query EventHomePage($now: DateTime) {
   upcomingEvents: allEvents(orderBy: startDate_ASC, filter: {startDate: {gt: $now}}, first: "6") {
     slug
     name
-    id
+    startDate
+    image {
+      responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 400, ar: "16:9"}) {
+        ...responsiveImageFragment
+      }
+    }
   }
 }
 ${responsiveImageFragment}

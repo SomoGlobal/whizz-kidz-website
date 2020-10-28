@@ -1,0 +1,1 @@
+import React from 'react';import CardList from './card-list.component';const Template = (args) => <CardList {...args} />;export default {  title: 'Components/CardList',  component: CardList,};export const Story = Template.bind({});Story.args = {};

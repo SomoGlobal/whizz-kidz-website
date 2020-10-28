@@ -1,9 +1,10 @@
-import { fetchAPI } from 'lib/api';
+import { fetchAPI, responsiveImageFragment } from 'lib/api';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 import { renderMetaTags } from 'react-datocms';
+import EventCardList from '../../../components/event-card-list';
 import Container from '../../../components/container';
 import Layout from '../../../components/layout';
 
@@ -35,20 +36,7 @@ export default function AllEvents({ preview, allEvents, favicon }) {
         preview={preview}
         pageTitle="All Events & Challenges"
       >
-        <Container>
-          <ul className="text-gray-700 mt-10 text-lg">
-            {allEvents.map((event) => (
-              <li key={event.slug} className="mb-4">
-                <Link
-                  href="/supporters/events/[slug]"
-                  as={`/supporters/events/${event.slug}`}
-                >
-                  <a className="hover:underline">{event.name}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Container>
+        <EventCardList events={allEvents} />
       </Layout>
     </>
   );
@@ -70,8 +58,15 @@ query AllEventsPage {
   allEvents(orderBy: startDate_ASC, first: "100") {
     slug
     name
+    startDate
+    image {
+      responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 400, ar: "16:9"}) {
+        ...responsiveImageFragment
+      }
+    }
   }
 }
+${responsiveImageFragment}
 `,
     {
       variables: {},
