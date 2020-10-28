@@ -22,6 +22,10 @@ const linkRender = ({ internal, externalUrl }: ILink) => {
 
   if (externalUrl) {
     buttonProps.externalUrl = externalUrl;
+  } else if (!internal) {
+    console.warn('Warning: Button is missing an internal or external link');
+
+    return { externalUrl: '/' };
   } else {
     let linkProps: any = { href: '/' };
 
