@@ -9,6 +9,7 @@ import JourneyLauncher from '../components/journey-launcher';
 import LargeImageHero from '../components/large-image-hero';
 import LinkCloudModule from '../components/link-cloud-module';
 import Mission from '../components/mission';
+import SectionImageLink from '../components/section-image-link';
 import SectionLink from '../components/section-link';
 import Step from '../components/step';
 import TextWithAnimation from '../components/text-with-animation';
@@ -38,6 +39,7 @@ const pageMap = {
   large_image_hero: LargeImageHero,
   iframe: Iframe,
   section_link: SectionLink,
+  section_image_link: SectionImageLink,
 };
 
 export default pageMap;

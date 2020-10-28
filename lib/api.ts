@@ -132,6 +132,20 @@ export async function getPage(preview: boolean, slug: string) {
           content
         }
         modules {
+          ... on SectionImageLinkRecord {
+            id
+            theme
+            heading
+            _modelApiKey
+            callToAction {
+              ...linkFragment
+            }
+            image {
+              responsiveImage(imgixParams: {auto: format, fit: crop, w: 300, h: 300}) {
+                ...responsiveImageFragment
+              }
+            }
+          }
           ... on SectionLinkRecord {
             id
             theme
