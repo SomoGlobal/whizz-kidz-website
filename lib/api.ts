@@ -132,6 +132,15 @@ export async function getPage(preview: boolean, slug: string) {
           content
         }
         modules {
+          ... on SectionLinkRecord {
+            id
+            theme
+            heading
+            _modelApiKey
+            callToAction {
+              ...linkFragment
+            }
+          }
           ... on IframeRecord {
             id
             _modelApiKey

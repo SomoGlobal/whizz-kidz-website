@@ -146,6 +146,15 @@ query EventPageQuery($slug: String) {
       }
     }
     modules {
+      ... on SectionLinkRecord {
+        id
+        theme
+        heading
+        _modelApiKey
+        callToAction {
+          ...linkFragment
+        }
+      }
       ... on ArticleRecord {
         id
         _modelApiKey

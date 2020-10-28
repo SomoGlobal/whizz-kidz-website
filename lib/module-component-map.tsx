@@ -9,6 +9,7 @@ import JourneyLauncher from '../components/journey-launcher';
 import LargeImageHero from '../components/large-image-hero';
 import LinkCloudModule from '../components/link-cloud-module';
 import Mission from '../components/mission';
+import SectionLink from '../components/section-link';
 import Step from '../components/step';
 import TextWithAnimation from '../components/text-with-animation';
 import TextWithImage from '../components/text-with-image';
@@ -36,6 +37,7 @@ const pageMap = {
   three_card: ThreeCard,
   large_image_hero: LargeImageHero,
   iframe: Iframe,
+  section_link: SectionLink,
 };
 
 export default pageMap;
