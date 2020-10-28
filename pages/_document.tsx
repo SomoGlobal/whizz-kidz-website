@@ -2,7 +2,7 @@ import Document, { Head, Html, Main, NextScript } from 'next/document';
 import React from 'react';
 import { GA_TRACKING_ID } from '../lib/google-analytics';
 
-const FB_APP_ID = '791640358066511';
+const FB_APP_ID = '1711410025793099'; // '791640358066511';
 
 export default class MyDocument extends Document<{ isProduction: boolean }> {
   static async getInitialProps(ctx) {
