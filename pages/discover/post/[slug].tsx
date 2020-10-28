@@ -129,21 +129,6 @@ export default function DiscoverPost({ preview, post, site }) {
               'md:col-start-2 md:col-end-6 col-span-6'
             )}
           />
-          <section
-            aria-label="Comments"
-            data-datocms-noindex
-            className="md:col-start-2 md:col-end-6 col-span-6 my-20"
-          >
-            <DiscussionEmbed
-              shortname={process.env.DISQUS_SHORTNAME}
-              config={{
-                url,
-                identifier: post.slug,
-                title: post.title,
-                language: 'en-GB',
-              }}
-            />
-          </section>
         </Container>
       </article>
     </Layout>

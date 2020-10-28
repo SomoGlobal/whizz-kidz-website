@@ -45,10 +45,6 @@ export const responsiveImageFragment = `
 `;
 
 export const internalLinkRecords = `
-  ... on RegionRecord {
-    slug
-    _modelApiKey
-  }
   ... on CategoryRecord {
     slug
     _modelApiKey

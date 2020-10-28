@@ -55,7 +55,7 @@ query AllEventsPage {
       tag
     }
   }
-  allEvents(orderBy: startDate_ASC, first: "100") {
+  allEvents(orderBy: startDate_DESC, first: "100") {
     slug
     name
     startDate
