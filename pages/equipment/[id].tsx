@@ -1,8 +1,10 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
+import { Image } from 'react-datocms';
 import Article from '../../components/article';
 import Layout from '../../components/layout';
+import PageTemplate from '../../components/page-template';
 import TextWithImage from '../../components/text-with-image';
 import { fetchAPI, responsiveImageFragment } from '../../lib/api';
 
@@ -27,12 +29,11 @@ export default function EquipmentPage({ data }) {
       <Head>
         <title>{data.equipment.name} | Whizz-Kidz</title>
       </Head>
-      <TextWithImage
-        imagePosition="left"
+      <PageTemplate
         eyebrow={data.equipment.chairType}
         heading={data.equipment.name}
-        text={<Article body={data.equipment.description} />}
-        image={data.equipment.image}
+        body={data.equipment.description}
+        image={data.equipment.image.responsiveImage}
       />
     </Layout>
   );
