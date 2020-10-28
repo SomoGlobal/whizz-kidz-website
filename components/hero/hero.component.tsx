@@ -34,12 +34,19 @@ const colors = [
 //   'bg-primary-gray',
 // ];
 
-const Mark: React.FC<{ className: string; hidden?: boolean }> = ({
-  className,
-  children,
-  hidden,
-}) => (
-  <span aria-hidden={hidden} className={cx('px-3 py-3 clone', className)}>
+const Mark: React.FC<{
+  className: string;
+  hidden?: boolean;
+  isShort?: boolean;
+}> = ({ className, children, hidden, isShort }) => (
+  <span
+    aria-hidden={hidden}
+    className={cx(
+      'px-3 clone',
+      { 'py-1': isShort, 'py-3': !isShort },
+      className
+    )}
+  >
     {children}
   </span>
 );
@@ -100,7 +107,11 @@ const Hero: React.FC<IHeroProps> = ({
             {split ? (
               title.split(' ').map((part, index) => (
                 <React.Fragment key={index}>
-                  <Mark hidden className={colors[index % colors.length]}>
+                  <Mark
+                    hidden
+                    className={colors[index % colors.length]}
+                    isShort
+                  >
                     {part}
                   </Mark>{' '}
                 </React.Fragment>
