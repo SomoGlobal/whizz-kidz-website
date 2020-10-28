@@ -128,6 +128,16 @@ export async function getPage(preview: boolean, slug: string) {
           content
         }
         modules {
+          ... on CtaRecord {
+            id
+            _modelApiKey
+            isGhost
+            isOutlined
+            size
+            link {
+              ...linkFragment
+            }
+          }
           ... on SectionImageLinkRecord {
             id
             theme

@@ -146,6 +146,16 @@ query EventPageQuery($slug: String) {
       }
     }
     modules {
+      ... on CtaRecord {
+        id
+        _modelApiKey
+        isGhost
+        isOutlined
+        size
+        link {
+          ...linkFragment
+        }
+      }
       ... on SectionLinkRecord {
         id
         theme

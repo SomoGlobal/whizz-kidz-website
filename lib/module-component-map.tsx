@@ -1,4 +1,5 @@
 import Article from '../components/article';
+import CTA from '../components/cta';
 import Decoration from '../components/decoration';
 import FAQ from '../components/faq';
 import FullWidthImage from '../components/full-width-image';
@@ -40,6 +41,7 @@ const pageMap = {
   iframe: Iframe,
   section_link: SectionLink,
   section_image_link: SectionImageLink,
+  cta: CTA,
 };
 
 export default pageMap;
