@@ -8,7 +8,10 @@ export interface IEventCardListProps {
   events: any[];
 }
 
-const EventCardList: React.FC<IEventCardListProps> = ({ events, label }) => {
+const EventCardList: React.FC<IEventCardListProps> = ({
+  events = [],
+  label,
+}) => {
   return (
     <CardList heading={label}>
       {events.map((event) => (
