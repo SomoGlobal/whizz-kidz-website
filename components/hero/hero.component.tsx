@@ -1,5 +1,7 @@
+import { Player } from '@lottiefiles/react-lottie-player';
 import cx from 'classnames';
-import React, { useContext } from 'react';
+import { useReducedMotion } from 'framer-motion';
+import React, { useContext, useEffect, useRef } from 'react';
 import BrandContext, { brands } from '../../lib/brand-context';
 import CallToAction from '../call-to-action';
 import Container from '../container';
@@ -9,11 +11,12 @@ export interface IHeroProps {
   title: string;
   callToAction?: any;
   subtitle?: string;
-  backgroundType?: 'grey' | 'color' | 'image';
+  backgroundType?: 'grey' | 'color' | 'image' | 'animation';
   image?: {
     url: string;
   };
   pattern?: 'home' | 'kidz' | 'families' | 'supporters';
+  animation: string;
   split?: boolean;
 }
 
@@ -25,14 +28,6 @@ const colors = [
   brands.discover.backgroundColor,
   brands.supporters.backgroundColor,
 ];
-
-// const colors = [
-//   'bg-primary-green',
-//   'bg-primary-yellow',
-//   'bg-primary-pink',
-//   'bg-primary-blue',
-//   'bg-primary-gray',
-// ];
 
 const Mark: React.FC<{
   className: string;
@@ -60,25 +55,34 @@ const Hero: React.FC<IHeroProps> = ({
   subtitle,
   color,
   backgroundType = 'grey',
+  animation,
   pattern,
   image,
   split,
   callToAction,
 }) => {
   const { backgroundColor } = useContext(BrandContext);
+  const playerRef = useRef<Player>();
+  const shouldReduceMotion = useReducedMotion();
   const bgColor = color || backgroundColor;
-  const containerStyleProps: any = {};
+  let containerStyleProps: any = {};
   containerStyleProps.backgroundPosition = 'center right';
   containerStyleProps.backgroundRepeat = 'no-repeat';
   containerStyleProps.backgroundSize = 'contain';
 
   if (pattern) {
     containerStyleProps.backgroundImage = `url("/svg/hero/${pattern}-hero.svg")`;
+  } else if (image) {
+    containerStyleProps.backgroundImage = `url("${image.url}")`;
+  } else if (animation) {
+    containerStyleProps = {};
   }
 
-  if (image) {
-    containerStyleProps.backgroundImage = `url("${image.url}")`;
-  }
+  useEffect(() => {
+    if (playerRef.current && shouldReduceMotion) {
+      playerRef.current.setSeeker(50, false);
+    }
+  }, []);
 
   return (
     <Container
@@ -94,6 +98,22 @@ const Hero: React.FC<IHeroProps> = ({
       style={containerStyleProps}
       aria-label="hero"
     >
+      {animation && (
+        <div className="col-start-1 col-end-2 row-start-1 row-end-2">
+          <Player
+            ref={playerRef}
+            autoplay={!shouldReduceMotion}
+            loop
+            src={`/lottie/json/${animation || '01'}.json`}
+            style={{
+              width: '50%',
+              height: '100%',
+              marginLeft: 'auto',
+              marginRight: '0',
+            }}
+          />
+        </div>
+      )}
       <div
         className={cx(
           'z-10 px-4 py-24 sm:px-12 md:py-48 col-start-1 col-end-2 row-start-1 row-end-2'

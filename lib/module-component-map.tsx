@@ -5,6 +5,7 @@ import FAQ from '../components/faq';
 import FullWidthImage from '../components/full-width-image';
 import GridGallery from '../components/grid-gallery';
 import Hero from '../components/hero';
+import HeroAnimation from '../components/hero-animation';
 import Iframe from '../components/iframe';
 import JourneyLauncher from '../components/journey-launcher';
 import LargeImageHero from '../components/large-image-hero';
@@ -22,6 +23,7 @@ import TopicGrid from '../modules/topic-grid';
 
 const pageMap = {
   hero: Hero,
+  hero_animation: HeroAnimation,
   mission: Mission,
   article: Article,
   decoration: Decoration,

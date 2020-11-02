@@ -128,6 +128,14 @@ export async function getPage(preview: boolean, slug: string) {
           content
         }
         modules {
+          ... on HeroAnimationRecord {
+            id
+            _modelApiKey
+            subtitle
+            title
+            animation
+            backgroundType
+          }
           ... on CtaRecord {
             id
             _modelApiKey
