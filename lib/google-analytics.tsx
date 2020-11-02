@@ -1,4 +1,5 @@
-export const GA_TRACKING_ID = 'UA-16130012-5';
+export const GA_TRACKING_ID = 'G-HB435E3JSE'; // 'UA-16130012-5';
+export const GTM_ID = 'GTM-5C42HCM';
 
 interface EventHandle {
   action: string;

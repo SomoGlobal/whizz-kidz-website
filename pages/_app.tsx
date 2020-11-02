@@ -8,7 +8,13 @@ import { pageview } from '../lib/google-analytics';
 
 import '../styles/index.css';
 
-Router.events.on('routeChangeComplete', (url) => pageview(url));
+Router.events.on('routeChangeComplete', (url) => {
+  pageview(url);
+
+  if (typeof window !== 'undefined' && (window as any).fbq) {
+    (window as any).fbq('track', 'PageView');
+  }
+});
 
 const App = ({ Component, pageProps }) => (
   <ParallaxProvider>

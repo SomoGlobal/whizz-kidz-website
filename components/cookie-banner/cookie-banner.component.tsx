@@ -1,19 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CookieConsent from 'react-cookie-consent';
 import { motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
+
+const COOKIE_KEY = 'whizz-kidz-cookie';
 
 const CookieBanner: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
   const [isOpen, setIsOpen] = useState(true);
 
+  useEffect(() => {
+    if (Cookies.get(COOKIE_KEY)) {
+      onAccept({ acceptedByScrolling: false });
+    }
+  }, []);
+
   const onAccept = ({ acceptedByScrolling }) => {
-    // set to allow facebook pixel and google analytics
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({ event: 'cookie_consent_given' });
+    (window as any).dataLayer.push({ cookie_consent: 'true' });
+    console.log('consent_given');
     setIsOpen(false);
   };
 
   const onDecline = () => {
     // set to not allow facebook pixel and google analytics
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({ event: 'cookie_consent_declined' });
+    (window as any).dataLayer.push({ cookie_consent: 'false' });
     setIsOpen(false);
   };
 
@@ -33,7 +48,7 @@ const CookieBanner: React.FC = () => {
       <CookieConsent
         location="none"
         buttonText="Accept"
-        cookieName="whizz-kidz-cookie"
+        cookieName={COOKIE_KEY}
         onAccept={onAccept}
         onDecline={onDecline}
         disableStyles
