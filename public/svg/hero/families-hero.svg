@@ -1,59 +1,82 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 633 633">
-  <defs>
-    <rect id="a" width="211" height="211" x="0" y="0"/>
-  </defs>
-  <g fill="none" fill-rule="evenodd">
-    <rect width="632" height="633" fill="#F5F5F5"/>
-    <rect width="211" height="211" x="211" y="211" fill="#84BD00"/>
-    <rect width="210" height="210" x=".5" y="422.5" fill="#D8D8D8" stroke="#979797"/>
-    <g transform="translate(0 422)">
-      <polygon fill="#004C97" points="0 211 211 211 211 0 0 0"/>
-      <g transform="translate(21 21)">
-        <path fill="#00A9E0" d="M31.688 84.5c0 29.167 23.645 52.813 52.812 52.813 29.167 0 52.813-23.646 52.813-52.813S113.666 31.687 84.5 31.687 31.687 55.334 31.687 84.5"/>
-        <line x1="84.5" x2="84.5" y2="169" stroke="#FFF" stroke-width="4"/>
-        <line x1="52.163" x2="116.837" y1="6.432" y2="162.568" stroke="#FFF" stroke-width="4"/>
-        <line x1="24.749" x2="144.251" y1="24.749" y2="144.251" stroke="#FFF" stroke-width="4"/>
-        <line x1="6.432" x2="162.568" y1="52.163" y2="116.837" stroke="#FFF" stroke-width="4"/>
-        <line x2="169" y1="84.5" y2="84.5" stroke="#FFF" stroke-width="4"/>
-        <line x1="6.432" x2="162.568" y1="116.837" y2="52.163" stroke="#FFF" stroke-width="4"/>
-        <line x1="24.749" x2="144.251" y1="144.251" y2="24.749" stroke="#FFF" stroke-width="4"/>
-        <line x1="52.163" x2="116.837" y1="162.568" y2="6.432" stroke="#FFF" stroke-width="4"/>
-      </g>
-    </g>
-    <rect width="211" height="211" y="211" fill="#F2A900"/>
-    <rect width="211" height="211" fill="#FEDD00"/>
-    <circle cx="105.5" cy="105.5" r="42.5" fill="#FFF"/>
-    <rect width="210" height="210" x="211.5" y="422.5" fill="#D8D8D8" stroke="#979797"/>
-    <g transform="translate(211 422)">
-      <polygon fill="#523178" points="0 211 211 211 211 0 0 0"/>
-      <polygon fill="#00A9E0" points="0 211 106 211 106 0 0 0"/>
-      <path fill="#00A9E0" d="M105 105.5V154l49-48.5S105.29 57 105 57v48.5z"/>
-      <path fill="#F8F8F8" d="M105.999 105.5V154C105.709 154 57 105.5 57 105.5S106.289 57 105.999 57v48.5z"/>
-    </g>
-    <rect width="210" height="210" x="211.5" y=".5" fill="#00A9E0" stroke="#979797"/>
-    <g transform="translate(211)">
-      <mask id="b" fill="#fff">
-        <use xlink:href="#a"/>
-      </mask>
-      <use fill="#004C97" xlink:href="#a"/>
-      <g stroke="#E7EAEF" stroke-width="8" mask="url(#b)">
-        <path d="M194.438 212.5c0 9.976 8.086 18.063 18.062 18.063s18.063-8.087 18.063-18.063c0-9.976-8.087-18.063-18.063-18.063-9.976 0-18.063 8.087-18.063 18.063z"/>
-        <path d="M176.375 212.5c0 19.951 16.174 36.125 36.125 36.125s36.125-16.174 36.125-36.125-16.174-36.125-36.125-36.125-36.125 16.174-36.125 36.125z"/>
-        <path d="M158.313 212.5c0 29.927 24.26 54.188 54.187 54.188 29.927 0 54.188-24.261 54.188-54.188 0-29.927-24.261-54.188-54.188-54.188-29.927 0-54.188 24.261-54.188 54.188z"/>
-        <path d="M140.25 212.5c0 39.903 32.347 72.25 72.25 72.25s72.25-32.347 72.25-72.25-32.347-72.25-72.25-72.25-72.25 32.347-72.25 72.25z"/>
-        <path d="M122.188 212.5c0 49.878 40.434 90.313 90.312 90.313s90.313-40.435 90.313-90.313-40.435-90.313-90.313-90.313-90.313 40.435-90.313 90.313z"/>
-        <path d="M104.125 212.5c0 59.854 48.52 108.375 108.375 108.375 59.854 0 108.375-48.52 108.375-108.375 0-59.854-48.52-108.375-108.375-108.375-59.854 0-108.375 48.52-108.375 108.375z"/>
-        <path d="M86.063 212.5c0 69.83 56.607 126.438 126.437 126.438S338.938 282.33 338.938 212.5c0-69.83-56.608-126.438-126.438-126.438-69.83 0-126.438 56.608-126.438 126.438z"/>
-        <path d="M68 212.5C68 292.305 132.695 357 212.5 357S357 292.305 357 212.5 292.305 68 212.5 68 68 132.695 68 212.5z"/>
-      </g>
-    </g>
-    <rect width="211" height="211" x="422" y="422" fill="#D62598"/>
-    <g transform="translate(338 211)">
-      <polygon fill="#509E2F" points="84 211 295 211 295 0 84 0"/>
-      <polygon fill="#E7EAEF" points="84.5 20 0 104.5 84.5 189 169 104.5"/>
-      <polygon fill="#00A9E0" points="84 42 21 105 84 168 147 105"/>
-      <polygon fill="#E7EAEF" points="83.5 63 41 105.5 83.5 148 126 105.5"/>
-      <polygon fill="#00A9E0" points="63 105 84 84 105 105 84 126"/>
-    </g>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 633 633" style="enable-background:new 0 0 633 633;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#F5F5F5;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#84BD00;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#004C97;}
+	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#00A9E0;}
+	.st4{fill:none;stroke:#FFFFFF;stroke-width:4;}
+	.st5{fill-rule:evenodd;clip-rule:evenodd;fill:#F2A900;}
+	.st6{fill-rule:evenodd;clip-rule:evenodd;fill:#FEDD00;}
+	.st7{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.st8{fill-rule:evenodd;clip-rule:evenodd;fill:#523178;}
+	.st9{fill-rule:evenodd;clip-rule:evenodd;fill:#F8F8F8;}
+	.st10{filter:url(#Adobe_OpacityMaskFilter);}
+	.st11{mask:url(#b_1_);}
+	.st12{fill:none;stroke:#E7EAEF;stroke-width:8;}
+	.st13{fill-rule:evenodd;clip-rule:evenodd;fill:#D62598;}
+	.st14{fill-rule:evenodd;clip-rule:evenodd;fill:#509E2F;}
+	.st15{fill-rule:evenodd;clip-rule:evenodd;fill:#E7EAEF;}
+</style>
+<g>
+	<rect x="421.6" class="st0" width="211.4" height="211.8"/>
+	<rect x="211.1" y="211.9" class="st1" width="210.5" height="210.2"/>
+	<polygon class="st2" points="0,633 211.1,633 211.1,422.1 0,422.1 	"/>
+	<g transform="translate(21 21)">
+		<path class="st3" d="M31.7,506.5c0,29.2,23.6,52.8,52.8,52.8s52.8-23.6,52.8-52.8s-23.6-52.8-52.8-52.8S31.7,477.3,31.7,506.5"/>
+		<line class="st4" x1="84.5" y1="422" x2="84.5" y2="591"/>
+		<line class="st4" x1="52.2" y1="428.4" x2="116.8" y2="584.6"/>
+		<line class="st4" x1="24.7" y1="446.7" x2="144.3" y2="566.3"/>
+		<line class="st4" x1="6.4" y1="474.2" x2="162.6" y2="538.8"/>
+		<line class="st4" x1="0" y1="506.5" x2="169" y2="506.5"/>
+		<line class="st4" x1="6.4" y1="538.8" x2="162.6" y2="474.2"/>
+		<line class="st4" x1="24.7" y1="566.3" x2="144.3" y2="446.7"/>
+		<line class="st4" x1="52.2" y1="584.6" x2="116.8" y2="428.4"/>
+	</g>
+	<rect y="211.9" class="st5" width="211.1" height="210.2"/>
+	<rect class="st6" width="211.1" height="211.9"/>
+	<circle class="st7" cx="105.5" cy="105.5" r="42.5"/>
+	<polygon class="st8" points="211.1,633 421.6,633 421.6,422.1 211.1,422.1 	"/>
+	<polygon class="st3" points="211.1,633 316.5,633 316.5,422.1 211.1,422.1 	"/>
+	<path class="st3" d="M316,527.5V576l49-48.5c0,0-48.7-48.5-49-48.5V527.5z"/>
+	<path class="st9" d="M317,527.5V576c-0.3,0-49-48.5-49-48.5s49.3-48.5,49-48.5V527.5z"/>
+	<g>
+		<rect id="a_1_" x="211.1" class="st2" width="210.5" height="211.9"/>
+	</g>
+	<defs>
+		<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="275" y="65" width="297" height="297">
+			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+		</filter>
+	</defs>
+	<mask maskUnits="userSpaceOnUse" x="275" y="65" width="297" height="297" id="b_1_">
+		<g class="st10">
+			<rect id="a_2_" x="211" y="1" class="st7" width="211" height="211"/>
+		</g>
+	</mask>
+	<g class="st11">
+		<path class="st12" d="M405.4,212.9c0,10,6.2,18.7,16.1,18.7c10,0,20-8.7,20-18.7s-10-17.5-20-17.5
+			C411.6,195.4,405.4,202.9,405.4,212.9L405.4,212.9z"/>
+		<path class="st12" d="M387.4,212.9c0,20,14.3,36.7,34.2,36.7c20,0,38-16.8,38-36.7s-18.1-35.5-38-35.5
+			C401.6,177.4,387.4,193,387.4,212.9z"/>
+		<path class="st12" d="M369.3,212.9c0,29.9,22.3,54.8,52.3,54.8s56.1-24.9,56.1-54.8s-26.2-53.6-56.1-53.6S369.3,183,369.3,212.9
+			L369.3,212.9z"/>
+		<path class="st12" d="M351.2,212.9c0,39.9,30.4,72.8,70.3,72.8s74.2-32.9,74.2-72.8s-34.3-71.7-74.2-71.7S351.2,173,351.2,212.9z"
+			/>
+		<path class="st12" d="M333.2,212.9c0,49.9,38.5,90.9,88.4,90.9s92.2-41,92.2-90.9s-42.4-89.7-92.2-89.7S333.2,163,333.2,212.9
+			L333.2,212.9z"/>
+		<path class="st12" d="M315.1,212.9c0,59.9,46.6,109,106.5,109c59.9,0,110.3-49.1,110.3-109c0-59.9-50.4-107.8-110.3-107.8
+			C361.7,105.1,315.1,153.1,315.1,212.9z"/>
+		<path class="st12" d="M297.1,212.9c0,69.8,54.7,127,124.5,127s128.4-57.2,128.4-127S491.4,87.1,421.6,87.1
+			S297.1,143.1,297.1,212.9L297.1,212.9z"/>
+		<path class="st12" d="M279,212.9c0,79.8,62.8,145.1,142.6,145.1S568,292.7,568,212.9S501.4,69,421.6,69S279,133.1,279,212.9z"/>
+	</g>
+	<rect x="421.6" y="422.1" class="st13" width="211.4" height="210.9"/>
+	<polygon class="st14" points="421.6,422.1 633,422.1 633,211.9 421.6,211.9 	"/>
+	<polygon class="st15" points="421.6,231 338,315.5 421.6,400 507,315.5 	"/>
+	<polygon class="st3" points="421.6,253 359,316 421.6,379 485,316 	"/>
+	<polygon class="st15" points="421.6,274 379,316.5 421.6,359 464,316.5 	"/>
+	<polygon class="st3" points="401,316 421.6,295 443,316 421.6,337 	"/>
+</g>
 </svg>
