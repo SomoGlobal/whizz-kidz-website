@@ -16,7 +16,7 @@ export interface IHeroProps {
     url: string;
   };
   pattern?: 'home' | 'kidz' | 'families' | 'supporters';
-  animation: string;
+  animation?: string;
   split?: boolean;
 }
 

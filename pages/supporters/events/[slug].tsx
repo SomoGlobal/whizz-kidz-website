@@ -86,7 +86,6 @@ query EventPageQuery($slug: String) {
     registrationFee
     name
     minimumTarget
-    description(markdown: true)
     endDate
     id
     location {
