@@ -49,7 +49,6 @@ query AllTopicsForSlugs {
     slug
   }
 }
-
 `,
     { preview: false, variables: {} }
   );

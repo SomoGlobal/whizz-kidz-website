@@ -8,6 +8,7 @@ const PageNotFound: React.FC = () => {
     <Layout>
       <Head>
         <title>404 - Not Found</title>
+        <meta name="robots" content="noindex" />
       </Head>
       <Mission
         eyebrow="404"

@@ -1,8 +1,11 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React from 'react';
 import Layout from '../../../components/layout';
 import LinkGrid from '../../../components/link-grid';
+import PageLoading from '../../../components/page-loading';
+import PageNotFound from '../../../components/page-not-found';
 import { fetchAPI } from '../../../lib/api';
 
 export default function DiscoverCategory({
@@ -11,6 +14,16 @@ export default function DiscoverCategory({
   title,
   category,
 }) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <PageLoading />;
+  }
+
+  if (!title) {
+    return <PageNotFound />;
+  }
+
   return (
     <>
       <Layout
@@ -54,15 +67,23 @@ query AllCategoriesForSlugs {
 
   return {
     paths: staticPaths,
-    fallback: false,
+    fallback: true,
   };
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const preview = !!context.preview;
   const { slug } = context.params;
-  const categoryData = await fetchAPI(
-    `
+  const props: any = {
+    preview,
+    topicGridTiles: [],
+    title: '',
+    category: null,
+  };
+
+  try {
+    const categoryData = await fetchAPI(
+      `
 query GetCategoryId($slug: String) {
   category(filter: {slug: {eq: $slug}}) {
     id
@@ -71,11 +92,11 @@ query GetCategoryId($slug: String) {
   }
 }
 `,
-    { preview, variables: { slug } }
-  );
+      { preview, variables: { slug } }
+    );
 
-  const topicsData = await fetchAPI(
-    `
+    const topicsData = await fetchAPI(
+      `
 query GetTopicsByCategoryId($categoryId: ItemId) {
   allTopics(filter: {category: {eq: $categoryId}}) {
     name
@@ -83,24 +104,26 @@ query GetTopicsByCategoryId($categoryId: ItemId) {
   }
 }
 `,
-    { preview, variables: { categoryId: categoryData.category.id } }
-  );
+      { preview, variables: { categoryId: categoryData.category.id } }
+    );
 
-  const topicGridTiles = topicsData.allTopics.map((item) => ({
-    label: item.name,
-    linkProps: {
-      as: `/discover/topic/${item.slug}`,
-      href: `/discover/topic/[slug]`,
-    },
-  }));
+    const topicGridTiles = topicsData.allTopics.map((item) => ({
+      label: item.name,
+      linkProps: {
+        as: `/discover/topic/${item.slug}`,
+        href: `/discover/topic/[slug]`,
+      },
+    }));
+
+    props.topicGridTiles = topicGridTiles;
+    props.title = categoryData.category.name;
+    props.category = categoryData.category;
+  } catch (e) {
+    //
+  }
 
   return {
-    props: {
-      preview,
-      topicGridTiles,
-      title: categoryData.category.name,
-      category: categoryData.category,
-    },
+    props,
     revalidate: 60 * 60 * 24, // once every 24 hours
   };
 };

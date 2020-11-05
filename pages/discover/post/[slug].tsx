@@ -1,21 +1,29 @@
 import cx from 'classnames';
-import { DiscussionEmbed } from 'disqus-react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { Image, renderMetaTags } from 'react-datocms';
 import { Generic, JSONLD } from 'react-structured-data';
 import styles from '../../../components/article/article.module.css';
 import Container from '../../../components/container';
 import Layout from '../../../components/layout';
+import PageLoading from '../../../components/page-loading';
+import PageNotFound from '../../../components/page-not-found';
 import Podcast from '../../../components/podcast';
 import PostHeader from '../../../components/post-header';
 import VideoPlayer from '../../../components/video-player';
 import { fetchAPI, responsiveImageFragment } from '../../../lib/api';
 
 export default function DiscoverPost({ preview, post, site }) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <PageLoading />;
+  }
+
   if (!post) {
-    return null;
+    return <PageNotFound />;
   }
 
   let url = `https://www.whizz-kidz.org.uk/discover/post/${post.slug}`;
