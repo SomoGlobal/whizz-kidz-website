@@ -100,18 +100,20 @@ const Hero: React.FC<IHeroProps> = ({
     >
       {animation && (
         <div className="col-start-1 col-end-2 row-start-1 row-end-2">
-          <Player
-            ref={playerRef}
-            autoplay={!shouldReduceMotion}
-            loop
-            src={`/lottie/json/${animation || '01'}.json`}
-            style={{
-              width: '50%',
-              height: '100%',
-              marginLeft: 'auto',
-              marginRight: '0',
-            }}
-          />
+          <div className="ml-auto w-full sm:w-2/3 lg:w-1/2">
+            <Player
+              ref={playerRef}
+              autoplay={!shouldReduceMotion}
+              loop
+              src={`/lottie/json/${animation || '01'}.json`}
+              style={{
+                width: '100%',
+                height: '100%',
+                marginLeft: 'auto',
+                marginRight: '0',
+              }}
+            />
+          </div>
         </div>
       )}
       <div
