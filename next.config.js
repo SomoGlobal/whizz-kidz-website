@@ -181,6 +181,11 @@ module.exports = {
         destination: `${ARCHIVE_URL}/get-our-help/young-people/:path*.html`,
         permanent: true,
       },
+      {
+        source: '/uploads/:path*',
+        destination: `${ARCHIVE_URL}/uploads/:path*`,
+        permanent: true,
+      },
     ];
   },
 };
