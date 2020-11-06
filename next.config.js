@@ -173,11 +173,6 @@ module.exports = {
         destination: `/supporters/events`,
         permanent: true,
       },
-      {
-        source: '/support-us/events-challenges/:slug*',
-        destination: `/supporters/events`,
-        permanent: true,
-      },
 
       // fallbacks
       {
