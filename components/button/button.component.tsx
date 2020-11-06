@@ -66,8 +66,8 @@ const Button: React.FC<IButtonProps> = ({
         aria-label={`${children} (opens in new window)`}
         onClick={() =>
           event({
-            action: 'Click',
-            category: 'External Link',
+            action: 'button_click',
+            category: 'external_link',
             label: gaLabel,
           })
         }
@@ -84,8 +84,8 @@ const Button: React.FC<IButtonProps> = ({
           className={classes}
           onClick={() =>
             event({
-              action: 'Click',
-              category: 'Internal Link',
+              action: 'button_click',
+              category: 'internal_link',
               label: gaLabel,
             })
           }

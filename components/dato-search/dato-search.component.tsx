@@ -62,8 +62,8 @@ const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
     setPage(selected);
 
     event({
-      action: 'Page Change',
-      category: 'Search',
+      action: 'search_page_change',
+      category: 'search',
       label: selected,
     });
 
@@ -88,8 +88,8 @@ const DatoSearch: React.FC<IDatoSearchProps> = ({ apiToken }) => {
     await search(values.search);
 
     event({
-      action: 'Search Submitted',
-      category: 'Search',
+      action: 'search_submitted',
+      category: 'search',
       label: values.search,
     });
   };

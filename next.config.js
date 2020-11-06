@@ -149,6 +149,25 @@ module.exports = {
         destination: `/supporters/fundraise/other-ways-to-donate`,
         permanent: true,
       },
+
+      //
+      {
+        source: '/support-us/events-challenges/berlin-marathon',
+        destination: `/supporters/events/berlin-marathon-2021`,
+        permanent: true,
+      },
+      {
+        source: '/support-us/events-challenges/london-marathon',
+        destination: `/supporters/events/london-marathon-2021`,
+        permanent: true,
+      },
+      {
+        source: '/support-us/events-challenges/royal-parks-half',
+        destination: `/supporters/events/royal-parks-half-marathon-2021`,
+        permanent: true,
+      },
+      //
+
       {
         source: '/support-us/events-challenges',
         destination: `/supporters/events`,

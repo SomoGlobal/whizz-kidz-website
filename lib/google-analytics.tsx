@@ -29,3 +29,13 @@ export const event = ({ action, category, label, value }: EventHandle) => {
     });
   }
 };
+
+// https://developers.google.com/analytics/devguides/collection/ga4/tag-guide
+export const ga4event = (eventName, props = {}) => {
+  const w = window as any;
+  if (typeof w !== 'undefined' && w.gtag) {
+    w.gtag('event', eventName, {
+      ...props,
+    });
+  }
+};
