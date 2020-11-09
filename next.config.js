@@ -16,6 +16,11 @@ module.exports = {
         permanent: true,
       },
       {
+        source: '/aleishasjourney',
+        destination: '/supporters/aleishas-journey',
+        permanent: true,
+      },
+      {
         source: '/get-our-help/equipment',
         destination: '/families/equipment',
         permanent: true,
