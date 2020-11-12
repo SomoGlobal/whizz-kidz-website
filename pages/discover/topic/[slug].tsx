@@ -1,11 +1,24 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React from 'react';
 import Layout from '../../../components/layout';
+import PageLoading from '../../../components/page-loading';
+import PageNotFound from '../../../components/page-not-found';
 import PostCardList from '../../../components/post-card-list';
 import { fetchAPI, responsiveImageFragment } from '../../../lib/api';
 
 export default function DiscoverCategory({ preview, topic, topicPosts }) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <PageLoading />;
+  }
+
+  if (!topic) {
+    return <PageNotFound />;
+  }
+
   const breadcrumbs = [
     { label: 'Discover', linkProps: { href: '/discover' } },
     {
@@ -57,7 +70,7 @@ query AllTopicsForSlugs {
 
   return {
     paths: staticPaths,
-    fallback: false,
+    fallback: true,
   };
 }
 
