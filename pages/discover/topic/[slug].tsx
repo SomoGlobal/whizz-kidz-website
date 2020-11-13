@@ -97,7 +97,7 @@ query TopicName($slug: String) {
   const topicPosts = await fetchAPI(
     `
 query PostsInTopic($topicId: ItemId) {
-  posts: allPosts(filter: {topic: {eq: $topicId}}, orderBy: publishedDate_DESC, first: "12") {
+  posts: allPosts(filter: {topic: {eq: $topicId}}, orderBy: publishedDate_DESC, first: "45") {
     id
     title
     slug

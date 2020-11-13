@@ -134,7 +134,7 @@ export default function DiscoverPost({ preview, post, site }) {
             dangerouslySetInnerHTML={{ __html: post.content }}
             className={cx(
               styles.article,
-              'md:col-start-2 md:col-end-6 col-span-6'
+              'md:col-start-2 md:col-end-6 col-span-6 mb-24'
             )}
           />
         </Container>
