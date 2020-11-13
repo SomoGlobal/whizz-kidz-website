@@ -9,5 +9,6 @@ export const getStaticProps = async (context) => {
 
   return {
     props: { preview, data },
+    revalidate: 60 * 60 * 24, // once every 24 hours
   };
 };
