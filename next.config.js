@@ -16,6 +16,11 @@ module.exports = {
         permanent: true,
       },
       {
+        source: '/30-stories',
+        destination: '/charity/30-years-30-stories',
+        permanent: true,
+      },
+      {
         source: '/FamiliesNetwork',
         destination: '/families/families-network',
         permanent: true,
