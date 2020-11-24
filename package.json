@@ -14,7 +14,7 @@
   },
   "browserslist": [
     ">2%",
-    "ie 11"
+    "not ie 11"
   ],
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^2.2.1",
