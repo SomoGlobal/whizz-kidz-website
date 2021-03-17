@@ -58,7 +58,7 @@ export default function EventPage({ event, preview }) {
 
 export async function getStaticPaths() {
   const response = await fetchAPI(`query LatestEventSlugs {
-  events: allEvents(first: "5") {
+  events: allEvents() {
     slug
   }
 }
