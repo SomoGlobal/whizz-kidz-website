@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import EventBoxes from '../../../components/event-boxes';
@@ -56,25 +56,7 @@ export default function EventPage({ event, preview }) {
   );
 }
 
-export async function getStaticPaths() {
-  const response = await fetchAPI(`query LatestEventSlugs {
-  events: allEvents(first: "5") {
-    slug
-  }
-}
-`);
-
-  const staticPaths = response.events.map((obj) => ({
-    params: { slug: obj.slug },
-  }));
-
-  return {
-    paths: staticPaths,
-    fallback: false,
-  };
-}
-
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const preview = !!context.preview;
   const { slug } = context.params;
   const { event } = await fetchAPI(
@@ -326,6 +308,5 @@ ${linkFragment}
 
   return {
     props: { preview, event },
-    revalidate: 60 * 5, // once every 5 mins
   };
 };
