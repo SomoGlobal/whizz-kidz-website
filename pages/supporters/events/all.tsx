@@ -1,11 +1,9 @@
 import { fetchAPI, responsiveImageFragment } from 'lib/api';
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 import React from 'react';
 import { renderMetaTags } from 'react-datocms';
 import EventCardList from '../../../components/event-card-list';
-import Container from '../../../components/container';
 import Layout from '../../../components/layout';
 
 /* eslint-disable react/no-danger */
@@ -42,7 +40,7 @@ export default function AllEvents({ preview, allEvents, favicon }) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const preview = !!context.preview;
 
   const { allEvents, site } = await fetchAPI(

@@ -1,5 +1,5 @@
 import { fetchAPI, getChildNavItems, responsiveImageFragment } from 'lib/api';
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import { renderMetaTags } from 'react-datocms';
@@ -69,7 +69,7 @@ export default function EventsHome({
   );
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const preview = !!context.preview;
   const secondaryNavItems = await getChildNavItems('supporters');
 
@@ -124,6 +124,5 @@ ${responsiveImageFragment}
       upcomingEvents,
       favicon: site.favicon,
     },
-    revalidate: 60 * 30, // once every 30 mins
   };
 };
