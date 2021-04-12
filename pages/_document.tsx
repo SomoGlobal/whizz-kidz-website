@@ -19,6 +19,10 @@ export default class MyDocument extends Document<{ isProduction: boolean }> {
     return (
       <Html lang="en">
         <Head>
+          <meta
+            name="facebook-domain-verification"
+            content="gf9grk9ujkjalkxhbrc87p3js5rr3q"
+          />
           <meta charSet="utf-8" />
           <script
             dangerouslySetInnerHTML={{
